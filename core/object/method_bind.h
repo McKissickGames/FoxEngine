@@ -2,11 +2,11 @@
 /*  method_bind.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -113,7 +113,7 @@ public:
 	void set_argument_names(const Vector<StringName> &p_names); // Set by ClassDB, can't be inferred otherwise.
 	Vector<StringName> get_argument_names() const;
 
-	virtual GodotTypeInfo::Metadata get_argument_meta(int p_arg) const = 0;
+	virtual FoxTypeInfo::Metadata get_argument_meta(int p_arg) const = 0;
 #endif
 
 	void set_hint_flags(uint32_t p_hint) { hint_flags = p_hint; }
@@ -168,8 +168,8 @@ public:
 		return _gen_argument_type_info(p_arg).type;
 	}
 
-	virtual GodotTypeInfo::Metadata get_argument_meta(int) const {
-		return GodotTypeInfo::METADATA_NONE;
+	virtual FoxTypeInfo::Metadata get_argument_meta(int) const {
+		return FoxTypeInfo::METADATA_NONE;
 	}
 #else
 	virtual Variant::Type _gen_argument_type(int p_arg) const {
@@ -273,7 +273,7 @@ protected:
 
 public:
 #ifdef DEBUG_METHODS_ENABLED
-	virtual GodotTypeInfo::Metadata get_argument_meta(int p_arg) const {
+	virtual FoxTypeInfo::Metadata get_argument_meta(int p_arg) const {
 		return call_get_argument_metadata<P...>(p_arg);
 	}
 
@@ -352,7 +352,7 @@ protected:
 
 public:
 #ifdef DEBUG_METHODS_ENABLED
-	virtual GodotTypeInfo::Metadata get_argument_meta(int p_arg) const {
+	virtual FoxTypeInfo::Metadata get_argument_meta(int p_arg) const {
 		return call_get_argument_metadata<P...>(p_arg);
 	}
 
@@ -437,7 +437,7 @@ protected:
 
 public:
 #ifdef DEBUG_METHODS_ENABLED
-	virtual GodotTypeInfo::Metadata get_argument_meta(int p_arg) const {
+	virtual FoxTypeInfo::Metadata get_argument_meta(int p_arg) const {
 		if (p_arg >= 0) {
 			return call_get_argument_metadata<P...>(p_arg);
 		} else {
@@ -528,7 +528,7 @@ protected:
 
 public:
 #ifdef DEBUG_METHODS_ENABLED
-	virtual GodotTypeInfo::Metadata get_argument_meta(int p_arg) const {
+	virtual FoxTypeInfo::Metadata get_argument_meta(int p_arg) const {
 		if (p_arg >= 0) {
 			return call_get_argument_metadata<P...>(p_arg);
 		} else {

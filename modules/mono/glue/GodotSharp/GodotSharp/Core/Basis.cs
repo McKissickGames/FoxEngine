@@ -6,7 +6,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 3×3 matrix used for 3D rotation and scale.
@@ -20,7 +20,7 @@ namespace Godot
     /// orthogonal to each other, but are not necessarily normalized (due to scaling).
     ///
     /// For more information, read this documentation article:
-    /// https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+    /// https://docs.Foxengine.org/en/latest/tutorials/math/matrices_and_transforms.html
     /// </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
@@ -264,7 +264,7 @@ namespace Godot
         /// the format (X angle, Y angle, Z angle).
         ///
         /// Consider using the <see cref="Basis.Quaternion()"/> method instead, which
-        /// returns a <see cref="Godot.Quaternion"/> quaternion instead of Euler angles.
+        /// returns a <see cref="Fox.Quaternion"/> quaternion instead of Euler angles.
         /// </summary>
         /// <returns>A Vector3 representing the basis rotation in Euler angles.</returns>
         public Vector3 GetEuler()
@@ -351,7 +351,7 @@ namespace Godot
         /// of the point best representing the orientation of the object.
         /// It is mainly used by the <see cref="GridMap"/> editor.
         ///
-        /// For further details, refer to the Godot source code.
+        /// For further details, refer to the Fox source code.
         /// </summary>
         /// <returns>The orthogonal index.</returns>
         public int GetOrthogonalIndex()
@@ -588,7 +588,7 @@ namespace Godot
         /// See <see cref="GetEuler()"/> if you need Euler angles, but keep in
         /// mind that quaternions should generally be preferred to Euler angles.
         /// </summary>
-        /// <returns>A <see cref="Godot.Quaternion"/> representing the basis's rotation.</returns>
+        /// <returns>A <see cref="Fox.Quaternion"/> representing the basis's rotation.</returns>
         public Quaternion Quaternion()
         {
             real_t trace = Row0[0] + Row1[1] + Row2[2];
@@ -728,7 +728,7 @@ namespace Godot
         /// given in the vector format as (X angle, Y angle, Z angle).
         ///
         /// Consider using the <see cref="Basis(Quaternion)"/> constructor instead, which
-        /// uses a <see cref="Godot.Quaternion"/> quaternion instead of Euler angles.
+        /// uses a <see cref="Fox.Quaternion"/> quaternion instead of Euler angles.
         /// </summary>
         /// <param name="eulerYXZ">The Euler angles to create the basis from.</param>
         public Basis(Vector3 eulerYXZ)

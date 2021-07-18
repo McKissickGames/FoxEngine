@@ -1,6 +1,6 @@
 using System;
 
-namespace Godot
+namespace Fox
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ToolAttribute : Attribute {}

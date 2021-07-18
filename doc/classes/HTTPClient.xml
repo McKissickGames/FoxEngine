@@ -12,8 +12,8 @@
 		[b]Note:[/b] SSL/TLS support is currently limited to TLS 1.0, TLS 1.1, and TLS 1.2. Attempting to connect to a TLS 1.3-only server will return an error.
 	</description>
 	<tutorials>
-		<link title="HTTP client class">https://docs.godotengine.org/en/latest/tutorials/networking/http_client_class.html</link>
-		<link title="SSL certificates">https://docs.godotengine.org/en/latest/tutorials/networking/ssl_certificates.html</link>
+		<link title="HTTP client class">https://docs.Foxengine.org/en/latest/tutorials/networking/http_client_class.html</link>
+		<link title="SSL certificates">https://docs.Foxengine.org/en/latest/tutorials/networking/ssl_certificates.html</link>
 	</tutorials>
 	<methods>
 		<method name="close">
@@ -119,7 +119,7 @@
 				# Returns "username=user&amp;password=pass"
 				[/gdscript]
 				[csharp]
-				var fields = new Godot.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
+				var fields = new Fox.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
 				string queryString = new HTTPClient().QueryStringFromDict(fields);
 				// Returns "username=user&amp;password=pass"
 				[/csharp]
@@ -132,7 +132,7 @@
 				# Returns "single=123&amp;not_valued&amp;multiple=22&amp;multiple=33&amp;multiple=44"
 				[/gdscript]
 				[csharp]
-				var fields = new Godot.Collections.Dictionary{{"single", 123}, {"notValued", null}, {"multiple", new Godot.Collections.Array{22, 33, 44}}};
+				var fields = new Fox.Collections.Dictionary{{"single", 123}, {"notValued", null}, {"multiple", new Fox.Collections.Array{22, 33, 44}}};
 				string queryString = new HTTPClient().QueryStringFromDict(fields);
 				// Returns "single=123&amp;not_valued&amp;multiple=22&amp;multiple=33&amp;multiple=44"
 				[/csharp]
@@ -170,7 +170,7 @@
 				var result = http_client.request(http_client.METHOD_POST, "/index.php", headers, query_string)
 				[/gdscript]
 				[csharp]
-				var fields = new Godot.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
+				var fields = new Fox.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
 				string queryString = new HTTPClient().QueryStringFromDict(fields);
 				string[] headers = {"Content-Type: application/x-www-form-urlencoded", "Content-Length: " + queryString.Length};
 				var result = new HTTPClient().Request(HTTPClient.Method.Post, "index.php", headers, queryString);

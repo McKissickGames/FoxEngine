@@ -13,7 +13,7 @@ extern "C"
 #include <stdint.h>
 #include <stdlib.h>
 
-// -- Godot start --
+// -- Fox start --
 #if 0
 #ifdef _WIN32
 #include "enet/win32.h"
@@ -21,8 +21,8 @@ extern "C"
 #include "enet/unix.h"
 #endif
 #endif
-#include "enet/godot.h"
-// -- Godot end --
+#include "enet/Fox.h"
+// -- Fox end --
 
 #include "enet/types.h"
 #include "enet/protocol.h"
@@ -92,7 +92,7 @@ typedef enum _ENetSocketShutdown
  * but not for enet_host_create.  Once a server responds to a broadcast, the
  * address is updated from ENET_HOST_BROADCAST to the server's actual IP address.
  */
-// -- Godot start --
+// -- Fox start --
 #if 0
 typedef struct _ENetAddress
 {
@@ -100,7 +100,7 @@ typedef struct _ENetAddress
    enet_uint16 port;
 } ENetAddress;
 #endif
-// -- Godot end --
+// -- Fox end --
 
 /**
  * Packet flag bit constants.
@@ -614,9 +614,9 @@ ENET_API size_t enet_range_coder_decompress (void *, const enet_uint8 *, size_t,
    
 extern size_t enet_protocol_command_size (enet_uint8);
 
-// -- Godot start --
-#include "enet/godot_ext.h"
-// -- Godot end --
+// -- Fox start --
+#include "enet/Fox_ext.h"
+// -- Fox end --
 
 #ifdef __cplusplus
 }

@@ -4,13 +4,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using GodotTools.Internals;
-using Directory = GodotTools.Utils.Directory;
-using File = GodotTools.Utils.File;
-using OS = GodotTools.Utils.OS;
+using FoxTools.Internals;
+using Directory = FoxTools.Utils.Directory;
+using File = FoxTools.Utils.File;
+using OS = FoxTools.Utils.OS;
 using Path = System.IO.Path;
 
-namespace GodotTools.Export
+namespace FoxTools.Export
 {
     public struct AotOptions
     {
@@ -36,7 +36,7 @@ namespace GodotTools.Export
         {
             // TODO: WASM
 
-            string aotTempDir = Path.Combine(Path.GetTempPath(), $"godot-aot-{Process.GetCurrentProcess().Id}");
+            string aotTempDir = Path.Combine(Path.GetTempPath(), $"Fox-aot-{Process.GetCurrentProcess().Id}");
 
             if (!Directory.Exists(aotTempDir))
                 Directory.CreateDirectory(aotTempDir);
@@ -88,7 +88,7 @@ namespace GodotTools.Export
                 string assemblyName = assembly.Key;
                 string assemblyPath = assembly.Value;
 
-                // Not sure if the 'lib' prefix is an Android thing or just Godot being picky,
+                // Not sure if the 'lib' prefix is an Android thing or just Fox being picky,
                 // but we use '-aot-' as well just in case to avoid conflicts with other libs.
                 string outputFileName = "lib-aot-" + assemblyName + ".dll.so";
 
@@ -102,11 +102,11 @@ namespace GodotTools.Export
                     // Make sure the output directory exists
                     Directory.CreateDirectory(aotAbiTempDir);
 
-                    string compilerDirPath = Path.Combine(GodotSharpDirs.DataEditorToolsDir, "aot-compilers", $"{OS.Platforms.Android}-{abi}");
+                    string compilerDirPath = Path.Combine(FoxSharpDirs.DataEditorToolsDir, "aot-compilers", $"{OS.Platforms.Android}-{abi}");
 
                     ExecuteCompiler(FindCrossCompiler(compilerDirPath), compilerArgs, bclDir);
 
-                    // The Godot exporter expects us to pass the abi in the tags parameter
+                    // The Fox exporter expects us to pass the abi in the tags parameter
                     exporter.AddSharedObject(soFilePath, tags: new[] { abi });
                 }
             }
@@ -170,7 +170,7 @@ namespace GodotTools.Export
                     // Make sure the output directory exists
                     Directory.CreateDirectory(aotArchTempDir);
 
-                    string compilerDirPath = Path.Combine(GodotSharpDirs.DataEditorToolsDir, "aot-compilers", $"{OS.Platforms.iOS}-{arch}");
+                    string compilerDirPath = Path.Combine(FoxSharpDirs.DataEditorToolsDir, "aot-compilers", $"{OS.Platforms.iOS}-{arch}");
 
                     ExecuteCompiler(FindCrossCompiler(compilerDirPath), compilerArgs, bclDir);
 
@@ -288,7 +288,7 @@ MONO_AOT_MODE_LAST = 1000,
             // Archive the AOT object files into a static library
 
             var arFilePathsForAllArchs = new List<string>();
-            string projectAssemblyName = GodotSharpEditor.ProjectAssemblyName;
+            string projectAssemblyName = FoxSharpEditor.ProjectAssemblyName;
 
             foreach (var archPathsPair in objFilePathsForiOSArch)
             {
@@ -419,7 +419,7 @@ MONO_AOT_MODE_LAST = 1000,
 
                 if (string.IsNullOrEmpty(androidToolchain))
                 {
-                    androidToolchain = Path.Combine(GodotSharpDirs.DataEditorToolsDir, "android-toolchains", $"{abi}"); // TODO: $"{abi}-{apiLevel}{(clang?"clang":"")}"
+                    androidToolchain = Path.Combine(FoxSharpDirs.DataEditorToolsDir, "android-toolchains", $"{abi}"); // TODO: $"{abi}-{apiLevel}{(clang?"clang":"")}"
 
                     if (!Directory.Exists(androidToolchain))
                         throw new FileNotFoundException("Missing android toolchain. Specify one in the AOT export settings.");

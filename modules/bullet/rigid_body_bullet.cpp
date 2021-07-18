@@ -2,11 +2,11 @@
 /*  rigid_body_bullet.cpp                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -34,7 +34,7 @@
 #include "bullet_physics_server.h"
 #include "bullet_types_converter.h"
 #include "bullet_utilities.h"
-#include "godot_motion_state.h"
+#include "Fox_motion_state.h"
 #include "joint_bullet.h"
 
 #include <BulletCollision/CollisionDispatch/btGhostObject.h>
@@ -257,11 +257,11 @@ void RigidBodyBullet::KinematicUtilities::just_delete_shapes(int new_size) {
 
 RigidBodyBullet::RigidBodyBullet() :
 		RigidCollisionObjectBullet(CollisionObjectBullet::TYPE_RIGID_BODY) {
-	godotMotionState = bulletnew(GodotMotionState(this));
+	FoxMotionState = bulletnew(FoxMotionState(this));
 
 	// Initial properties
 	const btVector3 localInertia(0, 0, 0);
-	btRigidBody::btRigidBodyConstructionInfo cInfo(mass, godotMotionState, nullptr, localInertia);
+	btRigidBody::btRigidBodyConstructionInfo cInfo(mass, FoxMotionState, nullptr, localInertia);
 
 	btBody = bulletnew(btRigidBody(cInfo));
 	btBody->setFriction(1.0);
@@ -282,7 +282,7 @@ RigidBodyBullet::RigidBodyBullet() :
 }
 
 RigidBodyBullet::~RigidBodyBullet() {
-	bulletdelete(godotMotionState);
+	bulletdelete(FoxMotionState);
 
 	if (force_integration_callback) {
 		memdelete(force_integration_callback);
@@ -781,10 +781,10 @@ void RigidBodyBullet::set_transform__bullet(const btTransform &p_global_transfor
 			btBody->setLinearVelocity((p_global_transform.getOrigin() - btBody->getWorldTransform().getOrigin()) / space->get_delta_time());
 		}
 		// The kinematic use MotionState class
-		godotMotionState->moveBody(p_global_transform);
+		FoxMotionState->moveBody(p_global_transform);
 	} else {
 		// Is necessary to avoid wrong location on the rendering side on the next frame
-		godotMotionState->setWorldTransform(p_global_transform);
+		FoxMotionState->setWorldTransform(p_global_transform);
 	}
 	CollisionObjectBullet::set_transform__bullet(p_global_transform);
 }
@@ -793,7 +793,7 @@ const btTransform &RigidBodyBullet::get_transform__bullet() const {
 	if (is_static()) {
 		return RigidCollisionObjectBullet::get_transform__bullet();
 	} else {
-		return godotMotionState->getCurrentWorldTransform();
+		return FoxMotionState->getCurrentWorldTransform();
 	}
 }
 

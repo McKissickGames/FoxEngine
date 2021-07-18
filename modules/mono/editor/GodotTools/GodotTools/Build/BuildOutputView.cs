@@ -1,12 +1,12 @@
-using Godot;
+using Fox;
 using System;
-using Godot.Collections;
-using GodotTools.Internals;
+using Fox.Collections;
+using FoxTools.Internals;
 using JetBrains.Annotations;
-using File = GodotTools.Utils.File;
+using File = FoxTools.Utils.File;
 using Path = System.IO.Path;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public class BuildOutputView : VBoxContainer, ISerializationListener
     {
@@ -69,11 +69,11 @@ namespace GodotTools.Build
 
         private void LoadIssuesFromFile(string csvFile)
         {
-            using (var file = new Godot.File())
+            using (var file = new Fox.File())
             {
                 try
                 {
-                    Error openError = file.Open(csvFile, Godot.File.ModeFlags.Read);
+                    Error openError = file.Open(csvFile, Fox.File.ModeFlags.Read);
 
                     if (openError != Error.Ok)
                         return;
@@ -135,7 +135,7 @@ namespace GodotTools.Build
 
             string projectDir = issue.ProjectFile.Length > 0 ? issue.ProjectFile.GetBaseDir() : BuildInfo.Solution.GetBaseDir();
 
-            string file = Path.Combine(projectDir.SimplifyGodotPath(), issue.File.SimplifyGodotPath());
+            string file = Path.Combine(projectDir.SimplifyFoxPath(), issue.File.SimplifyFoxPath());
 
             if (!File.Exists(file))
                 return;

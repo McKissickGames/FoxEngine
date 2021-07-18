@@ -2,11 +2,11 @@
 /*  managed_callable.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -84,7 +84,7 @@ CallableCustom::CompareLessFunc ManagedCallable::get_compare_less_func() const {
 }
 
 ObjectID ManagedCallable::get_object() const {
-	// TODO: If the delegate target extends Godot.Object, use that instead!
+	// TODO: If the delegate target extends Fox.Object, use that instead!
 	return CSharpLanguage::get_singleton()->get_managed_callable_middleman()->get_instance_id();
 }
 

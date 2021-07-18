@@ -34,14 +34,14 @@
 #endif
 
 #if defined(__WIN32__)
-// -- GODOT start --
+// -- Fox start --
 #if !defined(NOMINMAX)
-// -- GODOT end --
+// -- Fox end --
 #define NOMINMAX
-// -- GODOT start --
+// -- Fox start --
 #endif
 #include "windows.h"
-// -- GODOT end --
+// -- Fox end --
 #endif
 
 /* normally defined in pmmintrin.h, but we always need this */

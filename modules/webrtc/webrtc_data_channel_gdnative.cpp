@@ -2,11 +2,11 @@
 /*  webrtc_data_channel_gdnative.cpp                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -131,7 +131,7 @@ int WebRTCDataChannelGDNative::get_available_packet_count() const {
 	return interface->get_available_packet_count(interface->data);
 }
 
-void WebRTCDataChannelGDNative::set_native_webrtc_data_channel(const godot_net_webrtc_data_channel *p_impl) {
+void WebRTCDataChannelGDNative::set_native_webrtc_data_channel(const Fox_net_webrtc_data_channel *p_impl) {
 	interface = p_impl;
 }
 

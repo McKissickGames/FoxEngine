@@ -792,7 +792,7 @@ namespace embree
     }
 
     /* initiate build */
-    // -- GODOT start --
+    // -- Fox start --
     // try {
       scheduler->spawn_root([&]() { commit_task(); Lock<MutexSys> lock(schedulerMutex); this->scheduler = nullptr; }, 1, !join);
     // }
@@ -803,7 +803,7 @@ namespace embree
     //   this->scheduler = nullptr;
     //   throw;
     // }
-    // -- GODOT end --
+    // -- Fox end --
   }
 
 #endif

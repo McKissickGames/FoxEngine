@@ -7,7 +7,7 @@ from platform_methods import run_in_subprocess
 import platform_windows_builders
 
 common_win = [
-    "godot_windows.cpp",
+    "Fox_windows.cpp",
     "crash_handler_windows.cpp",
     "os_windows.cpp",
     "display_server_windows.cpp",
@@ -18,16 +18,16 @@ common_win = [
     "context_gl_windows.cpp",
 ]
 
-res_file = "godot_res.rc"
-res_target = "godot_res" + env["OBJSUFFIX"]
+res_file = "Fox_res.rc"
+res_target = "Fox_res" + env["OBJSUFFIX"]
 res_obj = env.RES(res_target, res_file)
 
-prog = env.add_program("#bin/godot", common_win + res_obj, PROGSUFFIX=env["PROGSUFFIX"])
+prog = env.add_program("#bin/Fox", common_win + res_obj, PROGSUFFIX=env["PROGSUFFIX"])
 
 # Microsoft Visual Studio Project Generation
 if env["vsproj"]:
     env.vs_srcs += ["platform/windows/" + res_file]
-    env.vs_srcs += ["platform/windows/godot.natvis"]
+    env.vs_srcs += ["platform/windows/Fox.natvis"]
     for x in common_win:
         env.vs_srcs += ["platform/windows/" + str(x)]
 

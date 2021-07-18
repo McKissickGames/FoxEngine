@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public class SignalAwaiter : IAwaiter<object[]>, IAwaitable<object[]>
     {
@@ -11,11 +11,11 @@ namespace Godot
 
         public SignalAwaiter(Object source, StringName signal, Object target)
         {
-            godot_icall_SignalAwaiter_connect(Object.GetPtr(source), StringName.GetPtr(signal), Object.GetPtr(target), this);
+            Fox_icall_SignalAwaiter_connect(Object.GetPtr(source), StringName.GetPtr(signal), Object.GetPtr(target), this);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static Error godot_icall_SignalAwaiter_connect(IntPtr source, IntPtr signal, IntPtr target, SignalAwaiter awaiter);
+        internal extern static Error Fox_icall_SignalAwaiter_connect(IntPtr source, IntPtr signal, IntPtr target, SignalAwaiter awaiter);
 
         public bool IsCompleted
         {

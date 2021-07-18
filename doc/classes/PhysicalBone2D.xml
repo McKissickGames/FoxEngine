@@ -22,7 +22,7 @@
 			<return type="bool">
 			</return>
 			<description>
-				Returns a boolean that indicates whether the [code]PhysicalBone2D[/code] node is running and simulating using the Godot 2D physics engine. When [code]true[/code], the PhysicalBone2D node is using physics.
+				Returns a boolean that indicates whether the [code]PhysicalBone2D[/code] node is running and simulating using the Fox 2D physics engine. When [code]true[/code], the PhysicalBone2D node is using physics.
 			</description>
 		</method>
 	</methods>

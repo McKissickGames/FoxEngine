@@ -2,11 +2,11 @@
 /*  aabb.cpp                                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,17 +32,17 @@
 
 #include "core/math/aabb.h"
 
-static_assert(sizeof(godot_aabb) == sizeof(AABB), "AABB size mismatch");
+static_assert(sizeof(Fox_aabb) == sizeof(AABB), "AABB size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_aabb_new(godot_aabb *p_self) {
+void GDAPI Fox_aabb_new(Fox_aabb *p_self) {
 	memnew_placement(p_self, AABB);
 }
 
-void GDAPI godot_aabb_new_copy(godot_aabb *r_dest, const godot_aabb *p_src) {
+void GDAPI Fox_aabb_new_copy(Fox_aabb *r_dest, const Fox_aabb *p_src) {
 	memnew_placement(r_dest, AABB(*(AABB *)p_src));
 }
 

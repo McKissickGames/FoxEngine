@@ -27,13 +27,13 @@
 		    return ["csv"]
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System;
 
 		[Tool]
 		public class CustomParser : EditorTranslationParserPlugin
 		{
-		    public override void ParseFile(string path, Godot.Collections.Array msgids, Godot.Collections.Array msgidsContextPlural)
+		    public override void ParseFile(string path, Fox.Collections.Array msgids, Fox.Collections.Array msgidsContextPlural)
 		    {
 		        var file = new File();
 		        file.Open(path, File.ModeFlags.Read);
@@ -46,9 +46,9 @@
 		        }
 		    }
 
-		    public override Godot.Collections.Array GetRecognizedExtensions()
+		    public override Fox.Collections.Array GetRecognizedExtensions()
 		    {
-		        return new Godot.Collections.Array{"csv"};
+		        return new Fox.Collections.Array{"csv"};
 		    }
 		}
 		[/csharp]
@@ -65,11 +65,11 @@
 		[/gdscript]
 		[csharp]
 		// This will add a message with msgid "Test 1", msgctxt "context", and msgid_plural "test 1 plurals".
-		msgidsContextPlural.Add(new Godot.Collections.Array{"Test 1", "context", "test 1 Plurals"});
+		msgidsContextPlural.Add(new Fox.Collections.Array{"Test 1", "context", "test 1 Plurals"});
 		// This will add a message with msgid "A test without context" and msgid_plural "plurals".
-		msgidsContextPlural.Add(new Godot.Collections.Array{"A test without context", "", "plurals"});
+		msgidsContextPlural.Add(new Fox.Collections.Array{"A test without context", "", "plurals"});
 		// This will add a message with msgid "Only with context" and msgctxt "a friendly context".
-		msgidsContextPlural.Add(new Godot.Collections.Array{"Only with context", "a friendly context", ""});
+		msgidsContextPlural.Add(new Fox.Collections.Array{"Only with context", "a friendly context", ""});
 		[/csharp]
 		[/codeblocks]
 		[b]Note:[/b] If you override parsing logic for standard script types (GDScript, C#, etc.), it would be better to load the [code]path[/code] argument using [method ResourceLoader.load]. This is because built-in scripts are loaded as [Resource] type, not [File] type.
@@ -85,16 +85,16 @@
 		    return ["gd"]
 		[/gdscript]
 		[csharp]
-		public override void ParseFile(string path, Godot.Collections.Array msgids, Godot.Collections.Array msgidsContextPlural)
+		public override void ParseFile(string path, Fox.Collections.Array msgids, Fox.Collections.Array msgidsContextPlural)
 		{
 		    var res = ResourceLoader.Load&lt;Script&gt;(path, "Script");
 		    string text = res.SourceCode;
 		    // Parsing logic.
 		}
 
-		public override Godot.Collections.Array GetRecognizedExtensions()
+		public override Fox.Collections.Array GetRecognizedExtensions()
 		{
-		    return new Godot.Collections.Array{"gd"};
+		    return new Fox.Collections.Array{"gd"};
 		}
 		[/csharp]
 		[/codeblocks]

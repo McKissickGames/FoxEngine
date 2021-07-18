@@ -2,11 +2,11 @@
 /*  quaternion.h                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_QUATERNION_H
-#define GODOT_QUATERNION_H
+#ifndef Fox_QUATERNION_H
+#define Fox_QUATERNION_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,24 +37,24 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_QUATERNION_SIZE (sizeof(godot_real_t) * 4)
+#define Fox_QUATERNION_SIZE (sizeof(Fox_real_t) * 4)
 
-#ifndef GODOT_CORE_API_GODOT_QUATERNION_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_QUATERNION_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_QUATERNION_TYPE_DEFINED
+#define Fox_CORE_API_Fox_QUATERNION_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_QUATERNION_SIZE];
-} godot_quaternion;
+	uint8_t _dont_touch_that[Fox_QUATERNION_SIZE];
+} Fox_quaternion;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_quaternion_new(godot_quaternion *p_self);
-void GDAPI godot_quaternion_new_copy(godot_quaternion *r_dest, const godot_quaternion *p_src);
-godot_real_t GDAPI *godot_quaternion_operator_index(godot_quaternion *p_self, godot_int p_index);
-const godot_real_t GDAPI *godot_quaternion_operator_index_const(const godot_quaternion *p_self, godot_int p_index);
+void GDAPI Fox_quaternion_new(Fox_quaternion *p_self);
+void GDAPI Fox_quaternion_new_copy(Fox_quaternion *r_dest, const Fox_quaternion *p_src);
+Fox_real_t GDAPI *Fox_quaternion_operator_index(Fox_quaternion *p_self, Fox_int p_index);
+const Fox_real_t GDAPI *Fox_quaternion_operator_index_const(const Fox_quaternion *p_self, Fox_int p_index);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_QUATERNION_H
+#endif // Fox_QUATERNION_H

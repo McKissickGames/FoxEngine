@@ -15,7 +15,7 @@
 		In 2D, all visible objects are some form of canvas item. In order to be visible, a canvas item needs to be the child of a canvas attached to a viewport, or it needs to be the child of another canvas item that is eventually attached to the canvas.
 	</description>
 	<tutorials>
-		<link title="Optimization using Servers">https://docs.godotengine.org/en/latest/tutorials/optimization/using_servers.html</link>
+		<link title="Optimization using Servers">https://docs.Foxengine.org/en/latest/tutorials/optimization/using_servers.html</link>
 	</tutorials>
 	<methods>
 		<method name="bake_render_uv2">
@@ -2227,7 +2227,7 @@
 			<argument index="1" name="texture" type="RID">
 			</argument>
 			<description>
-				Not implemented in Godot 3.x.
+				Not implemented in Fox 3.x.
 			</description>
 		</method>
 		<method name="light_set_reverse_cull_face_mode">
@@ -4674,7 +4674,7 @@
 			Max number of glow levels that can be used with glow post-process effect.
 		</constant>
 		<constant name="MAX_CURSORS" value="8">
-			Unused enum in Godot 3.x.
+			Unused enum in Fox 3.x.
 		</constant>
 		<constant name="MAX_2D_DIRECTIONAL_LIGHTS" value="8">
 		</constant>
@@ -5625,10 +5625,10 @@
 		<constant name="RENDERING_INFO_VIDEO_MEM_USED" value="5" enum="RenderingInfo">
 		</constant>
 		<constant name="FEATURE_SHADERS" value="0" enum="Features">
-			Hardware supports shaders. This enum is currently unused in Godot 3.x.
+			Hardware supports shaders. This enum is currently unused in Fox 3.x.
 		</constant>
 		<constant name="FEATURE_MULTITHREADED" value="1" enum="Features">
-			Hardware supports multithreading. This enum is currently unused in Godot 3.x.
+			Hardware supports multithreading. This enum is currently unused in Fox 3.x.
 		</constant>
 	</constants>
 </class>

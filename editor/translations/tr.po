@@ -1,7 +1,7 @@
-# Turkish translation of the Godot Engine editor
+# Turkish translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 # Aprın Çor Tigin <kabusturk38@gmail.com>, 2016-2017.
 # Aykut YILDIRIM <aykutyildirim@windowslive.com>, 2018.
 # Ceyhun Can Ulker <ceyhuncanu@gmail.com>, 2016.
@@ -63,12 +63,12 @@
 # kahveciderin <kahveciderin@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2021-07-13 06:13+0000\n"
 "Last-Translator: kahveciderin <kahveciderin@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/godot-engine/"
-"godot/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/Fox-engine/"
+"Fox/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1164,16 +1164,16 @@ msgid "Change Dictionary Value"
 msgstr "Sözlükteki Değeri Değiştir"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Godot topluluğundan teşekkürler!"
+msgid "Thanks from the Fox community!"
+msgstr "Fox topluluğundan teşekkürler!"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr "Kopyalamak için tıklayın."
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Godot Oyun Motoru katkı sağlayanlar"
+msgid "Fox Engine contributors"
+msgstr "Fox Oyun Motoru katkı sağlayanlar"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1244,12 +1244,12 @@ msgstr "Üçüncü Parti Lisanslar"
 
 #: editor/editor_about.cpp
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot Oyun Motoru, bazı ücretsiz ve açık kaynaklı üçüncü parti "
+"Fox Oyun Motoru, bazı ücretsiz ve açık kaynaklı üçüncü parti "
 "kütüphanelerden faydalanır, bunların hepsinin kullanım koşulları MIT "
 "lisansına uygundur. Aşağıda, bu tür üçüncü parti bileşenlerinin telif hakkı "
 "beyanları ve lisans koşulları ile birlikte ayrıntılı bir listesi "
@@ -1833,8 +1833,8 @@ msgid "Erase Profile"
 msgstr "Profili Sil"
 
 #: editor/editor_feature_profile.cpp
-msgid "Godot Feature Profile"
-msgstr "Godot Özellik Profili"
+msgid "Fox Feature Profile"
+msgstr "Fox Özellik Profili"
 
 #: editor/editor_feature_profile.cpp
 msgid "Import Profile(s)"
@@ -3041,8 +3041,8 @@ msgid "About"
 msgstr "Hakkında"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
-msgstr "Godot'u Geliştirmeye Destek Olun"
+msgid "Support Fox Development"
+msgstr "Fox'u Geliştirmeye Destek Olun"
 
 #: editor/editor_node.cpp
 msgid "Play the project."
@@ -3705,8 +3705,8 @@ msgid "Select Template File"
 msgstr "Şablon Dosyası Seç"
 
 #: editor/export_template_manager.cpp
-msgid "Godot Export Templates"
-msgstr "Godot Dışa Aktarım Şablonları"
+msgid "Fox Export Templates"
+msgstr "Fox Dışa Aktarım Şablonları"
 
 #: editor/export_template_manager.cpp
 msgid "Export Template Manager"
@@ -5277,9 +5277,9 @@ msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
-"Godot editör ışın yansıma desteği olmadan derlenmiş, ışık haritaları çizilip "
+"Fox editör ışın yansıma desteği olmadan derlenmiş, ışık haritaları çizilip "
 "sabitlenemez."
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
@@ -7067,8 +7067,8 @@ msgid "Debug with External Editor"
 msgstr "Harici düzenleyici ile hata ayıkla"
 
 #: editor/plugins/script_editor_plugin.cpp
-msgid "Open Godot online documentation."
-msgstr "Çevrimiçi Godot dökümanlarını aç."
+msgid "Open Fox online documentation."
+msgstr "Çevrimiçi Fox dökümanlarını aç."
 
 #: editor/plugins/script_editor_plugin.cpp
 msgid "Search the reference documentation."
@@ -9527,11 +9527,11 @@ msgstr "Vektörel uniform."
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
-"İstenilen kadar girdi ve çıktı miktarı ile Özel Godot Shader Dili girişi. Bu "
+"İstenilen kadar girdi ve çıktı miktarı ile Özel Fox Shader Dili girişi. Bu "
 "yöntemle doğrudan vertex/fragment/light shaderları girişi yapılıyor, "
 "içerisinde işlev tanımları yapmayın."
 
@@ -9545,12 +9545,12 @@ msgstr ""
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
 msgstr ""
-"Elde edilen sonuç shader'ın üzerine yerleştirilen Özel Godot Shader dili "
+"Elde edilen sonuç shader'ın üzerine yerleştirilen Özel Fox Shader dili "
 "ifadesi. İçerisinde İşlev tanımlarını yapabilir ve daha sonra İfadeler "
 "bölümünden çağırabilirsiniz. Ayrıca varaying, uniforms ve constant "
 "değişkenleri tanımlayabilirsiniz."
@@ -9791,8 +9791,8 @@ msgid "ZIP File"
 msgstr "ZIP Dosyası"
 
 #: editor/project_export.cpp
-msgid "Godot Game Pack"
-msgstr "Godot Oyun Paketi"
+msgid "Fox Game Pack"
+msgstr "Fox Oyun Paketi"
 
 #: editor/project_export.cpp
 msgid "Export templates for this platform are missing:"
@@ -9816,20 +9816,20 @@ msgstr "Paket dosyası açılırken hata (ZIP formatında değil)."
 
 #: editor/project_manager.cpp
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr "Geçersiz \".zip\" proje dosyası; \"project.godot\" dosyası içermiyor."
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
+msgstr "Geçersiz \".zip\" proje dosyası; \"project.Fox\" dosyası içermiyor."
 
 #: editor/project_manager.cpp
 msgid "Please choose an empty folder."
 msgstr "Lütfen boş bir klasör seçin."
 
 #: editor/project_manager.cpp
-msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "Lütfen bir \"project.godot\" veya \".zip\" dosyası seçin."
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
+msgstr "Lütfen bir \"project.Fox\" veya \".zip\" dosyası seçin."
 
 #: editor/project_manager.cpp
-msgid "This directory already contains a Godot project."
-msgstr "Bu dizinde zaten bir Godot projesi var."
+msgid "This directory already contains a Fox project."
+msgstr "Bu dizinde zaten bir Fox projesi var."
 
 #: editor/project_manager.cpp
 msgid "New Game Project"
@@ -9861,19 +9861,19 @@ msgstr "Geçersiz proje yolu (bir şey değişti mi?)."
 
 #: editor/project_manager.cpp
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
 msgstr ""
-"Proje yolundaki proje.godot düzenlenemedi (error %d). Eksik veya bozulmuş "
+"Proje yolundaki proje.Fox düzenlenemedi (error %d). Eksik veya bozulmuş "
 "olabilir."
 
 #: editor/project_manager.cpp
-msgid "Couldn't edit project.godot in project path."
-msgstr "proje yolundaki proje.godot düzenlenemedi."
+msgid "Couldn't edit project.Fox in project path."
+msgstr "proje yolundaki proje.Fox düzenlenemedi."
 
 #: editor/project_manager.cpp
-msgid "Couldn't create project.godot in project path."
-msgstr "proje.godot proje yolunda oluşturulamadı."
+msgid "Couldn't create project.Fox in project path."
+msgstr "proje.Fox proje yolunda oluşturulamadı."
 
 #: editor/project_manager.cpp
 msgid "Rename Project"
@@ -9983,22 +9983,22 @@ msgstr "Birden fazla proje açmakta kararlı mısınız?"
 
 #: editor/project_manager.cpp
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
 msgstr ""
-"Aşağıdaki proje ayarları dosyası, içinden oluşturulduğu Godot sürümünü "
+"Aşağıdaki proje ayarları dosyası, içinden oluşturulduğu Fox sürümünü "
 "belirtmiyor.\n"
 "\n"
 "%s\n"
 "\n"
-"Açmaya devam ederseniz, Godot'un geçerli yapılandırma dosyası biçimine "
+"Açmaya devam ederseniz, Fox'un geçerli yapılandırma dosyası biçimine "
 "dönüştürülecektir..\n"
 "Uyarı: Projeyi artık motorun önceki sürümleriyle açamayacaksınız."
 
@@ -10086,14 +10086,14 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
-"Var olan Godot projeleri için %s klasör taraması yapmak istediğinize emin "
+"Var olan Fox projeleri için %s klasör taraması yapmak istediğinize emin "
 "misiniz?\n"
 "Bu biraz zaman alabilir."
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr "Proje Yöneticisi"
@@ -10379,8 +10379,8 @@ msgid "Changed Locale Filter Mode"
 msgstr "Değiştirilmiş Yerel Süzgeç Kipi"
 
 #: editor/project_settings_editor.cpp
-msgid "Project Settings (project.godot)"
-msgstr "Proje Ayarları (proje.godot)"
+msgid "Project Settings (project.Fox)"
+msgstr "Proje Ayarları (proje.Fox)"
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
 msgid "General"
@@ -12292,11 +12292,11 @@ msgstr "Geçersiz paket ismi:"
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
-"Geçersiz \"GodotPaymentV3\" modülü \"android/modüller\" proje ayarına dahil "
-"edildi (Godot 3.2.2'de değiştirildi).\n"
+"Geçersiz \"FoxPaymentV3\" modülü \"android/modüller\" proje ayarına dahil "
+"edildi (Fox 3.2.2'de değiştirildi).\n"
 
 #: platform/android/export/export.cpp
 msgid "\"Use Custom Build\" must be enabled to use the plugins."
@@ -12355,12 +12355,12 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 "Android derlemesi sürüm uyumsuzluğu:\n"
 "   Yüklü Şablon: %s\n"
-"   Godot Versiyonu: %s\n"
+"   Fox Versiyonu: %s\n"
 "Lütfen 'Proje' menüsünden Android derleme şablonunu yeniden yükleyin."
 
 #: platform/android/export/export.cpp
@@ -12370,11 +12370,11 @@ msgstr "Android Projesi Oluşturma (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 "Android projesinin oluşturulması başarısız oldu, hatayı çıktı için kontrol "
 "edin.\n"
-"Alternatif olarak, Android derleme dokümantasyonu için docs.godotengine.org "
+"Alternatif olarak, Android derleme dokümantasyonu için docs.Foxengine.org "
 "adresini ziyaret edin.."
 
 #: platform/android/export/export.cpp
@@ -13220,9 +13220,9 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgstr "Pano boş"
 
 #~ msgid ""
-#~ "InterpolatedCamera has been deprecated and will be removed in Godot 4.0."
+#~ "InterpolatedCamera has been deprecated and will be removed in Fox 4.0."
 #~ msgstr ""
-#~ "InterpolatedCamera kullanımdan kaldırılmıştır ve Godot 4.0'da "
+#~ "InterpolatedCamera kullanımdan kaldırılmıştır ve Fox 4.0'da "
 #~ "kaldırılacaktır."
 
 #~ msgid "No"
@@ -13352,8 +13352,8 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgid "Request Docs"
 #~ msgstr "Belgeleri İste"
 
-#~ msgid "Help improve the Godot documentation by giving feedback."
-#~ msgstr "Dönüt vererek Godot belgelerini iyileştirmeye yardımcı olun."
+#~ msgid "Help improve the Fox documentation by giving feedback."
+#~ msgstr "Dönüt vererek Fox belgelerini iyileştirmeye yardımcı olun."
 
 #~ msgid "Replaced %d occurrence(s)."
 #~ msgstr "%d değişiklik gerçekleştirildi."
@@ -14196,11 +14196,11 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgid "Can't write file."
 #~ msgstr "Dosyaya yazılamıyor."
 
-#~ msgid "Couldn't get project.godot in project path."
-#~ msgstr "Proje yolunda proje.godot alınamadı."
+#~ msgid "Couldn't get project.Fox in project path."
+#~ msgstr "Proje yolunda proje.Fox alınamadı."
 
-#~ msgid "Couldn't get project.godot in the project path."
-#~ msgstr "Proje yolunda proje.godot alınamadı."
+#~ msgid "Couldn't get project.Fox in the project path."
+#~ msgstr "Proje yolunda proje.Fox alınamadı."
 
 #~ msgid "Not found!"
 #~ msgstr "Bulunamadı!"
@@ -14431,10 +14431,10 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgstr "Yazı Türü İçe Aktar"
 
 #~ msgid ""
-#~ "This file is already a Godot font file, please supply a BMFont type file "
+#~ "This file is already a Fox font file, please supply a BMFont type file "
 #~ "instead."
 #~ msgstr ""
-#~ "Bu dizeç zaten bir Godot yazı türü dizecidir , lütfen bunun yerine bir "
+#~ "Bu dizeç zaten bir Fox yazı türü dizecidir , lütfen bunun yerine bir "
 #~ "BMFont türü dizeci sağlayın."
 
 #~ msgid "Failed opening as BMFont file."
@@ -14689,7 +14689,7 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgstr "Sıkıştır"
 
 #, fuzzy
-#~ msgid "Add to Project (project.godot)"
+#~ msgid "Add to Project (project.Fox)"
 #~ msgstr "Tasarıya Ekle (engine.cfg)"
 
 #~ msgid "Import Languages:"
@@ -14769,11 +14769,11 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgstr "Geçersiz tasarı yolu, yolun var olması gerekir!"
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must not exist."
+#~ msgid "Invalid project path, project.Fox must not exist."
 #~ msgstr "Geçersiz tasarı yolu, engine.cfg var olmaması gerekir."
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must exist."
+#~ msgid "Invalid project path, project.Fox must exist."
 #~ msgstr "Geçersiz tasarı yolu, engine.cfg var olması gerekir."
 
 #~ msgid "Project Path (Must Exist):"
@@ -14843,8 +14843,8 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Dış kaynaklar değişince uyarır."
 
-#~ msgid "Open https://godotengine.org at tutorials section."
-#~ msgstr "https://godotengine.org bağlantısını öğreticiler bölümünde aç."
+#~ msgid "Open https://Foxengine.org at tutorials section."
+#~ msgstr "https://Foxengine.org bağlantısını öğreticiler bölümünde aç."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "Örnek vermek için hiçbir sahne seçilmedi!"

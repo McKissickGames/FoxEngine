@@ -21,10 +21,10 @@ namespace embree
     void* ptr = _mm_malloc(size,align);
 
     if (size != 0 && ptr == nullptr)
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::bad_alloc();
       abort();
-      // -- GODOT end --
+      // -- Fox end --
     
     return ptr;
   }
@@ -131,10 +131,10 @@ namespace embree
     /* fall back to 4k pages */
     int flags = MEM_COMMIT | MEM_RESERVE;
     char* ptr = (char*) VirtualAlloc(nullptr,bytes,flags,PAGE_READWRITE);
-    // -- GODOT start --
+    // -- Fox start --
     // if (ptr == nullptr) throw std::bad_alloc();
     if (ptr == nullptr) abort();
-    // -- GODOT end --
+    // -- Fox end --
     hugepages = false;
     return ptr;
   }
@@ -151,10 +151,10 @@ namespace embree
       return bytesOld;
 
     if (!VirtualFree((char*)ptr+bytesNew,bytesOld-bytesNew,MEM_DECOMMIT))
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::bad_alloc();
       abort();
-      // -- GODOT end --
+      // -- Fox end --
 
     return bytesNew;
   }
@@ -165,10 +165,10 @@ namespace embree
       return;
 
     if (!VirtualFree(ptr,0,MEM_RELEASE))
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::bad_alloc();
       abort();
-      // -- GODOT end --
+      // -- Fox end --
   }
 
   void os_advise(void *ptr, size_t bytes)
@@ -272,10 +272,10 @@ namespace embree
 
     /* fallback to 4k pages */
     void* ptr = (char*) mmap(0, bytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
-    // -- GODOT start --
+    // -- Fox start --
     // if (ptr == MAP_FAILED) throw std::bad_alloc();
     if (ptr == MAP_FAILED) abort();
-    // -- GODOT end --
+    // -- Fox end --
     hugepages = false;
 
     /* advise huge page hint for THP */
@@ -292,10 +292,10 @@ namespace embree
       return bytesOld;
 
     if (munmap((char*)ptr+bytesNew,bytesOld-bytesNew) == -1)
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::bad_alloc();
       abort();
-      // -- GODOT end --
+      // -- Fox end --
 
     return bytesNew;
   }
@@ -309,10 +309,10 @@ namespace embree
     const size_t pageSize = hugepages ? PAGE_SIZE_2M : PAGE_SIZE_4K;
     bytes = (bytes+pageSize-1) & ~(pageSize-1);
     if (munmap(ptr,bytes) == -1)
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::bad_alloc();
       abort();
-      // -- GODOT end --
+      // -- Fox end --
   }
 
   /* hint for transparent huge pages (THP) */

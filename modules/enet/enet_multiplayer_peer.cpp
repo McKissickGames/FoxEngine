@@ -2,11 +2,11 @@
 /*  enet_multiplayer_peer.cpp                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -77,7 +77,7 @@ Error ENetMultiplayerPeer::create_server(int p_port, int p_max_clients, int p_in
 	ENetAddress address;
 	memset(&address, 0, sizeof(address));
 
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	if (bind_ip.is_wildcard()) {
 		address.wildcard = 1;
 	} else {
@@ -100,7 +100,7 @@ Error ENetMultiplayerPeer::create_server(int p_port, int p_max_clients, int p_in
 			p_out_bandwidth /* limit outgoing bandwidth if > 0 */);
 
 	ERR_FAIL_COND_V_MSG(!host, ERR_CANT_CREATE, "Couldn't create an ENet multiplayer server.");
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	if (dtls_enabled) {
 		enet_host_dtls_server_setup(host, dtls_key.ptr(), dtls_cert.ptr());
 	}
@@ -124,7 +124,7 @@ Error ENetMultiplayerPeer::create_client(const String &p_address, int p_port, in
 
 	ENetAddress c_client;
 
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	if (bind_ip.is_wildcard()) {
 		c_client.wildcard = 1;
 	} else {
@@ -148,7 +148,7 @@ Error ENetMultiplayerPeer::create_client(const String &p_address, int p_port, in
 			p_out_bandwidth /* limit outgoing bandwidth if > 0 */);
 
 	ERR_FAIL_COND_V_MSG(!host, ERR_CANT_CREATE, "Couldn't create the ENet client host.");
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	if (dtls_enabled) {
 		enet_host_dtls_client_setup(host, dtls_cert.ptr(), dtls_verify, p_address.utf8().get_data());
 	}
@@ -161,7 +161,7 @@ Error ENetMultiplayerPeer::create_client(const String &p_address, int p_port, in
 	if (p_address.is_valid_ip_address()) {
 		ip = p_address;
 	} else {
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 		ip = IP::get_singleton()->resolve_hostname(p_address);
 #else
 		ip = IP::get_singleton()->resolve_hostname(p_address, IP::TYPE_IPV4);
@@ -171,10 +171,10 @@ Error ENetMultiplayerPeer::create_client(const String &p_address, int p_port, in
 	}
 
 	ENetAddress address;
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	enet_address_set_ip(&address, ip.get_ipv6(), 16);
 #else
-	ERR_FAIL_COND_V_MSG(!ip.is_ipv4(), ERR_INVALID_PARAMETER, "Connecting to an IPv6 server isn't supported when using vanilla ENet. Recompile Godot with the bundled ENet library.");
+	ERR_FAIL_COND_V_MSG(!ip.is_ipv4(), ERR_INVALID_PARAMETER, "Connecting to an IPv6 server isn't supported when using vanilla ENet. Recompile Fox with the bundled ENet library.");
 	address.host = *(uint32_t *)ip.get_ipv4();
 #endif
 	address.port = p_port;
@@ -636,7 +636,7 @@ int ENetMultiplayerPeer::get_unique_id() const {
 
 void ENetMultiplayerPeer::set_refuse_new_connections(bool p_enable) {
 	refuse_connections = p_enable;
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	if (active) {
 		enet_host_refuse_new_connections(host, p_enable);
 	}
@@ -758,7 +758,7 @@ IPAddress ENetMultiplayerPeer::get_peer_address(int p_peer_id) const {
 	ERR_FAIL_COND_V_MSG(peer_map[p_peer_id] == nullptr, IPAddress(), vformat("Peer ID %d found in the list of peers, but is null.", p_peer_id));
 
 	IPAddress out;
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	out.set_ipv6((uint8_t *)&(peer_map[p_peer_id]->address.host));
 #else
 	out.set_ipv4((uint8_t *)&(peer_map[p_peer_id]->address.host));
@@ -771,7 +771,7 @@ int ENetMultiplayerPeer::get_peer_port(int p_peer_id) const {
 	ERR_FAIL_COND_V_MSG(!peer_map.has(p_peer_id), 0, vformat("Peer ID %d not found in the list of peers.", p_peer_id));
 	ERR_FAIL_COND_V_MSG(!is_server() && p_peer_id != 1, 0, "Can't get the address of peers other than the server (ID -1) when acting as a client.");
 	ERR_FAIL_COND_V_MSG(peer_map[p_peer_id] == nullptr, 0, vformat("Peer ID %d found in the list of peers, but is null.", p_peer_id));
-#ifdef GODOT_ENET
+#ifdef Fox_ENET
 	return peer_map[p_peer_id]->address.port;
 #else
 	return peer_map[p_peer_id]->address.port;

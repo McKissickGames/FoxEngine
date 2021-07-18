@@ -1,18 +1,18 @@
-# Serbian (cyrillic) translation of the Godot Engine editor
+# Serbian (cyrillic) translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 #
 # Александар Урошевић <nicecubedude@gmail.com>, 2017.
 # Младен Габић <cupakabra@protonmail.com>, 2020.
 # Anonymous <noreply@weblate.org>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "PO-Revision-Date: 2020-05-22 21:01+0000\n"
 "Last-Translator: Младен Габић <cupakabra@protonmail.com>\n"
-"Language-Team: Serbian (cyrillic) <https://hosted.weblate.org/projects/godot-"
-"engine/godot/sr_Cyrl/>\n"
+"Language-Team: Serbian (cyrillic) <https://hosted.weblate.org/projects/Fox-"
+"engine/Fox/sr_Cyrl/>\n"
 "Language: sr_Cyrl\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
@@ -1218,16 +1218,16 @@ msgid "Change Dictionary Value"
 msgstr "Промени вредност речника"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Хвала од Godot заједнице!"
+msgid "Thanks from the Fox community!"
+msgstr "Хвала од Fox заједнице!"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr ""
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Godot Engine сарадници"
+msgid "Fox Engine contributors"
+msgstr "Fox Engine сарадници"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1303,12 +1303,12 @@ msgstr "Лиценса трећег лица"
 #: editor/editor_about.cpp
 #, fuzzy
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot Engine се ослања на бројне слободне и отворене библиотеке трећег лица "
+"Fox Engine се ослања на бројне слободне и отворене библиотеке трећег лица "
 "компатибилне са условима MIT лиценсе. Следи исцрпна листа свих тих "
 "компонената трећих лица са њиховим одговарајућим изјавама о ауторским "
 "правима и условима лиценсе."
@@ -1949,7 +1949,7 @@ msgstr "Обриши TileMap"
 
 #: editor/editor_feature_profile.cpp
 #, fuzzy
-msgid "Godot Feature Profile"
+msgid "Fox Feature Profile"
 msgstr "Управљај извозним шаблонима"
 
 #: editor/editor_feature_profile.cpp
@@ -3241,7 +3241,7 @@ msgid "About"
 msgstr "О"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
+msgid "Support Fox Development"
 msgstr ""
 
 #: editor/editor_node.cpp
@@ -3958,7 +3958,7 @@ msgstr "Одабери шаблонску датотеку"
 
 #: editor/export_template_manager.cpp
 #, fuzzy
-msgid "Godot Export Templates"
+msgid "Fox Export Templates"
 msgstr "Управљај извозним шаблонима"
 
 #: editor/export_template_manager.cpp
@@ -5706,7 +5706,7 @@ msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
@@ -7695,8 +7695,8 @@ msgstr "Дебагуј са спољашњим уредником"
 
 #: editor/plugins/script_editor_plugin.cpp
 #, fuzzy
-msgid "Open Godot online documentation."
-msgstr "Отвори Godot документацију са мреже"
+msgid "Open Fox online documentation."
+msgstr "Отвори Fox документацију са мреже"
 
 #: editor/plugins/script_editor_plugin.cpp
 msgid "Search the reference documentation."
@@ -10535,7 +10535,7 @@ msgstr "Промени векторску униформу (uniform)"
 #: editor/plugins/visual_shader_editor_plugin.cpp
 #, fuzzy
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
@@ -10555,7 +10555,7 @@ msgstr ""
 #: editor/plugins/visual_shader_editor_plugin.cpp
 #, fuzzy
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
@@ -10828,7 +10828,7 @@ msgstr " Датотеке"
 
 #: editor/project_export.cpp
 #, fuzzy
-msgid "Godot Game Pack"
+msgid "Fox Game Pack"
 msgstr "Годот Игра Паковање"
 
 #: editor/project_export.cpp
@@ -10857,8 +10857,8 @@ msgstr "Грешка при отварању датотеку пакета. Да
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr "Неважећи \".zip\" пројекат фајл; не садржи \"project.godot\" фајл."
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
+msgstr "Неважећи \".zip\" пројекат фајл; не садржи \"project.Fox\" фајл."
 
 #: editor/project_manager.cpp
 #, fuzzy
@@ -10867,12 +10867,12 @@ msgstr "Одабери празан фолдер."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "Одабери \"project.godot\" или \".zip\" фајл."
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
+msgstr "Одабери \"project.Fox\" или \".zip\" фајл."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "This directory already contains a Godot project."
+msgid "This directory already contains a Fox project."
 msgstr "Овај директоријум већ садржи Годот пројекат."
 
 #: editor/project_manager.cpp
@@ -10913,21 +10913,21 @@ msgstr "Неважећа путања пројекта(нешто је изме�
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
 msgstr ""
-"Неуспешно учитавање project.godot-а у његовој путањи (грешка %d). Могуће да "
+"Неуспешно учитавање project.Fox-а у његовој путањи (грешка %d). Могуће да "
 "нешто недостаје или је корумпирано."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Couldn't edit project.godot in project path."
-msgstr "Неуспешна измена project.godot-а у путањи пројекта."
+msgid "Couldn't edit project.Fox in project path."
+msgstr "Неуспешна измена project.Fox-а у путањи пројекта."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Couldn't create project.godot in project path."
-msgstr "Неуспешно креирање project.godot у путањи пројекта."
+msgid "Couldn't create project.Fox in project path."
+msgstr "Неуспешно креирање project.Fox у путањи пројекта."
 
 #: editor/project_manager.cpp
 #, fuzzy
@@ -11057,12 +11057,12 @@ msgstr "Да ли сигурно желиш да отвориш више одј�
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
@@ -11171,14 +11171,14 @@ msgstr ""
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
 "Да ли сигурно желиш да прегледаш %s фолдере у потрази за постојећим Годот "
 "пројектима?\n"
 "Ово може потрајати."
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr "Менаџер пројекта"
@@ -11533,8 +11533,8 @@ msgstr "Измењен Локални Режим Пробирања"
 
 #: editor/project_settings_editor.cpp
 #, fuzzy
-msgid "Project Settings (project.godot)"
-msgstr "Подешавања Пројекта (project.godot)"
+msgid "Project Settings (project.Fox)"
+msgstr "Подешавања Пројекта (project.Fox)"
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
 msgid "General"
@@ -13798,8 +13798,8 @@ msgstr "Неважеће име паковања:"
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -13852,7 +13852,7 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 "Верзија Android изградње се не подудара:\n"
@@ -13869,10 +13869,10 @@ msgstr "Изградња Android Пројекта (gradle)"
 #, fuzzy
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 "Изградња Android пројекта неуспешна, провери излаз за грешке.\n"
-"Алтернативно посети docs.godotengine.org за Android документацију изградње."
+"Алтернативно посети docs.Foxengine.org за Android документацију изградње."
 
 #: platform/android/export/export.cpp
 msgid "Moving output"

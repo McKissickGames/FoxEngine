@@ -2,11 +2,11 @@
 /*  display_server_javascript.h                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -64,9 +64,9 @@ private:
 	static void focus_canvas();
 	static bool is_canvas_focused();
 	template <typename T>
-	static void dom2godot_mod(T *emscripten_event_ptr, Ref<InputEventWithModifiers> godot_event);
+	static void dom2Fox_mod(T *emscripten_event_ptr, Ref<InputEventWithModifiers> Fox_event);
 	static Ref<InputEventKey> setup_key_event(const EmscriptenKeyboardEvent *emscripten_event);
-	static const char *godot2dom_cursor(DisplayServer::CursorShape p_shape);
+	static const char *Fox2dom_cursor(DisplayServer::CursorShape p_shape);
 
 	// events
 	static EM_BOOL fullscreen_change_callback(int p_event_type, const EmscriptenFullscreenChangeEvent *p_event, void *p_user_data);

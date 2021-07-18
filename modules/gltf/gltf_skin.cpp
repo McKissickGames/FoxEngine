@@ -2,11 +2,11 @@
 /*  gltf_skin.cpp                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -49,8 +49,8 @@ void GLTFSkin::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_joint_i_to_bone_i", "joint_i_to_bone_i"), &GLTFSkin::set_joint_i_to_bone_i);
 	ClassDB::bind_method(D_METHOD("get_joint_i_to_name"), &GLTFSkin::get_joint_i_to_name);
 	ClassDB::bind_method(D_METHOD("set_joint_i_to_name", "joint_i_to_name"), &GLTFSkin::set_joint_i_to_name);
-	ClassDB::bind_method(D_METHOD("get_godot_skin"), &GLTFSkin::get_godot_skin);
-	ClassDB::bind_method(D_METHOD("set_godot_skin", "godot_skin"), &GLTFSkin::set_godot_skin);
+	ClassDB::bind_method(D_METHOD("get_Fox_skin"), &GLTFSkin::get_Fox_skin);
+	ClassDB::bind_method(D_METHOD("set_Fox_skin", "Fox_skin"), &GLTFSkin::set_Fox_skin);
 
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "skin_root"), "set_skin_root", "get_skin_root"); // GLTFNodeIndex
 	ADD_PROPERTY(PropertyInfo(Variant::PACKED_INT32_ARRAY, "joints_original"), "set_joints_original", "get_joints_original"); // Vector<GLTFNodeIndex>
@@ -61,7 +61,7 @@ void GLTFSkin::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "skeleton"), "set_skeleton", "get_skeleton"); // int
 	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "joint_i_to_bone_i", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_INTERNAL), "set_joint_i_to_bone_i", "get_joint_i_to_bone_i"); // Map<int,
 	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "joint_i_to_name", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_INTERNAL), "set_joint_i_to_name", "get_joint_i_to_name"); // Map<int,
-	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "godot_skin"), "set_godot_skin", "get_godot_skin"); // Ref<Skin>
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "Fox_skin"), "set_Fox_skin", "get_Fox_skin"); // Ref<Skin>
 }
 
 GLTFNodeIndex GLTFSkin::get_skin_root() {
@@ -146,10 +146,10 @@ void GLTFSkin::set_joint_i_to_name(Dictionary p_joint_i_to_name) {
 	}
 }
 
-Ref<Skin> GLTFSkin::get_godot_skin() {
-	return godot_skin;
+Ref<Skin> GLTFSkin::get_Fox_skin() {
+	return Fox_skin;
 }
 
-void GLTFSkin::set_godot_skin(Ref<Skin> p_godot_skin) {
-	godot_skin = p_godot_skin;
+void GLTFSkin::set_Fox_skin(Ref<Skin> p_Fox_skin) {
+	Fox_skin = p_Fox_skin;
 }

@@ -2,11 +2,11 @@
 /*  os_iphone.mm                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -38,7 +38,7 @@
 #include "core/io/file_access_pack.h"
 #include "display_server_iphone.h"
 #include "drivers/unix/syslog_logger.h"
-#import "godot_view.h"
+#import "Fox_view.h"
 #include "main/main.h"
 #import "view_controller.h"
 
@@ -140,7 +140,7 @@ void OSIPhone::deinitialize_modules() {
 		memdelete(ios);
 	}
 
-	godot_ios_plugins_deinitialize();
+	Fox_ios_plugins_deinitialize();
 }
 
 void OSIPhone::set_main_loop(MainLoop *p_main_loop) {
@@ -177,7 +177,7 @@ bool OSIPhone::iterate() {
 }
 
 void OSIPhone::start() {
-	godot_ios_plugins_initialize();
+	Fox_ios_plugins_initialize();
 
 	Main::start();
 
@@ -299,7 +299,7 @@ void OSIPhone::on_focus_out() {
 			DisplayServerIPhone::get_singleton()->send_window_event(DisplayServer::WINDOW_EVENT_FOCUS_OUT);
 		}
 
-		[AppDelegate.viewController.godotView stopRendering];
+		[AppDelegate.viewController.FoxView stopRendering];
 
 		audio_driver.stop();
 	}
@@ -313,7 +313,7 @@ void OSIPhone::on_focus_in() {
 			DisplayServerIPhone::get_singleton()->send_window_event(DisplayServer::WINDOW_EVENT_FOCUS_IN);
 		}
 
-		[AppDelegate.viewController.godotView startRendering];
+		[AppDelegate.viewController.FoxView startRendering];
 
 		audio_driver.start();
 	}

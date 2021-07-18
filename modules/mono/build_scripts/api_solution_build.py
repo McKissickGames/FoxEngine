@@ -1,4 +1,4 @@
-# Build the Godot API solution
+# Build the Fox API solution
 
 import os
 
@@ -10,7 +10,7 @@ def build_api_solution(source, target, env):
 
     module_dir = env["module_dir"]
 
-    solution_path = os.path.join(module_dir, "glue/GodotSharp/GodotSharp.sln")
+    solution_path = os.path.join(module_dir, "glue/FoxSharp/FoxSharp.sln")
 
     build_config = env["solution_build_config"]
 
@@ -22,8 +22,8 @@ def build_api_solution(source, target, env):
 
     # Copy targets
 
-    core_src_dir = os.path.abspath(os.path.join(solution_path, os.pardir, "GodotSharp", "bin", build_config))
-    editor_src_dir = os.path.abspath(os.path.join(solution_path, os.pardir, "GodotSharpEditor", "bin", build_config))
+    core_src_dir = os.path.abspath(os.path.join(solution_path, os.pardir, "FoxSharp", "bin", build_config))
+    editor_src_dir = os.path.abspath(os.path.join(solution_path, os.pardir, "FoxSharpEditor", "bin", build_config))
 
     dst_dir = os.path.abspath(os.path.join(str(target[0]), os.pardir))
 
@@ -50,19 +50,19 @@ def build(env_mono):
     assert env_mono["tools"]
 
     target_filenames = [
-        "GodotSharp.dll",
-        "GodotSharp.pdb",
-        "GodotSharp.xml",
-        "GodotSharpEditor.dll",
-        "GodotSharpEditor.pdb",
-        "GodotSharpEditor.xml",
+        "FoxSharp.dll",
+        "FoxSharp.pdb",
+        "FoxSharp.xml",
+        "FoxSharpEditor.dll",
+        "FoxSharpEditor.pdb",
+        "FoxSharpEditor.xml",
     ]
 
     depend_cmd = []
 
     for build_config in ["Debug", "Release"]:
         output_dir = Dir("#bin").abspath
-        editor_api_dir = os.path.join(output_dir, "GodotSharp", "Api", build_config)
+        editor_api_dir = os.path.join(output_dir, "FoxSharp", "Api", build_config)
 
         targets = [os.path.join(editor_api_dir, filename) for filename in target_filenames]
 

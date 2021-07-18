@@ -2,11 +2,11 @@
 /*  gd_mono_wasm_m2n.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -34,10 +34,10 @@
 
 #include "core/templates/oa_hash_map.h"
 
-typedef mono_bool (*GodotMonoM2nIcallTrampolineDispatch)(const char *cookie, void *target_func, Mono_InterpMethodArguments *margs);
+typedef mono_bool (*FoxMonoM2nIcallTrampolineDispatch)(const char *cookie, void *target_func, Mono_InterpMethodArguments *margs);
 
 // This extern function is implemented in our patched version of Mono
-MONO_API void godot_mono_register_m2n_icall_trampoline_dispatch_hook(GodotMonoM2nIcallTrampolineDispatch hook);
+MONO_API void Fox_mono_register_m2n_icall_trampoline_dispatch_hook(FoxMonoM2nIcallTrampolineDispatch hook);
 
 namespace GDMonoWasmM2n {
 
@@ -71,7 +71,7 @@ void lazy_initialize() {
 	// Doesn't need to be thread safe
 	if (!initialized) {
 		initialized = true;
-		godot_mono_register_m2n_icall_trampoline_dispatch_hook(&trampoline_dispatch_hook);
+		Fox_mono_register_m2n_icall_trampoline_dispatch_hook(&trampoline_dispatch_hook);
 	}
 }
 } // namespace GDMonoWasmM2n

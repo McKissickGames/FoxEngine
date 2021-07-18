@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.godot.game"
+    package="com.Fox.game"
     android:versionCode="1"
     android:versionName="1.0"
     android:installLocation="auto" >
@@ -17,24 +17,24 @@
         android:required="true" />
 
     <application
-        android:label="@string/godot_project_name_string"
+        android:label="@string/Fox_project_name_string"
         android:allowBackup="false"
         android:icon="@mipmap/icon"
         android:isGame="true"
         tools:ignore="GoogleAppIndexingWarning" >
 
-        <!-- Records the version of the Godot editor used for building -->
+        <!-- Records the version of the Fox editor used for building -->
         <meta-data
-            android:name="org.godotengine.editor.version"
-            android:value="${godotEditorVersion}" />
+            android:name="org.Foxengine.editor.version"
+            android:value="${FoxEditorVersion}" />
 
-        <!-- The following metadata values are replaced when Godot exports, modifying them here has no effect. -->
+        <!-- The following metadata values are replaced when Fox exports, modifying them here has no effect. -->
         <!-- Do these changes in the export preset. Adding new ones is fine. -->
 
         <activity
-            android:name=".GodotApp"
-            android:label="@string/godot_project_name_string"
-            android:theme="@style/GodotAppSplashTheme"
+            android:name=".FoxApp"
+            android:label="@string/Fox_project_name_string"
+            android:theme="@style/FoxAppSplashTheme"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"

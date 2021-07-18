@@ -2,11 +2,11 @@
 /*  node_path.cpp                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,21 +32,21 @@
 
 #include "core/string/node_path.h"
 
-static_assert(sizeof(godot_node_path) == sizeof(NodePath), "NodePath size mismatch");
+static_assert(sizeof(Fox_node_path) == sizeof(NodePath), "NodePath size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_node_path_new(godot_node_path *p_self) {
+void GDAPI Fox_node_path_new(Fox_node_path *p_self) {
 	memnew_placement(p_self, NodePath);
 }
 
-void GDAPI godot_node_path_new_copy(godot_node_path *r_dest, const godot_node_path *p_src) {
+void GDAPI Fox_node_path_new_copy(Fox_node_path *r_dest, const Fox_node_path *p_src) {
 	memnew_placement(r_dest, NodePath(*(NodePath *)p_src));
 }
 
-void GDAPI godot_node_path_destroy(godot_node_path *p_self) {
+void GDAPI Fox_node_path_destroy(Fox_node_path *p_self) {
 	NodePath *self = (NodePath *)p_self;
 	self->~NodePath();
 }

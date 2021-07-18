@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public sealed partial class RID : IDisposable
     {
@@ -38,7 +38,7 @@ namespace Godot
 
             if (ptr != IntPtr.Zero)
             {
-                godot_icall_RID_Dtor(ptr);
+                Fox_icall_RID_Dtor(ptr);
                 ptr = IntPtr.Zero;
             }
 
@@ -62,23 +62,23 @@ namespace Godot
 
         public RID(Object from)
         {
-            this.ptr = godot_icall_RID_Ctor(Object.GetPtr(from));
+            this.ptr = Fox_icall_RID_Ctor(Object.GetPtr(from));
         }
 
         public int GetId()
         {
-            return godot_icall_RID_get_id(RID.GetPtr(this));
+            return Fox_icall_RID_get_id(RID.GetPtr(this));
         }
 
         public override string ToString() => "[RID]";
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static IntPtr godot_icall_RID_Ctor(IntPtr from);
+        internal extern static IntPtr Fox_icall_RID_Ctor(IntPtr from);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_RID_Dtor(IntPtr ptr);
+        internal extern static void Fox_icall_RID_Dtor(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_RID_get_id(IntPtr ptr);
+        internal extern static int Fox_icall_RID_get_id(IntPtr ptr);
     }
 }

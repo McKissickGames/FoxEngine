@@ -16,10 +16,10 @@
 
 package com.google.android.vending.expansion.downloader.impl;
 
-// -- GODOT start --
+// -- Fox start --
 //import com.android.vending.expansion.downloader.R;
-import org.godotengine.godot.R;
-// -- GODOT end --
+import org.Foxengine.Fox.R;
+// -- Fox end --
 
 import com.google.android.vending.expansion.downloader.DownloadProgressInfo;
 import com.google.android.vending.expansion.downloader.DownloaderClientMarshaller;

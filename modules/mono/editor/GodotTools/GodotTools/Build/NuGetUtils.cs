@@ -5,21 +5,21 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
-using Godot;
-using GodotTools.Internals;
-using GodotTools.Shared;
-using Directory = GodotTools.Utils.Directory;
+using Fox;
+using FoxTools.Internals;
+using FoxTools.Shared;
+using Directory = FoxTools.Utils.Directory;
 using Environment = System.Environment;
-using File = GodotTools.Utils.File;
+using File = FoxTools.Utils.File;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public static class NuGetUtils
     {
-        public const string GodotFallbackFolderName = "Godot Offline Packages";
+        public const string FoxFallbackFolderName = "Fox Offline Packages";
 
-        public static string GodotFallbackFolderPath
-            => Path.Combine(GodotSharpDirs.MonoUserDir, "GodotNuGetFallbackFolder");
+        public static string FoxFallbackFolderPath
+            => Path.Combine(FoxSharpDirs.MonoUserDir, "FoxNuGetFallbackFolder");
 
         private static void AddFallbackFolderToNuGetConfig(string nuGetConfigPath, string name, string path)
         {
@@ -217,7 +217,7 @@ namespace GodotTools.Build
 
         private static void ExtractNupkg(string destDir, string nupkgPath, string packageId, string packageVersion)
         {
-            // NOTE: Must use SimplifyGodotPath to make sure we don't extract files outside the destination directory.
+            // NOTE: Must use SimplifyFoxPath to make sure we don't extract files outside the destination directory.
 
             using (var archive = ZipFile.OpenRead(nupkgPath))
             {
@@ -228,13 +228,13 @@ namespace GodotTools.Build
                 if (nuspecEntry == null)
                     throw new InvalidOperationException($"Failed to extract package {packageId}.{packageVersion}. Could not find the nuspec file.");
 
-                nuspecEntry.ExtractToFile(Path.Combine(destDir, nuspecEntry.Name.ToLower().SimplifyGodotPath()));
+                nuspecEntry.ExtractToFile(Path.Combine(destDir, nuspecEntry.Name.ToLower().SimplifyFoxPath()));
 
                 // Extract the other package files
 
                 foreach (var entry in archive.Entries)
                 {
-                    // NOTE: SimplifyGodotPath() removes trailing slash and backslash,
+                    // NOTE: SimplifyFoxPath() removes trailing slash and backslash,
                     // so we can't use the result to check if the entry is a directory.
 
                     string entryFullName = entry.FullName.Replace('\\', '/');
@@ -251,7 +251,7 @@ namespace GodotTools.Build
                         continue;
                     }
 
-                    string entryFullNameSimplified = entryFullName.SimplifyGodotPath();
+                    string entryFullNameSimplified = entryFullName.SimplifyFoxPath();
                     string destFilePath = Path.Combine(destDir, entryFullNameSimplified);
                     bool isDir = entryFullName.EndsWith("/");
 
@@ -269,14 +269,14 @@ namespace GodotTools.Build
         }
 
         /// <summary>
-        /// Copies and extracts all the Godot bundled packages to the Godot NuGet fallback folder.
+        /// Copies and extracts all the Fox bundled packages to the Fox NuGet fallback folder.
         /// Does nothing if the packages were already copied.
         /// </summary>
         public static void AddBundledPackagesToFallbackFolder(string fallbackFolder)
         {
-            GD.Print("Copying Godot Offline Packages...");
+            GD.Print("Copying Fox Offline Packages...");
 
-            string nupkgsLocation = Path.Combine(GodotSharpDirs.DataEditorToolsDir, "nupkgs");
+            string nupkgsLocation = Path.Combine(FoxSharpDirs.DataEditorToolsDir, "nupkgs");
 
             void AddPackage(string packageId, string packageVersion)
             {
@@ -290,8 +290,8 @@ namespace GodotTools.Build
 
         private static readonly (string packageId, string packageVersion)[] PackagesToAdd =
         {
-            ("Godot.NET.Sdk", GeneratedGodotNupkgsVersions.GodotNETSdk),
-            ("Godot.SourceGenerators", GeneratedGodotNupkgsVersions.GodotSourceGenerators),
+            ("Fox.NET.Sdk", GeneratedFoxNupkgsVersions.FoxNETSdk),
+            ("Fox.SourceGenerators", GeneratedFoxNupkgsVersions.FoxSourceGenerators),
         };
     }
 }

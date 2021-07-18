@@ -2,11 +2,11 @@
 /*  webrtc_peer_connection_gdnative.h                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,7 +33,7 @@
 
 #ifdef WEBRTC_GDNATIVE_ENABLED
 
-#include "modules/gdnative/include/net/godot_net.h"
+#include "modules/gdnative/include/net/Fox_net.h"
 #include "webrtc_peer_connection.h"
 
 class WebRTCPeerConnectionGDNative : public WebRTCPeerConnection {
@@ -44,14 +44,14 @@ protected:
 	static WebRTCPeerConnection *_create();
 
 private:
-	static const godot_net_webrtc_library *default_library;
-	const godot_net_webrtc_peer_connection *interface;
+	static const Fox_net_webrtc_library *default_library;
+	const Fox_net_webrtc_peer_connection *interface;
 
 public:
-	static Error set_default_library(const godot_net_webrtc_library *p_library);
+	static Error set_default_library(const Fox_net_webrtc_library *p_library);
 	static void make_default() { WebRTCPeerConnection::_create = WebRTCPeerConnectionGDNative::_create; }
 
-	void set_native_webrtc_peer_connection(const godot_net_webrtc_peer_connection *p_impl);
+	void set_native_webrtc_peer_connection(const Fox_net_webrtc_peer_connection *p_impl);
 
 	virtual ConnectionState get_connection_state() const override;
 

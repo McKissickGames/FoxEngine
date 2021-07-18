@@ -124,9 +124,9 @@ typedef struct Decorations {
   NumberDecoration      location;
   NumberDecoration      offset;
   NumberDecoration      uav_counter_buffer;
-// -- GODOT begin --
+// -- Fox begin --
   NumberDecoration      specialization_constant;
-// -- GODOT end --
+// -- Fox end --
   StringDecoration      semantic;
   uint32_t              array_stride;
   uint32_t              matrix_stride;
@@ -613,9 +613,9 @@ static SpvReflectResult ParseNodes(Parser* p_parser)
     p_parser->nodes[i].decorations.offset.value = (uint32_t)INVALID_VALUE;
     p_parser->nodes[i].decorations.uav_counter_buffer.value = (uint32_t)INVALID_VALUE;
     p_parser->nodes[i].decorations.built_in = (SpvBuiltIn)INVALID_VALUE;
-// -- GODOT begin --
+// -- Fox begin --
     p_parser->nodes[i].decorations.specialization_constant.value = (SpvBuiltIn)INVALID_VALUE;
-// -- GODOT end --
+// -- Fox end --
   }
   // Mark source file id node
   p_parser->source_file_id = (uint32_t)INVALID_VALUE;
@@ -806,7 +806,7 @@ static SpvReflectResult ParseNodes(Parser* p_parser)
         CHECKED_READU32(p_parser, p_node->word_offset + 2, p_node->result_id);
       }
       break;
-// -- GODOT begin --
+// -- Fox begin --
       case SpvOpSpecConstantTrue:
       case SpvOpSpecConstantFalse:
       case SpvOpSpecConstant: {
@@ -815,7 +815,7 @@ static SpvReflectResult ParseNodes(Parser* p_parser)
         p_node->is_type = true;
       }
       break;
-// -- GODOT end --
+// -- Fox end --
       case SpvOpSpecConstantComposite:
       case SpvOpSpecConstantOp: {
         CHECKED_READU32(p_parser, p_node->word_offset + 1, p_node->result_type_id);
@@ -1321,9 +1321,9 @@ static SpvReflectResult ParseDecorations(Parser* p_parser)
         skip = true;
       }
       break; 
-// -- GODOT begin --
+// -- Fox begin --
       case SpvDecorationSpecId:
-// -- GODOT end --
+// -- Fox end --
       case SpvDecorationBlock:
       case SpvDecorationBufferBlock:
       case SpvDecorationColMajor:
@@ -1456,14 +1456,14 @@ static SpvReflectResult ParseDecorations(Parser* p_parser)
         p_target_decorations->input_attachment_index.word_offset = word_offset;
       }
       break;
-// -- GODOT begin --
+// -- Fox begin --
       case SpvDecorationSpecId: {
         uint32_t word_offset = p_node->word_offset + member_offset+ 3;
         CHECKED_READU32(p_parser, word_offset, p_target_decorations->specialization_constant.value);
         p_target_decorations->specialization_constant.word_offset = word_offset;
       }
       break;
-// -- GODOT end --
+// -- Fox end --
       case SpvReflectDecorationHlslCounterBufferGOOGLE: {
         uint32_t word_offset = p_node->word_offset + member_offset+ 3;
         CHECKED_READU32(p_parser, word_offset, p_target_decorations->uav_counter_buffer.value);
@@ -1753,13 +1753,13 @@ static SpvReflectResult ParseType(
         p_type->type_flags |= SPV_REFLECT_TYPE_FLAG_EXTERNAL_ACCELERATION_STRUCTURE;
       }
       break;
-// -- GODOT begin --
+// -- Fox begin --
       case SpvOpSpecConstantTrue:
       case SpvOpSpecConstantFalse:
       case SpvOpSpecConstant: {
       }
       break;
-// -- GODOT end --
+// -- Fox end --
     }
 
     if (result == SPV_REFLECT_RESULT_SUCCESS) {
@@ -3216,7 +3216,7 @@ static SpvReflectResult ParseExecutionModes(Parser* p_parser, SpvReflectShaderMo
   return SPV_REFLECT_RESULT_SUCCESS;
 }
 
-// -- GODOT begin --
+// -- Fox begin --
 static SpvReflectResult ParseSpecializationConstants(Parser* p_parser, SpvReflectShaderModule* p_module)
 {
   p_module->specialization_constant_count = 0;
@@ -3277,7 +3277,7 @@ static SpvReflectResult ParseSpecializationConstants(Parser* p_parser, SpvReflec
 
   return SPV_REFLECT_RESULT_SUCCESS;
 }
-// -- GODOT end --
+// -- Fox end --
 
 static SpvReflectResult ParsePushConstantBlocks(Parser* p_parser, SpvReflectShaderModule* p_module)
 {
@@ -3654,12 +3654,12 @@ SpvReflectResult spvReflectCreateShaderModule(
     result = ParsePushConstantBlocks(&parser, p_module);
     SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
   }
-// -- GODOT begin --
+// -- Fox begin --
   if (result == SPV_REFLECT_RESULT_SUCCESS) {
     result = ParseSpecializationConstants(&parser, p_module);
     SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
   }
-// -- GODOT end --
+// -- Fox end --
   if (result == SPV_REFLECT_RESULT_SUCCESS) {
     result = ParseEntryPoints(&parser, p_module);
     SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
@@ -3789,9 +3789,9 @@ void spvReflectDestroyShaderModule(SpvReflectShaderModule* p_module)
     SafeFree(p_entry->used_push_constants);
   }
   SafeFree(p_module->entry_points);
-// -- GODOT begin --
+// -- Fox begin --
   SafeFree(p_module->specialization_constants);
-// -- GODOT end --
+// -- Fox end --
 
   // Push constants
   for (size_t i = 0; i < p_module->push_constant_block_count; ++i) {
@@ -4060,7 +4060,7 @@ SpvReflectResult spvReflectEnumerateEntryPointInterfaceVariables(
   return SPV_REFLECT_RESULT_SUCCESS;
 }
 
-// -- GODOT begin --
+// -- Fox begin --
 SpvReflectResult spvReflectEnumerateSpecializationConstants(
   const SpvReflectShaderModule* p_module,
   uint32_t*                     p_count,
@@ -4090,7 +4090,7 @@ SpvReflectResult spvReflectEnumerateSpecializationConstants(
 
   return SPV_REFLECT_RESULT_SUCCESS;
 }
-// -- GODOT end --
+// -- Fox end --
 
 SpvReflectResult spvReflectEnumerateInputVariables(
   const SpvReflectShaderModule* p_module,

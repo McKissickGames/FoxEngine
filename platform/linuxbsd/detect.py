@@ -65,7 +65,7 @@ def get_opts():
         BoolVariable("use_lld", "Use the LLD linker", False),
         BoolVariable("use_thinlto", "Use ThinLTO", False),
         BoolVariable("use_static_cpp", "Link libgcc and libstdc++ statically for better portability", True),
-        BoolVariable("use_coverage", "Test Godot coverage", False),
+        BoolVariable("use_coverage", "Test Fox coverage", False),
         BoolVariable("use_ubsan", "Use LLVM/GCC compiler undefined behavior sanitizer (UBSAN)", False),
         BoolVariable("use_asan", "Use LLVM/GCC compiler address sanitizer (ASAN)", False),
         BoolVariable("use_lsan", "Use LLVM/GCC compiler leak sanitizer (LSAN)", False),

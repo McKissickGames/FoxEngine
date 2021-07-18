@@ -2,11 +2,11 @@
 /*  pluginscript_script.cpp                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,7 +28,7 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-// Godot imports
+// Fox imports
 #include "core/io/file_access.h"
 // PluginScript imports
 #include "pluginscript_instance.h"
@@ -259,20 +259,20 @@ Error PluginScript::reload(bool p_keep_state) {
 	}
 
 	Error err;
-	godot_pluginscript_script_manifest manifest = _desc->init(
+	Fox_pluginscript_script_manifest manifest = _desc->init(
 			_language->_data,
-			(godot_string *)&_path,
-			(godot_string *)&_source,
-			(godot_error *)&err);
+			(Fox_string *)&_path,
+			(Fox_string *)&_source,
+			(Fox_error *)&err);
 // Manifest's attributes must be explicitly freed
 #define FREE_SCRIPT_MANIFEST(manifest)                    \
 	{                                                     \
-		godot_string_name_destroy(&manifest.name);        \
-		godot_string_name_destroy(&manifest.base);        \
-		godot_dictionary_destroy(&manifest.member_lines); \
-		godot_array_destroy(&manifest.methods);           \
-		godot_array_destroy(&manifest.signals);           \
-		godot_array_destroy(&manifest.properties);        \
+		Fox_string_name_destroy(&manifest.name);        \
+		Fox_string_name_destroy(&manifest.base);        \
+		Fox_dictionary_destroy(&manifest.member_lines); \
+		Fox_array_destroy(&manifest.methods);           \
+		Fox_array_destroy(&manifest.signals);           \
+		Fox_array_destroy(&manifest.properties);        \
 	}
 
 	if (err) {

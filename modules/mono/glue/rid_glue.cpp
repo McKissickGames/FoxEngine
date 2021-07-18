@@ -2,11 +2,11 @@
 /*  rid_glue.cpp                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -36,7 +36,7 @@
 
 #include "../mono_gd/gd_mono_marshal.h"
 
-RID *godot_icall_RID_Ctor(Object *p_from) {
+RID *Fox_icall_RID_Ctor(Object *p_from) {
 	Resource *res_from = Object::cast_to<Resource>(p_from);
 
 	if (res_from) {
@@ -46,19 +46,19 @@ RID *godot_icall_RID_Ctor(Object *p_from) {
 	return memnew(RID);
 }
 
-void godot_icall_RID_Dtor(RID *p_ptr) {
+void Fox_icall_RID_Dtor(RID *p_ptr) {
 	ERR_FAIL_NULL(p_ptr);
 	memdelete(p_ptr);
 }
 
-uint32_t godot_icall_RID_get_id(RID *p_ptr) {
+uint32_t Fox_icall_RID_get_id(RID *p_ptr) {
 	return p_ptr->get_id();
 }
 
-void godot_register_rid_icalls() {
-	GDMonoUtils::add_internal_call("Godot.RID::godot_icall_RID_Ctor", godot_icall_RID_Ctor);
-	GDMonoUtils::add_internal_call("Godot.RID::godot_icall_RID_Dtor", godot_icall_RID_Dtor);
-	GDMonoUtils::add_internal_call("Godot.RID::godot_icall_RID_get_id", godot_icall_RID_get_id);
+void Fox_register_rid_icalls() {
+	GDMonoUtils::add_internal_call("Fox.RID::Fox_icall_RID_Ctor", Fox_icall_RID_Ctor);
+	GDMonoUtils::add_internal_call("Fox.RID::Fox_icall_RID_Dtor", Fox_icall_RID_Dtor);
+	GDMonoUtils::add_internal_call("Fox.RID::Fox_icall_RID_get_id", Fox_icall_RID_get_id);
 }
 
 #endif // MONO_GLUE_ENABLED

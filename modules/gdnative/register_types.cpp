@@ -2,11 +2,11 @@
 /*  register_types.cpp                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -239,9 +239,9 @@ static void editor_init_callback() {
 
 #endif
 
-static godot_variant cb_standard_varcall(void *p_procedure_handle, godot_array *p_args) {
-	godot_gdnative_procedure_fn proc;
-	proc = (godot_gdnative_procedure_fn)p_procedure_handle;
+static Fox_variant cb_standard_varcall(void *p_procedure_handle, Fox_array *p_args) {
+	Fox_gdnative_procedure_fn proc;
+	proc = (Fox_gdnative_procedure_fn)p_procedure_handle;
 
 	return proc(p_args);
 }

@@ -43,7 +43,7 @@
 
 #include "Vector3.h"
 
-// Note: Slightly modified to work better with Godot.
+// Note: Slightly modified to work better with Fox.
 // - Removed `sim_`.
 // - KdTree things are public
 namespace RVO {

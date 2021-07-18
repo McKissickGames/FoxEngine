@@ -1,6 +1,6 @@
-# Godot Engine authors
+# Fox Engine authors
 
-Godot Engine is developed by a community of voluntary contributors who
+Fox Engine is developed by a community of voluntary contributors who
 contribute code, bug reports, documentation, artwork, support, etc.
 
 It is impossible to list them all; nevertheless, this file aims at listing

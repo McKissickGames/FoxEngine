@@ -2,11 +2,11 @@
 /*  bindings_generator.cpp                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -42,7 +42,7 @@
 #include "main/main.h"
 
 #include "../glue/cs_glue_version.gen.h"
-#include "../godotsharp_defs.h"
+#include "../Foxsharp_defs.h"
 #include "../mono_gd/gd_mono_marshal.h"
 #include "../utils/path_utils.h"
 #include "../utils/string_utils.h"
@@ -72,14 +72,14 @@
 #define CS_METHOD_CALL "Call"
 
 #define GLUE_HEADER_FILE "glue_header.h"
-#define ICALL_PREFIX "godot_icall_"
+#define ICALL_PREFIX "Fox_icall_"
 #define SINGLETON_ICALL_SUFFIX "_get_singleton"
 #define ICALL_GET_METHODBIND "__ClassDB_get_method"
 
 #define C_LOCAL_RET "ret"
 #define C_LOCAL_VARARG_RET "vararg_ret"
 #define C_LOCAL_PTRCALL_ARGS "call_args"
-#define C_MACRO_OBJECT_CONSTRUCT "GODOTSHARP_INSTANCE_OBJECT"
+#define C_MACRO_OBJECT_CONSTRUCT "FoxSHARP_INSTANCE_OBJECT"
 
 #define C_NS_MONOUTILS "GDMonoUtils"
 #define C_NS_MONOINTERNALS "GDMonoInternals"
@@ -89,8 +89,8 @@
 #define C_NS_MONOMARSHAL "GDMonoMarshal"
 #define C_METHOD_MANAGED_TO_VARIANT C_NS_MONOMARSHAL "::mono_object_to_variant"
 #define C_METHOD_MANAGED_FROM_VARIANT C_NS_MONOMARSHAL "::variant_to_mono_object"
-#define C_METHOD_MONOSTR_TO_GODOT C_NS_MONOMARSHAL "::mono_string_to_godot"
-#define C_METHOD_MONOSTR_FROM_GODOT C_NS_MONOMARSHAL "::mono_string_from_godot"
+#define C_METHOD_MONOSTR_TO_Fox C_NS_MONOMARSHAL "::mono_string_to_Fox"
+#define C_METHOD_MONOSTR_FROM_Fox C_NS_MONOMARSHAL "::mono_string_from_Fox"
 #define C_METHOD_MONOARRAY_TO(m_type) C_NS_MONOMARSHAL "::mono_array_to_" #m_type
 #define C_METHOD_MONOARRAY_FROM(m_type) C_NS_MONOMARSHAL "::" #m_type "_to_mono_array"
 #define C_METHOD_MANAGED_TO_CALLABLE C_NS_MONOMARSHAL "::managed_to_callable"
@@ -313,7 +313,7 @@ String BindingsGenerator::bbcode_to_xml(const String &p_bbcode, const TypeInterf
 				if (!target_itype || !target_itype->is_object_type) {
 					if (OS::get_singleton()->is_stdout_verbose()) {
 						if (target_itype) {
-							OS::get_singleton()->print("Cannot resolve method reference for non-Godot.Object type in documentation: %s\n", link_target.utf8().get_data());
+							OS::get_singleton()->print("Cannot resolve method reference for non-Fox.Object type in documentation: %s\n", link_target.utf8().get_data());
 						} else {
 							OS::get_singleton()->print("Cannot resolve type from method reference in documentation: %s\n", link_target.utf8().get_data());
 						}
@@ -338,7 +338,7 @@ String BindingsGenerator::bbcode_to_xml(const String &p_bbcode, const TypeInterf
 				if (!target_itype || !target_itype->is_object_type) {
 					if (OS::get_singleton()->is_stdout_verbose()) {
 						if (target_itype) {
-							OS::get_singleton()->print("Cannot resolve member reference for non-Godot.Object type in documentation: %s\n", link_target.utf8().get_data());
+							OS::get_singleton()->print("Cannot resolve member reference for non-Fox.Object type in documentation: %s\n", link_target.utf8().get_data());
 						} else {
 							OS::get_singleton()->print("Cannot resolve type from member reference in documentation: %s\n", link_target.utf8().get_data());
 						}
@@ -391,7 +391,7 @@ String BindingsGenerator::bbcode_to_xml(const String &p_bbcode, const TypeInterf
 				if (!target_itype || !target_itype->is_object_type) {
 					if (OS::get_singleton()->is_stdout_verbose()) {
 						if (target_itype) {
-							OS::get_singleton()->print("Cannot resolve constant reference for non-Godot.Object type in documentation: %s\n", link_target.utf8().get_data());
+							OS::get_singleton()->print("Cannot resolve constant reference for non-Fox.Object type in documentation: %s\n", link_target.utf8().get_data());
 						} else {
 							OS::get_singleton()->print("Cannot resolve type from constant reference in documentation: %s\n", link_target.utf8().get_data());
 						}
@@ -762,7 +762,7 @@ void BindingsGenerator::_generate_method_icalls(const TypeInterface &p_itype) {
 			i++;
 		}
 
-		// godot_icall_{argc}_{icallcount}
+		// Fox_icall_{argc}_{icallcount}
 		String icall_method = ICALL_PREFIX;
 		icall_method += itos(imethod.arguments.size());
 		icall_method += "_";
@@ -973,10 +973,10 @@ Error BindingsGenerator::generate_cs_core_project(const String &p_proj_dir) {
 
 	da->change_dir(p_proj_dir);
 	da->make_dir("Generated");
-	da->make_dir("Generated/GodotObjects");
+	da->make_dir("Generated/FoxObjects");
 
 	String base_gen_dir = path::join(p_proj_dir, "Generated");
-	String godot_objects_gen_dir = path::join(base_gen_dir, "GodotObjects");
+	String Fox_objects_gen_dir = path::join(base_gen_dir, "FoxObjects");
 
 	Vector<String> compile_items;
 
@@ -1013,7 +1013,7 @@ Error BindingsGenerator::generate_cs_core_project(const String &p_proj_dir) {
 			continue;
 		}
 
-		String output_file = path::join(godot_objects_gen_dir, itype.proxy_name + ".cs");
+		String output_file = path::join(Fox_objects_gen_dir, itype.proxy_name + ".cs");
 		Error err = _generate_cs_type(itype, output_file);
 
 		if (err == ERR_SKIP) {
@@ -1037,7 +1037,7 @@ Error BindingsGenerator::generate_cs_core_project(const String &p_proj_dir) {
 	cs_icalls_content.append("namespace " BINDINGS_NAMESPACE "\n" OPEN_BLOCK);
 	cs_icalls_content.append(INDENT1 "internal static class " BINDINGS_CLASS_NATIVECALLS "\n" INDENT1 "{");
 
-	cs_icalls_content.append(MEMBER_BEGIN "internal static ulong godot_api_hash = ");
+	cs_icalls_content.append(MEMBER_BEGIN "internal static ulong Fox_api_hash = ");
 	cs_icalls_content.append(String::num_uint64(GDMono::get_singleton()->get_api_core_hash()) + ";\n");
 	cs_icalls_content.append(MEMBER_BEGIN "internal static uint bindings_version = ");
 	cs_icalls_content.append(String::num_uint64(BINDINGS_GENERATOR_VERSION) + ";\n");
@@ -1108,10 +1108,10 @@ Error BindingsGenerator::generate_cs_editor_project(const String &p_proj_dir) {
 
 	da->change_dir(p_proj_dir);
 	da->make_dir("Generated");
-	da->make_dir("Generated/GodotObjects");
+	da->make_dir("Generated/FoxObjects");
 
 	String base_gen_dir = path::join(p_proj_dir, "Generated");
-	String godot_objects_gen_dir = path::join(base_gen_dir, "GodotObjects");
+	String Fox_objects_gen_dir = path::join(base_gen_dir, "FoxObjects");
 
 	Vector<String> compile_items;
 
@@ -1122,7 +1122,7 @@ Error BindingsGenerator::generate_cs_editor_project(const String &p_proj_dir) {
 			continue;
 		}
 
-		String output_file = path::join(godot_objects_gen_dir, itype.proxy_name + ".cs");
+		String output_file = path::join(Fox_objects_gen_dir, itype.proxy_name + ".cs");
 		Error err = _generate_cs_type(itype, output_file);
 
 		if (err == ERR_SKIP) {
@@ -1144,7 +1144,7 @@ Error BindingsGenerator::generate_cs_editor_project(const String &p_proj_dir) {
 	cs_icalls_content.append("namespace " BINDINGS_NAMESPACE "\n" OPEN_BLOCK);
 	cs_icalls_content.append(INDENT1 "internal static class " BINDINGS_CLASS_NATIVECALLS_EDITOR "\n" INDENT1 OPEN_BLOCK);
 
-	cs_icalls_content.append(INDENT2 "internal static ulong godot_api_hash = ");
+	cs_icalls_content.append(INDENT2 "internal static ulong Fox_api_hash = ");
 	cs_icalls_content.append(String::num_uint64(GDMono::get_singleton()->get_api_editor_hash()) + ";\n");
 	cs_icalls_content.append(INDENT2 "internal static uint bindings_version = ");
 	cs_icalls_content.append(String::num_uint64(BINDINGS_GENERATOR_VERSION) + ";\n");
@@ -1218,7 +1218,7 @@ Error BindingsGenerator::generate_cs_api(const String &p_output_dir) {
 
 	Error proj_err;
 
-	// Generate GodotSharp source files
+	// Generate FoxSharp source files
 
 	String core_proj_dir = output_dir.plus_file(CORE_API_ASSEMBLY_NAME);
 
@@ -1228,7 +1228,7 @@ Error BindingsGenerator::generate_cs_api(const String &p_output_dir) {
 		return proj_err;
 	}
 
-	// Generate GodotSharpEditor source files
+	// Generate FoxSharpEditor source files
 
 	String editor_proj_dir = output_dir.plus_file(EDITOR_API_ASSEMBLY_NAME);
 
@@ -1238,7 +1238,7 @@ Error BindingsGenerator::generate_cs_api(const String &p_output_dir) {
 		return proj_err;
 	}
 
-	_log("The Godot API sources were successfully generated\n");
+	_log("The Fox API sources were successfully generated\n");
 
 	return OK;
 }
@@ -1256,7 +1256,7 @@ Error BindingsGenerator::_generate_cs_type(const TypeInterface &itype, const Str
 	bool is_derived_type = itype.base_name != StringName();
 
 	if (!is_derived_type) {
-		// Some Godot.Object assertions
+		// Some Fox.Object assertions
 		CRASH_COND(itype.cname != name_cache.type_Object);
 		CRASH_COND(!itype.is_instantiable);
 		CRASH_COND(itype.api_type != ClassDB::API_CORE);
@@ -1412,8 +1412,8 @@ Error BindingsGenerator::_generate_cs_type(const TypeInterface &itype, const Str
 	if (itype.is_singleton) {
 		// Add the type name and the singleton pointer as static fields
 
-		output.append(MEMBER_BEGIN "private static Godot.Object singleton;\n");
-		output.append(MEMBER_BEGIN "public static Godot.Object Singleton\n" INDENT2 "{\n" INDENT3
+		output.append(MEMBER_BEGIN "private static Fox.Object singleton;\n");
+		output.append(MEMBER_BEGIN "public static Fox.Object Singleton\n" INDENT2 "{\n" INDENT3
 								   "get\n" INDENT3 "{\n" INDENT4 "if (singleton == null)\n" INDENT5
 								   "singleton = Engine.GetSingleton(typeof(");
 		output.append(itype.proxy_name);
@@ -1448,7 +1448,7 @@ Error BindingsGenerator::_generate_cs_type(const TypeInterface &itype, const Str
 			output.append(")\n" OPEN_BLOCK_L2 "if (" BINDINGS_PTR_FIELD " == IntPtr.Zero)\n" INDENT4 BINDINGS_PTR_FIELD " = ");
 			output.append(itype.api_type == ClassDB::API_EDITOR ? BINDINGS_CLASS_NATIVECALLS_EDITOR : BINDINGS_CLASS_NATIVECALLS);
 			output.append("." + ctor_method);
-			output.append("(this);\n" INDENT3 "_InitializeGodotScriptInstanceInternals();\n" CLOSE_BLOCK_L2);
+			output.append("(this);\n" INDENT3 "_InitializeFoxScriptInstanceInternals();\n" CLOSE_BLOCK_L2);
 		} else {
 			// Hide the constructor
 			output.append(MEMBER_BEGIN "internal ");
@@ -1806,7 +1806,7 @@ Error BindingsGenerator::_generate_cs_method(const BindingsGenerator::TypeInterf
 			// better to generate a table in the C++ glue instead. That way the strings wouldn't
 			// add that much extra bloat as they're already used in engine code. Also, it would
 			// probably be much faster than looking up the attributes when fetching methods.
-			p_output.append(MEMBER_BEGIN "[GodotMethod(\"");
+			p_output.append(MEMBER_BEGIN "[FoxMethod(\"");
 			p_output.append(p_imethod.name);
 			p_output.append("\")]");
 		}
@@ -1835,7 +1835,7 @@ Error BindingsGenerator::_generate_cs_method(const BindingsGenerator::TypeInterf
 		p_output.append(arguments_sig + ")\n" OPEN_BLOCK_L2);
 
 		if (p_imethod.is_virtual) {
-			// Godot virtual method must be overridden, therefore we return a default value by default.
+			// Fox virtual method must be overridden, therefore we return a default value by default.
 
 			if (return_type->cname == name_cache.type_void) {
 				p_output.append("return;\n" CLOSE_BLOCK_L2);
@@ -1849,7 +1849,7 @@ Error BindingsGenerator::_generate_cs_method(const BindingsGenerator::TypeInterf
 		}
 
 		if (p_imethod.requires_object_call) {
-			// Fallback to Godot's object.Call(string, params)
+			// Fallback to Fox's object.Call(string, params)
 
 			p_output.append(CS_METHOD_CALL "(\"");
 			p_output.append(p_imethod.name);
@@ -2082,7 +2082,7 @@ Error BindingsGenerator::generate_glue(const String &p_output_dir) {
 		}
 	}
 
-	output.append("namespace GodotSharpBindings\n" OPEN_BLOCK "\n");
+	output.append("namespace FoxSharpBindings\n" OPEN_BLOCK "\n");
 
 	output.append("uint64_t get_core_api_hash() { return ");
 	output.append(String::num_uint64(GDMono::get_singleton()->get_api_core_hash()) + "U; }\n");
@@ -2099,7 +2099,7 @@ Error BindingsGenerator::generate_glue(const String &p_output_dir) {
 	output.append(String::num_uint64(CS_GLUE_VERSION) + "; }\n");
 
 	output.append("\nvoid register_generated_icalls() " OPEN_BLOCK);
-	output.append("\tgodot_register_glue_header_icalls();\n");
+	output.append("\tFox_register_glue_header_icalls();\n");
 
 #define ADD_INTERNAL_CALL_REGISTRATION(m_icall)                                                              \
 	{                                                                                                        \
@@ -2163,7 +2163,7 @@ Error BindingsGenerator::generate_glue(const String &p_output_dir) {
 
 #undef ADD_INTERNAL_CALL_REGISTRATION
 
-	output.append(CLOSE_BLOCK "\n} // namespace GodotSharpBindings\n");
+	output.append(CLOSE_BLOCK "\n} // namespace FoxSharpBindings\n");
 
 	output.append("\n#endif // MONO_GLUE_ENABLED\n");
 
@@ -2436,30 +2436,30 @@ const BindingsGenerator::TypeInterface *BindingsGenerator::_get_type_or_placehol
 	return &placeholder_types.insert(placeholder.cname, placeholder)->get();
 }
 
-StringName BindingsGenerator::_get_int_type_name_from_meta(GodotTypeInfo::Metadata p_meta) {
+StringName BindingsGenerator::_get_int_type_name_from_meta(FoxTypeInfo::Metadata p_meta) {
 	switch (p_meta) {
-		case GodotTypeInfo::METADATA_INT_IS_INT8:
+		case FoxTypeInfo::METADATA_INT_IS_INT8:
 			return "sbyte";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_INT16:
+		case FoxTypeInfo::METADATA_INT_IS_INT16:
 			return "short";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_INT32:
+		case FoxTypeInfo::METADATA_INT_IS_INT32:
 			return "int";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_INT64:
+		case FoxTypeInfo::METADATA_INT_IS_INT64:
 			return "long";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_UINT8:
+		case FoxTypeInfo::METADATA_INT_IS_UINT8:
 			return "byte";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_UINT16:
+		case FoxTypeInfo::METADATA_INT_IS_UINT16:
 			return "ushort";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_UINT32:
+		case FoxTypeInfo::METADATA_INT_IS_UINT32:
 			return "uint";
 			break;
-		case GodotTypeInfo::METADATA_INT_IS_UINT64:
+		case FoxTypeInfo::METADATA_INT_IS_UINT64:
 			return "ulong";
 			break;
 		default:
@@ -2468,12 +2468,12 @@ StringName BindingsGenerator::_get_int_type_name_from_meta(GodotTypeInfo::Metada
 	}
 }
 
-StringName BindingsGenerator::_get_float_type_name_from_meta(GodotTypeInfo::Metadata p_meta) {
+StringName BindingsGenerator::_get_float_type_name_from_meta(FoxTypeInfo::Metadata p_meta) {
 	switch (p_meta) {
-		case GodotTypeInfo::METADATA_REAL_IS_FLOAT:
+		case FoxTypeInfo::METADATA_REAL_IS_FLOAT:
 			return "float";
 			break;
-		case GodotTypeInfo::METADATA_REAL_IS_DOUBLE:
+		case FoxTypeInfo::METADATA_REAL_IS_DOUBLE:
 			return "double";
 			break;
 		default:
@@ -2719,7 +2719,7 @@ bool BindingsGenerator::_populate_object_type_interfaces() {
 
 				// A virtual method without the virtual flag. This is a special case.
 
-				// There is no method bind, so let's fallback to Godot's object.Call(string, params)
+				// There is no method bind, so let's fallback to Fox's object.Call(string, params)
 				imethod.requires_object_call = true;
 
 				// The method Object.free is registered as a virtual method, but without the virtual flag.
@@ -2753,9 +2753,9 @@ bool BindingsGenerator::_populate_object_type_interfaces() {
 				imethod.return_type.cname = name_cache.type_void;
 			} else {
 				if (return_info.type == Variant::INT) {
-					imethod.return_type.cname = _get_int_type_name_from_meta(m ? m->get_argument_meta(-1) : GodotTypeInfo::METADATA_NONE);
+					imethod.return_type.cname = _get_int_type_name_from_meta(m ? m->get_argument_meta(-1) : FoxTypeInfo::METADATA_NONE);
 				} else if (return_info.type == Variant::FLOAT) {
-					imethod.return_type.cname = _get_float_type_name_from_meta(m ? m->get_argument_meta(-1) : GodotTypeInfo::METADATA_NONE);
+					imethod.return_type.cname = _get_float_type_name_from_meta(m ? m->get_argument_meta(-1) : FoxTypeInfo::METADATA_NONE);
 				} else {
 					imethod.return_type.cname = Variant::get_type_name(return_info.type);
 				}
@@ -2780,9 +2780,9 @@ bool BindingsGenerator::_populate_object_type_interfaces() {
 					iarg.type.cname = name_cache.type_Variant;
 				} else {
 					if (arginfo.type == Variant::INT) {
-						iarg.type.cname = _get_int_type_name_from_meta(m ? m->get_argument_meta(i) : GodotTypeInfo::METADATA_NONE);
+						iarg.type.cname = _get_int_type_name_from_meta(m ? m->get_argument_meta(i) : FoxTypeInfo::METADATA_NONE);
 					} else if (arginfo.type == Variant::FLOAT) {
-						iarg.type.cname = _get_float_type_name_from_meta(m ? m->get_argument_meta(i) : GodotTypeInfo::METADATA_NONE);
+						iarg.type.cname = _get_float_type_name_from_meta(m ? m->get_argument_meta(i) : FoxTypeInfo::METADATA_NONE);
 					} else {
 						iarg.type.cname = Variant::get_type_name(arginfo.type);
 					}
@@ -2888,9 +2888,9 @@ bool BindingsGenerator::_populate_object_type_interfaces() {
 					iarg.type.cname = name_cache.type_Variant;
 				} else {
 					if (arginfo.type == Variant::INT) {
-						iarg.type.cname = _get_int_type_name_from_meta(GodotTypeInfo::METADATA_NONE);
+						iarg.type.cname = _get_int_type_name_from_meta(FoxTypeInfo::METADATA_NONE);
 					} else if (arginfo.type == Variant::FLOAT) {
-						iarg.type.cname = _get_float_type_name_from_meta(GodotTypeInfo::METADATA_NONE);
+						iarg.type.cname = _get_float_type_name_from_meta(FoxTypeInfo::METADATA_NONE);
 					} else {
 						iarg.type.cname = Variant::get_type_name(arginfo.type);
 					}
@@ -3291,8 +3291,8 @@ void BindingsGenerator::_populate_builtin_type_interfaces() {
 	itype.name = "String";
 	itype.cname = itype.name;
 	itype.proxy_name = "string";
-	itype.c_in = "\t%0 %1_in = " C_METHOD_MONOSTR_TO_GODOT "(%1);\n";
-	itype.c_out = "\treturn " C_METHOD_MONOSTR_FROM_GODOT "(%1);\n";
+	itype.c_in = "\t%0 %1_in = " C_METHOD_MONOSTR_TO_Fox "(%1);\n";
+	itype.c_out = "\treturn " C_METHOD_MONOSTR_FROM_Fox "(%1);\n";
 	itype.c_arg_in = "&%s_in";
 	itype.c_type = itype.name;
 	itype.c_type_in = "MonoString*";
@@ -3673,7 +3673,7 @@ void BindingsGenerator::handle_cmdline_args(const List<String> &p_cmdline_args) 
 
 	int options_left = NUM_OPTIONS;
 
-	bool exit_godot = false;
+	bool exit_Fox = false;
 
 	const List<String>::Element *elem = p_cmdline_args.front();
 
@@ -3685,8 +3685,8 @@ void BindingsGenerator::handle_cmdline_args(const List<String> &p_cmdline_args) 
 				glue_dir_path = path_elem->get();
 				elem = elem->next();
 			} else {
-				ERR_PRINT(generate_all_glue_option + ": No output directory specified (expected path to '{GODOT_ROOT}/modules/mono/glue').");
-				exit_godot = true;
+				ERR_PRINT(generate_all_glue_option + ": No output directory specified (expected path to '{Fox_ROOT}/modules/mono/glue').");
+				exit_Fox = true;
 			}
 
 			--options_left;
@@ -3698,7 +3698,7 @@ void BindingsGenerator::handle_cmdline_args(const List<String> &p_cmdline_args) 
 				elem = elem->next();
 			} else {
 				ERR_PRINT(generate_cs_glue_option + ": No output directory specified.");
-				exit_godot = true;
+				exit_Fox = true;
 			}
 
 			--options_left;
@@ -3710,7 +3710,7 @@ void BindingsGenerator::handle_cmdline_args(const List<String> &p_cmdline_args) 
 				elem = elem->next();
 			} else {
 				ERR_PRINT(generate_cpp_glue_option + ": No output directory specified.");
-				exit_godot = true;
+				exit_Fox = true;
 			}
 
 			--options_left;
@@ -3721,10 +3721,10 @@ void BindingsGenerator::handle_cmdline_args(const List<String> &p_cmdline_args) 
 
 	if (glue_dir_path.length() || cs_dir_path.length() || cpp_dir_path.length()) {
 		handle_cmdline_options(glue_dir_path, cs_dir_path, cpp_dir_path);
-		exit_godot = true;
+		exit_Fox = true;
 	}
 
-	if (exit_godot) {
+	if (exit_Fox) {
 		// Exit once done
 		Main::cleanup(true);
 		::exit(0);

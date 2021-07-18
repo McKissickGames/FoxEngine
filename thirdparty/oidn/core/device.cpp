@@ -29,9 +29,9 @@ namespace oidn {
 
   Device::~Device()
   {
-    // -- GODOT start --
+    // -- Fox start --
     //observer.reset();
-    // -- GODOT end --
+    // -- Fox end --
   }
 
   void Device::setError(Device* device, Error code, const std::string& message)
@@ -143,9 +143,9 @@ namespace oidn {
     if (isCommitted())
       throw Exception(Error::InvalidOperation, "device can be committed only once");
 
-    // -- GODOT start --
+    // -- Fox start --
     #if 0
-    // -- GODOT end --
+    // -- Fox end --
     // Get the optimal thread affinities
     if (setAffinity)
     {
@@ -162,10 +162,10 @@ namespace oidn {
     // Automatically set the thread affinities
     if (affinity)
       observer = std::make_shared<PinningObserver>(affinity, *arena);
-    // -- GODOT start --
+    // -- Fox start --
     #endif
     numThreads = 1;
-    // -- GODOT end --
+    // -- Fox end --
     dirty = false;
 
     if (isVerbose())
@@ -199,17 +199,17 @@ namespace oidn {
 
     Ref<Filter> filter;
 
-// -- GODOT start --
-// Godot doesn't need Raytracing filters. Removing them saves space in the weights files.
+// -- Fox start --
+// Fox doesn't need Raytracing filters. Removing them saves space in the weights files.
 #if 0
-// -- GODOT end --
+// -- Fox end --
     if (type == "RT")
       filter = makeRef<RTFilter>(Ref<Device>(this));
-// -- GODOT start --
-// Godot doesn't need Raytracing filters. Removing them saves space in the weights files.
+// -- Fox start --
+// Fox doesn't need Raytracing filters. Removing them saves space in the weights files.
 #endif
     if (type == "RTLightmap")
-// -- GODOT end --
+// -- Fox end --
       filter = makeRef<RTLightmapFilter>(Ref<Device>(this));
     else
       throw Exception(Error::InvalidArgument, "unknown filter type");
@@ -226,12 +226,12 @@ namespace oidn {
     std::cout << "  Build   : " << getBuildName() << std::endl;
     std::cout << "  Platform: " << getPlatformName() << std::endl;
 
-// -- GODOT start --
+// -- Fox start --
 //    std::cout << "  Tasking :";
 //    std::cout << " TBB" << TBB_VERSION_MAJOR << "." << TBB_VERSION_MINOR;
 //    std::cout << " TBB_header_interface_" << TBB_INTERFACE_VERSION << " TBB_lib_interface_" << tbb::TBB_runtime_interface_version();
 //    std::cout << std::endl;
-// -- GODOT end --
+// -- Fox end --
     std::cout << std::endl;
   }
 

@@ -2,11 +2,11 @@
 /*  editor_file_system.cpp                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -42,7 +42,7 @@
 #include "editor_settings.h"
 
 EditorFileSystem *EditorFileSystem::singleton = nullptr;
-//the name is the version, to keep compatibility with different versions of Godot
+//the name is the version, to keep compatibility with different versions of Fox
 #define CACHE_FILE_NAME "filesystem_cache6"
 
 void EditorFileSystemDirectory::sort_files() {
@@ -2043,7 +2043,7 @@ Error EditorFileSystem::_resource_import(const String &p_path) {
 }
 
 bool EditorFileSystem::_should_skip_directory(const String &p_path) {
-	if (FileAccess::exists(p_path.plus_file("project.godot"))) {
+	if (FileAccess::exists(p_path.plus_file("project.Fox"))) {
 		// skip if another project inside this
 		return true;
 	}

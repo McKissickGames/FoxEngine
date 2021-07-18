@@ -2,11 +2,11 @@
 /*  gdscript_test_runner.cpp                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -290,7 +290,7 @@ GDScriptTest::GDScriptTest(const String &p_source_path, const String &p_output_p
 void GDScriptTestRunner::handle_cmdline() {
 	List<String> cmdline_args = OS::get_singleton()->get_cmdline_args();
 	// TODO: this could likely be ported to use test commands:
-	// https://github.com/godotengine/godot/pull/41355
+	// https://github.com/Foxengine/Fox/pull/41355
 	// Currently requires to startup the whole engine, which is slow.
 	String test_cmd = "--gdscript-test";
 	String gen_cmd = "--gdscript-generate-tests";

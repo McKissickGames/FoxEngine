@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Godot;
-using GodotTools.Ides.Rider;
-using GodotTools.Internals;
+using Fox;
+using FoxTools.Ides.Rider;
+using FoxTools.Internals;
 using Directory = System.IO.Directory;
 using Environment = System.Environment;
 using File = System.IO.File;
 using Path = System.IO.Path;
-using OS = GodotTools.Utils.OS;
+using OS = FoxTools.Utils.OS;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public static class MsBuildFinder
     {
@@ -19,7 +19,7 @@ namespace GodotTools.Build
 
         public static (string, BuildTool) FindMsBuild()
         {
-            var editorSettings = GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+            var editorSettings = FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
             var buildTool = (BuildTool)editorSettings.GetSetting("mono/builds/build_tool");
 
             if (OS.IsWindows)
@@ -165,7 +165,7 @@ namespace GodotTools.Build
 
             // Try to find 15.0 with vswhere
 
-            var envNames = Internal.GodotIs32Bits() ? new[] {"ProgramFiles", "ProgramW6432"} : new[] {"ProgramFiles(x86)", "ProgramFiles"};
+            var envNames = Internal.FoxIs32Bits() ? new[] {"ProgramFiles", "ProgramW6432"} : new[] {"ProgramFiles(x86)", "ProgramFiles"};
 
             string vsWherePath = null;
             foreach (var envName in envNames)
@@ -183,9 +183,9 @@ namespace GodotTools.Build
 
             var vsWhereArgs = new[] {"-latest", "-products", "*", "-requires", "Microsoft.Component.MSBuild"};
 
-            var outputArray = new Godot.Collections.Array<string>();
-            int exitCode = Godot.OS.Execute(vsWherePath, vsWhereArgs,
-                output: (Godot.Collections.Array)outputArray);
+            var outputArray = new Fox.Collections.Array<string>();
+            int exitCode = Fox.OS.Execute(vsWherePath, vsWhereArgs,
+                output: (Fox.Collections.Array)outputArray);
 
             if (exitCode != 0)
                 return string.Empty;

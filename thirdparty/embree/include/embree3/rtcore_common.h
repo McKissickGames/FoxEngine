@@ -19,9 +19,9 @@ typedef int ssize_t;
 #endif
 #endif
 
-// -- GODOT start --
+// -- Fox start --
 #if defined(_WIN32) && defined(_MSC_VER)
-// -- GODOT end --
+// -- Fox end --
 #  define RTC_ALIGN(...) __declspec(align(__VA_ARGS__))
 #else
 #  define RTC_ALIGN(...) __attribute__((aligned(__VA_ARGS__)))

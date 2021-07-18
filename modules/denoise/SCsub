@@ -118,7 +118,7 @@ weights_out_path = thirdparty_dir + "weights/rtlightmap_hdr.gen.cpp"
 env_thirdparty.Depends(weights_out_path, weights_in_path)
 env_thirdparty.CommandNoCache(weights_out_path, weights_in_path, resource_to_cpp.tza_to_cpp)
 
-# Godot source files
+# Fox source files
 
 module_obj = []
 

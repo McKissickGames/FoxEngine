@@ -27,9 +27,9 @@
 #include "common/ref.h"
 #include "common/exception.h"
 #include "common/thread.h"
-// -- GODOT start --
+// -- Fox start --
 //#include "common/tasking.h"
-// -- GODOT end --
+// -- Fox end --
 #include "math.h"
 
 namespace oidn {

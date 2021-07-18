@@ -2,11 +2,11 @@
 /*  editor_settings.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -419,7 +419,7 @@ void EditorSettings::_load_defaults(Ref<ConfigFile> p_extra_config) {
 
 	// Theme
 	_initial_set("interface/theme/preset", "Default");
-	hints["interface/theme/preset"] = PropertyInfo(Variant::STRING, "interface/theme/preset", PROPERTY_HINT_ENUM, "Default,Breeze Dark,Godot 2,Grey,Light,Solarized (Dark),Solarized (Light),Custom", PROPERTY_USAGE_DEFAULT);
+	hints["interface/theme/preset"] = PropertyInfo(Variant::STRING, "interface/theme/preset", PROPERTY_HINT_ENUM, "Default,Breeze Dark,Fox 2,Grey,Light,Solarized (Dark),Solarized (Light),Custom", PROPERTY_USAGE_DEFAULT);
 	_initial_set("interface/theme/icon_and_font_color", 0);
 	hints["interface/theme/icon_and_font_color"] = PropertyInfo(Variant::INT, "interface/theme/icon_and_font_color", PROPERTY_HINT_ENUM, "Auto,Dark,Light", PROPERTY_USAGE_DEFAULT);
 	_initial_set("interface/theme/base_color", Color(0.2, 0.23, 0.31));
@@ -486,11 +486,11 @@ void EditorSettings::_load_defaults(Ref<ConfigFile> p_extra_config) {
 
 	// Theme
 	_initial_set("text_editor/theme/color_theme", "Default");
-	hints["text_editor/theme/color_theme"] = PropertyInfo(Variant::STRING, "text_editor/theme/color_theme", PROPERTY_HINT_ENUM, "Default,Godot 2,Custom");
+	hints["text_editor/theme/color_theme"] = PropertyInfo(Variant::STRING, "text_editor/theme/color_theme", PROPERTY_HINT_ENUM, "Default,Fox 2,Custom");
 	_initial_set("text_editor/theme/line_spacing", 6);
 	hints["text_editor/theme/line_spacing"] = PropertyInfo(Variant::INT, "text_editor/theme/line_spacing", PROPERTY_HINT_RANGE, "0,50,1");
 
-	_load_godot2_text_editor_theme();
+	_load_Fox2_text_editor_theme();
 
 	// Highlighting
 	_initial_set("text_editor/highlighting/highlight_all_occurrences", true);
@@ -627,7 +627,7 @@ void EditorSettings::_load_defaults(Ref<ConfigFile> p_extra_config) {
 	_initial_set("editors/3d/navigation/navigation_scheme", 0);
 	_initial_set("editors/3d/navigation/invert_y_axis", false);
 	_initial_set("editors/3d/navigation/invert_x_axis", false);
-	hints["editors/3d/navigation/navigation_scheme"] = PropertyInfo(Variant::INT, "editors/3d/navigation/navigation_scheme", PROPERTY_HINT_ENUM, "Godot,Maya,Modo");
+	hints["editors/3d/navigation/navigation_scheme"] = PropertyInfo(Variant::INT, "editors/3d/navigation/navigation_scheme", PROPERTY_HINT_ENUM, "Fox,Maya,Modo");
 	_initial_set("editors/3d/navigation/zoom_style", 0);
 	hints["editors/3d/navigation/zoom_style"] = PropertyInfo(Variant::INT, "editors/3d/navigation/zoom_style", PROPERTY_HINT_ENUM, "Vertical, Horizontal");
 
@@ -768,8 +768,8 @@ void EditorSettings::_load_defaults(Ref<ConfigFile> p_extra_config) {
 	}
 }
 
-void EditorSettings::_load_godot2_text_editor_theme() {
-	// Godot 2 is only a dark theme; it doesn't have a light theme counterpart.
+void EditorSettings::_load_Fox2_text_editor_theme() {
+	// Fox 2 is only a dark theme; it doesn't have a light theme counterpart.
 	_initial_set("text_editor/highlighting/symbol_color", Color(0.73, 0.87, 1.0));
 	_initial_set("text_editor/highlighting/keyword_color", Color(1.0, 1.0, 0.7));
 	_initial_set("text_editor/highlighting/control_flow_keyword_color", Color(1.0, 0.85, 0.7));
@@ -828,7 +828,7 @@ bool EditorSettings::_save_text_editor_theme(String p_file) {
 }
 
 bool EditorSettings::_is_default_text_editor_theme(String p_theme_name) {
-	return p_theme_name == "default" || p_theme_name == "godot 2" || p_theme_name == "custom";
+	return p_theme_name == "default" || p_theme_name == "Fox 2" || p_theme_name == "custom";
 }
 
 static Dictionary _get_builtin_script_templates() {
@@ -1286,7 +1286,7 @@ bool EditorSettings::is_dark_theme() {
 }
 
 void EditorSettings::list_text_editor_themes() {
-	String themes = "Default,Godot 2,Custom";
+	String themes = "Default,Fox 2,Custom";
 
 	DirAccess *d = DirAccess::open(get_text_editor_themes_dir());
 	if (d) {
@@ -1314,8 +1314,8 @@ void EditorSettings::load_text_editor_theme() {
 	String p_file = get("text_editor/theme/color_theme");
 
 	if (_is_default_text_editor_theme(p_file.get_file().to_lower())) {
-		if (p_file == "Godot 2") {
-			_load_godot2_text_editor_theme();
+		if (p_file == "Fox 2") {
+			_load_Fox2_text_editor_theme();
 		}
 		return; // sorry for "Settings changed" console spam
 	}

@@ -2,11 +2,11 @@
 /*  editor_paths.h                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -41,7 +41,7 @@ class EditorPaths : public Object {
 	String data_dir; // Editor data (templates, shader cache, etc.).
 	String config_dir; // Editor config (settings, profiles, themes, etc.).
 	String cache_dir; // Editor cache (thumbnails, tmp generated files).
-	String project_data_dir = "res://.godot"; // Project-specific data (metadata, shader cache, etc.).
+	String project_data_dir = "res://.Fox"; // Project-specific data (metadata, shader cache, etc.).
 	bool self_contained = false; // Self-contained means everything goes to `editor_data` dir.
 	String self_contained_file; // Self-contained file with configuration.
 

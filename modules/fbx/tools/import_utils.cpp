@@ -2,11 +2,11 @@
 /*  import_utils.cpp                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -41,7 +41,7 @@ Vector3 ImportUtils::rad2deg(const Vector3 &p_rotation) {
 Basis ImportUtils::EulerToBasis(FBXDocParser::Model::RotOrder mode, const Vector3 &p_rotation) {
 	Basis ret;
 
-	// FBX is using intrinsic euler, we can convert intrinsic to extrinsic (the one used in godot
+	// FBX is using intrinsic euler, we can convert intrinsic to extrinsic (the one used in Fox
 	// by simply invert its order: https://www.cs.utexas.edu/~theshark/courses/cs354/lectures/cs354-14.pdf
 	switch (mode) {
 		case FBXDocParser::Model::RotOrder_EulerXYZ:
@@ -85,7 +85,7 @@ Quaternion ImportUtils::EulerToQuaternion(FBXDocParser::Model::RotOrder mode, co
 }
 
 Vector3 ImportUtils::BasisToEuler(FBXDocParser::Model::RotOrder mode, const Basis &p_rotation) {
-	// FBX is using intrinsic euler, we can convert intrinsic to extrinsic (the one used in godot
+	// FBX is using intrinsic euler, we can convert intrinsic to extrinsic (the one used in Fox
 	// by simply invert its order: https://www.cs.utexas.edu/~theshark/courses/cs354/lectures/cs354-14.pdf
 	switch (mode) {
 		case FBXDocParser::Model::RotOrder_EulerXYZ:

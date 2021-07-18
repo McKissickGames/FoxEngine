@@ -2,11 +2,11 @@
 /*  fbx_material.cpp                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -253,7 +253,7 @@ Ref<StandardMaterial3D> FBXMaterial::import_material(ImportState &state) {
 					ERR_CONTINUE_MSG(image.is_valid() == false, "FBX Embedded WEBP image load fail.");
 
 					// } else if (extension == "DDS") {
-					// 	// In this moment is not possible to extract a DDS from a buffer, TODO consider add it to godot. See `textureloader_dds.cpp::load().
+					// 	// In this moment is not possible to extract a DDS from a buffer, TODO consider add it to Fox. See `textureloader_dds.cpp::load().
 					// 	// The stored file is a DDS.
 				} else {
 					ERR_CONTINUE_MSG(true, "The embedded image with extension: " + extension + " is not yet supported. Open an issue please.");

@@ -2,11 +2,11 @@
 /*  display_server_javascript.cpp                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -37,7 +37,7 @@
 #include <png.h>
 
 #include "dom_keys.inc"
-#include "godot_js.h"
+#include "Fox_js.h"
 
 #define DOM_BUTTON_LEFT 0
 #define DOM_BUTTON_MIDDLE 1
@@ -51,20 +51,20 @@ DisplayServerJavaScript *DisplayServerJavaScript::get_singleton() {
 
 // Window (canvas)
 void DisplayServerJavaScript::focus_canvas() {
-	godot_js_display_canvas_focus();
+	Fox_js_display_canvas_focus();
 }
 
 bool DisplayServerJavaScript::is_canvas_focused() {
-	return godot_js_display_canvas_is_focused() != 0;
+	return Fox_js_display_canvas_is_focused() != 0;
 }
 
 bool DisplayServerJavaScript::check_size_force_redraw() {
-	return godot_js_display_size_update() != 0;
+	return Fox_js_display_size_update() != 0;
 }
 
 Point2 DisplayServerJavaScript::compute_position_in_canvas(int p_x, int p_y) {
 	int point[2];
-	godot_js_display_compute_position(p_x, p_y, point, point + 1);
+	Fox_js_display_compute_position(p_x, p_y, point, point + 1);
 	return Point2(point[0], point[1]);
 }
 
@@ -119,20 +119,20 @@ void DisplayServerJavaScript::request_quit_callback() {
 // Keys
 
 template <typename T>
-void DisplayServerJavaScript::dom2godot_mod(T *emscripten_event_ptr, Ref<InputEventWithModifiers> godot_event) {
-	godot_event->set_shift_pressed(emscripten_event_ptr->shiftKey);
-	godot_event->set_alt_pressed(emscripten_event_ptr->altKey);
-	godot_event->set_ctrl_pressed(emscripten_event_ptr->ctrlKey);
-	godot_event->set_meta_pressed(emscripten_event_ptr->metaKey);
+void DisplayServerJavaScript::dom2Fox_mod(T *emscripten_event_ptr, Ref<InputEventWithModifiers> Fox_event) {
+	Fox_event->set_shift_pressed(emscripten_event_ptr->shiftKey);
+	Fox_event->set_alt_pressed(emscripten_event_ptr->altKey);
+	Fox_event->set_ctrl_pressed(emscripten_event_ptr->ctrlKey);
+	Fox_event->set_meta_pressed(emscripten_event_ptr->metaKey);
 }
 
 Ref<InputEventKey> DisplayServerJavaScript::setup_key_event(const EmscriptenKeyboardEvent *emscripten_event) {
 	Ref<InputEventKey> ev;
 	ev.instantiate();
 	ev->set_echo(emscripten_event->repeat);
-	dom2godot_mod(emscripten_event, ev);
-	ev->set_keycode(dom_code2godot_scancode(emscripten_event->code, emscripten_event->key, false));
-	ev->set_physical_keycode(dom_code2godot_scancode(emscripten_event->code, emscripten_event->key, true));
+	dom2Fox_mod(emscripten_event, ev);
+	ev->set_keycode(dom_code2Fox_scancode(emscripten_event->code, emscripten_event->key, false));
+	ev->set_physical_keycode(dom_code2Fox_scancode(emscripten_event->code, emscripten_event->key, true));
 
 	String unicode = String::utf8(emscripten_event->key);
 	// Check if empty or multi-character (e.g. `CapsLock`).
@@ -185,7 +185,7 @@ EM_BOOL DisplayServerJavaScript::mouse_button_callback(int p_event_type, const E
 	ev->set_pressed(p_event_type == EMSCRIPTEN_EVENT_MOUSEDOWN);
 	ev->set_position(compute_position_in_canvas(p_event->clientX, p_event->clientY));
 	ev->set_global_position(ev->get_position());
-	dom2godot_mod(p_event, ev);
+	dom2Fox_mod(p_event, ev);
 
 	switch (p_event->button) {
 		case DOM_BUTTON_LEFT:
@@ -262,7 +262,7 @@ EM_BOOL DisplayServerJavaScript::mousemove_callback(int p_event_type, const Emsc
 
 	Ref<InputEventMouseMotion> ev;
 	ev.instantiate();
-	dom2godot_mod(p_event, ev);
+	dom2Fox_mod(p_event, ev);
 	ev->set_button_mask(input_mask);
 
 	ev->set_position(pos);
@@ -278,7 +278,7 @@ EM_BOOL DisplayServerJavaScript::mousemove_callback(int p_event_type, const Emsc
 }
 
 // Cursor
-const char *DisplayServerJavaScript::godot2dom_cursor(DisplayServer::CursorShape p_shape) {
+const char *DisplayServerJavaScript::Fox2dom_cursor(DisplayServer::CursorShape p_shape) {
 	switch (p_shape) {
 		case DisplayServer::CURSOR_ARROW:
 			return "auto";
@@ -325,7 +325,7 @@ void DisplayServerJavaScript::cursor_set_shape(CursorShape p_shape) {
 		return;
 	}
 	cursor_shape = p_shape;
-	godot_js_display_cursor_set_shape(godot2dom_cursor(cursor_shape));
+	Fox_js_display_cursor_set_shape(Fox2dom_cursor(cursor_shape));
 }
 
 DisplayServer::CursorShape DisplayServerJavaScript::cursor_get_shape() const {
@@ -396,10 +396,10 @@ void DisplayServerJavaScript::cursor_set_custom_image(const RES &p_cursor, Curso
 		png.resize(len);
 		ERR_FAIL_COND(!png_image_write_to_memory(&png_meta, png.ptrw(), &len, 0, data.ptr(), 0, nullptr));
 
-		godot_js_display_cursor_set_custom_shape(godot2dom_cursor(p_shape), png.ptr(), len, p_hotspot.x, p_hotspot.y);
+		Fox_js_display_cursor_set_custom_shape(Fox2dom_cursor(p_shape), png.ptr(), len, p_hotspot.x, p_hotspot.y);
 
 	} else {
-		godot_js_display_cursor_set_custom_shape(godot2dom_cursor(p_shape), nullptr, 0, 0, 0);
+		Fox_js_display_cursor_set_custom_shape(Fox2dom_cursor(p_shape), nullptr, 0, 0, 0);
 	}
 
 	cursor_set_shape(cursor_shape);
@@ -413,15 +413,15 @@ void DisplayServerJavaScript::mouse_set_mode(MouseMode p_mode) {
 	}
 
 	if (p_mode == MOUSE_MODE_VISIBLE) {
-		godot_js_display_cursor_set_visible(1);
+		Fox_js_display_cursor_set_visible(1);
 		emscripten_exit_pointerlock();
 
 	} else if (p_mode == MOUSE_MODE_HIDDEN) {
-		godot_js_display_cursor_set_visible(0);
+		Fox_js_display_cursor_set_visible(0);
 		emscripten_exit_pointerlock();
 
 	} else if (p_mode == MOUSE_MODE_CAPTURED) {
-		godot_js_display_cursor_set_visible(1);
+		Fox_js_display_cursor_set_visible(1);
 		EMSCRIPTEN_RESULT result = emscripten_request_pointerlock(canvas_id, false);
 		ERR_FAIL_COND_MSG(result == EMSCRIPTEN_RESULT_FAILED_NOT_DEFERRED, "MOUSE_MODE_CAPTURED can only be entered from within an appropriate input callback.");
 		ERR_FAIL_COND_MSG(result != EMSCRIPTEN_RESULT_SUCCESS, "MOUSE_MODE_CAPTURED can only be entered from within an appropriate input callback.");
@@ -429,7 +429,7 @@ void DisplayServerJavaScript::mouse_set_mode(MouseMode p_mode) {
 }
 
 DisplayServer::MouseMode DisplayServerJavaScript::mouse_get_mode() const {
-	if (godot_js_display_cursor_is_hidden()) {
+	if (Fox_js_display_cursor_is_hidden()) {
 		return MOUSE_MODE_HIDDEN;
 	}
 
@@ -534,7 +534,7 @@ EM_BOOL DisplayServerJavaScript::touchmove_callback(int p_event_type, const Emsc
 }
 
 bool DisplayServerJavaScript::screen_is_touchscreen(int p_screen) const {
-	return godot_js_display_touchscreen_is_available();
+	return Fox_js_display_touchscreen_is_available();
 }
 
 // Virtual Keyboard
@@ -567,11 +567,11 @@ void DisplayServerJavaScript::vk_input_text_callback(const char *p_text, int p_c
 }
 
 void DisplayServerJavaScript::virtual_keyboard_show(const String &p_existing_text, const Rect2 &p_screen_rect, bool p_multiline, int p_max_input_length, int p_cursor_start, int p_cursor_end) {
-	godot_js_display_vk_show(p_existing_text.utf8().get_data(), p_multiline, p_cursor_start, p_cursor_end);
+	Fox_js_display_vk_show(p_existing_text.utf8().get_data(), p_multiline, p_cursor_start, p_cursor_end);
 }
 
 void DisplayServerJavaScript::virtual_keyboard_hide() {
-	godot_js_display_vk_hide();
+	Fox_js_display_vk_hide();
 }
 
 // Gamepad
@@ -586,21 +586,21 @@ void DisplayServerJavaScript::gamepad_callback(int p_index, int p_connected, con
 
 void DisplayServerJavaScript::process_joypads() {
 	Input *input = Input::get_singleton();
-	int32_t pads = godot_js_display_gamepad_sample_count();
+	int32_t pads = Fox_js_display_gamepad_sample_count();
 	int32_t s_btns_num = 0;
 	int32_t s_axes_num = 0;
 	int32_t s_standard = 0;
 	float s_btns[16];
 	float s_axes[10];
 	for (int idx = 0; idx < pads; idx++) {
-		int err = godot_js_display_gamepad_sample_get(idx, s_btns, &s_btns_num, s_axes, &s_axes_num, &s_standard);
+		int err = Fox_js_display_gamepad_sample_get(idx, s_btns, &s_btns_num, s_axes, &s_axes_num, &s_standard);
 		if (err) {
 			continue;
 		}
 		for (int b = 0; b < s_btns_num; b++) {
 			float value = s_btns[b];
 			// Buttons 6 and 7 in the standard mapping need to be
-			// axis to be handled as JOY_AXIS_TRIGGER by Godot.
+			// axis to be handled as JOY_AXIS_TRIGGER by Fox.
 			if (s_standard && (b == 6 || b == 7)) {
 				Input::JoyAxisValue joy_axis;
 				joy_axis.min = 0;
@@ -633,12 +633,12 @@ void DisplayServerJavaScript::update_clipboard_callback(const char *p_text) {
 
 void DisplayServerJavaScript::clipboard_set(const String &p_text) {
 	clipboard = p_text;
-	int err = godot_js_display_clipboard_set(p_text.utf8().get_data());
+	int err = Fox_js_display_clipboard_set(p_text.utf8().get_data());
 	ERR_FAIL_COND_MSG(err, "Clipboard API is not supported.");
 }
 
 String DisplayServerJavaScript::clipboard_get() const {
-	godot_js_display_clipboard_get(update_clipboard_callback);
+	Fox_js_display_clipboard_get(update_clipboard_callback);
 	return clipboard;
 }
 
@@ -660,7 +660,7 @@ void DisplayServerJavaScript::send_window_event_callback(int p_notification) {
 }
 
 void DisplayServerJavaScript::alert(const String &p_alert, const String &p_title) {
-	godot_js_display_alert(p_alert.utf8().get_data());
+	Fox_js_display_alert(p_alert.utf8().get_data());
 }
 
 void DisplayServerJavaScript::set_icon(const Ref<Image> &p_icon) {
@@ -691,7 +691,7 @@ void DisplayServerJavaScript::set_icon(const Ref<Image> &p_icon) {
 	png.resize(len);
 	ERR_FAIL_COND(!png_image_write_to_memory(&png_meta, png.ptrw(), &len, 0, data.ptr(), 0, nullptr));
 
-	godot_js_display_window_icon_set(png.ptr(), len);
+	Fox_js_display_window_icon_set(png.ptr(), len);
 }
 
 void DisplayServerJavaScript::_dispatch_input_event(const Ref<InputEvent> &p_event) {
@@ -718,18 +718,18 @@ DisplayServerJavaScript::DisplayServerJavaScript(const String &p_rendering_drive
 	r_error = OK; // Always succeeds for now.
 
 	// Ensure the canvas ID.
-	godot_js_config_canvas_id_get(canvas_id, 256);
+	Fox_js_config_canvas_id_get(canvas_id, 256);
 
 	// Handle contextmenu, webglcontextlost
-	godot_js_display_setup_canvas(p_resolution.x, p_resolution.y, p_window_mode == WINDOW_MODE_FULLSCREEN, OS::get_singleton()->is_hidpi_allowed() ? 1 : 0);
+	Fox_js_display_setup_canvas(p_resolution.x, p_resolution.y, p_window_mode == WINDOW_MODE_FULLSCREEN, OS::get_singleton()->is_hidpi_allowed() ? 1 : 0);
 
 	// Check if it's windows.
-	swap_cancel_ok = godot_js_display_is_swap_ok_cancel() == 1;
+	swap_cancel_ok = Fox_js_display_is_swap_ok_cancel() == 1;
 
 	// Expose method for requesting quit.
-	godot_js_os_request_quit_cb(request_quit_callback);
+	Fox_js_os_request_quit_cb(request_quit_callback);
 
-	RasterizerDummy::make_current(); // TODO GLES2 in Godot 4.0... or webgpu?
+	RasterizerDummy::make_current(); // TODO GLES2 in Fox 4.0... or webgpu?
 #if 0
 	EmscriptenWebGLContextAttributes attributes;
 	emscripten_webgl_init_context_attributes(&attributes);
@@ -793,16 +793,16 @@ DisplayServerJavaScript::DisplayServerJavaScript(const String &p_rendering_drive
 #undef EM_CHECK
 
 	// For APIs that are not (sufficiently) exposed, a
-	// library is used below (implemented in library_godot_display.js).
-	godot_js_display_notification_cb(&send_window_event_callback,
+	// library is used below (implemented in library_Fox_display.js).
+	Fox_js_display_notification_cb(&send_window_event_callback,
 			WINDOW_EVENT_MOUSE_ENTER,
 			WINDOW_EVENT_MOUSE_EXIT,
 			WINDOW_EVENT_FOCUS_IN,
 			WINDOW_EVENT_FOCUS_OUT);
-	godot_js_display_paste_cb(update_clipboard_callback);
-	godot_js_display_drop_files_cb(drop_files_js_callback);
-	godot_js_display_gamepad_cb(&DisplayServerJavaScript::gamepad_callback);
-	godot_js_display_vk_cb(&vk_input_text_callback);
+	Fox_js_display_paste_cb(update_clipboard_callback);
+	Fox_js_display_drop_files_cb(drop_files_js_callback);
+	Fox_js_display_gamepad_cb(&DisplayServerJavaScript::gamepad_callback);
+	Fox_js_display_vk_cb(&vk_input_text_callback);
 
 	Input::get_singleton()->set_event_dispatch_function(_dispatch_input_event);
 }
@@ -832,7 +832,7 @@ bool DisplayServerJavaScript::has_feature(Feature p_feature) const {
 		//case FEATURE_KEEP_SCREEN_ON:
 		//case FEATURE_ORIENTATION:
 		case FEATURE_VIRTUAL_KEYBOARD:
-			return godot_js_display_vk_available() != 0;
+			return Fox_js_display_vk_available() != 0;
 		default:
 			return false;
 	}
@@ -856,22 +856,22 @@ Point2i DisplayServerJavaScript::screen_get_position(int p_screen) const {
 
 Size2i DisplayServerJavaScript::screen_get_size(int p_screen) const {
 	int size[2];
-	godot_js_display_screen_size_get(size, size + 1);
+	Fox_js_display_screen_size_get(size, size + 1);
 	return Size2(size[0], size[1]);
 }
 
 Rect2i DisplayServerJavaScript::screen_get_usable_rect(int p_screen) const {
 	int size[2];
-	godot_js_display_window_size_get(size, size + 1);
+	Fox_js_display_window_size_get(size, size + 1);
 	return Rect2i(0, 0, size[0], size[1]);
 }
 
 int DisplayServerJavaScript::screen_get_dpi(int p_screen) const {
-	return godot_js_display_screen_dpi_get();
+	return Fox_js_display_screen_dpi_get();
 }
 
 float DisplayServerJavaScript::screen_get_scale(int p_screen) const {
-	return godot_js_display_pixel_ratio_get();
+	return Fox_js_display_pixel_ratio_get();
 }
 
 Vector<DisplayServer::WindowID> DisplayServerJavaScript::get_window_list() const {
@@ -913,7 +913,7 @@ void DisplayServerJavaScript::window_set_drop_files_callback(const Callable &p_c
 }
 
 void DisplayServerJavaScript::window_set_title(const String &p_title, WindowID p_window) {
-	godot_js_display_window_title_set(p_title.utf8().get_data());
+	Fox_js_display_window_title_set(p_title.utf8().get_data());
 }
 
 int DisplayServerJavaScript::window_get_current_screen(WindowID p_window) const {
@@ -953,12 +953,12 @@ Size2i DisplayServerJavaScript::window_get_min_size(WindowID p_window) const {
 }
 
 void DisplayServerJavaScript::window_set_size(const Size2i p_size, WindowID p_window) {
-	godot_js_display_desired_size_set(p_size.x, p_size.y);
+	Fox_js_display_desired_size_set(p_size.x, p_size.y);
 }
 
 Size2i DisplayServerJavaScript::window_get_size(WindowID p_window) const {
 	int size[2];
-	godot_js_display_window_size_get(size, size + 1);
+	Fox_js_display_window_size_get(size, size + 1);
 	return Size2i(size[0], size[1]);
 }
 
@@ -973,12 +973,12 @@ void DisplayServerJavaScript::window_set_mode(WindowMode p_mode, WindowID p_wind
 	switch (p_mode) {
 		case WINDOW_MODE_WINDOWED: {
 			if (window_mode == WINDOW_MODE_FULLSCREEN) {
-				godot_js_display_fullscreen_exit();
+				Fox_js_display_fullscreen_exit();
 			}
 			window_mode = WINDOW_MODE_WINDOWED;
 		} break;
 		case WINDOW_MODE_FULLSCREEN: {
-			int result = godot_js_display_fullscreen_request();
+			int result = Fox_js_display_fullscreen_request();
 			ERR_FAIL_COND_MSG(result, "The request was denied. Remember that enabling fullscreen is only possible from an input callback for the HTML5 platform.");
 		} break;
 		case WINDOW_MODE_MAXIMIZED:
@@ -1023,7 +1023,7 @@ bool DisplayServerJavaScript::can_any_window_draw() const {
 }
 
 void DisplayServerJavaScript::process_events() {
-	if (godot_js_display_gamepad_sample() == OK) {
+	if (Fox_js_display_gamepad_sample() == OK) {
 		process_joypads();
 	}
 }

@@ -2,11 +2,11 @@
 /*  gd_mono_internals.cpp                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -62,11 +62,11 @@ void tie_managed_to_unmanaged(MonoObject *managed, Object *unmanaged) {
 	CRASH_COND(native == nullptr);
 
 	if (native == klass) {
-		// If it's just a wrapper Godot class and not a custom inheriting class, then attach a
+		// If it's just a wrapper Fox class and not a custom inheriting class, then attach a
 		// script binding instead. One of the advantages of this is that if a script is attached
 		// later and it's not a C# script, then the managed object won't have to be disposed.
 		// Another reason for doing this is that this instance could outlive CSharpLanguage, which would
-		// be problematic when using a script. See: https://github.com/godotengine/godot/issues/25621
+		// be problematic when using a script. See: https://github.com/Foxengine/Fox/issues/25621
 
 		CSharpScriptBinding script_binding;
 
@@ -80,7 +80,7 @@ void tie_managed_to_unmanaged(MonoObject *managed, Object *unmanaged) {
 			// Unsafe refcount increment. The managed instance also counts as a reference.
 			// This way if the unmanaged world has no references to our owner
 			// but the managed instance is alive, the refcount will be 1 instead of 0.
-			// See: godot_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
+			// See: Fox_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
 
 			// May not me referenced yet, so we must use init_ref() instead of reference()
 			if (rc->init_ref()) {
@@ -133,7 +133,7 @@ void unhandled_exception(MonoException *p_exc) {
 void gd_unhandled_exception_event(MonoException *p_exc) {
 	MonoImage *mono_image = GDMono::get_singleton()->get_core_api_assembly()->get_image();
 
-	MonoClass *gd_klass = mono_class_from_name(mono_image, "Godot", "GD");
+	MonoClass *gd_klass = mono_class_from_name(mono_image, "Fox", "GD");
 	MonoMethod *unhandled_exception_method = mono_class_get_method_from_name(gd_klass, "OnUnhandledException", -1);
 	void *args[1];
 	args[0] = p_exc;

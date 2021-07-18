@@ -46,7 +46,7 @@
 		[/csharp]
 		[/codeblocks]
 		See also [ArrayMesh], [ImmediateMesh] and [SurfaceTool] for procedural geometry generation.
-		[b]Note:[/b] Godot uses clockwise [url=https://learnopengl.com/Advanced-OpenGL/Face-culling]winding order[/url] for front faces of triangle primitive modes.
+		[b]Note:[/b] Fox uses clockwise [url=https://learnopengl.com/Advanced-OpenGL/Face-culling]winding order[/url] for front faces of triangle primitive modes.
 	</description>
 	<tutorials>
 	</tutorials>

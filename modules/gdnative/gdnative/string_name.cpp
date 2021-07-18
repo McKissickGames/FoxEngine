@@ -2,11 +2,11 @@
 /*  string_name.cpp                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,27 +32,27 @@
 
 #include "core/string/string_name.h"
 
-static_assert(sizeof(godot_string_name) == sizeof(StringName), "StringName size mismatch");
+static_assert(sizeof(Fox_string_name) == sizeof(StringName), "StringName size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_string_name_new(godot_string_name *r_dest) {
+void GDAPI Fox_string_name_new(Fox_string_name *r_dest) {
 	StringName *dest = (StringName *)r_dest;
 	memnew_placement(dest, StringName);
 }
 
-void GDAPI godot_string_name_new_copy(godot_string_name *r_dest, const godot_string_name *p_src) {
+void GDAPI Fox_string_name_new_copy(Fox_string_name *r_dest, const Fox_string_name *p_src) {
 	memnew_placement(r_dest, StringName(*(StringName *)p_src));
 }
 
-void GDAPI godot_string_name_new_with_latin1_chars(godot_string_name *r_dest, const char *p_contents) {
+void GDAPI Fox_string_name_new_with_latin1_chars(Fox_string_name *r_dest, const char *p_contents) {
 	StringName *dest = (StringName *)r_dest;
 	memnew_placement(dest, StringName(p_contents));
 }
 
-void GDAPI godot_string_name_destroy(godot_string_name *p_self) {
+void GDAPI Fox_string_name_destroy(Fox_string_name *p_self) {
 	StringName *self = (StringName *)p_self;
 	self->~StringName();
 }

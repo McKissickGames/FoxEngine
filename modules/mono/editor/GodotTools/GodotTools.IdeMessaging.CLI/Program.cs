@@ -4,10 +4,10 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using GodotTools.IdeMessaging.Requests;
+using FoxTools.IdeMessaging.Requests;
 using Newtonsoft.Json;
 
-namespace GodotTools.IdeMessaging.CLI
+namespace FoxTools.IdeMessaging.CLI
 {
     internal static class Program
     {
@@ -41,17 +41,17 @@ namespace GodotTools.IdeMessaging.CLI
                     return 1;
                 }
 
-                string godotProjectDir = args[0];
+                string FoxProjectDir = args[0];
 
-                if (!Directory.Exists(godotProjectDir))
+                if (!Directory.Exists(FoxProjectDir))
                 {
-                    Logger.LogError($"The specified Godot project directory does not exist: {godotProjectDir}");
+                    Logger.LogError($"The specified Fox project directory does not exist: {FoxProjectDir}");
                     return 1;
                 }
 
                 var forwarder = new ForwarderMessageHandler(outputWriter);
 
-                using (var fwdClient = new Client("VisualStudioCode", godotProjectDir, forwarder, Logger))
+                using (var fwdClient = new Client("VisualStudioCode", FoxProjectDir, forwarder, Logger))
                 {
                     fwdClient.Start();
 

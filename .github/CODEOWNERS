@@ -4,179 +4,179 @@
 
 # Buildsystem
 
-.*                                  @godotengine/buildsystem
-.github/                            @godotengine/buildsystem
-*.py                                @godotengine/buildsystem
-SConstruct                          @godotengine/buildsystem
-SCsub                               @godotengine/buildsystem
+.*                                  @Foxengine/buildsystem
+.github/                            @Foxengine/buildsystem
+*.py                                @Foxengine/buildsystem
+SConstruct                          @Foxengine/buildsystem
+SCsub                               @Foxengine/buildsystem
 
 # Core
 
-/core/                              @godotengine/core
-/core/crypto/                       @godotengine/network
-/core/debugger/                     @godotengine/debugger
-/core/input/                        @godotengine/input
+/core/                              @Foxengine/core
+/core/crypto/                       @Foxengine/network
+/core/debugger/                     @Foxengine/debugger
+/core/input/                        @Foxengine/input
 
 # Doc
 
-/doc/                               @godotengine/documentation
-doc_classes/*                       @godotengine/documentation
+/doc/                               @Foxengine/documentation
+doc_classes/*                       @Foxengine/documentation
 
 # Drivers
 
 ## Audio
-/drivers/alsa/                      @godotengine/audio
-/drivers/alsamidi/                  @godotengine/audio
-/drivers/coreaudio/                 @godotengine/audio
-/drivers/coremidi/                  @godotengine/audio
-/drivers/pulseaudio/                @godotengine/audio
-/drivers/wasapi/                    @godotengine/audio
-/drivers/winmidi/                   @godotengine/audio
-/drivers/xaudio2/                   @godotengine/audio
+/drivers/alsa/                      @Foxengine/audio
+/drivers/alsamidi/                  @Foxengine/audio
+/drivers/coreaudio/                 @Foxengine/audio
+/drivers/coremidi/                  @Foxengine/audio
+/drivers/pulseaudio/                @Foxengine/audio
+/drivers/wasapi/                    @Foxengine/audio
+/drivers/winmidi/                   @Foxengine/audio
+/drivers/xaudio2/                   @Foxengine/audio
 
 ## Rendering
-/drivers/dummy/                     @godotengine/rendering
-/drivers/spirv-reflect/             @godotengine/rendering
-/drivers/vulkan/                    @godotengine/rendering
+/drivers/dummy/                     @Foxengine/rendering
+/drivers/spirv-reflect/             @Foxengine/rendering
+/drivers/vulkan/                    @Foxengine/rendering
 
 ## OS
-/drivers/unix/                      @godotengine/_platforms
-/drivers/windows/                   @godotengine/windows
+/drivers/unix/                      @Foxengine/_platforms
+/drivers/windows/                   @Foxengine/windows
 
 ## Misc
-/drivers/png/                       @godotengine/import
+/drivers/png/                       @Foxengine/import
 
 # Editor
 
-/editor/*debugger*                  @godotengine/debugger
-/editor/icons/                      @godotengine/usability
-/editor/import/                     @godotengine/import
-/editor/plugins/*2d_*.*             @godotengine/2d-editor
-/editor/plugins/*3d_*.*             @godotengine/3d-editor
-/editor/plugins/script_*.*          @godotengine/script-editor
-/editor/plugins/*shader*.*          @godotengine/shaders
-/editor/code_editor.*               @godotengine/script-editor
-/editor/*dock*.*                    @godotengine/docks
-/editor/*shader*.*                  @godotengine/shaders
+/editor/*debugger*                  @Foxengine/debugger
+/editor/icons/                      @Foxengine/usability
+/editor/import/                     @Foxengine/import
+/editor/plugins/*2d_*.*             @Foxengine/2d-editor
+/editor/plugins/*3d_*.*             @Foxengine/3d-editor
+/editor/plugins/script_*.*          @Foxengine/script-editor
+/editor/plugins/*shader*.*          @Foxengine/shaders
+/editor/code_editor.*               @Foxengine/script-editor
+/editor/*dock*.*                    @Foxengine/docks
+/editor/*shader*.*                  @Foxengine/shaders
 
 # Main
 
-/main/                              @godotengine/core
+/main/                              @Foxengine/core
 
 # Misc
 
-/misc/                              @godotengine/buildsystem
+/misc/                              @Foxengine/buildsystem
 
 # Modules
 
 ## Audio (+ video)
-/modules/minimp3/                   @godotengine/audio
-/modules/ogg/                       @godotengine/audio
-/modules/opus/                      @godotengine/audio
-/modules/stb_vorbis/                @godotengine/audio
-/modules/theora/                    @godotengine/audio
-/modules/vorbis/                    @godotengine/audio
-/modules/webm/                      @godotengine/audio
+/modules/minimp3/                   @Foxengine/audio
+/modules/ogg/                       @Foxengine/audio
+/modules/opus/                      @Foxengine/audio
+/modules/stb_vorbis/                @Foxengine/audio
+/modules/theora/                    @Foxengine/audio
+/modules/vorbis/                    @Foxengine/audio
+/modules/webm/                      @Foxengine/audio
 
 ## Import
-/modules/basis_universal/           @godotengine/import
-/modules/bmp/                       @godotengine/import
-/modules/cvtt/                      @godotengine/import
-/modules/dds/                       @godotengine/import
-/modules/etc/                       @godotengine/import
-/modules/fbx/                       @godotengine/import
-/modules/gltf/                      @godotengine/import
-/modules/hdr/                       @godotengine/import
-/modules/jpg/                       @godotengine/import
-/modules/pvr/                       @godotengine/import
-/modules/squish/                    @godotengine/import
-/modules/svg/                       @godotengine/import
-/modules/tga/                       @godotengine/import
-/modules/tinyexr/                   @godotengine/import
-/modules/webp/                      @godotengine/import
+/modules/basis_universal/           @Foxengine/import
+/modules/bmp/                       @Foxengine/import
+/modules/cvtt/                      @Foxengine/import
+/modules/dds/                       @Foxengine/import
+/modules/etc/                       @Foxengine/import
+/modules/fbx/                       @Foxengine/import
+/modules/gltf/                      @Foxengine/import
+/modules/hdr/                       @Foxengine/import
+/modules/jpg/                       @Foxengine/import
+/modules/pvr/                       @Foxengine/import
+/modules/squish/                    @Foxengine/import
+/modules/svg/                       @Foxengine/import
+/modules/tga/                       @Foxengine/import
+/modules/tinyexr/                   @Foxengine/import
+/modules/webp/                      @Foxengine/import
 
 ## Network
-/modules/enet/                      @godotengine/network
-/modules/mbedtls/                   @godotengine/network
-/modules/upnp/                      @godotengine/network
-/modules/webrtc/                    @godotengine/network
-/modules/websocket/                 @godotengine/network
+/modules/enet/                      @Foxengine/network
+/modules/mbedtls/                   @Foxengine/network
+/modules/upnp/                      @Foxengine/network
+/modules/webrtc/                    @Foxengine/network
+/modules/websocket/                 @Foxengine/network
 
 ## Rendering
-/modules/denoise/                   @godotengine/rendering
-/modules/glslang/                   @godotengine/rendering
-/modules/lightmapper_rd/            @godotengine/rendering
-/modules/meshoptimizer/             @godotengine/rendering
-/modules/vhacd/                     @godotengine/rendering
-/modules/xatlas_unwrap/             @godotengine/rendering
+/modules/denoise/                   @Foxengine/rendering
+/modules/glslang/                   @Foxengine/rendering
+/modules/lightmapper_rd/            @Foxengine/rendering
+/modules/meshoptimizer/             @Foxengine/rendering
+/modules/vhacd/                     @Foxengine/rendering
+/modules/xatlas_unwrap/             @Foxengine/rendering
 
 ## Scripting
-/modules/gdnative/                  @godotengine/gdnative
-/modules/gdscript/                  @godotengine/gdscript
-/modules/jsonrpc/                   @godotengine/gdscript
-/modules/mono/                      @godotengine/mono
-/modules/visual_script/             @godotengine/visualscript
+/modules/gdnative/                  @Foxengine/gdnative
+/modules/gdscript/                  @Foxengine/gdscript
+/modules/jsonrpc/                   @Foxengine/gdscript
+/modules/mono/                      @Foxengine/mono
+/modules/visual_script/             @Foxengine/visualscript
 
 ## Text
-/modules/freetype/                  @godotengine/buildsystem
-/modules/gdnative/text/             @godotengine/gui-nodes
-/modules/text_server_adv/           @godotengine/gui-nodes
-/modules/text_server_fb/            @godotengine/gui-nodes
+/modules/freetype/                  @Foxengine/buildsystem
+/modules/gdnative/text/             @Foxengine/gui-nodes
+/modules/text_server_adv/           @Foxengine/gui-nodes
+/modules/text_server_fb/            @Foxengine/gui-nodes
 
 ## XR
-/modules/camera/                    @godotengine/xr
-/modules/gdnative/xr/               @godotengine/xr
-/modules/mobile_vr/                 @godotengine/xr
-/modules/webxr/                     @godotengine/xr
+/modules/camera/                    @Foxengine/xr
+/modules/gdnative/xr/               @Foxengine/xr
+/modules/mobile_vr/                 @Foxengine/xr
+/modules/webxr/                     @Foxengine/xr
 
 ## Misc
-/modules/bullet/                    @godotengine/physics
-/modules/csg/                       @godotengine/3d-nodes
-/modules/gdnavigation/              @godotengine/navigation
-/modules/gridmap/                   @godotengine/3d-nodes
-/modules/opensimplex/               @godotengine/3d-nodes
-/modules/regex/                     @godotengine/core
+/modules/bullet/                    @Foxengine/physics
+/modules/csg/                       @Foxengine/3d-nodes
+/modules/gdnavigation/              @Foxengine/navigation
+/modules/gridmap/                   @Foxengine/3d-nodes
+/modules/opensimplex/               @Foxengine/3d-nodes
+/modules/regex/                     @Foxengine/core
 
 # Platform
 
-/platform/android/                  @godotengine/android
-/platform/iphone/                   @godotengine/ios
-/platform/javascript/               @godotengine/html5
-/platform/linuxbsd/                 @godotengine/linux-bsd
-/platform/osx/                      @godotengine/macos
-/platform/uwp/                      @godotengine/uwp
-/platform/windows/                  @godotengine/windows
+/platform/android/                  @Foxengine/android
+/platform/iphone/                   @Foxengine/ios
+/platform/javascript/               @Foxengine/html5
+/platform/linuxbsd/                 @Foxengine/linux-bsd
+/platform/osx/                      @Foxengine/macos
+/platform/uwp/                      @Foxengine/uwp
+/platform/windows/                  @Foxengine/windows
 
 # Scene
 
-/scene/2d/                          @godotengine/2d-nodes
-/scene/3d/                          @godotengine/3d-nodes
-/scene/animation/                   @godotengine/animation
-/scene/audio/                       @godotengine/audio
-/scene/debugger/                    @godotengine/debugger
-/scene/gui/                         @godotengine/gui-nodes
-/scene/main/                        @godotengine/core
-/scene/resources/default_theme/     @godotengine/gui-nodes
-/scene/resources/font.*             @godotengine/gui-nodes
-/scene/resources/text_line.*        @godotengine/gui-nodes
-/scene/resources/text_paragraph.*   @godotengine/gui-nodes
-/scene/resources/visual_shader*.*   @godotengine/shaders
+/scene/2d/                          @Foxengine/2d-nodes
+/scene/3d/                          @Foxengine/3d-nodes
+/scene/animation/                   @Foxengine/animation
+/scene/audio/                       @Foxengine/audio
+/scene/debugger/                    @Foxengine/debugger
+/scene/gui/                         @Foxengine/gui-nodes
+/scene/main/                        @Foxengine/core
+/scene/resources/default_theme/     @Foxengine/gui-nodes
+/scene/resources/font.*             @Foxengine/gui-nodes
+/scene/resources/text_line.*        @Foxengine/gui-nodes
+/scene/resources/text_paragraph.*   @Foxengine/gui-nodes
+/scene/resources/visual_shader*.*   @Foxengine/shaders
 
 # Servers
 
-/servers/audio*                     @godotengine/audio
-/servers/camera*                    @godotengine/xr
-/servers/display_server.*           @godotengine/_platforms
-/servers/navigation_server*.*       @godotengine/navigation
-/servers/physics*                   @godotengine/physics
-/servers/rendering*                 @godotengine/rendering
-/servers/text_server.*              @godotengine/gui-nodes
-/servers/xr*                        @godotengine/xr
+/servers/audio*                     @Foxengine/audio
+/servers/camera*                    @Foxengine/xr
+/servers/display_server.*           @Foxengine/_platforms
+/servers/navigation_server*.*       @Foxengine/navigation
+/servers/physics*                   @Foxengine/physics
+/servers/rendering*                 @Foxengine/rendering
+/servers/text_server.*              @Foxengine/gui-nodes
+/servers/xr*                        @Foxengine/xr
 
 # Tests
 
-/tests/                             @godotengine/tests
+/tests/                             @Foxengine/tests
 
 # Thirdparty
 
-/thirdparty/                        @godotengine/buildsystem
+/thirdparty/                        @Foxengine/buildsystem

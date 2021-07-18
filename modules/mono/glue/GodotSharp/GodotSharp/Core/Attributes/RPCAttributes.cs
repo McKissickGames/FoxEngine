@@ -1,6 +1,6 @@
 using System;
 
-namespace Godot
+namespace Fox
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Field | AttributeTargets.Property)]
     public class RemoteAttribute : Attribute {}

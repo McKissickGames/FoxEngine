@@ -93,18 +93,18 @@ namespace oidn {
   // RTFilter - Generic ray tracing denoiser
   // --------------------------------------------------------------------------
 
-// -- GODOT start --
-// Godot doesn't need Raytracing filters. Removing them saves space in the weights files.
+// -- Fox start --
+// Fox doesn't need Raytracing filters. Removing them saves space in the weights files.
 #if 0
-// -- GODOT end --
+// -- Fox end --
   class RTFilter : public AutoencoderFilter
   {
   public:
     explicit RTFilter(const Ref<Device>& device);
   };
-// -- GODOT start --
+// -- Fox start --
 #endif
-// -- GODOT end --
+// -- Fox end --
 
   // --------------------------------------------------------------------------
   // RTLightmapFilter - Ray traced lightmap denoiser

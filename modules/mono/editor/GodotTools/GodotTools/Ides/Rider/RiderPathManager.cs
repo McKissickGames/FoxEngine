@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Godot;
-using GodotTools.Internals;
+using Fox;
+using FoxTools.Internals;
 
-namespace GodotTools.Ides.Rider
+namespace FoxTools.Ides.Rider
 {
     public static class RiderPathManager
     {
@@ -13,7 +13,7 @@ namespace GodotTools.Ides.Rider
 
         private static string GetRiderPathFromSettings()
         {
-            var editorSettings = GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+            var editorSettings = FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
             if (editorSettings.HasSetting(EditorPathSettingName))
                 return (string)editorSettings.GetSetting(EditorPathSettingName);
             return null;
@@ -21,14 +21,14 @@ namespace GodotTools.Ides.Rider
 
         public static void Initialize()
         {
-            var editorSettings = GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+            var editorSettings = FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
             var editor = (ExternalEditorId)editorSettings.GetSetting("mono/editor/external_editor");
             if (editor == ExternalEditorId.Rider)
             {
                 if (!editorSettings.HasSetting(EditorPathSettingName))
                 {
                     Globals.EditorDef(EditorPathSettingName, "Optional");
-                    editorSettings.AddPropertyInfo(new Godot.Collections.Dictionary
+                    editorSettings.AddPropertyInfo(new Fox.Collections.Dictionary
                     {
                         ["type"] = Variant.Type.String,
                         ["name"] = EditorPathSettingName,
@@ -77,7 +77,7 @@ namespace GodotTools.Ides.Rider
                 return riderPath;
             }
 
-            var editorSettings = GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+            var editorSettings = FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
             var paths = RiderPathLocator.GetAllRiderPaths();
 
             if (!paths.Any())
@@ -104,7 +104,7 @@ namespace GodotTools.Ides.Rider
             if (line >= 0)
             {
                 args.Add("--line");
-                args.Add((line + 1).ToString()); // https://github.com/JetBrains/godot-support/issues/61
+                args.Add((line + 1).ToString()); // https://github.com/JetBrains/Fox-support/issues/61
             }
             args.Add(scriptPath);
             try

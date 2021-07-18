@@ -6,7 +6,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// A unit quaternion used for representing 3D rotations.

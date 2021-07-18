@@ -1,4 +1,4 @@
-namespace GodotTools
+namespace FoxTools
 {
     public struct PlaySettings
     {

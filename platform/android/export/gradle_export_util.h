@@ -2,11 +2,11 @@
 /*  gradle_export_util.h                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_GRADLE_EXPORT_UTIL_H
-#define GODOT_GRADLE_EXPORT_UTIL_H
+#ifndef Fox_GRADLE_EXPORT_UTIL_H
+#define Fox_GRADLE_EXPORT_UTIL_H
 
 #include "core/io/dir_access.h"
 #include "core/io/file_access.h"
@@ -37,10 +37,10 @@
 #include "core/os/os.h"
 #include "editor/editor_export.h"
 
-const String godot_project_name_xml_string = R"(<?xml version="1.0" encoding="utf-8"?>
+const String Fox_project_name_xml_string = R"(<?xml version="1.0" encoding="utf-8"?>
 <!--WARNING: THIS FILE WILL BE OVERWRITTEN AT BUILD TIME-->
 <resources>
-	<string name="godot_project_name_string">%s</string>
+	<string name="Fox_project_name_string">%s</string>
 </resources>
 )";
 
@@ -145,8 +145,8 @@ Error rename_and_store_file_in_gradle_project(void *p_userdata, const String &p_
 Error _create_project_name_strings_files(const Ref<EditorExportPreset> &p_preset, const String &project_name) {
 	print_verbose("Creating strings resources for supported locales for project " + project_name);
 	// Stores the string into the default values directory.
-	String processed_default_xml_string = vformat(godot_project_name_xml_string, project_name.xml_escape(true));
-	store_string_at_path("res://android/build/res/values/godot_project_name_string.xml", processed_default_xml_string);
+	String processed_default_xml_string = vformat(Fox_project_name_xml_string, project_name.xml_escape(true));
+	store_string_at_path("res://android/build/res/values/Fox_project_name_string.xml", processed_default_xml_string);
 
 	// Searches the Gradle project res/ directory to find all supported locales
 	DirAccessRef da = DirAccess::open("res://android/build/res");
@@ -168,10 +168,10 @@ Error _create_project_name_strings_files(const Ref<EditorExportPreset> &p_preset
 		}
 		String locale = file.replace("values-", "").replace("-r", "_");
 		String property_name = "application/config/name_" + locale;
-		String locale_directory = "res://android/build/res/" + file + "/godot_project_name_string.xml";
+		String locale_directory = "res://android/build/res/" + file + "/Fox_project_name_string.xml";
 		if (ProjectSettings::get_singleton()->has_setting(property_name)) {
 			String locale_project_name = ProjectSettings::get_singleton()->get(property_name);
-			String processed_xml_string = vformat(godot_project_name_xml_string, locale_project_name.xml_escape(true));
+			String processed_xml_string = vformat(Fox_project_name_xml_string, locale_project_name.xml_escape(true));
 			print_verbose("Storing project name for locale " + locale + " under " + locale_directory);
 			store_string_at_path(locale_directory, processed_xml_string);
 		} else {
@@ -226,9 +226,9 @@ String _get_instrumentation_tag(const Ref<EditorExportPreset> &p_preset) {
 	String manifest_instrumentation_text = vformat(
 			"    <instrumentation\n"
 			"        tools:node=\"replace\"\n"
-			"        android:name=\".GodotInstrumentation\"\n"
+			"        android:name=\".FoxInstrumentation\"\n"
 			"        android:icon=\"@mipmap/icon\"\n"
-			"        android:label=\"@string/godot_project_name_string\"\n"
+			"        android:label=\"@string/Fox_project_name_string\"\n"
 			"        android:targetPackage=\"%s\" />\n",
 			package_name);
 	return manifest_instrumentation_text;
@@ -238,7 +238,7 @@ String _get_activity_tag(const Ref<EditorExportPreset> &p_preset) {
 	bool uses_xr = (int)(p_preset->get("xr_features/xr_mode")) == 1;
 	String orientation = _get_android_orientation_label(DisplayServer::ScreenOrientation(int(GLOBAL_GET("display/window/handheld/orientation"))));
 	String manifest_activity_text = vformat(
-			"        <activity android:name=\"com.godot.game.GodotApp\" "
+			"        <activity android:name=\"com.Fox.game.FoxApp\" "
 			"tools:replace=\"android:screenOrientation\" "
 			"android:screenOrientation=\"%s\">\n",
 			orientation);
@@ -251,7 +251,7 @@ String _get_activity_tag(const Ref<EditorExportPreset> &p_preset) {
 
 String _get_application_tag(const Ref<EditorExportPreset> &p_preset) {
 	String manifest_application_text = vformat(
-			"    <application android:label=\"@string/godot_project_name_string\"\n"
+			"    <application android:label=\"@string/Fox_project_name_string\"\n"
 			"        android:allowBackup=\"%s\"\n"
 			"        android:icon=\"@mipmap/icon\"\n"
 			"        android:isGame=\"%s\"\n"
@@ -265,4 +265,4 @@ String _get_application_tag(const Ref<EditorExportPreset> &p_preset) {
 	return manifest_application_text;
 }
 
-#endif //GODOT_GRADLE_EXPORT_UTIL_H
+#endif //Fox_GRADLE_EXPORT_UTIL_H

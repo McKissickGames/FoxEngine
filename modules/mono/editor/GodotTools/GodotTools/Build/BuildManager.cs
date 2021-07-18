@@ -1,14 +1,14 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using GodotTools.Ides.Rider;
-using GodotTools.Internals;
+using FoxTools.Ides.Rider;
+using FoxTools.Internals;
 using JetBrains.Annotations;
-using static GodotTools.Internals.Globals;
-using File = GodotTools.Utils.File;
-using OS = GodotTools.Utils.OS;
+using static FoxTools.Internals.Globals;
+using File = FoxTools.Utils.File;
+using OS = FoxTools.Utils.OS;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public static class BuildManager
     {
@@ -42,7 +42,7 @@ namespace GodotTools.Build
 
         private static void ShowBuildErrorDialog(string message)
         {
-            var plugin = GodotSharpEditor.Instance;
+            var plugin = FoxSharpEditor.Instance;
             plugin.ShowErrorDialog(message, "Build error");
             plugin.MakeBottomPanelItemVisible(plugin.MSBuildPanel);
         }
@@ -62,8 +62,8 @@ namespace GodotTools.Build
 
         private static void PrintVerbose(string text)
         {
-            if (Godot.OS.IsStdoutVerbose())
-                Godot.GD.Print(text);
+            if (Fox.OS.IsStdoutVerbose())
+                Fox.GD.Print(text);
         }
 
         public static bool Build(BuildInfo buildInfo)
@@ -78,7 +78,7 @@ namespace GodotTools.Build
                 BuildStarted?.Invoke(buildInfo);
 
                 // Required in order to update the build tasks list
-                Internal.GodotMainIteration();
+                Internal.FoxMainIteration();
 
                 try
                 {
@@ -161,14 +161,14 @@ namespace GodotTools.Build
 
         public static bool BuildProjectBlocking(string config, [CanBeNull] string[] targets = null, [CanBeNull] string platform = null)
         {
-            var buildInfo = new BuildInfo(GodotSharpDirs.ProjectSlnPath, targets ?? new[] {"Build"}, config, restore: true);
+            var buildInfo = new BuildInfo(FoxSharpDirs.ProjectSlnPath, targets ?? new[] {"Build"}, config, restore: true);
 
             // If a platform was not specified, try determining the current one. If that fails, let MSBuild auto-detect it.
-            if (platform != null || OS.PlatformNameMap.TryGetValue(Godot.OS.GetName(), out platform))
-                buildInfo.CustomProperties.Add($"GodotTargetPlatform={platform}");
+            if (platform != null || OS.PlatformNameMap.TryGetValue(Fox.OS.GetName(), out platform))
+                buildInfo.CustomProperties.Add($"FoxTargetPlatform={platform}");
 
-            if (Internal.GodotIsRealTDouble())
-                buildInfo.CustomProperties.Add("GodotRealTIsDouble=true");
+            if (Internal.FoxIsRealTDouble())
+                buildInfo.CustomProperties.Add("FoxRealTIsDouble=true");
 
             return BuildProjectBlocking(buildInfo);
         }
@@ -180,12 +180,12 @@ namespace GodotTools.Build
 
             // Make sure the API assemblies are up to date before building the project.
             // We may not have had the chance to update the release API assemblies, and the debug ones
-            // may have been deleted by the user at some point after they were loaded by the Godot editor.
+            // may have been deleted by the user at some point after they were loaded by the Fox editor.
             string apiAssembliesUpdateError = Internal.UpdateApiAssembliesFromPrebuilt(buildInfo.Configuration == "ExportRelease" ? "Release" : "Debug");
 
             if (!string.IsNullOrEmpty(apiAssembliesUpdateError))
             {
-                ShowBuildErrorDialog("Failed to update the Godot API assemblies");
+                ShowBuildErrorDialog("Failed to update the Fox API assemblies");
                 return false;
             }
 
@@ -205,20 +205,20 @@ namespace GodotTools.Build
 
         public static bool EditorBuildCallback()
         {
-            if (!File.Exists(GodotSharpDirs.ProjectSlnPath))
+            if (!File.Exists(FoxSharpDirs.ProjectSlnPath))
                 return true; // No solution to build
 
             try
             {
                 // Make sure our packages are added to the fallback folder
-                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.GodotFallbackFolderPath);
+                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.FoxFallbackFolderPath);
             }
             catch (Exception e)
             {
-                Godot.GD.PushError("Failed to setup Godot NuGet Offline Packages: " + e.Message);
+                Fox.GD.PushError("Failed to setup Fox NuGet Offline Packages: " + e.Message);
             }
 
-            if (GodotSharpEditor.Instance.SkipBuildBeforePlaying)
+            if (FoxSharpEditor.Instance.SkipBuildBeforePlaying)
                 return true; // Requested play from an external editor/IDE which already built the project
 
             return BuildProjectBlocking("Debug");
@@ -227,7 +227,7 @@ namespace GodotTools.Build
         public static void Initialize()
         {
             // Build tool settings
-            var editorSettings = GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+            var editorSettings = FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
 
             BuildTool msbuildDefault;
 
@@ -260,11 +260,11 @@ namespace GodotTools.Build
                              $"{PropNameDotnetCli}:{(int)BuildTool.DotnetCli}";
             }
 
-            editorSettings.AddPropertyInfo(new Godot.Collections.Dictionary
+            editorSettings.AddPropertyInfo(new Fox.Collections.Dictionary
             {
-                ["type"] = Godot.Variant.Type.Int,
+                ["type"] = Fox.Variant.Type.Int,
                 ["name"] = "mono/builds/build_tool",
-                ["hint"] = Godot.PropertyHint.Enum,
+                ["hint"] = Fox.PropertyHint.Enum,
                 ["hint_string"] = hintString
             });
         }

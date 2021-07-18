@@ -2,11 +2,11 @@
 /*  vector3.cpp                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,45 +32,45 @@
 
 #include "core/math/vector3.h"
 
-static_assert(sizeof(godot_vector3) == sizeof(Vector3), "Vector3 size mismatch");
-static_assert(sizeof(godot_vector3i) == sizeof(Vector3i), "Vector3i size mismatch");
+static_assert(sizeof(Fox_vector3) == sizeof(Vector3), "Vector3 size mismatch");
+static_assert(sizeof(Fox_vector3i) == sizeof(Vector3i), "Vector3i size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_vector3_new(godot_vector3 *p_self) {
+void GDAPI Fox_vector3_new(Fox_vector3 *p_self) {
 	memnew_placement(p_self, Vector3);
 }
 
-void GDAPI godot_vector3_new_copy(godot_vector3 *r_dest, const godot_vector3 *p_src) {
+void GDAPI Fox_vector3_new_copy(Fox_vector3 *r_dest, const Fox_vector3 *p_src) {
 	memnew_placement(r_dest, Vector3(*(Vector3 *)p_src));
 }
 
-void GDAPI godot_vector3i_new(godot_vector3i *p_self) {
+void GDAPI Fox_vector3i_new(Fox_vector3i *p_self) {
 	memnew_placement(p_self, Vector3i);
 }
 
-void GDAPI godot_vector3i_new_copy(godot_vector3i *r_dest, const godot_vector3i *p_src) {
+void GDAPI Fox_vector3i_new_copy(Fox_vector3i *r_dest, const Fox_vector3i *p_src) {
 	memnew_placement(r_dest, Vector3i(*(Vector3i *)p_src));
 }
 
-godot_real_t GDAPI *godot_vector3_operator_index(godot_vector3 *p_self, godot_int p_index) {
+Fox_real_t GDAPI *Fox_vector3_operator_index(Fox_vector3 *p_self, Fox_int p_index) {
 	Vector3 *self = (Vector3 *)p_self;
-	return (godot_real_t *)&self->operator[](p_index);
+	return (Fox_real_t *)&self->operator[](p_index);
 }
 
-const godot_real_t GDAPI *godot_vector3_operator_index_const(const godot_vector3 *p_self, godot_int p_index) {
+const Fox_real_t GDAPI *Fox_vector3_operator_index_const(const Fox_vector3 *p_self, Fox_int p_index) {
 	const Vector3 *self = (const Vector3 *)p_self;
-	return (const godot_real_t *)&self->operator[](p_index);
+	return (const Fox_real_t *)&self->operator[](p_index);
 }
 
-int32_t GDAPI *godot_vector3i_operator_index(godot_vector3i *p_self, godot_int p_index) {
+int32_t GDAPI *Fox_vector3i_operator_index(Fox_vector3i *p_self, Fox_int p_index) {
 	Vector3i *self = (Vector3i *)p_self;
 	return (int32_t *)&self->operator[](p_index);
 }
 
-const int32_t GDAPI *godot_vector3i_operator_index_const(const godot_vector3i *p_self, godot_int p_index) {
+const int32_t GDAPI *Fox_vector3i_operator_index_const(const Fox_vector3i *p_self, Fox_int p_index) {
 	const Vector3i *self = (const Vector3i *)p_self;
 	return (const int32_t *)&self->operator[](p_index);
 }

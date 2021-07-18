@@ -1,13 +1,13 @@
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public static class Dispatcher
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern GodotTaskScheduler godot_icall_DefaultGodotTaskScheduler();
+        private static extern FoxTaskScheduler Fox_icall_DefaultFoxTaskScheduler();
 
-        public static GodotSynchronizationContext SynchronizationContext =>
-            godot_icall_DefaultGodotTaskScheduler().Context;
+        public static FoxSynchronizationContext SynchronizationContext =>
+            Fox_icall_DefaultFoxTaskScheduler().Context;
     }
 }

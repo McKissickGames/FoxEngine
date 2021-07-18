@@ -17,9 +17,9 @@
 #include "upsample.h"
 #include "weights_reorder.h"
 #include "network.h"
-// -- GODOT start -- 
+// -- Fox start -- 
 #include <cstring>
-// -- GODOT end --
+// -- Fox end --
 
 namespace oidn {
 

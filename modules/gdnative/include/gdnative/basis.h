@@ -2,11 +2,11 @@
 /*  basis.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_BASIS_H
-#define GODOT_BASIS_H
+#ifndef Fox_BASIS_H
+#define Fox_BASIS_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,24 +37,24 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_BASIS_SIZE (sizeof(godot_real_t) * 9)
+#define Fox_BASIS_SIZE (sizeof(Fox_real_t) * 9)
 
-#ifndef GODOT_CORE_API_GODOT_BASIS_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_BASIS_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_BASIS_TYPE_DEFINED
+#define Fox_CORE_API_Fox_BASIS_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_BASIS_SIZE];
-} godot_basis;
+	uint8_t _dont_touch_that[Fox_BASIS_SIZE];
+} Fox_basis;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_basis_new(godot_basis *p_self);
-void GDAPI godot_basis_new_copy(godot_basis *r_dest, const godot_basis *p_src);
-godot_vector3 GDAPI *godot_basis_operator_index(godot_basis *p_self, godot_int p_index);
-const godot_vector3 GDAPI *godot_basis_operator_index_const(const godot_basis *p_self, godot_int p_index);
+void GDAPI Fox_basis_new(Fox_basis *p_self);
+void GDAPI Fox_basis_new_copy(Fox_basis *r_dest, const Fox_basis *p_src);
+Fox_vector3 GDAPI *Fox_basis_operator_index(Fox_basis *p_self, Fox_int p_index);
+const Fox_vector3 GDAPI *Fox_basis_operator_index_const(const Fox_basis *p_self, Fox_int p_index);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_BASIS_H
+#endif // Fox_BASIS_H

@@ -2,11 +2,11 @@
 /*  signal.h                                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_SIGNAL_H
-#define GODOT_SIGNAL_H
+#ifndef Fox_SIGNAL_H
+#define Fox_SIGNAL_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,20 +38,20 @@ extern "C" {
 #include <stdint.h>
 
 // Alignment hardcoded in `core/variant/callable.h`.
-#define GODOT_SIGNAL_SIZE (16)
+#define Fox_SIGNAL_SIZE (16)
 
-#ifndef GODOT_CORE_API_GODOT_SIGNAL_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_SIGNAL_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_SIGNAL_TYPE_DEFINED
+#define Fox_CORE_API_Fox_SIGNAL_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_SIGNAL_SIZE];
-} godot_signal;
+	uint8_t _dont_touch_that[Fox_SIGNAL_SIZE];
+} Fox_signal;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_signal_new(godot_signal *p_self);
-void GDAPI godot_signal_new_copy(godot_signal *r_dest, const godot_signal *p_src);
-void GDAPI godot_signal_destroy(godot_signal *p_self);
+void GDAPI Fox_signal_new(Fox_signal *p_self);
+void GDAPI Fox_signal_new_copy(Fox_signal *r_dest, const Fox_signal *p_src);
+void GDAPI Fox_signal_destroy(Fox_signal *p_self);
 
 #ifdef __cplusplus
 }

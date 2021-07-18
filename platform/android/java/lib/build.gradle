@@ -19,7 +19,7 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
 
-        manifestPlaceholders = [godotLibraryVersion: getGodotLibraryVersion()]
+        manifestPlaceholders = [FoxLibraryVersion: getFoxLibraryVersion()]
     }
 
     compileOptions {
@@ -56,7 +56,7 @@ android {
 
     libraryVariants.all { variant ->
         variant.outputs.all { output ->
-            output.outputFileName = "godot-lib.${variant.name}.aar"
+            output.outputFileName = "Fox-lib.${variant.name}.aar"
         }
 
         def buildType = variant.buildType.name.capitalize()

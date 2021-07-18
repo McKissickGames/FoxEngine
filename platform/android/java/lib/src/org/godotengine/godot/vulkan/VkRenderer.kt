@@ -2,11 +2,11 @@
 /*  VkRenderer.kt                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -29,14 +29,14 @@
 /*************************************************************************/
 
 @file:JvmName("VkRenderer")
-package org.godotengine.godot.vulkan
+package org.Foxengine.Fox.vulkan
 
 import android.view.Surface
 
-import org.godotengine.godot.Godot
-import org.godotengine.godot.GodotLib
-import org.godotengine.godot.plugin.GodotPlugin
-import org.godotengine.godot.plugin.GodotPluginRegistry
+import org.Foxengine.Fox.Fox
+import org.Foxengine.Fox.FoxLib
+import org.Foxengine.Fox.plugin.FoxPlugin
+import org.Foxengine.Fox.plugin.FoxPluginRegistry
 
 /**
  * Responsible to setting up and driving the Vulkan rendering logic.
@@ -52,13 +52,13 @@ import org.godotengine.godot.plugin.GodotPluginRegistry
  * @see [VkSurfaceView.startRenderer]
  */
 internal class VkRenderer {
-	private val pluginRegistry: GodotPluginRegistry = GodotPluginRegistry.getPluginRegistry()
+	private val pluginRegistry: FoxPluginRegistry = FoxPluginRegistry.getPluginRegistry()
 
 	/**
 	 * Called when the surface is created and signals the beginning of rendering.
 	 */
 	fun onVkSurfaceCreated(surface: Surface) {
-		GodotLib.newcontext(surface, false)
+		FoxLib.newcontext(surface, false)
 
 		for (plugin in pluginRegistry.getAllPlugins()) {
 			plugin.onVkSurfaceCreated(surface)
@@ -69,7 +69,7 @@ internal class VkRenderer {
 	 * Called after the surface is created and whenever its size changes.
 	 */
 	fun onVkSurfaceChanged(surface: Surface, width: Int, height: Int) {
-		GodotLib.resize(surface, width, height)
+		FoxLib.resize(surface, width, height)
 
 		for (plugin in pluginRegistry.getAllPlugins()) {
 			plugin.onVkSurfaceChanged(surface, width, height)
@@ -80,7 +80,7 @@ internal class VkRenderer {
 	 * Called to draw the current frame.
 	 */
 	fun onVkDrawFrame() {
-		GodotLib.step()
+		FoxLib.step()
 		for (plugin in pluginRegistry.getAllPlugins()) {
 			plugin.onVkDrawFrame()
 		}
@@ -90,14 +90,14 @@ internal class VkRenderer {
 	 * Called when the rendering thread is resumed.
 	 */
 	fun onVkResume() {
-		GodotLib.onRendererResumed()
+		FoxLib.onRendererResumed()
 	}
 
 	/**
 	 * Called when the rendering thread is paused.
 	 */
 	fun onVkPause() {
-		GodotLib.onRendererPaused()
+		FoxLib.onRendererPaused()
 	}
 
 	/**

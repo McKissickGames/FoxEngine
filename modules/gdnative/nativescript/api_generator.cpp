@@ -2,11 +2,11 @@
 /*  api_generator.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -181,7 +181,7 @@ struct ConstantAPIComparator {
 };
 
 /*
- * Reads the entire Godot API to a list
+ * Reads the entire Fox API to a list
  */
 List<ClassAPI> generate_c_api_classes() {
 	List<ClassAPI> api;
@@ -919,7 +919,7 @@ static List<String> generate_c_builtin_api_json(const List<ClassAPI> &p_api) {
 #endif
 
 /*
- * Saves the whole Godot API to a JSON file located at
+ * Saves the whole Fox API to a JSON file located at
  *  p_path
  */
 Error generate_c_api(const String &p_path) {
@@ -935,7 +935,7 @@ Error generate_c_api(const String &p_path) {
 #endif
 }
 /*
- * Saves the builtin Godot API to a JSON file located at
+ * Saves the builtin Fox API to a JSON file located at
  *  p_path
  */
 Error generate_c_builtin_api(const String &p_path) {

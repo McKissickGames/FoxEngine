@@ -2,11 +2,11 @@
 /*  export_template_manager.cpp                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -222,7 +222,7 @@ void ExportTemplateManager::_refresh_mirrors() {
 	is_refreshing_mirrors = true;
 
 	String current_version = VERSION_FULL_CONFIG;
-	const String mirrors_metadata_url = "https://godotengine.org/mirrorlist/" + current_version + ".json";
+	const String mirrors_metadata_url = "https://Foxengine.org/mirrorlist/" + current_version + ".json";
 	request_mirrors->request(mirrors_metadata_url);
 }
 
@@ -645,7 +645,7 @@ Error ExportTemplateManager::install_android_template_from_file(const String &p_
 	// Make res://android dir (if it does not exist).
 	da->make_dir("android");
 	{
-		// Add version, to ensure building won't work if template and Godot version don't match.
+		// Add version, to ensure building won't work if template and Fox version don't match.
 		FileAccessRef f = FileAccess::open("res://android/.build_version", FileAccess::WRITE);
 		ERR_FAIL_COND_V(!f, ERR_CANT_CREATE);
 		f->store_line(VERSION_FULL_CONFIG);
@@ -974,7 +974,7 @@ ExportTemplateManager::ExportTemplateManager() {
 	install_file_dialog->set_title(TTR("Select Template File"));
 	install_file_dialog->set_access(FileDialog::ACCESS_FILESYSTEM);
 	install_file_dialog->set_file_mode(FileDialog::FILE_MODE_OPEN_FILE);
-	install_file_dialog->add_filter("*.tpz ; " + TTR("Godot Export Templates"));
+	install_file_dialog->add_filter("*.tpz ; " + TTR("Fox Export Templates"));
 	install_file_dialog->connect("file_selected", callable_mp(this, &ExportTemplateManager::_install_file_selected), varray(false));
 	add_child(install_file_dialog);
 

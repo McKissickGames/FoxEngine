@@ -2,11 +2,11 @@
 /*  os_windows.cpp                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -197,7 +197,7 @@ void OS_Windows::initialize() {
 
 	process_map = memnew((Map<ProcessID, ProcessInfo>));
 
-	// Add current Godot PID to the list of known PIDs
+	// Add current Fox PID to the list of known PIDs
 	ProcessInfo current_pi = {};
 	PROCESS_INFORMATION current_pi_pi = {};
 	current_pi.pi = current_pi_pi;
@@ -673,7 +673,7 @@ String OS_Windows::get_cache_path() const {
 }
 
 // Get properly capitalized engine name for system paths
-String OS_Windows::get_godot_dir_name() const {
+String OS_Windows::get_Fox_dir_name() const {
 	return String(VERSION_SHORT_NAME).capitalize();
 }
 
@@ -726,7 +726,7 @@ String OS_Windows::get_user_data_dir() const {
 			}
 			return get_data_path().plus_file(custom_dir).replace("\\", "/");
 		} else {
-			return get_data_path().plus_file(get_godot_dir_name()).plus_file("app_userdata").plus_file(appname).replace("\\", "/");
+			return get_data_path().plus_file(get_Fox_dir_name()).plus_file("app_userdata").plus_file(appname).replace("\\", "/");
 		}
 	}
 

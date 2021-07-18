@@ -7,7 +7,7 @@
 		Plugins are used by the editor to extend functionality. The most common types of plugins are those which edit a given node or resource type, import plugins and export plugins. See also [EditorScript] to add functions to the editor.
 	</description>
 	<tutorials>
-		<link title="Editor plugins tutorial index">https://docs.godotengine.org/en/latest/tutorials/plugins/editor/index.html</link>
+		<link title="Editor plugins tutorial index">https://docs.Foxengine.org/en/latest/tutorials/plugins/editor/index.html</link>
 	</tutorials>
 	<methods>
 		<method name="_apply_changes" qualifiers="virtual">
@@ -77,7 +77,7 @@
 				    return false
 				[/gdscript]
 				[csharp]
-				public override void ForwardCanvasDrawOverViewport(Godot.Control overlay)
+				public override void ForwardCanvasDrawOverViewport(Fox.Control overlay)
 				{
 				    // Draw a circle at cursor position.
 				    overlay.DrawCircle(overlay.GetLocalMousePosition(), 64, Colors.White);
@@ -165,13 +165,13 @@
 				    return false
 				[/gdscript]
 				[csharp]
-				public override void ForwardSpatialDrawOverViewport(Godot.Control overlay)
+				public override void ForwardSpatialDrawOverViewport(Fox.Control overlay)
 				{
 				    // Draw a circle at cursor position.
 				    overlay.DrawCircle(overlay.GetLocalMousePosition(), 64, Colors.White);
 				}
 
-				public override bool ForwardSpatialGuiInput(Godot.Camera3D camera, InputEvent @event)
+				public override bool ForwardSpatialGuiInput(Fox.Camera3D camera, InputEvent @event)
 				{
 				    if (@event is InputEventMouseMotion)
 				    {
@@ -272,7 +272,7 @@
 			<return type="String">
 			</return>
 			<description>
-				Override this method in your plugin to provide the name of the plugin when displayed in the Godot editor.
+				Override this method in your plugin to provide the name of the plugin when displayed in the Fox editor.
 				For main screen plugins, this appears at the top of the screen, to the right of the "2D", "3D", "Script", and "AssetLib" buttons.
 			</description>
 		</method>
@@ -525,7 +525,7 @@
 			<return type="EditorInterface">
 			</return>
 			<description>
-				Returns the [EditorInterface] object that gives you control over Godot editor's window and its functionalities.
+				Returns the [EditorInterface] object that gives you control over Fox editor's window and its functionalities.
 			</description>
 		</method>
 		<method name="get_script_create_dialog">

@@ -2,11 +2,11 @@
 /*  android_support.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -45,7 +45,7 @@
 
 #include "core/os/os.h"
 #include "core/string/ustring.h"
-#include "platform/android/java_godot_wrapper.h"
+#include "platform/android/java_Fox_wrapper.h"
 #include "platform/android/os_android.h"
 #include "platform/android/thread_jandroid.h"
 
@@ -157,10 +157,10 @@ int gd_mono_convert_dl_flags(int flags) {
 #endif
 
 const char *mono_so_name = GD_MONO_SO_NAME;
-const char *godot_so_name = "libgodot_android.so";
+const char *Fox_so_name = "libFox_android.so";
 
 void *mono_dl_handle = nullptr;
-void *godot_dl_handle = nullptr;
+void *Fox_dl_handle = nullptr;
 
 void *try_dlopen(const String &p_so_path, int p_flags) {
 	if (!FileAccess::exists(p_so_path)) {
@@ -220,10 +220,10 @@ void *gd_mono_android_dlsym(void *p_handle, const char *p_name, char **r_err, vo
 	if (sym_addr)
 		return sym_addr;
 
-	if (p_handle == mono_dl_handle && godot_dl_handle) {
-		// Looking up for '__Internal' P/Invoke. We want to search in both the Mono and Godot shared libraries.
+	if (p_handle == mono_dl_handle && Fox_dl_handle) {
+		// Looking up for '__Internal' P/Invoke. We want to search in both the Mono and Fox shared libraries.
 		// This is needed to resolve the monodroid P/Invoke functions that are defined at the bottom of the file.
-		sym_addr = dlsym(godot_dl_handle, p_name);
+		sym_addr = dlsym(Fox_dl_handle, p_name);
 
 		if (sym_addr)
 			return sym_addr;
@@ -366,9 +366,9 @@ void initialize() {
 	mono_dl_fallback_register(gd_mono_android_dlopen, gd_mono_android_dlsym, gd_mono_android_dlclose, nullptr);
 
 	String app_native_lib_dir = get_app_native_lib_dir();
-	String so_path = path::join(app_native_lib_dir, godot_so_name);
+	String so_path = path::join(app_native_lib_dir, Fox_so_name);
 
-	godot_dl_handle = try_dlopen(so_path, gd_mono_convert_dl_flags(MONO_DL_LAZY));
+	Fox_dl_handle = try_dlopen(so_path, gd_mono_convert_dl_flags(MONO_DL_LAZY));
 }
 
 void cleanup() {
@@ -377,8 +377,8 @@ void cleanup() {
 	if (mono_dl_handle)
 		gd_mono_android_dlclose(mono_dl_handle, nullptr);
 
-	if (godot_dl_handle)
-		gd_mono_android_dlclose(godot_dl_handle, nullptr);
+	if (Fox_dl_handle)
+		gd_mono_android_dlclose(Fox_dl_handle, nullptr);
 
 	JNIEnv *env = get_jni_env();
 
@@ -508,8 +508,8 @@ static void interop_get_active_network_dns_servers(char **r_dns_servers, int *dn
 
 	JNIEnv *env = get_jni_env();
 
-	GodotJavaWrapper *godot_java = ((OS_Android *)OS::get_singleton())->get_godot_java();
-	jobject activity = godot_java->get_activity();
+	FoxJavaWrapper *Fox_java = ((OS_Android *)OS::get_singleton())->get_Fox_java();
+	jobject activity = Fox_java->get_activity();
 
 	ScopedLocalRef<jclass> activityClass(env, env->GetObjectClass(activity));
 	ERR_FAIL_NULL(activityClass);

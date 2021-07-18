@@ -2,11 +2,11 @@
 /*  asset_library_editor_plugin.cpp                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -603,7 +603,7 @@ void EditorAssetLibrary::_notification(int p_what) {
 
 void EditorAssetLibrary::_update_repository_options() {
 	Dictionary default_urls;
-	default_urls["godotengine.org"] = "https://godotengine.org/asset-library/api";
+	default_urls["Foxengine.org"] = "https://Foxengine.org/asset-library/api";
 	default_urls["localhost"] = "http://127.0.0.1/asset-library/api";
 	Dictionary available_urls = _EDITOR_DEF("asset_library/available_urls", default_urls, true);
 	repository->clear();
@@ -666,8 +666,8 @@ const char *EditorAssetLibrary::sort_text[SORT_MAX] = {
 	TTRC("Least Recently Updated"),
 	TTRC("Name (A-Z)"),
 	TTRC("Name (Z-A)"),
-	TTRC("License (A-Z)"), // "cost" stores the SPDX license name in the Godot Asset Library.
-	TTRC("License (Z-A)"), // "cost" stores the SPDX license name in the Godot Asset Library.
+	TTRC("License (A-Z)"), // "cost" stores the SPDX license name in the Fox Asset Library.
+	TTRC("License (Z-A)"), // "cost" stores the SPDX license name in the Fox Asset Library.
 };
 
 const char *EditorAssetLibrary::support_key[SUPPORT_MAX] = {
@@ -915,7 +915,7 @@ void EditorAssetLibrary::_search(int p_page) {
 	args += String() + "sort=" + sort_key[sort->get_selected()];
 
 	// We use the "branch" version, i.e. major.minor, as patch releases should be compatible
-	args += "&godot_version=" + String(VERSION_BRANCH);
+	args += "&Fox_version=" + String(VERSION_BRANCH);
 
 	String support_list;
 	for (int i = 0; i < SUPPORT_MAX; i++) {

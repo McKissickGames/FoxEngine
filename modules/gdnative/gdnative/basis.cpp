@@ -2,11 +2,11 @@
 /*  basis.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,28 +32,28 @@
 
 #include "core/math/basis.h"
 
-static_assert(sizeof(godot_basis) == sizeof(Basis), "Basis size mismatch");
+static_assert(sizeof(Fox_basis) == sizeof(Basis), "Basis size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_basis_new(godot_basis *p_self) {
+void GDAPI Fox_basis_new(Fox_basis *p_self) {
 	memnew_placement(p_self, Basis);
 }
 
-void GDAPI godot_basis_new_copy(godot_basis *r_dest, const godot_basis *p_src) {
+void GDAPI Fox_basis_new_copy(Fox_basis *r_dest, const Fox_basis *p_src) {
 	memnew_placement(r_dest, Basis(*(Basis *)p_src));
 }
 
-godot_vector3 GDAPI *godot_basis_operator_index(godot_basis *p_self, godot_int p_index) {
+Fox_vector3 GDAPI *Fox_basis_operator_index(Fox_basis *p_self, Fox_int p_index) {
 	Basis *self = (Basis *)p_self;
-	return (godot_vector3 *)&self->operator[](p_index);
+	return (Fox_vector3 *)&self->operator[](p_index);
 }
 
-const godot_vector3 GDAPI *godot_basis_operator_index_const(const godot_basis *p_self, godot_int p_index) {
+const Fox_vector3 GDAPI *Fox_basis_operator_index_const(const Fox_basis *p_self, Fox_int p_index) {
 	const Basis *self = (const Basis *)p_self;
-	return (const godot_vector3 *)&self->operator[](p_index);
+	return (const Fox_vector3 *)&self->operator[](p_index);
 }
 
 #ifdef __cplusplus

@@ -1,6 +1,6 @@
 using System;
 
-namespace Godot
+namespace Fox
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class AssemblyHasScriptsAttribute : Attribute

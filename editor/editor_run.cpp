@@ -2,11 +2,11 @@
 /*  editor_run.cpp                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -187,7 +187,7 @@ Error EditorRun::run(const String &p_scene, const String &p_custom_args, const L
 
 	if (p_custom_args != "") {
 		// Allow the user to specify a command to run, similar to Steam's launch options.
-		// In this case, Godot will no longer be run directly; it's up to the underlying command
+		// In this case, Fox will no longer be run directly; it's up to the underlying command
 		// to run it. For instance, this can be used on Linux to force a running project
 		// to use Optimus using `prime-run` or similar.
 		// Example: `prime-run %command% --time-scale 0.5`
@@ -203,7 +203,7 @@ Error EditorRun::run(const String &p_scene, const String &p_custom_args, const L
 				exec = exec_args[0];
 				exec_args.remove(0);
 
-				// Append the Godot executable name before we append executable arguments
+				// Append the Fox executable name before we append executable arguments
 				// (since the order is reversed when using `push_front()`).
 				args.push_front(OS::get_singleton()->get_executable_path());
 			}
@@ -213,13 +213,13 @@ Error EditorRun::run(const String &p_scene, const String &p_custom_args, const L
 				args.push_front(exec_args[i].replace(" ", "%20"));
 			}
 
-			// Append Godot-specific custom arguments.
+			// Append Fox-specific custom arguments.
 			custom_args = p_custom_args.substr(placeholder_pos + String("%command%").size()).split(" ", false);
 			for (int i = 0; i < custom_args.size(); i++) {
 				args.push_back(custom_args[i].replace(" ", "%20"));
 			}
 		} else {
-			// Append Godot-specific custom arguments.
+			// Append Fox-specific custom arguments.
 			custom_args = p_custom_args.split(" ", false);
 			for (int i = 0; i < custom_args.size(); i++) {
 				args.push_back(custom_args[i].replace(" ", "%20"));

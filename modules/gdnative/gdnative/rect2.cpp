@@ -2,11 +2,11 @@
 /*  rect2.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,26 +32,26 @@
 
 #include "core/math/rect2.h"
 
-static_assert(sizeof(godot_rect2) == sizeof(Rect2), "Rect2 size mismatch");
-static_assert(sizeof(godot_rect2i) == sizeof(Rect2i), "Rect2i size mismatch");
+static_assert(sizeof(Fox_rect2) == sizeof(Rect2), "Rect2 size mismatch");
+static_assert(sizeof(Fox_rect2i) == sizeof(Rect2i), "Rect2i size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_rect2_new(godot_rect2 *p_self) {
+void GDAPI Fox_rect2_new(Fox_rect2 *p_self) {
 	memnew_placement(p_self, Rect2);
 }
 
-void GDAPI godot_rect2_new_copy(godot_rect2 *r_dest, const godot_rect2 *p_src) {
+void GDAPI Fox_rect2_new_copy(Fox_rect2 *r_dest, const Fox_rect2 *p_src) {
 	memnew_placement(r_dest, Rect2(*(Rect2 *)p_src));
 }
 
-void GDAPI godot_rect2i_new(godot_rect2i *p_self) {
+void GDAPI Fox_rect2i_new(Fox_rect2i *p_self) {
 	memnew_placement(p_self, Rect2i);
 }
 
-void GDAPI godot_rect2i_new_copy(godot_rect2i *r_dest, const godot_rect2i *p_src) {
+void GDAPI Fox_rect2i_new_copy(Fox_rect2i *r_dest, const Fox_rect2i *p_src) {
 	memnew_placement(r_dest, Rect2i(*(Rect2i *)p_src));
 }
 

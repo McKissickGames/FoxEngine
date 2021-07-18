@@ -2,11 +2,11 @@
 /*  display_server_android.cpp                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,8 +32,8 @@
 
 #include "android_keys_utils.h"
 #include "core/config/project_settings.h"
-#include "java_godot_io_wrapper.h"
-#include "java_godot_wrapper.h"
+#include "java_Fox_io_wrapper.h"
+#include "java_Fox_wrapper.h"
 #include "os_android.h"
 
 #if defined(VULKAN_ENABLED)
@@ -76,32 +76,32 @@ String DisplayServerAndroid::get_name() const {
 }
 
 void DisplayServerAndroid::clipboard_set(const String &p_text) {
-	GodotJavaWrapper *godot_java = OS_Android::get_singleton()->get_godot_java();
-	ERR_FAIL_COND(!godot_java);
+	FoxJavaWrapper *Fox_java = OS_Android::get_singleton()->get_Fox_java();
+	ERR_FAIL_COND(!Fox_java);
 
-	if (godot_java->has_set_clipboard()) {
-		godot_java->set_clipboard(p_text);
+	if (Fox_java->has_set_clipboard()) {
+		Fox_java->set_clipboard(p_text);
 	} else {
 		DisplayServer::clipboard_set(p_text);
 	}
 }
 
 String DisplayServerAndroid::clipboard_get() const {
-	GodotJavaWrapper *godot_java = OS_Android::get_singleton()->get_godot_java();
-	ERR_FAIL_COND_V(!godot_java, String());
+	FoxJavaWrapper *Fox_java = OS_Android::get_singleton()->get_Fox_java();
+	ERR_FAIL_COND_V(!Fox_java, String());
 
-	if (godot_java->has_get_clipboard()) {
-		return godot_java->get_clipboard();
+	if (Fox_java->has_get_clipboard()) {
+		return Fox_java->get_clipboard();
 	} else {
 		return DisplayServer::clipboard_get();
 	}
 }
 
 void DisplayServerAndroid::screen_set_keep_on(bool p_enable) {
-	GodotJavaWrapper *godot_java = OS_Android::get_singleton()->get_godot_java();
-	ERR_FAIL_COND(!godot_java);
+	FoxJavaWrapper *Fox_java = OS_Android::get_singleton()->get_Fox_java();
+	ERR_FAIL_COND(!Fox_java);
 
-	godot_java->set_keep_screen_on(p_enable);
+	Fox_java->set_keep_screen_on(p_enable);
 	keep_screen_on = p_enable;
 }
 
@@ -110,17 +110,17 @@ bool DisplayServerAndroid::screen_is_kept_on() const {
 }
 
 void DisplayServerAndroid::screen_set_orientation(DisplayServer::ScreenOrientation p_orientation, int p_screen) {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND(!godot_io_java);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND(!Fox_io_java);
 
-	godot_io_java->set_screen_orientation(p_orientation);
+	Fox_io_java->set_screen_orientation(p_orientation);
 }
 
 DisplayServer::ScreenOrientation DisplayServerAndroid::screen_get_orientation(int p_screen) const {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND_V(!godot_io_java, SCREEN_LANDSCAPE);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND_V(!Fox_io_java, SCREEN_LANDSCAPE);
 
-	return (ScreenOrientation)godot_io_java->get_screen_orientation();
+	return (ScreenOrientation)Fox_io_java->get_screen_orientation();
 }
 
 int DisplayServerAndroid::get_screen_count() const {
@@ -136,18 +136,18 @@ Size2i DisplayServerAndroid::screen_get_size(int p_screen) const {
 }
 
 Rect2i DisplayServerAndroid::screen_get_usable_rect(int p_screen) const {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND_V(!godot_io_java, Rect2i());
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND_V(!Fox_io_java, Rect2i());
 	int xywh[4];
-	godot_io_java->screen_get_usable_rect(xywh);
+	Fox_io_java->screen_get_usable_rect(xywh);
 	return Rect2i(xywh[0], xywh[1], xywh[2], xywh[3]);
 }
 
 int DisplayServerAndroid::screen_get_dpi(int p_screen) const {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND_V(!godot_io_java, 0);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND_V(!Fox_io_java, 0);
 
-	return godot_io_java->get_screen_dpi();
+	return Fox_io_java->get_screen_dpi();
 }
 
 bool DisplayServerAndroid::screen_is_touchscreen(int p_screen) const {
@@ -155,32 +155,32 @@ bool DisplayServerAndroid::screen_is_touchscreen(int p_screen) const {
 }
 
 void DisplayServerAndroid::virtual_keyboard_show(const String &p_existing_text, const Rect2 &p_screen_rect, bool p_multiline, int p_max_length, int p_cursor_start, int p_cursor_end) {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND(!godot_io_java);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND(!Fox_io_java);
 
-	if (godot_io_java->has_vk()) {
-		godot_io_java->show_vk(p_existing_text, p_multiline, p_max_length, p_cursor_start, p_cursor_end);
+	if (Fox_io_java->has_vk()) {
+		Fox_io_java->show_vk(p_existing_text, p_multiline, p_max_length, p_cursor_start, p_cursor_end);
 	} else {
 		ERR_PRINT("Virtual keyboard not available");
 	}
 }
 
 void DisplayServerAndroid::virtual_keyboard_hide() {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND(!godot_io_java);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND(!Fox_io_java);
 
-	if (godot_io_java->has_vk()) {
-		godot_io_java->hide_vk();
+	if (Fox_io_java->has_vk()) {
+		Fox_io_java->hide_vk();
 	} else {
 		ERR_PRINT("Virtual keyboard not available");
 	}
 }
 
 int DisplayServerAndroid::virtual_keyboard_get_height() const {
-	GodotIOJavaWrapper *godot_io_java = OS_Android::get_singleton()->get_godot_io_java();
-	ERR_FAIL_COND_V(!godot_io_java, 0);
+	FoxIOJavaWrapper *Fox_io_java = OS_Android::get_singleton()->get_Fox_io_java();
+	ERR_FAIL_COND_V(!Fox_io_java, 0);
 
-	return godot_io_java->get_vk_height();
+	return Fox_io_java->get_vk_height();
 }
 
 void DisplayServerAndroid::window_set_window_event_callback(const Callable &p_callable, DisplayServer::WindowID p_window) {
@@ -335,10 +335,10 @@ bool DisplayServerAndroid::can_any_window_draw() const {
 }
 
 void DisplayServerAndroid::alert(const String &p_alert, const String &p_title) {
-	GodotJavaWrapper *godot_java = OS_Android::get_singleton()->get_godot_java();
-	ERR_FAIL_COND(!godot_java);
+	FoxJavaWrapper *Fox_java = OS_Android::get_singleton()->get_Fox_java();
+	ERR_FAIL_COND(!Fox_java);
 
-	godot_java->alert(p_alert, p_title);
+	Fox_java->alert(p_alert, p_title);
 }
 
 void DisplayServerAndroid::process_events() {
@@ -696,7 +696,7 @@ void DisplayServerAndroid::process_hover(int p_type, Point2 p_pos) {
 }
 
 void DisplayServerAndroid::process_mouse_event(int input_device, int event_action, int event_android_buttons_mask, Point2 event_pos, float event_vertical_factor, float event_horizontal_factor) {
-	MouseButton event_buttons_mask = _android_button_mask_to_godot_button_mask(event_android_buttons_mask);
+	MouseButton event_buttons_mask = _android_button_mask_to_Fox_button_mask(event_android_buttons_mask);
 	switch (event_action) {
 		case AMOTION_EVENT_ACTION_BUTTON_PRESS:
 		case AMOTION_EVENT_ACTION_BUTTON_RELEASE: {
@@ -778,7 +778,7 @@ void DisplayServerAndroid::_wheel_button_click(MouseButton event_buttons_mask, c
 }
 
 void DisplayServerAndroid::process_double_tap(int event_android_button_mask, Point2 p_pos) {
-	MouseButton event_button_mask = _android_button_mask_to_godot_button_mask(event_android_button_mask);
+	MouseButton event_button_mask = _android_button_mask_to_Fox_button_mask(event_android_button_mask);
 	Ref<InputEventMouseButton> ev;
 	ev.instantiate();
 	_set_key_modifier_state(ev);
@@ -840,15 +840,15 @@ void DisplayServerAndroid::mouse_set_mode(MouseMode p_mode) {
 	}
 
 	if (p_mode == MouseMode::MOUSE_MODE_HIDDEN) {
-		OS_Android::get_singleton()->get_godot_java()->get_godot_view()->set_pointer_icon(CURSOR_TYPE_NULL);
+		OS_Android::get_singleton()->get_Fox_java()->get_Fox_view()->set_pointer_icon(CURSOR_TYPE_NULL);
 	} else {
 		cursor_set_shape(cursor_shape);
 	}
 
 	if (p_mode == MouseMode::MOUSE_MODE_CAPTURED) {
-		OS_Android::get_singleton()->get_godot_java()->get_godot_view()->request_pointer_capture();
+		OS_Android::get_singleton()->get_Fox_java()->get_Fox_view()->request_pointer_capture();
 	} else {
-		OS_Android::get_singleton()->get_godot_java()->get_godot_view()->release_pointer_capture();
+		OS_Android::get_singleton()->get_Fox_java()->get_Fox_view()->release_pointer_capture();
 	}
 
 	mouse_mode = p_mode;
@@ -866,25 +866,25 @@ MouseButton DisplayServerAndroid::mouse_get_button_state() const {
 	return buttons_state;
 }
 
-MouseButton DisplayServerAndroid::_android_button_mask_to_godot_button_mask(int android_button_mask) {
-	MouseButton godot_button_mask = MOUSE_BUTTON_NONE;
+MouseButton DisplayServerAndroid::_android_button_mask_to_Fox_button_mask(int android_button_mask) {
+	MouseButton Fox_button_mask = MOUSE_BUTTON_NONE;
 	if (android_button_mask & AMOTION_EVENT_BUTTON_PRIMARY) {
-		godot_button_mask |= MOUSE_BUTTON_MASK_LEFT;
+		Fox_button_mask |= MOUSE_BUTTON_MASK_LEFT;
 	}
 	if (android_button_mask & AMOTION_EVENT_BUTTON_SECONDARY) {
-		godot_button_mask |= MOUSE_BUTTON_MASK_RIGHT;
+		Fox_button_mask |= MOUSE_BUTTON_MASK_RIGHT;
 	}
 	if (android_button_mask & AMOTION_EVENT_BUTTON_TERTIARY) {
-		godot_button_mask |= MOUSE_BUTTON_MASK_MIDDLE;
+		Fox_button_mask |= MOUSE_BUTTON_MASK_MIDDLE;
 	}
 	if (android_button_mask & AMOTION_EVENT_BUTTON_BACK) {
-		godot_button_mask |= MOUSE_BUTTON_MASK_XBUTTON1;
+		Fox_button_mask |= MOUSE_BUTTON_MASK_XBUTTON1;
 	}
 	if (android_button_mask & AMOTION_EVENT_BUTTON_SECONDARY) {
-		godot_button_mask |= MOUSE_BUTTON_MASK_XBUTTON2;
+		Fox_button_mask |= MOUSE_BUTTON_MASK_XBUTTON2;
 	}
 
-	return godot_button_mask;
+	return Fox_button_mask;
 }
 
 void DisplayServerAndroid::cursor_set_shape(DisplayServer::CursorShape p_shape) {
@@ -895,7 +895,7 @@ void DisplayServerAndroid::cursor_set_shape(DisplayServer::CursorShape p_shape) 
 	cursor_shape = p_shape;
 
 	if (mouse_mode == MouseMode::MOUSE_MODE_VISIBLE || mouse_mode == MouseMode::MOUSE_MODE_CONFINED) {
-		OS_Android::get_singleton()->get_godot_java()->get_godot_view()->set_pointer_icon(android_cursors[cursor_shape]);
+		OS_Android::get_singleton()->get_Fox_java()->get_Fox_view()->set_pointer_icon(android_cursors[cursor_shape]);
 	}
 }
 

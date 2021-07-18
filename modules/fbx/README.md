@@ -47,9 +47,9 @@ Bones in FBX are nodes, they initially have the Model:: Type, then have links to
 is part of the skin there is also an explicit Skin link, which then links to the geometry using OO links in the
 document.
 
-# Rotation Order in FBX compared to Godot
+# Rotation Order in FBX compared to Fox
 
-**Godot uses the rotation order:** YXZ
+**Fox uses the rotation order:** YXZ
 
 **FBX has dynamic rotation order to prevent gimbal lock with complex animations**
 
@@ -132,7 +132,7 @@ enum TransformInheritance {
 
 # Axis in FBX
 
-Godot has one format for the declared axis
+Fox has one format for the declared axis
 
 AXIS X, AXIS Y, -AXIS Z
 
@@ -172,7 +172,7 @@ Coord is X
 Up is Y
 Front is Z
 
-#### GODOT - constant reference point
+#### Fox - constant reference point
 Coord is X positive,
 Y is up positive,
 Front is -Z negative

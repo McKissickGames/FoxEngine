@@ -2,11 +2,11 @@
 /*  dom_keys.inc                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -31,44 +31,44 @@
 #include "core/os/keyboard.h"
 
 // See https://w3c.github.io/uievents-code/#code-value-tables
-int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], bool p_physical) {
-#define DOM2GODOT(p_str, p_godot_code)                                         \
+int dom_code2Fox_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], bool p_physical) {
+#define DOM2Fox(p_str, p_Fox_code)                                         \
 	if (memcmp((const void *)p_str, (void *)p_code, strlen(p_str) + 1) == 0) { \
-		return KEY_##p_godot_code;                                             \
+		return KEY_##p_Fox_code;                                             \
 	}
 
 	// Numpad section.
-	DOM2GODOT("NumLock", NUMLOCK);
-	DOM2GODOT("Numpad0", KP_0);
-	DOM2GODOT("Numpad1", KP_1);
-	DOM2GODOT("Numpad2", KP_2);
-	DOM2GODOT("Numpad3", KP_3);
-	DOM2GODOT("Numpad4", KP_4);
-	DOM2GODOT("Numpad5", KP_5);
-	DOM2GODOT("Numpad6", KP_6);
-	DOM2GODOT("Numpad7", KP_7);
-	DOM2GODOT("Numpad8", KP_8);
-	DOM2GODOT("Numpad9", KP_9);
-	DOM2GODOT("NumpadAdd", KP_ADD);
-	DOM2GODOT("NumpadBackspace", BACKSPACE);
-	DOM2GODOT("NumpadClear", CLEAR);
-	DOM2GODOT("NumpadClearEntry", CLEAR);
-	//DOM2GODOT("NumpadComma", UNKNOWN);
-	DOM2GODOT("NumpadDecimal", KP_PERIOD);
-	DOM2GODOT("NumpadDivide", KP_DIVIDE);
-	DOM2GODOT("NumpadEnter", KP_ENTER);
-	DOM2GODOT("NumpadEqual", EQUAL);
-	//DOM2GODOT("NumpadHash", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryAdd", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryClear", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryRecall", UNKNOWN);
-	//DOM2GODOT("NumpadMemoryStore", UNKNOWN);
-	//DOM2GODOT("NumpadMemorySubtract", UNKNOWN);
-	DOM2GODOT("NumpadMultiply", KP_MULTIPLY);
-	DOM2GODOT("NumpadParenLeft", PARENLEFT);
-	DOM2GODOT("NumpadParenRight", PARENRIGHT);
-	DOM2GODOT("NumpadStar", KP_MULTIPLY); // or ASTERISK ?
-	DOM2GODOT("NumpadSubtract", KP_SUBTRACT);
+	DOM2Fox("NumLock", NUMLOCK);
+	DOM2Fox("Numpad0", KP_0);
+	DOM2Fox("Numpad1", KP_1);
+	DOM2Fox("Numpad2", KP_2);
+	DOM2Fox("Numpad3", KP_3);
+	DOM2Fox("Numpad4", KP_4);
+	DOM2Fox("Numpad5", KP_5);
+	DOM2Fox("Numpad6", KP_6);
+	DOM2Fox("Numpad7", KP_7);
+	DOM2Fox("Numpad8", KP_8);
+	DOM2Fox("Numpad9", KP_9);
+	DOM2Fox("NumpadAdd", KP_ADD);
+	DOM2Fox("NumpadBackspace", BACKSPACE);
+	DOM2Fox("NumpadClear", CLEAR);
+	DOM2Fox("NumpadClearEntry", CLEAR);
+	//DOM2Fox("NumpadComma", UNKNOWN);
+	DOM2Fox("NumpadDecimal", KP_PERIOD);
+	DOM2Fox("NumpadDivide", KP_DIVIDE);
+	DOM2Fox("NumpadEnter", KP_ENTER);
+	DOM2Fox("NumpadEqual", EQUAL);
+	//DOM2Fox("NumpadHash", UNKNOWN);
+	//DOM2Fox("NumpadMemoryAdd", UNKNOWN);
+	//DOM2Fox("NumpadMemoryClear", UNKNOWN);
+	//DOM2Fox("NumpadMemoryRecall", UNKNOWN);
+	//DOM2Fox("NumpadMemoryStore", UNKNOWN);
+	//DOM2Fox("NumpadMemorySubtract", UNKNOWN);
+	DOM2Fox("NumpadMultiply", KP_MULTIPLY);
+	DOM2Fox("NumpadParenLeft", PARENLEFT);
+	DOM2Fox("NumpadParenRight", PARENRIGHT);
+	DOM2Fox("NumpadStar", KP_MULTIPLY); // or ASTERISK ?
+	DOM2Fox("NumpadSubtract", KP_SUBTRACT);
 
 	// Printable ASCII.
 	if (!p_physical) {
@@ -100,133 +100,133 @@ int dom_code2godot_scancode(EM_UTF8 const p_code[32], EM_UTF8 const p_key[32], b
 	}
 
 	// Alphanumeric section.
-	DOM2GODOT("Backquote", QUOTELEFT);
-	DOM2GODOT("Backslash", BACKSLASH);
-	DOM2GODOT("BracketLeft", BRACKETLEFT);
-	DOM2GODOT("BracketRight", BRACKETRIGHT);
-	DOM2GODOT("Comma", COMMA);
-	DOM2GODOT("Digit0", 0);
-	DOM2GODOT("Digit1", 1);
-	DOM2GODOT("Digit2", 2);
-	DOM2GODOT("Digit3", 3);
-	DOM2GODOT("Digit4", 4);
-	DOM2GODOT("Digit5", 5);
-	DOM2GODOT("Digit6", 6);
-	DOM2GODOT("Digit7", 7);
-	DOM2GODOT("Digit8", 8);
-	DOM2GODOT("Digit9", 9);
-	DOM2GODOT("Equal", EQUAL);
-	DOM2GODOT("IntlBackslash", BACKSLASH);
-	//DOM2GODOT("IntlRo", UNKNOWN);
-	DOM2GODOT("IntlYen", YEN);
+	DOM2Fox("Backquote", QUOTELEFT);
+	DOM2Fox("Backslash", BACKSLASH);
+	DOM2Fox("BracketLeft", BRACKETLEFT);
+	DOM2Fox("BracketRight", BRACKETRIGHT);
+	DOM2Fox("Comma", COMMA);
+	DOM2Fox("Digit0", 0);
+	DOM2Fox("Digit1", 1);
+	DOM2Fox("Digit2", 2);
+	DOM2Fox("Digit3", 3);
+	DOM2Fox("Digit4", 4);
+	DOM2Fox("Digit5", 5);
+	DOM2Fox("Digit6", 6);
+	DOM2Fox("Digit7", 7);
+	DOM2Fox("Digit8", 8);
+	DOM2Fox("Digit9", 9);
+	DOM2Fox("Equal", EQUAL);
+	DOM2Fox("IntlBackslash", BACKSLASH);
+	//DOM2Fox("IntlRo", UNKNOWN);
+	DOM2Fox("IntlYen", YEN);
 
-	DOM2GODOT("KeyA", A);
-	DOM2GODOT("KeyB", B);
-	DOM2GODOT("KeyC", C);
-	DOM2GODOT("KeyD", D);
-	DOM2GODOT("KeyE", E);
-	DOM2GODOT("KeyF", F);
-	DOM2GODOT("KeyG", G);
-	DOM2GODOT("KeyH", H);
-	DOM2GODOT("KeyI", I);
-	DOM2GODOT("KeyJ", J);
-	DOM2GODOT("KeyK", K);
-	DOM2GODOT("KeyL", L);
-	DOM2GODOT("KeyM", M);
-	DOM2GODOT("KeyN", N);
-	DOM2GODOT("KeyO", O);
-	DOM2GODOT("KeyP", P);
-	DOM2GODOT("KeyQ", Q);
-	DOM2GODOT("KeyR", R);
-	DOM2GODOT("KeyS", S);
-	DOM2GODOT("KeyT", T);
-	DOM2GODOT("KeyU", U);
-	DOM2GODOT("KeyV", V);
-	DOM2GODOT("KeyW", W);
-	DOM2GODOT("KeyX", X);
-	DOM2GODOT("KeyY", Y);
-	DOM2GODOT("KeyZ", Z);
+	DOM2Fox("KeyA", A);
+	DOM2Fox("KeyB", B);
+	DOM2Fox("KeyC", C);
+	DOM2Fox("KeyD", D);
+	DOM2Fox("KeyE", E);
+	DOM2Fox("KeyF", F);
+	DOM2Fox("KeyG", G);
+	DOM2Fox("KeyH", H);
+	DOM2Fox("KeyI", I);
+	DOM2Fox("KeyJ", J);
+	DOM2Fox("KeyK", K);
+	DOM2Fox("KeyL", L);
+	DOM2Fox("KeyM", M);
+	DOM2Fox("KeyN", N);
+	DOM2Fox("KeyO", O);
+	DOM2Fox("KeyP", P);
+	DOM2Fox("KeyQ", Q);
+	DOM2Fox("KeyR", R);
+	DOM2Fox("KeyS", S);
+	DOM2Fox("KeyT", T);
+	DOM2Fox("KeyU", U);
+	DOM2Fox("KeyV", V);
+	DOM2Fox("KeyW", W);
+	DOM2Fox("KeyX", X);
+	DOM2Fox("KeyY", Y);
+	DOM2Fox("KeyZ", Z);
 
-	DOM2GODOT("Minus", MINUS);
-	DOM2GODOT("Period", PERIOD);
-	DOM2GODOT("Quote", APOSTROPHE);
-	DOM2GODOT("Semicolon", SEMICOLON);
-	DOM2GODOT("Slash", SLASH);
+	DOM2Fox("Minus", MINUS);
+	DOM2Fox("Period", PERIOD);
+	DOM2Fox("Quote", APOSTROPHE);
+	DOM2Fox("Semicolon", SEMICOLON);
+	DOM2Fox("Slash", SLASH);
 
 	// Functional keys in the Alphanumeric section.
-	DOM2GODOT("AltLeft", ALT);
-	DOM2GODOT("AltRight", ALT);
-	DOM2GODOT("Backspace", BACKSPACE);
-	DOM2GODOT("CapsLock", CAPSLOCK);
-	DOM2GODOT("ContextMenu", MENU);
-	DOM2GODOT("ControlLeft", CTRL);
-	DOM2GODOT("ControlRight", CTRL);
-	DOM2GODOT("Enter", ENTER);
-	DOM2GODOT("MetaLeft", SUPER_L);
-	DOM2GODOT("MetaRight", SUPER_R);
-	DOM2GODOT("ShiftLeft", SHIFT);
-	DOM2GODOT("ShiftRight", SHIFT);
-	DOM2GODOT("Space", SPACE);
-	DOM2GODOT("Tab", TAB);
+	DOM2Fox("AltLeft", ALT);
+	DOM2Fox("AltRight", ALT);
+	DOM2Fox("Backspace", BACKSPACE);
+	DOM2Fox("CapsLock", CAPSLOCK);
+	DOM2Fox("ContextMenu", MENU);
+	DOM2Fox("ControlLeft", CTRL);
+	DOM2Fox("ControlRight", CTRL);
+	DOM2Fox("Enter", ENTER);
+	DOM2Fox("MetaLeft", SUPER_L);
+	DOM2Fox("MetaRight", SUPER_R);
+	DOM2Fox("ShiftLeft", SHIFT);
+	DOM2Fox("ShiftRight", SHIFT);
+	DOM2Fox("Space", SPACE);
+	DOM2Fox("Tab", TAB);
 
 	// ControlPad section.
-	DOM2GODOT("Delete", DELETE);
-	DOM2GODOT("End", END);
-	DOM2GODOT("Help", HELP);
-	DOM2GODOT("Home", HOME);
-	DOM2GODOT("Insert", INSERT);
-	DOM2GODOT("PageDown", PAGEDOWN);
-	DOM2GODOT("PageUp", PAGEUP);
+	DOM2Fox("Delete", DELETE);
+	DOM2Fox("End", END);
+	DOM2Fox("Help", HELP);
+	DOM2Fox("Home", HOME);
+	DOM2Fox("Insert", INSERT);
+	DOM2Fox("PageDown", PAGEDOWN);
+	DOM2Fox("PageUp", PAGEUP);
 
 	// ArrowPad section.
-	DOM2GODOT("ArrowDown", DOWN);
-	DOM2GODOT("ArrowLeft", LEFT);
-	DOM2GODOT("ArrowRight", RIGHT);
-	DOM2GODOT("ArrowUp", UP);
+	DOM2Fox("ArrowDown", DOWN);
+	DOM2Fox("ArrowLeft", LEFT);
+	DOM2Fox("ArrowRight", RIGHT);
+	DOM2Fox("ArrowUp", UP);
 
 	// Function section.
-	DOM2GODOT("Escape", ESCAPE);
-	DOM2GODOT("F1", F1);
-	DOM2GODOT("F2", F2);
-	DOM2GODOT("F3", F3);
-	DOM2GODOT("F4", F4);
-	DOM2GODOT("F5", F5);
-	DOM2GODOT("F6", F6);
-	DOM2GODOT("F7", F7);
-	DOM2GODOT("F8", F8);
-	DOM2GODOT("F9", F9);
-	DOM2GODOT("F10", F10);
-	DOM2GODOT("F11", F11);
-	DOM2GODOT("F12", F12);
-	//DOM2GODOT("Fn", UNKNOWN); // never actually fired, but included in the standard draft.
-	//DOM2GODOT("FnLock", UNKNOWN);
-	DOM2GODOT("PrintScreen", PRINT);
-	DOM2GODOT("ScrollLock", SCROLLLOCK);
-	DOM2GODOT("Pause", PAUSE);
+	DOM2Fox("Escape", ESCAPE);
+	DOM2Fox("F1", F1);
+	DOM2Fox("F2", F2);
+	DOM2Fox("F3", F3);
+	DOM2Fox("F4", F4);
+	DOM2Fox("F5", F5);
+	DOM2Fox("F6", F6);
+	DOM2Fox("F7", F7);
+	DOM2Fox("F8", F8);
+	DOM2Fox("F9", F9);
+	DOM2Fox("F10", F10);
+	DOM2Fox("F11", F11);
+	DOM2Fox("F12", F12);
+	//DOM2Fox("Fn", UNKNOWN); // never actually fired, but included in the standard draft.
+	//DOM2Fox("FnLock", UNKNOWN);
+	DOM2Fox("PrintScreen", PRINT);
+	DOM2Fox("ScrollLock", SCROLLLOCK);
+	DOM2Fox("Pause", PAUSE);
 
 	// Media keys section.
-	DOM2GODOT("BrowserBack", BACK);
-	DOM2GODOT("BrowserFavorites", FAVORITES);
-	DOM2GODOT("BrowserForward", FORWARD);
-	DOM2GODOT("BrowserHome", OPENURL);
-	DOM2GODOT("BrowserRefresh", REFRESH);
-	DOM2GODOT("BrowserSearch", SEARCH);
-	DOM2GODOT("BrowserStop", STOP);
-	//DOM2GODOT("Eject", UNKNOWN);
-	DOM2GODOT("LaunchApp1", LAUNCH0);
-	DOM2GODOT("LaunchApp2", LAUNCH1);
-	DOM2GODOT("LaunchMail", LAUNCHMAIL);
-	DOM2GODOT("MediaPlayPause", MEDIAPLAY);
-	DOM2GODOT("MediaSelect", LAUNCHMEDIA);
-	DOM2GODOT("MediaStop", MEDIASTOP);
-	DOM2GODOT("MediaTrackNext", MEDIANEXT);
-	DOM2GODOT("MediaTrackPrevious", MEDIAPREVIOUS);
-	//DOM2GODOT("Power", UNKNOWN);
-	//DOM2GODOT("Sleep", UNKNOWN);
-	DOM2GODOT("AudioVolumeDown", VOLUMEDOWN);
-	DOM2GODOT("AudioVolumeMute", VOLUMEMUTE);
-	DOM2GODOT("AudioVolumeUp", VOLUMEUP);
-	//DOM2GODOT("WakeUp", UNKNOWN);
+	DOM2Fox("BrowserBack", BACK);
+	DOM2Fox("BrowserFavorites", FAVORITES);
+	DOM2Fox("BrowserForward", FORWARD);
+	DOM2Fox("BrowserHome", OPENURL);
+	DOM2Fox("BrowserRefresh", REFRESH);
+	DOM2Fox("BrowserSearch", SEARCH);
+	DOM2Fox("BrowserStop", STOP);
+	//DOM2Fox("Eject", UNKNOWN);
+	DOM2Fox("LaunchApp1", LAUNCH0);
+	DOM2Fox("LaunchApp2", LAUNCH1);
+	DOM2Fox("LaunchMail", LAUNCHMAIL);
+	DOM2Fox("MediaPlayPause", MEDIAPLAY);
+	DOM2Fox("MediaSelect", LAUNCHMEDIA);
+	DOM2Fox("MediaStop", MEDIASTOP);
+	DOM2Fox("MediaTrackNext", MEDIANEXT);
+	DOM2Fox("MediaTrackPrevious", MEDIAPREVIOUS);
+	//DOM2Fox("Power", UNKNOWN);
+	//DOM2Fox("Sleep", UNKNOWN);
+	DOM2Fox("AudioVolumeDown", VOLUMEDOWN);
+	DOM2Fox("AudioVolumeMute", VOLUMEMUTE);
+	DOM2Fox("AudioVolumeUp", VOLUMEUP);
+	//DOM2Fox("WakeUp", UNKNOWN);
 	return KEY_UNKNOWN;
-#undef DOM2GODOT
+#undef DOM2Fox
 }

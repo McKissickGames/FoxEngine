@@ -25,7 +25,7 @@
 
 	[/gdscript]
 	[csharp]
-	using Godot;
+	using Fox;
 	using System;
 	using System.Diagnostics;
 

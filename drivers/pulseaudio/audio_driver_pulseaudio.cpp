@@ -2,11 +2,11 @@
 /*  audio_driver_pulseaudio.cpp                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -187,7 +187,7 @@ Error AudioDriverPulseAudio::init_device() {
 	// Detect the amount of channels PulseAudio is using
 	// Note: If using an even amount of channels (2, 4, etc) channels and pa_map.channels will be equal,
 	// if not then pa_map.channels will have the real amount of channels PulseAudio is using and channels
-	// will have the amount of channels Godot is using (in this case it's pa_map.channels + 1)
+	// will have the amount of channels Fox is using (in this case it's pa_map.channels + 1)
 	Error err = detect_channels();
 	if (err != OK) {
 		// This most likely means there are no sinks.
@@ -293,7 +293,7 @@ Error AudioDriverPulseAudio::init() {
 	pa_ml = pa_mainloop_new();
 	ERR_FAIL_COND_V(pa_ml == nullptr, ERR_CANT_OPEN);
 
-	pa_ctx = pa_context_new(pa_mainloop_get_api(pa_ml), "Godot");
+	pa_ctx = pa_context_new(pa_mainloop_get_api(pa_ml), "Fox");
 	ERR_FAIL_COND_V(pa_ctx == nullptr, ERR_CANT_OPEN);
 
 	pa_ready = 0;

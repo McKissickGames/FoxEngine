@@ -2,11 +2,11 @@
 /*  export.cpp                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -143,7 +143,7 @@ void EditorExportPlatformOSX::get_export_options(List<ExportOption> *r_options) 
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "custom_template/release", PROPERTY_HINT_GLOBAL_FILE, "*.zip"), ""));
 
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/name", PROPERTY_HINT_PLACEHOLDER_TEXT, "Game Name"), ""));
-	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/info"), "Made with Godot Engine"));
+	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/info"), "Made with Fox Engine"));
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/icon", PROPERTY_HINT_FILE, "*.png,*.icns"), ""));
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/bundle_identifier", PROPERTY_HINT_PLACEHOLDER_TEXT, "com.example.game"), ""));
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "application/signature"), ""));
@@ -163,7 +163,7 @@ void EditorExportPlatformOSX::get_export_options(List<ExportOption> *r_options) 
 	r_options->push_back(ExportOption(PropertyInfo(Variant::BOOL, "codesign/replace_existing_signature"), true));
 	r_options->push_back(ExportOption(PropertyInfo(Variant::STRING, "codesign/entitlements/custom_file", PROPERTY_HINT_GLOBAL_FILE, "*.plist"), ""));
 
-	if (!Engine::get_singleton()->has_singleton("GodotSharp")) {
+	if (!Engine::get_singleton()->has_singleton("FoxSharp")) {
 		// These entitlements are required to run managed code, and are always enabled in Mono builds.
 		r_options->push_back(ExportOption(PropertyInfo(Variant::BOOL, "codesign/entitlements/allow_jit_code_execution"), false));
 		r_options->push_back(ExportOption(PropertyInfo(Variant::BOOL, "codesign/entitlements/allow_unsigned_executable_memory"), false));
@@ -417,7 +417,7 @@ void EditorExportPlatformOSX::_fix_plist(const Ref<EditorExportPreset> &p_preset
 }
 
 /**
-	If we're running the OSX version of the Godot editor we'll:
+	If we're running the OSX version of the Fox editor we'll:
 	- export our application bundle to a temporary folder
 	- attempt to code sign it
 	- and then wrap it up in a DMG
@@ -601,7 +601,7 @@ Error EditorExportPlatformOSX::export_project(const Ref<EditorExportPreset> &p_p
 
 	int ret = unzGoToFirstFile(src_pkg_zip);
 
-	String binary_to_use = "godot_osx_" + String(p_debug ? "debug" : "release") + ".64";
+	String binary_to_use = "Fox_osx_" + String(p_debug ? "debug" : "release") + ".64";
 
 	String pkg_name;
 	if (p_preset->get("application/name") != "") {
@@ -674,7 +674,7 @@ Error EditorExportPlatformOSX::export_project(const Ref<EditorExportPreset> &p_p
 			_fix_plist(p_preset, data, pkg_name);
 		}
 
-		if (file.begins_with("Contents/MacOS/godot_")) {
+		if (file.begins_with("Contents/MacOS/Fox_")) {
 			if (file != "Contents/MacOS/" + binary_to_use) {
 				ret = unzGoToNextFile(src_pkg_zip);
 				continue; // skip
@@ -719,14 +719,14 @@ Error EditorExportPlatformOSX::export_project(const Ref<EditorExportPreset> &p_p
 					ret = unzGoToNextFile(src_pkg_zip);
 					continue; // skip
 				}
-				file = file.replace("/data.mono.osx.64.release_debug/", "/GodotSharp/");
+				file = file.replace("/data.mono.osx.64.release_debug/", "/FoxSharp/");
 			}
 			if (file.find("/data.mono.osx.64.release/") != -1) {
 				if (p_debug) {
 					ret = unzGoToNextFile(src_pkg_zip);
 					continue; // skip
 				}
-				file = file.replace("/data.mono.osx.64.release/", "/GodotSharp/");
+				file = file.replace("/data.mono.osx.64.release/", "/FoxSharp/");
 			}
 
 			if (file.ends_with(".dylib")) {
@@ -790,7 +790,7 @@ Error EditorExportPlatformOSX::export_project(const Ref<EditorExportPreset> &p_p
 				ent_f->store_line("<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">");
 				ent_f->store_line("<plist version=\"1.0\">");
 				ent_f->store_line("<dict>");
-				if (Engine::get_singleton()->has_singleton("GodotSharp")) {
+				if (Engine::get_singleton()->has_singleton("FoxSharp")) {
 					// These entitlements are required to run managed code, and are always enabled in Mono builds.
 					ent_f->store_line("<key>com.apple.security.cs.allow-jit</key>");
 					ent_f->store_line("<true/>");
@@ -1020,7 +1020,7 @@ void EditorExportPlatformOSX::_zip_folder_recursive(zipFile &p_zip, const String
 			zipfi.tmz_date.tm_hour = time.hour;
 			zipfi.tmz_date.tm_mday = date.day;
 			zipfi.tmz_date.tm_min = time.minute;
-			zipfi.tmz_date.tm_mon = date.month - 1; // Note: "tm" month range - 0..11, Godot month range - 1..12, http://www.cplusplus.com/reference/ctime/tm/
+			zipfi.tmz_date.tm_mon = date.month - 1; // Note: "tm" month range - 0..11, Fox month range - 1..12, http://www.cplusplus.com/reference/ctime/tm/
 			zipfi.tmz_date.tm_sec = time.second;
 			zipfi.tmz_date.tm_year = date.year;
 			zipfi.dosDate = 0;
@@ -1065,7 +1065,7 @@ void EditorExportPlatformOSX::_zip_folder_recursive(zipFile &p_zip, const String
 			zipfi.tmz_date.tm_hour = time.hour;
 			zipfi.tmz_date.tm_mday = date.day;
 			zipfi.tmz_date.tm_min = time.minute;
-			zipfi.tmz_date.tm_mon = date.month - 1; // Note: "tm" month range - 0..11, Godot month range - 1..12, http://www.cplusplus.com/reference/ctime/tm/
+			zipfi.tmz_date.tm_mon = date.month - 1; // Note: "tm" month range - 0..11, Fox month range - 1..12, http://www.cplusplus.com/reference/ctime/tm/
 			zipfi.tmz_date.tm_sec = time.second;
 			zipfi.tmz_date.tm_year = date.year;
 			zipfi.dosDate = 0;

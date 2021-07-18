@@ -2,11 +2,11 @@
 /*  bullet_types_converter.h                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -44,14 +44,14 @@
 	@author AndreaCatania
 */
 
-// Bullet to Godot
+// Bullet to Fox
 extern void B_TO_G(btVector3 const &inVal, Vector3 &outVal);
 extern void INVERT_B_TO_G(btVector3 const &inVal, Vector3 &outVal);
 extern void B_TO_G(btMatrix3x3 const &inVal, Basis &outVal);
 extern void INVERT_B_TO_G(btMatrix3x3 const &inVal, Basis &outVal);
 extern void B_TO_G(btTransform const &inVal, Transform3D &outVal);
 
-// Godot TO Bullet
+// Fox TO Bullet
 extern void G_TO_B(Vector3 const &inVal, btVector3 &outVal);
 extern void INVERT_G_TO_B(Vector3 const &inVal, btVector3 &outVal);
 extern void G_TO_B(Basis const &inVal, btMatrix3x3 &outVal);

@@ -2,11 +2,11 @@
 /*  binder_common.h                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -605,7 +605,7 @@ void call_get_argument_type_info(int p_arg, PropertyInfo &info) {
 }
 
 template <class Q>
-void call_get_argument_metadata_helper(int p_arg, int &index, GodotTypeInfo::Metadata &md) {
+void call_get_argument_metadata_helper(int p_arg, int &index, FoxTypeInfo::Metadata &md) {
 	if (p_arg == index) {
 		md = GetTypeInfo<Q>::METADATA;
 	}
@@ -613,8 +613,8 @@ void call_get_argument_metadata_helper(int p_arg, int &index, GodotTypeInfo::Met
 }
 
 template <class... P>
-GodotTypeInfo::Metadata call_get_argument_metadata(int p_arg) {
-	GodotTypeInfo::Metadata md = GodotTypeInfo::METADATA_NONE;
+FoxTypeInfo::Metadata call_get_argument_metadata(int p_arg) {
+	FoxTypeInfo::Metadata md = FoxTypeInfo::METADATA_NONE;
 
 	int index = 0;
 	// I think rocket science is simpler than modern C++.

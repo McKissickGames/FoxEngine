@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public partial class Object
     {
@@ -12,10 +12,10 @@ namespace Godot
 
         public static WeakRef WeakRef(Object obj)
         {
-            return godot_icall_Object_weakref(Object.GetPtr(obj));
+            return Fox_icall_Object_weakref(Object.GetPtr(obj));
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static WeakRef godot_icall_Object_weakref(IntPtr obj);
+        internal extern static WeakRef Fox_icall_Object_weakref(IntPtr obj);
     }
 }

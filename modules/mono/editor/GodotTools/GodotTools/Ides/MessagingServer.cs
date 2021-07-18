@@ -8,16 +8,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using GodotTools.IdeMessaging;
-using GodotTools.IdeMessaging.Requests;
-using GodotTools.IdeMessaging.Utils;
-using GodotTools.Internals;
-using GodotTools.Utils;
+using FoxTools.IdeMessaging;
+using FoxTools.IdeMessaging.Requests;
+using FoxTools.IdeMessaging.Utils;
+using FoxTools.Internals;
+using FoxTools.Utils;
 using Newtonsoft.Json;
 using Directory = System.IO.Directory;
 using File = System.IO.File;
 
-namespace GodotTools.Ides
+namespace FoxTools.Ides
 {
     public sealed class MessagingServer : IDisposable
     {
@@ -107,12 +107,12 @@ namespace GodotTools.Ides
         {
             this.logger = logger;
 
-            MetaFilePath = Path.Combine(projectMetadataDir, GodotIdeMetadata.DefaultFileName);
+            MetaFilePath = Path.Combine(projectMetadataDir, FoxIdeMetadata.DefaultFileName);
 
             // Make sure the directory exists
             Directory.CreateDirectory(projectMetadataDir);
 
-            // The Godot editor's file system thread can keep the file open for writing, so we are forced to allow write sharing...
+            // The Fox editor's file system thread can keep the file open for writing, so we are forced to allow write sharing...
             const FileShare metaFileShare = FileShare.ReadWrite;
 
             metaFile = File.Open(MetaFilePath, FileMode.Create, FileAccess.Write, metaFileShare);
@@ -208,7 +208,7 @@ namespace GodotTools.Ides
             {
                 if (!IsAnyConnected(identity))
                 {
-                    logger.LogError("Cannot write request. No client connected to the Godot Ide Server.");
+                    logger.LogError("Cannot write request. No client connected to the Fox Ide Server.");
                     return;
                 }
 
@@ -269,7 +269,7 @@ namespace GodotTools.Ides
             private static void DispatchToMainThread(Action action)
             {
                 var d = new SendOrPostCallback(state => action());
-                Godot.Dispatcher.SynchronizationContext.Post(d, null);
+                Fox.Dispatcher.SynchronizationContext.Post(d, null);
             }
 
             private readonly Dictionary<string, Peer.RequestHandler> requestHandlers = InitializeRequestHandlers();
@@ -343,11 +343,11 @@ namespace GodotTools.Ides
                 DispatchToMainThread(() =>
                 {
                     // Tell the build callback whether the editor already built the solution or not
-                    GodotSharpEditor.Instance.SkipBuildBeforePlaying = !(request.BuildBeforePlaying ?? true);
+                    FoxSharpEditor.Instance.SkipBuildBeforePlaying = !(request.BuildBeforePlaying ?? true);
 
                     // Pass the debugger agent settings to the player via an environment variables
                     // TODO: It would be better if this was an argument in EditorRunPlay instead
-                    Environment.SetEnvironmentVariable("GODOT_MONO_DEBUGGER_AGENT",
+                    Environment.SetEnvironmentVariable("Fox_MONO_DEBUGGER_AGENT",
                         "--debugger-agent=transport=dt_socket" +
                         $",address={request.DebuggerHost}:{request.DebuggerPort}" +
                         ",server=n");
@@ -356,8 +356,8 @@ namespace GodotTools.Ides
                     Internal.EditorRunPlay();
 
                     // Restore normal settings
-                    Environment.SetEnvironmentVariable("GODOT_MONO_DEBUGGER_AGENT", "");
-                    GodotSharpEditor.Instance.SkipBuildBeforePlaying = false;
+                    Environment.SetEnvironmentVariable("Fox_MONO_DEBUGGER_AGENT", "");
+                    FoxSharpEditor.Instance.SkipBuildBeforePlaying = false;
                 });
                 return Task.FromResult<Response>(new DebugPlayResponse());
             }

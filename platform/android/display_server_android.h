@@ -2,11 +2,11 @@
 /*  display_server_android.h                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -71,7 +71,7 @@ private:
 	MouseButton buttons_state = MOUSE_BUTTON_NONE;
 
 	// https://developer.android.com/reference/android/view/PointerIcon
-	// mapping between Godot's cursor shape to Android's'
+	// mapping between Fox's cursor shape to Android's'
 	int android_cursors[CURSOR_MAX] = {
 		1000, //CURSOR_ARROW
 		1008, //CURSOR_IBEAM
@@ -122,7 +122,7 @@ private:
 
 	static MouseButton _button_index_from_mask(MouseButton button_mask);
 
-	static MouseButton _android_button_mask_to_godot_button_mask(int android_button_mask);
+	static MouseButton _android_button_mask_to_Fox_button_mask(int android_button_mask);
 
 	void _wheel_button_click(MouseButton event_buttons_mask, const Ref<InputEventMouseButton> &ev, MouseButton wheel_button, float factor);
 

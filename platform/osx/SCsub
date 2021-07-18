@@ -9,14 +9,14 @@ files = [
     "crash_handler_osx.mm",
     "os_osx.mm",
     "display_server_osx.mm",
-    "godot_main_osx.mm",
+    "Fox_main_osx.mm",
     "dir_access_osx.mm",
     "joypad_osx.cpp",
     "vulkan_context_osx.mm",
     "context_gl_osx.mm",
 ]
 
-prog = env.add_program("#bin/godot", files)
+prog = env.add_program("#bin/Fox", files)
 
 if env["debug_symbols"] and env["separate_debug_symbols"]:
     env.AddPostAction(prog, run_in_subprocess(platform_osx_builders.make_debug_osx))

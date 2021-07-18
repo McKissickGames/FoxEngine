@@ -99,9 +99,9 @@
 #define dll_import 
 #endif
 
-// -- GODOT start --
+// -- Fox start --
 #if defined(__WIN32__) && !defined(__MINGW32__)
-// -- GODOT end --
+// -- Fox end --
 #if !defined(__noinline)
 #define __noinline             __declspec(noinline)
 #endif
@@ -151,9 +151,9 @@
   #define DELETED  = delete
 #endif
 
-// -- GODOT start --
+// -- Fox start --
 #if !defined(likely)
-// -- GODOT end --
+// -- Fox end --
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
 #define   likely(expr) (expr)
 #define unlikely(expr) (expr)
@@ -161,9 +161,9 @@
 #define   likely(expr) __builtin_expect((bool)(expr),true )
 #define unlikely(expr) __builtin_expect((bool)(expr),false)
 #endif
-// -- GODOT start --
+// -- Fox start --
 #endif
-// -- GODOT end --
+// -- Fox end --
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Error handling and debugging
@@ -179,19 +179,19 @@
 #define PRINT4(x,y,z,w) embree_cout << STRING(x) << " = " << (x) << ", " << STRING(y) << " = " << (y) << ", " << STRING(z) << " = " << (z) << ", " << STRING(w) << " = " << (w) << embree_endl
 
 #if defined(DEBUG) // only report file and line in debug mode
-  // -- GODOT start --
+  // -- Fox start --
   // #define THROW_RUNTIME_ERROR(str)
   //   throw std::runtime_error(std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str));
   #define THROW_RUNTIME_ERROR(str) \
     printf(std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str)), abort();
-  // -- GODOT end --
+  // -- Fox end --
 #else
-  // -- GODOT start --
+  // -- Fox start --
   // #define THROW_RUNTIME_ERROR(str)
   //   throw std::runtime_error(str);
   #define THROW_RUNTIME_ERROR(str) \
     abort();
-  // -- GODOT end --
+  // -- Fox end --
 #endif
 
 #define FATAL(x)   THROW_RUNTIME_ERROR(x)

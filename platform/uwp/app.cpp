@@ -2,11 +2,11 @@
 /*  app.cpp                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -55,7 +55,7 @@ using namespace Windows::System;
 using namespace Windows::System::Threading::Core;
 using namespace Microsoft::WRL;
 
-using namespace GodotUWP;
+using namespace FoxUWP;
 
 // Helper to convert a length in device-independent pixels (DIPs) to a length in physical pixels.
 inline float ConvertDipsToPixels(float dips, float dpi) {
@@ -64,7 +64,7 @@ inline float ConvertDipsToPixels(float dips, float dpi) {
 }
 
 // Implementation of the IFrameworkViewSource interface, necessary to run our app.
-ref class GodotUWPViewSource sealed : Windows::ApplicationModel::Core::IFrameworkViewSource {
+ref class FoxUWPViewSource sealed : Windows::ApplicationModel::Core::IFrameworkViewSource {
 public:
 	virtual Windows::ApplicationModel::Core::IFrameworkView ^ CreateView() {
 		return ref new App();
@@ -73,8 +73,8 @@ public:
 
 // The main function creates an IFrameworkViewSource for our app, and runs the app.
 [Platform::MTAThread] int main(Platform::Array<Platform::String ^> ^) {
-	auto godotApplicationSource = ref new GodotUWPViewSource();
-	CoreApplication::Run(godotApplicationSource);
+	auto FoxApplicationSource = ref new FoxUWPViewSource();
+	CoreApplication::Run(FoxApplicationSource);
 	return 0;
 }
 

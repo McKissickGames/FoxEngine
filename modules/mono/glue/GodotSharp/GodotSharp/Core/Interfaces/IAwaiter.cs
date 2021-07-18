@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public interface IAwaiter : INotifyCompletion
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// Event arguments for when unhandled exceptions occur.

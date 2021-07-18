@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fox Engine
+GenericName=Libre game engine
+Comment=Multi-platform 2D and 3D game engine with a feature-rich editor
+Exec=Fox %f
+Icon=Fox
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+MimeType=application/x-Fox-project;
+Categories=Development;IDE;

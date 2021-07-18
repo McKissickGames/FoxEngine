@@ -2,11 +2,11 @@
 /*  test_string.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -954,7 +954,7 @@ TEST_CASE("[String] Checking string is empty when it should be") {
 	if (!success) {
 		state = false;
 	}
-	String b = "Godot";
+	String b = "Fox";
 	success = b[b.size()] == 0;
 	if (!success) {
 		state = false;
@@ -965,7 +965,7 @@ TEST_CASE("[String] Checking string is empty when it should be") {
 		state = false;
 	}
 
-	const String d = "Godot";
+	const String d = "Fox";
 	success = d[d.size()] == 0;
 	if (!success) {
 		state = false;
@@ -1079,7 +1079,7 @@ TEST_CASE("[String] Count and countn functionality") {
 	COUNT_TEST(String("Testa").count("Test") == 1);
 	COUNT_TEST(String("TestTestTest").count("Test") == 3);
 	COUNT_TEST(String("TestTestTest").count("TestTest") == 1);
-	COUNT_TEST(String("TestGodotTestGodotTestGodot").count("Test") == 3);
+	COUNT_TEST(String("TestFoxTestFoxTestFox").count("Test") == 3);
 
 	COUNT_TEST(String("TestTestTestTest").count("Test", 4, 8) == 1);
 	COUNT_TEST(String("TestTestTestTest").count("Test", 4, 12) == 2);
@@ -1118,9 +1118,9 @@ TEST_CASE("[String] dedent") {
 }
 
 TEST_CASE("[String] Path functions") {
-	static const char *path[4] = { "C:\\Godot\\project\\test.tscn", "/Godot/project/test.xscn", "../Godot/project/test.scn", "Godot\\test.doc" };
-	static const char *base_dir[4] = { "C:\\Godot\\project", "/Godot/project", "../Godot/project", "Godot" };
-	static const char *base_name[4] = { "C:\\Godot\\project\\test", "/Godot/project/test", "../Godot/project/test", "Godot\\test" };
+	static const char *path[4] = { "C:\\Fox\\project\\test.tscn", "/Fox/project/test.xscn", "../Fox/project/test.scn", "Fox\\test.doc" };
+	static const char *base_dir[4] = { "C:\\Fox\\project", "/Fox/project", "../Fox/project", "Fox" };
+	static const char *base_name[4] = { "C:\\Fox\\project\\test", "/Fox/project/test", "../Fox/project/test", "Fox\\test" };
 	static const char *ext[4] = { "tscn", "xscn", "scn", "doc" };
 	static const char *file[4] = { "test.tscn", "test.xscn", "test.scn", "test.doc" };
 	static const bool abs[4] = { true, true, false, false };
@@ -1154,8 +1154,8 @@ TEST_CASE("[String] hash") {
 }
 
 TEST_CASE("[String] uri_encode/unescape") {
-	String s = "Godot Engine:'docs'";
-	String t = "Godot%20Engine%3A%27docs%27";
+	String s = "Fox Engine:'docs'";
+	String t = "Fox%20Engine%3A%27docs%27";
 
 	String x1 = "T%C4%93%C5%A1t";
 	static const uint8_t u8str[] = { 0x54, 0xC4, 0x93, 0xC5, 0xA1, 0x74, 0x00 };
@@ -1267,7 +1267,7 @@ TEST_CASE("[String] Repeat") {
 }
 
 TEST_CASE("[String] SHA1/SHA256/MD5") {
-	String s = "Godot";
+	String s = "Fox";
 	String sha1 = "a1e91f39b9fce6a9998b14bdbe2aa2b39dc2d201";
 	static uint8_t sha1_buf[20] = {
 		0xA1, 0xE9, 0x1F, 0x39, 0xB9, 0xFC, 0xE6, 0xA9, 0x99, 0x8B, 0x14, 0xBD, 0xBE, 0x2A, 0xA2, 0xB3,

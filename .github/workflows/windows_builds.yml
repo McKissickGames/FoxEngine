@@ -4,7 +4,7 @@ on: [push, pull_request]
 # Global Settings
 # SCONS_CACHE for windows must be set in the build environment
 env:
-  GODOT_BASE_BRANCH: master
+  Fox_BASE_BRANCH: master
   SCONSFLAGS: platform=windows verbose=yes warnings=all werror=yes debug_symbols=no --jobs=2 module_text_server_fb_enabled=yes
   SCONS_CACHE_MSVC_CONFIG: true
   SCONS_CACHE_LIMIT: 3072
@@ -27,11 +27,11 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /.scons_cache/
-        key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+        key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
         restore-keys: |
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
     # Use python 3.x release (works cross platform; best to keep self contained in it's own step)
     - name: Set up Python 3.x
@@ -61,7 +61,7 @@ jobs:
     # Execute unit tests for the editor
     - name: Unit Tests
       run: |
-        ./bin/godot.windows.opt.tools.64.exe --test
+        ./bin/Fox.windows.opt.tools.64.exe --test
 
     - uses: actions/upload-artifact@v2
       with:
@@ -83,11 +83,11 @@ jobs:
       uses: RevoluPowered/cache@v2.1
       with:
         path: /.scons_cache/
-        key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+        key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
         restore-keys: |
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-          ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+          ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
     # Use python 3.x release (works cross platform)
     - name: Set up Python 3.x

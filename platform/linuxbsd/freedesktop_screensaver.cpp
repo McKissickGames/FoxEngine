@@ -2,11 +2,11 @@
 /*  freedesktop_screensaver.cpp                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -56,9 +56,9 @@ void FreeDesktopScreenSaver::inhibit() {
 
 	String app_name_string = ProjectSettings::get_singleton()->get("application/config/name");
 	CharString app_name_utf8 = app_name_string.utf8();
-	const char *app_name = app_name_string.is_empty() ? "Godot Engine" : app_name_utf8.get_data();
+	const char *app_name = app_name_string.is_empty() ? "Fox Engine" : app_name_utf8.get_data();
 
-	const char *reason = "Running Godot Engine project";
+	const char *reason = "Running Fox Engine project";
 
 	DBusMessage *message = dbus_message_new_method_call(
 			BUS_OBJECT_NAME, BUS_OBJECT_PATH, BUS_INTERFACE,

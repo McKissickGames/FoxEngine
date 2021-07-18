@@ -2,11 +2,11 @@
 /*  color.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,26 +32,26 @@
 
 #include "core/math/color.h"
 
-static_assert(sizeof(godot_color) == sizeof(Color), "Color size mismatch");
+static_assert(sizeof(Fox_color) == sizeof(Color), "Color size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_color_new(godot_color *p_self) {
+void GDAPI Fox_color_new(Fox_color *p_self) {
 	memnew_placement(p_self, Color);
 }
 
-void GDAPI godot_color_new_copy(godot_color *r_dest, const godot_color *p_src) {
+void GDAPI Fox_color_new_copy(Fox_color *r_dest, const Fox_color *p_src) {
 	memnew_placement(r_dest, Color(*(Color *)p_src));
 }
 
-float GDAPI *godot_color_operator_index(godot_color *p_self, godot_int p_index) {
+float GDAPI *Fox_color_operator_index(Fox_color *p_self, Fox_int p_index) {
 	Color *self = (Color *)p_self;
 	return (float *)&self->operator[](p_index);
 }
 
-const float GDAPI *godot_color_operator_index_const(const godot_color *p_self, godot_int p_index) {
+const float GDAPI *Fox_color_operator_index_const(const Fox_color *p_self, Fox_int p_index) {
 	const Color *self = (const Color *)p_self;
 	return (const float *)&self->operator[](p_index);
 }

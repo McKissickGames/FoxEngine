@@ -7,7 +7,7 @@
 		This is the built-in string class (and the one used by GDScript). It supports Unicode and provides all necessary means for string handling. Strings are reference-counted and use a copy-on-write approach, so passing them around is cheap in resources.
 	</description>
 	<tutorials>
-		<link title="GDScript format strings">https://docs.godotengine.org/en/latest/getting_started/scripting/gdscript/gdscript_format_string.html</link>
+		<link title="GDScript format strings">https://docs.Foxengine.org/en/latest/getting_started/scripting/gdscript/gdscript_format_string.html</link>
 	</tutorials>
 	<methods>
 		<method name="String" qualifiers="constructor">
@@ -791,7 +791,7 @@
 				[/gdscript]
 				[csharp]
 				var someString = "One,Two,Three,Four";
-				var someArray = someString.Split(",", true); // This is as close as it gets to Godots API.
+				var someArray = someString.Split(",", true); // This is as close as it gets to Foxs API.
 				GD.Print(someArray[0]); // Prints "Four"
 				GD.Print(someArray[1]); // Prints "Three,Two,One"
 				[/csharp]
@@ -930,10 +930,10 @@
 				Decodes a string in URL encoded format. This is meant to decode parameters in a URL when receiving an HTTP request.
 				[codeblocks]
 				[gdscript]
-				print("https://example.org/?escaped=" + "Godot%20Engine%3A%27docs%27".uri_decode())
+				print("https://example.org/?escaped=" + "Fox%20Engine%3A%27docs%27".uri_decode())
 				[/gdscript]
 				[csharp]
-				GD.Print("https://example.org/?escaped=" + "Godot%20Engine%3a%27Docs%27".URIDecode());
+				GD.Print("https://example.org/?escaped=" + "Fox%20Engine%3a%27Docs%27".URIDecode());
 				[/csharp]
 				[/codeblocks]
 			</description>
@@ -945,10 +945,10 @@
 				Encodes a string to URL friendly format. This is meant to encode parameters in a URL when sending an HTTP request.
 				[codeblocks]
 				[gdscript]
-				print("https://example.org/?escaped=" + "Godot Engine:'docs'".uri_encode())
+				print("https://example.org/?escaped=" + "Fox Engine:'docs'".uri_encode())
 				[/gdscript]
 				[csharp]
-				GD.Print("https://example.org/?escaped=" + "Godot Engine:'docs'".URIEncode());
+				GD.Print("https://example.org/?escaped=" + "Fox Engine:'docs'".URIEncode());
 				[/csharp]
 				[/codeblocks]
 			</description>

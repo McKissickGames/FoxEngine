@@ -1,4 +1,4 @@
-namespace Godot
+namespace Fox
 {
     public struct SignalInfo
     {

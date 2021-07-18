@@ -38,14 +38,14 @@
 		                p.put_packet("Hello DTLS client".to_utf8())
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System;
 		// ServerNode.cs
 		public class ServerNode : Node
 		{
 		    public DTLSServer Dtls = new DTLSServer();
 		    public UDPServer Server = new UDPServer();
-		    public Godot.Collections.Array&lt;PacketPeerDTLS&gt; Peers = new Godot.Collections.Array&lt;PacketPeerDTLS&gt;();
+		    public Fox.Collections.Array&lt;PacketPeerDTLS&gt; Peers = new Fox.Collections.Array&lt;PacketPeerDTLS&gt;();
 		    public override void _Ready()
 		    {
 		        Server.Listen(4242);
@@ -108,7 +108,7 @@
 		            connected = true
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System.Text;
 		// ClientNode.cs
 		public class ClientNode : Node

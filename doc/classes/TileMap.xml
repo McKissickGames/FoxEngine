@@ -8,13 +8,13 @@
 		When doing physics queries against the tilemap, the cell coordinates are encoded as [code]metadata[/code] for each detected collision shape returned by methods such as [method PhysicsDirectSpaceState2D.intersect_shape], [method PhysicsDirectBodyState2D.get_contact_collider_shape_metadata] etc.
 	</description>
 	<tutorials>
-		<link title="Using Tilemaps">https://docs.godotengine.org/en/latest/tutorials/2d/using_tilemaps.html</link>
-		<link title="2D Platformer Demo">https://godotengine.org/asset-library/asset/120</link>
-		<link title="2D Isometric Demo">https://godotengine.org/asset-library/asset/112</link>
-		<link title="2D Hexagonal Demo">https://godotengine.org/asset-library/asset/111</link>
-		<link title="2D Navigation Astar Demo">https://godotengine.org/asset-library/asset/519</link>
-		<link title="2D Role Playing Game Demo">https://godotengine.org/asset-library/asset/520</link>
-		<link title="2D Kinematic Character Demo">https://godotengine.org/asset-library/asset/113</link>
+		<link title="Using Tilemaps">https://docs.Foxengine.org/en/latest/tutorials/2d/using_tilemaps.html</link>
+		<link title="2D Platformer Demo">https://Foxengine.org/asset-library/asset/120</link>
+		<link title="2D Isometric Demo">https://Foxengine.org/asset-library/asset/112</link>
+		<link title="2D Hexagonal Demo">https://Foxengine.org/asset-library/asset/111</link>
+		<link title="2D Navigation Astar Demo">https://Foxengine.org/asset-library/asset/519</link>
+		<link title="2D Role Playing Game Demo">https://Foxengine.org/asset-library/asset/520</link>
+		<link title="2D Kinematic Character Demo">https://Foxengine.org/asset-library/asset/113</link>
 	</tutorials>
 	<methods>
 		<method name="clear">

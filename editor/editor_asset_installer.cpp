@@ -2,11 +2,11 @@
 /*  editor_asset_installer.cpp                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -157,7 +157,7 @@ void EditorAssetInstaller::open(const String &p_path, int p_depth) {
 
 		extension_guess["gdshader"] = tree->get_theme_icon("Shader", "EditorIcons");
 		extension_guess["gd"] = tree->get_theme_icon("GDScript", "EditorIcons");
-		if (Engine::get_singleton()->has_singleton("GodotSharp")) {
+		if (Engine::get_singleton()->has_singleton("FoxSharp")) {
 			extension_guess["cs"] = tree->get_theme_icon("CSharpScript", "EditorIcons");
 		} else {
 			// Mark C# support as unavailable.

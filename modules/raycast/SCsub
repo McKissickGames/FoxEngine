@@ -86,7 +86,7 @@ if env["builtin_embree"]:
     env.modules_sources += thirdparty_obj
 
 
-# Godot source files
+# Fox source files
 
 module_obj = []
 

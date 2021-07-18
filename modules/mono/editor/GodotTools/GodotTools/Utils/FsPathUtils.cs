@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using Godot;
-using GodotTools.Core;
+using Fox;
+using FoxTools.Core;
 using JetBrains.Annotations;
 
-namespace GodotTools.Utils
+namespace FoxTools.Utils
 {
     public static class FsPathUtils
     {

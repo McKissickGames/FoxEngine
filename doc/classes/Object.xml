@@ -29,7 +29,7 @@
 		[b]Note:[/b] Unlike references to a [RefCounted], references to an Object stored in a variable can become invalid without warning. Therefore, it's recommended to use [RefCounted] for data classes instead of [Object].
 	</description>
 	<tutorials>
-		<link title="When and how to avoid using nodes for everything">https://docs.godotengine.org/en/latest/getting_started/workflow/best_practices/node_alternatives.html</link>
+		<link title="When and how to avoid using nodes for everything">https://docs.Foxengine.org/en/latest/getting_started/workflow/best_practices/node_alternatives.html</link>
 	</tutorials>
 	<methods>
 		<method name="_get" qualifiers="virtual">
@@ -115,7 +115,7 @@
 				node.Call("set", "position", new Vector2(42, 0));
 				[/csharp]
 				[/codeblocks]
-				[b]Note:[/b] In C#, the method name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
+				[b]Note:[/b] In C#, the method name must be specified as snake_case if it is defined by a built-in Fox node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
 			</description>
 		</method>
 		<method name="call_deferred" qualifiers="vararg">
@@ -135,7 +135,7 @@
 				node.CallDeferred("set", "position", new Vector2(42, 0));
 				[/csharp]
 				[/codeblocks]
-				[b]Note:[/b] In C#, the method name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
+				[b]Note:[/b] In C#, the method name must be specified as snake_case if it is defined by a built-in Fox node. This doesn't apply to user-defined methods where you should use the same convention as in the C# source (typically PascalCase).
 			</description>
 		</method>
 		<method name="callv">
@@ -154,7 +154,7 @@
 				[/gdscript]
 				[csharp]
 				var node = new Node2D();
-				node.Callv("set", new Godot.Collections.Array { "position", new Vector2(42, 0) });
+				node.Callv("set", new Fox.Collections.Array { "position", new Vector2(42, 0) });
 				[/csharp]
 				[/codeblocks]
 			</description>
@@ -183,7 +183,7 @@
 				A signal can only be connected once to a [Callable]. It will throw an error if already connected, unless the signal was connected with [constant CONNECT_REFERENCE_COUNTED]. To avoid this, first, use [method is_connected] to check for existing connections.
 				If the callable's target is destroyed in the game's lifecycle, the connection will be lost.
 				[b]Examples with recommended syntax:[/b]
-				Connecting signals is one of the most common operations in Godot and the API gives many options to do so, which are described further down. The code block below shows the recommended approach for both GDScript and C#.
+				Connecting signals is one of the most common operations in Fox and the API gives many options to do so, which are described further down. The code block below shows the recommended approach for both GDScript and C#.
 				[codeblocks]
 				[gdscript]
 				func _ready():
@@ -214,7 +214,7 @@
 				    // This assumes that a `Player` class exists which defines a `Hit` signal.
 				    var player = new Player();
 				    // Signals as events (`player.Hit += OnPlayerHit;`) do not support argument binding. You have to use:
-				    player.Hit.Connect(OnPlayerHit, new Godot.Collections.Array {"sword", 100 });
+				    player.Hit.Connect(OnPlayerHit, new Fox.Collections.Array {"sword", 100 });
 				}
 
 				private void OnButtonDown()
@@ -298,7 +298,7 @@
 				    // Option 1: Using Callable.Bind(). This way we can still use signals as events.
 				    player.Hit += OnPlayerHit.Bind("sword", 100);
 				    // Option 2: Using a `binds` Array in Signal.Connect() (same syntax for Object.Connect()).
-				    player.Hit.Connect(OnPlayerHit, new Godot.Collections.Array{ "sword", 100 });
+				    player.Hit.Connect(OnPlayerHit, new Fox.Collections.Array{ "sword", 100 });
 
 				    // Parameters added when emitting the signal are passed first.
 				    player.EmitSignal("hit", "Dark lord", 5);
@@ -359,7 +359,7 @@
 			</argument>
 			<description>
 				Returns the [Variant] value of the given [code]property[/code]. If the [code]property[/code] doesn't exist, this will return [code]null[/code].
-				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
+				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Fox node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
 			</description>
 		</method>
 		<method name="get_class" qualifiers="const">
@@ -558,7 +558,7 @@
 			</argument>
 			<description>
 				Assigns a new value to the given property. If the [code]property[/code] does not exist, nothing will happen.
-				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
+				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Fox node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
 			</description>
 		</method>
 		<method name="set_block_signals">
@@ -579,7 +579,7 @@
 			</argument>
 			<description>
 				Assigns a new value to the given property, after the current frame's physics step. This is equivalent to calling [method set] via [method call_deferred], i.e. [code]call_deferred("set", property, value)[/code].
-				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Godot node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
+				[b]Note:[/b] In C#, the property name must be specified as snake_case if it is defined by a built-in Fox node. This doesn't apply to user-defined properties where you should use the same convention as in the C# source (typically PascalCase).
 			</description>
 		</method>
 		<method name="set_indexed">
@@ -656,7 +656,7 @@
 			<description>
 				Translates a message using translation catalogs configured in the Project Settings. An additional context could be used to specify the translation context.
 				Only works if message translation is enabled (which it is by default), otherwise it returns the [code]message[/code] unchanged. See [method set_message_translation].
-				See [url=https://docs.godotengine.org/en/latest/tutorials/i18n/internationalizing_games.html]Internationalizing games[/url] for examples of the usage of this method.
+				See [url=https://docs.Foxengine.org/en/latest/tutorials/i18n/internationalizing_games.html]Internationalizing games[/url] for examples of the usage of this method.
 			</description>
 		</method>
 		<method name="tr_n" qualifiers="const">
@@ -675,7 +675,7 @@
 				Only works if message translation is enabled (which it is by default), otherwise it returns the [code]message[/code] or [code]plural_message[/code] unchanged. See [method set_message_translation].
 				The number [code]n[/code] is the number or quantity of the plural object. It will be used to guide the translation system to fetch the correct plural form for the selected language.
 				[b]Note:[/b] Negative and floating-point values usually represent physical entities for which singular and plural don't clearly apply. In such cases, use [method tr].
-				See [url=https://docs.godotengine.org/en/latest/tutorials/i18n/localization_using_gettext.html]Localization using gettext[/url] for examples of the usage of this method.
+				See [url=https://docs.Foxengine.org/en/latest/tutorials/i18n/localization_using_gettext.html]Localization using gettext[/url] for examples of the usage of this method.
 			</description>
 		</method>
 	</methods>

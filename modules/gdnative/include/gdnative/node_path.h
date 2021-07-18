@@ -2,11 +2,11 @@
 /*  node_path.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_NODE_PATH_H
-#define GODOT_NODE_PATH_H
+#ifndef Fox_NODE_PATH_H
+#define Fox_NODE_PATH_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,23 +37,23 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_NODE_PATH_SIZE sizeof(void *)
+#define Fox_NODE_PATH_SIZE sizeof(void *)
 
-#ifndef GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_NODE_PATH_TYPE_DEFINED
+#define Fox_CORE_API_Fox_NODE_PATH_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_NODE_PATH_SIZE];
-} godot_node_path;
+	uint8_t _dont_touch_that[Fox_NODE_PATH_SIZE];
+} Fox_node_path;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_node_path_new(godot_node_path *p_self);
-void GDAPI godot_node_path_new_copy(godot_node_path *r_dest, const godot_node_path *p_src);
-void GDAPI godot_node_path_destroy(godot_node_path *p_self);
+void GDAPI Fox_node_path_new(Fox_node_path *p_self);
+void GDAPI Fox_node_path_new_copy(Fox_node_path *r_dest, const Fox_node_path *p_src);
+void GDAPI Fox_node_path_destroy(Fox_node_path *p_self);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_NODE_PATH_H
+#endif // Fox_NODE_PATH_H

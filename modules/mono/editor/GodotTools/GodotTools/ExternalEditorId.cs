@@ -1,4 +1,4 @@
-namespace GodotTools
+namespace FoxTools
 {
     public enum ExternalEditorId : long
     {

@@ -2,11 +2,11 @@
 /*  signal.cpp                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,21 +33,21 @@
 #include "core/variant/callable.h"
 #include "core/variant/variant.h"
 
-static_assert(sizeof(godot_signal) == sizeof(Signal), "Signal size mismatch");
+static_assert(sizeof(Fox_signal) == sizeof(Signal), "Signal size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_signal_new(godot_signal *p_self) {
+void GDAPI Fox_signal_new(Fox_signal *p_self) {
 	memnew_placement(p_self, Signal);
 }
 
-void GDAPI godot_signal_new_copy(godot_signal *r_dest, const godot_signal *p_src) {
+void GDAPI Fox_signal_new_copy(Fox_signal *r_dest, const Fox_signal *p_src) {
 	memnew_placement(r_dest, Signal(*(Signal *)p_src));
 }
 
-void GDAPI godot_signal_destroy(godot_signal *p_self) {
+void GDAPI Fox_signal_destroy(Fox_signal *p_self) {
 	Signal *self = (Signal *)p_self;
 	self->~Signal();
 }

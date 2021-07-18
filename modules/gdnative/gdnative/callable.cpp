@@ -2,11 +2,11 @@
 /*  callable.cpp                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,21 +33,21 @@
 #include "core/variant/callable.h"
 #include "core/variant/variant.h"
 
-static_assert(sizeof(godot_callable) == sizeof(Callable), "Callable size mismatch");
+static_assert(sizeof(Fox_callable) == sizeof(Callable), "Callable size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_callable_new(godot_callable *p_self) {
+void GDAPI Fox_callable_new(Fox_callable *p_self) {
 	memnew_placement(p_self, Callable);
 }
 
-void GDAPI godot_callable_new_copy(godot_callable *r_dest, const godot_callable *p_src) {
+void GDAPI Fox_callable_new_copy(Fox_callable *r_dest, const Fox_callable *p_src) {
 	memnew_placement(r_dest, Callable(*(Callable *)p_src));
 }
 
-void GDAPI godot_callable_destroy(godot_callable *p_self) {
+void GDAPI Fox_callable_destroy(Fox_callable *p_self) {
 	Callable *self = (Callable *)p_self;
 	self->~Callable();
 }

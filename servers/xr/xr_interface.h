@@ -2,11 +2,11 @@
 /*  xr_interface.h                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -43,7 +43,7 @@ struct BlitToScreen;
 
 	The XR interface is a template class ontop of which we build interface to different AR, VR and tracking SDKs.
 	The idea is that we subclass this class, implement the logic, and then instantiate a singleton of each interface
-	when Godot starts. These instances do not initialize themselves but register themselves with the AR/VR server.
+	when Fox starts. These instances do not initialize themselves but register themselves with the AR/VR server.
 
 	If the user wants to enable AR/VR the choose the interface they want to use and initialize it.
 

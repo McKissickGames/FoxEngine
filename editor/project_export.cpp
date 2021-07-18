@@ -2,11 +2,11 @@
 /*  project_export.cpp                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -456,7 +456,7 @@ void ProjectExportDialog::_enc_filters_changed(const String &p_filters) {
 }
 
 void ProjectExportDialog::_open_key_help_link() {
-	OS::get_singleton()->shell_open("https://docs.godotengine.org/en/latest/development/compiling/compiling_with_script_encryption_key.html");
+	OS::get_singleton()->shell_open("https://docs.Foxengine.org/en/latest/development/compiling/compiling_with_script_encryption_key.html");
 }
 
 void ProjectExportDialog::_enc_pck_changed(bool p_pressed) {
@@ -1232,7 +1232,7 @@ ProjectExportDialog::ProjectExportDialog() {
 
 	export_pck_zip = memnew(EditorFileDialog);
 	export_pck_zip->add_filter("*.zip ; " + TTR("ZIP File"));
-	export_pck_zip->add_filter("*.pck ; " + TTR("Godot Project Pack"));
+	export_pck_zip->add_filter("*.pck ; " + TTR("Fox Project Pack"));
 	export_pck_zip->set_access(EditorFileDialog::ACCESS_FILESYSTEM);
 	export_pck_zip->set_file_mode(EditorFileDialog::FILE_MODE_SAVE_FILE);
 	add_child(export_pck_zip);

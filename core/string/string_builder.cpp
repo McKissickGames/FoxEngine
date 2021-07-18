@@ -2,11 +2,11 @@
 /*  string_builder.cpp                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -65,19 +65,19 @@ String StringBuilder::as_string() const {
 
 	int current_position = 0;
 
-	int godot_string_elem = 0;
+	int Fox_string_elem = 0;
 	int c_string_elem = 0;
 
 	for (int i = 0; i < appended_strings.size(); i++) {
 		if (appended_strings[i] == -1) {
-			// Godot string
-			const String &s = strings[godot_string_elem];
+			// Fox string
+			const String &s = strings[Fox_string_elem];
 
 			memcpy(buffer + current_position, s.ptr(), s.length() * sizeof(char32_t));
 
 			current_position += s.length();
 
-			godot_string_elem++;
+			Fox_string_elem++;
 		} else {
 			const char *s = c_strings[c_string_elem];
 

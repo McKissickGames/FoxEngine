@@ -2,11 +2,11 @@
 /*  rid.cpp                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,17 +33,17 @@
 #include "core/os/memory.h"
 #include "core/templates/rid.h"
 
-static_assert(sizeof(godot_rid) == sizeof(RID), "RID size mismatch");
+static_assert(sizeof(Fox_rid) == sizeof(RID), "RID size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_rid_new(godot_rid *p_self) {
+void GDAPI Fox_rid_new(Fox_rid *p_self) {
 	memnew_placement(p_self, RID);
 }
 
-void GDAPI godot_rid_new_copy(godot_rid *r_dest, const godot_rid *p_src) {
+void GDAPI Fox_rid_new_copy(Fox_rid *r_dest, const Fox_rid *p_src) {
 	memnew_placement(r_dest, RID(*(RID *)p_src));
 }
 

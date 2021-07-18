@@ -1,7 +1,7 @@
-# Slovak translation of the Godot Engine editor
+# Slovak translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 # J08nY <johnenter@gmail.com>, 2016.
 # MineGame 159 <minegame459@gmail.com>, 2018.
 # Zuzana Palenikova <sousana.is@gmail.com>, 2019.
@@ -14,12 +14,12 @@
 # Eliška Fichnová <eliska@fichna.sk>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2021-07-07 15:34+0000\n"
 "Last-Translator: Eliška Fichnová <eliska@fichna.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/godot-engine/"
-"godot/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/Fox-engine/"
+"Fox/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1109,16 +1109,16 @@ msgid "Change Dictionary Value"
 msgstr "Zmeniť Hodnotu v Slovníku"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Vďaka z Godot komunity!"
+msgid "Thanks from the Fox community!"
+msgstr "Vďaka z Fox komunity!"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr "Klikni na skopírovanie."
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Godot Engine prispievatelia"
+msgid "Fox Engine contributors"
+msgstr "Fox Engine prispievatelia"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1189,12 +1189,12 @@ msgstr "Thirdparty Licencie"
 
 #: editor/editor_about.cpp
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot Engine sa spolieha na množstvo bezplatných a otvorených knižníc "
+"Fox Engine sa spolieha na množstvo bezplatných a otvorených knižníc "
 "tretích strán, ktoré sú kompatibilné s podmienkami licencie MIT. Nasleduje "
 "vyčerpávajúci zoznam všetkých takýchto komponentov tretích strán s ich "
 "príslušnými prehláseniami o autorských právach a licenčnými podmienkami."
@@ -1780,8 +1780,8 @@ msgid "Erase Profile"
 msgstr "Vymazať Profil"
 
 #: editor/editor_feature_profile.cpp
-msgid "Godot Feature Profile"
-msgstr "Godot Feature Profil"
+msgid "Fox Feature Profile"
+msgstr "Fox Feature Profil"
 
 #: editor/editor_feature_profile.cpp
 msgid "Import Profile(s)"
@@ -2983,8 +2983,8 @@ msgid "About"
 msgstr "O nás"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
-msgstr "Podporte vývoj Godot"
+msgid "Support Fox Development"
+msgstr "Podporte vývoj Fox"
 
 #: editor/editor_node.cpp
 msgid "Play the project."
@@ -3642,8 +3642,8 @@ msgid "Select Template File"
 msgstr "Vybrať Súbor Šablóny"
 
 #: editor/export_template_manager.cpp
-msgid "Godot Export Templates"
-msgstr "Godot Exportovanie Šablón"
+msgid "Fox Export Templates"
+msgstr "Fox Exportovanie Šablón"
 
 #: editor/export_template_manager.cpp
 msgid "Export Template Manager"
@@ -5208,7 +5208,7 @@ msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
@@ -7013,7 +7013,7 @@ msgstr ""
 
 #: editor/plugins/script_editor_plugin.cpp
 #, fuzzy
-msgid "Open Godot online documentation."
+msgid "Open Fox online documentation."
 msgstr "Popis:"
 
 #: editor/plugins/script_editor_plugin.cpp
@@ -9506,7 +9506,7 @@ msgstr ""
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
@@ -9519,7 +9519,7 @@ msgstr ""
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
@@ -9740,7 +9740,7 @@ msgid "ZIP File"
 msgstr "Súbor:"
 
 #: editor/project_export.cpp
-msgid "Godot Game Pack"
+msgid "Fox Game Pack"
 msgstr ""
 
 #: editor/project_export.cpp
@@ -9766,7 +9766,7 @@ msgstr "Chyba pri otváraní súboru balíka, nie je vo formáte zip."
 
 #: editor/project_manager.cpp
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
 msgstr ""
 
 #: editor/project_manager.cpp
@@ -9774,11 +9774,11 @@ msgid "Please choose an empty folder."
 msgstr ""
 
 #: editor/project_manager.cpp
-msgid "Please choose a \"project.godot\" or \".zip\" file."
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
 msgstr ""
 
 #: editor/project_manager.cpp
-msgid "This directory already contains a Godot project."
+msgid "This directory already contains a Fox project."
 msgstr ""
 
 #: editor/project_manager.cpp
@@ -9812,16 +9812,16 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
 msgstr ""
 
 #: editor/project_manager.cpp
-msgid "Couldn't edit project.godot in project path."
+msgid "Couldn't edit project.Fox in project path."
 msgstr ""
 
 #: editor/project_manager.cpp
-msgid "Couldn't create project.godot in project path."
+msgid "Couldn't create project.Fox in project path."
 msgstr ""
 
 #: editor/project_manager.cpp
@@ -9925,12 +9925,12 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
@@ -9997,11 +9997,11 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr ""
@@ -10289,7 +10289,7 @@ msgid "Changed Locale Filter Mode"
 msgstr ""
 
 #: editor/project_settings_editor.cpp
-msgid "Project Settings (project.godot)"
+msgid "Project Settings (project.Fox)"
 msgstr ""
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
@@ -12212,8 +12212,8 @@ msgstr "Nesprávna veľkosť písma."
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -12262,7 +12262,7 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 
@@ -12273,7 +12273,7 @@ msgstr ""
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 
 #: platform/android/export/export.cpp

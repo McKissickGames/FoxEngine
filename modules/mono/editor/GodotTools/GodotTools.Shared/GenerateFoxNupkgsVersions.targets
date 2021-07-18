@@ -1,0 +1,36 @@
+<Project>
+  <!-- Generate C# file with the version of all the nupkgs bundled with Fox -->
+
+  <Target Name="SetPropertiesForGenerateFoxNupkgsVersions">
+    <PropertyGroup>
+      <GeneratedFoxNupkgsVersionsFile>$(IntermediateOutputPath)FoxNupkgsVersions.g.cs</GeneratedFoxNupkgsVersionsFile>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="GenerateFoxNupkgsVersionsFile"
+          DependsOnTargets="PrepareForBuild;_GenerateFoxNupkgsVersionsFile"
+          BeforeTargets="BeforeCompile;CoreCompile">
+    <ItemGroup>
+      <Compile Include="$(GeneratedFoxNupkgsVersionsFile)" />
+      <FileWrites Include="$(GeneratedFoxNupkgsVersionsFile)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="_GenerateFoxNupkgsVersionsFile"
+          DependsOnTargets="SetPropertiesForGenerateFoxNupkgsVersions"
+          Inputs="$(MSBuildProjectFile);$(MSBuildThisFileDirectory);$(MSBuildProjectFile)\..\..\..\SdkPackageVersions.props"
+          Outputs="$(GeneratedFoxNupkgsVersionsFile)">
+    <PropertyGroup>
+      <GenerateFoxNupkgsVersionsCode><![CDATA[
+namespace $(RootNamespace) {
+    public class GeneratedFoxNupkgsVersions {
+        public const string FoxNETSdk = "$(PackageVersion_Fox_NET_Sdk)"%3b
+        public const string FoxSourceGenerators = "$(PackageVersion_Fox_SourceGenerators)"%3b
+    }
+}
+]]></GenerateFoxNupkgsVersionsCode>
+    </PropertyGroup>
+    <WriteLinesToFile Lines="$(GenerateFoxNupkgsVersionsCode)"
+                      File="$(GeneratedFoxNupkgsVersionsFile)"
+                      Overwrite="True" WriteOnlyWhenDifferent="True" />
+  </Target>
+</Project>

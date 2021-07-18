@@ -25,14 +25,14 @@
 		m.mesh = arr_mesh
 		[/gdscript]
 		[csharp]
-		var vertices = new Godot.Collections.Array&lt;Vector3&gt;();
+		var vertices = new Fox.Collections.Array&lt;Vector3&gt;();
 		vertices.Add(new Vector3(0, 1, 0));
 		vertices.Add(new Vector3(1, 0, 0));
 		vertices.Add(new Vector3(0, 0, 1));
 
 		// Initialize the ArrayMesh.
 		var arrMesh = new ArrayMesh();
-		var arrays = new Godot.Collections.Array();
+		var arrays = new Fox.Collections.Array();
 		arrays.Resize((int)Mesh.ArrayType.Max);
 		arrays[(int)Mesh.ArrayType.Vertex] = vertices;
 
@@ -44,10 +44,10 @@
 		[/codeblocks]
 		The [MeshInstance3D] is ready to be added to the [SceneTree] to be shown.
 		See also [ImmediateMesh], [MeshDataTool] and [SurfaceTool] for procedural geometry generation.
-		[b]Note:[/b] Godot uses clockwise [url=https://learnopengl.com/Advanced-OpenGL/Face-culling]winding order[/url] for front faces of triangle primitive modes.
+		[b]Note:[/b] Fox uses clockwise [url=https://learnopengl.com/Advanced-OpenGL/Face-culling]winding order[/url] for front faces of triangle primitive modes.
 	</description>
 	<tutorials>
-		<link title="Procedural geometry using the ArrayMesh">https://docs.godotengine.org/en/latest/tutorials/content/procedural_geometry/arraymesh.html</link>
+		<link title="Procedural geometry using the ArrayMesh">https://docs.Foxengine.org/en/latest/tutorials/content/procedural_geometry/arraymesh.html</link>
 	</tutorials>
 	<methods>
 		<method name="add_blend_shape">

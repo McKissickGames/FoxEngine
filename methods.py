@@ -183,11 +183,11 @@ def detect_modules(search_path, recursive=False):
 
     def is_engine(path):
         # Prevent recursively detecting modules in self and other
-        # Godot sources when using `custom_modules` build option.
+        # Fox sources when using `custom_modules` build option.
         version_path = os.path.join(path, "version.py")
         if os.path.exists(version_path):
             with open(version_path) as f:
-                if 'short_name = "godot"' in f.read():
+                if 'short_name = "Fox"' in f.read():
                     return True
         return False
 
@@ -502,7 +502,7 @@ def detect_visual_c_compiler_version(tools_env):
     # "x86"           Native 32 bit compiler
     # "x86_amd64"     32 bit Cross Compiler for 64 bit
 
-    # There are other architectures, but Godot does not support them currently, so this function does not detect arm/amd64_arm
+    # There are other architectures, but Fox does not support them currently, so this function does not detect arm/amd64_arm
     # and similar architectures/compilers
 
     # Set chosen compiler to "not detected"
@@ -691,15 +691,15 @@ def generate_vs_project(env, num_jobs):
         release_variants = ["release|Win32"] + ["release|x64"]
         release_debug_variants = ["release_debug|Win32"] + ["release_debug|x64"]
         variants = debug_variants + release_variants + release_debug_variants
-        debug_targets = ["bin\\godot.windows.tools.32.exe"] + ["bin\\godot.windows.tools.64.exe"]
-        release_targets = ["bin\\godot.windows.opt.32.exe"] + ["bin\\godot.windows.opt.64.exe"]
-        release_debug_targets = ["bin\\godot.windows.opt.tools.32.exe"] + ["bin\\godot.windows.opt.tools.64.exe"]
+        debug_targets = ["bin\\Fox.windows.tools.32.exe"] + ["bin\\Fox.windows.tools.64.exe"]
+        release_targets = ["bin\\Fox.windows.opt.32.exe"] + ["bin\\Fox.windows.opt.64.exe"]
+        release_debug_targets = ["bin\\Fox.windows.opt.tools.32.exe"] + ["bin\\Fox.windows.opt.tools.64.exe"]
         targets = debug_targets + release_targets + release_debug_targets
         if not env.get("MSVS"):
             env["MSVS"]["PROJECTSUFFIX"] = ".vcxproj"
             env["MSVS"]["SOLUTIONSUFFIX"] = ".sln"
         env.MSVSProject(
-            target=["#godot" + env["MSVSPROJECTSUFFIX"]],
+            target=["#Fox" + env["MSVSPROJECTSUFFIX"]],
             incs=env.vs_incs,
             srcs=env.vs_srcs,
             runfile=targets,

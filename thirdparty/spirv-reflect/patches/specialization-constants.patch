@@ -6,9 +6,9 @@ index 0fc979a8a4..3e3643717a 100644
    NumberDecoration      location;
    NumberDecoration      offset;
    NumberDecoration      uav_counter_buffer;
-+// -- GODOT begin --
++// -- Fox begin --
 +  NumberDecoration      specialization_constant;
-+// -- GODOT end --
++// -- Fox end --
    StringDecoration      semantic;
    uint32_t              array_stride;
    uint32_t              matrix_stride;
@@ -16,9 +16,9 @@ index 0fc979a8a4..3e3643717a 100644
      p_parser->nodes[i].decorations.offset.value = (uint32_t)INVALID_VALUE;
      p_parser->nodes[i].decorations.uav_counter_buffer.value = (uint32_t)INVALID_VALUE;
      p_parser->nodes[i].decorations.built_in = (SpvBuiltIn)INVALID_VALUE;
-+// -- GODOT begin --
++// -- Fox begin --
 +    p_parser->nodes[i].decorations.specialization_constant.value = (SpvBuiltIn)INVALID_VALUE;
-+// -- GODOT end --
++// -- Fox end --
    }
    // Mark source file id node
    p_parser->source_file_id = (uint32_t)INVALID_VALUE;
@@ -27,7 +27,7 @@ index 0fc979a8a4..3e3643717a 100644
        }
        break;
 -
-+// -- GODOT begin --
++// -- Fox begin --
        case SpvOpSpecConstantTrue:
        case SpvOpSpecConstantFalse:
 -      case SpvOpSpecConstant:
@@ -37,7 +37,7 @@ index 0fc979a8a4..3e3643717a 100644
 +        p_node->is_type = true;
 +      }
 +      break;
-+// -- GODOT end --
++// -- Fox end --
        case SpvOpSpecConstantComposite:
        case SpvOpSpecConstantOp: {
          CHECKED_READU32(p_parser, p_node->word_offset + 1, p_node->result_type_id);
@@ -45,9 +45,9 @@ index 0fc979a8a4..3e3643717a 100644
          skip = true;
        }
        break; 
-+// -- GODOT begin --
++// -- Fox begin --
 +      case SpvDecorationSpecId:
-+// -- GODOT end --
++// -- Fox end --
        case SpvDecorationBlock:
        case SpvDecorationBufferBlock:
        case SpvDecorationColMajor:
@@ -56,14 +56,14 @@ index 0fc979a8a4..3e3643717a 100644
        }
        break;
 -
-+// -- GODOT begin --
++// -- Fox begin --
 +      case SpvDecorationSpecId: {
 +        uint32_t word_offset = p_node->word_offset + member_offset+ 3;
 +        CHECKED_READU32(p_parser, word_offset, p_target_decorations->specialization_constant.value);
 +        p_target_decorations->specialization_constant.word_offset = word_offset;
 +      }
 +      break;
-+// -- GODOT end --
++// -- Fox end --
        case SpvReflectDecorationHlslCounterBufferGOOGLE: {
          uint32_t word_offset = p_node->word_offset + member_offset+ 3;
          CHECKED_READU32(p_parser, word_offset, p_target_decorations->uav_counter_buffer.value);
@@ -71,13 +71,13 @@ index 0fc979a8a4..3e3643717a 100644
          p_type->type_flags |= SPV_REFLECT_TYPE_FLAG_EXTERNAL_ACCELERATION_STRUCTURE;
        }
        break;
-+// -- GODOT begin --
++// -- Fox begin --
 +      case SpvOpSpecConstantTrue:
 +      case SpvOpSpecConstantFalse:
 +      case SpvOpSpecConstant: {
 +      }
 +      break;
-+// -- GODOT end --
++// -- Fox end --
      }
  
      if (result == SPV_REFLECT_RESULT_SUCCESS) {
@@ -85,7 +85,7 @@ index 0fc979a8a4..3e3643717a 100644
    return SPV_REFLECT_RESULT_SUCCESS;
  }
  
-+// -- GODOT begin --
++// -- Fox begin --
 +static SpvReflectResult ParseSpecializationConstants(Parser* p_parser, SpvReflectShaderModule* p_module)
 +{
 +  p_module->specialization_constant_count = 0;
@@ -146,7 +146,7 @@ index 0fc979a8a4..3e3643717a 100644
 +
 +  return SPV_REFLECT_RESULT_SUCCESS;
 +}
-+// -- GODOT end --
++// -- Fox end --
 +
  static SpvReflectResult ParsePushConstantBlocks(Parser* p_parser, SpvReflectShaderModule* p_module)
  {
@@ -155,12 +155,12 @@ index 0fc979a8a4..3e3643717a 100644
      result = ParsePushConstantBlocks(&parser, p_module);
      SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
    }
-+// -- GODOT begin --
++// -- Fox begin --
 +  if (result == SPV_REFLECT_RESULT_SUCCESS) {
 +    result = ParseSpecializationConstants(&parser, p_module);
 +    SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
 +  }
-+// -- GODOT end --
++// -- Fox end --
    if (result == SPV_REFLECT_RESULT_SUCCESS) {
      result = ParseEntryPoints(&parser, p_module);
      SPV_REFLECT_ASSERT(result == SPV_REFLECT_RESULT_SUCCESS);
@@ -168,9 +168,9 @@ index 0fc979a8a4..3e3643717a 100644
      SafeFree(p_entry->used_push_constants);
    }
    SafeFree(p_module->entry_points);
-+// -- GODOT begin --
++// -- Fox begin --
 +  SafeFree(p_module->specialization_constants);
-+// -- GODOT end --
++// -- Fox end --
  
    // Push constants
    for (size_t i = 0; i < p_module->push_constant_block_count; ++i) {
@@ -178,7 +178,7 @@ index 0fc979a8a4..3e3643717a 100644
    return SPV_REFLECT_RESULT_SUCCESS;
  }
  
-+// -- GODOT begin --
++// -- Fox begin --
 +SpvReflectResult spvReflectEnumerateSpecializationConstants(
 +  const SpvReflectShaderModule* p_module,
 +  uint32_t*                     p_count,
@@ -208,7 +208,7 @@ index 0fc979a8a4..3e3643717a 100644
 +
 +  return SPV_REFLECT_RESULT_SUCCESS;
 +}
-+// -- GODOT end --
++// -- Fox end --
 +
  SpvReflectResult spvReflectEnumerateInputVariables(
    const SpvReflectShaderModule* p_module,
@@ -221,7 +221,7 @@ index a5a956e9e8..21f8160770 100644
    struct SpvReflectTypeDescription* members;
  } SpvReflectTypeDescription;
  
-+// -- GODOT begin --
++// -- Fox begin --
 +/*! @struct SpvReflectSpecializationConstant
 +
 +*/
@@ -242,7 +242,7 @@ index a5a956e9e8..21f8160770 100644
 +    uint32_t int_bool_value;
 +  } default_value;
 +} SpvReflectSpecializationConstant;
-+// -- GODOT end --
++// -- Fox end --
  
  /*! @struct SpvReflectInterfaceVariable
  
@@ -250,10 +250,10 @@ index a5a956e9e8..21f8160770 100644
    SpvReflectInterfaceVariable*      interface_variables;
    uint32_t                          push_constant_block_count;
    SpvReflectBlockVariable*          push_constant_blocks;
-+  // -- GODOT begin --
++  // -- Fox begin --
 +  uint32_t                          specialization_constant_count;
 +  SpvReflectSpecializationConstant* specialization_constants;
-+  // -- GODOT end --
++  // -- Fox end --
  
    struct Internal {
      size_t                          spirv_size;
@@ -286,7 +286,7 @@ index a5a956e9e8..21f8160770 100644
 +  uint32_t*                          p_count,
 +  SpvReflectSpecializationConstant** pp_constants
 +);
-+// -- GODOT end --
++// -- Fox end --
 +
  /*! @fn spvReflectEnumerateEntryPointInputVariables
   @brief  Enumerate the input variables for a given entry point.

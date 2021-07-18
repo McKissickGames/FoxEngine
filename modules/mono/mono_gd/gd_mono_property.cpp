@@ -2,11 +2,11 @@
 /*  gd_mono_property.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -200,5 +200,5 @@ int GDMonoProperty::get_int_value(MonoObject *p_object) {
 
 String GDMonoProperty::get_string_value(MonoObject *p_object) {
 	MonoObject *val = get_value(p_object);
-	return GDMonoMarshal::mono_string_to_godot((MonoString *)val);
+	return GDMonoMarshal::mono_string_to_Fox((MonoString *)val);
 }

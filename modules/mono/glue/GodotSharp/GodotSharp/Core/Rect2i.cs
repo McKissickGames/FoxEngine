@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 2D axis-aligned bounding box using integers. Rect2i consists of a position, a size, and

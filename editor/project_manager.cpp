@@ -2,11 +2,11 @@
 /*  project_manager.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -180,7 +180,7 @@ private:
 		}
 
 		if (mode == MODE_IMPORT || mode == MODE_RENAME) {
-			if (valid_path != "" && !d->file_exists("project.godot")) {
+			if (valid_path != "" && !d->file_exists("project.Fox")) {
 				if (valid_path.ends_with(".zip")) {
 					FileAccess *src_f = nullptr;
 					zlib_filefunc_def io = zipio_create_io_from_file(&src_f);
@@ -200,7 +200,7 @@ private:
 						char fname[16384];
 						ret = unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
 
-						if (String(fname).ends_with("project.godot")) {
+						if (String(fname).ends_with("project.Fox")) {
 							break;
 						}
 
@@ -208,7 +208,7 @@ private:
 					}
 
 					if (ret == UNZ_END_OF_LIST_OF_FILE) {
-						set_message(TTR("Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."), MESSAGE_ERROR);
+						set_message(TTR("Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."), MESSAGE_ERROR);
 						memdelete(d);
 						get_ok_button()->set_disabled(true);
 						unzClose(pkg);
@@ -242,7 +242,7 @@ private:
 					}
 
 				} else {
-					set_message(TTR("Please choose a \"project.godot\" or \".zip\" file."), MESSAGE_ERROR);
+					set_message(TTR("Please choose a \"project.Fox\" or \".zip\" file."), MESSAGE_ERROR);
 					memdelete(d);
 					install_path_container->hide();
 					get_ok_button()->set_disabled(true);
@@ -250,7 +250,7 @@ private:
 				}
 
 			} else if (valid_path.ends_with("zip")) {
-				set_message(TTR("This directory already contains a Godot project."), MESSAGE_ERROR, INSTALL_PATH);
+				set_message(TTR("This directory already contains a Fox project."), MESSAGE_ERROR, INSTALL_PATH);
 				memdelete(d);
 				get_ok_button()->set_disabled(true);
 				return "";
@@ -317,7 +317,7 @@ private:
 	void _file_selected(const String &p_path) {
 		String p = p_path;
 		if (mode == MODE_IMPORT) {
-			if (p.ends_with("project.godot")) {
+			if (p.ends_with("project.Fox")) {
 				p = p.get_base_dir();
 				install_path_container->hide();
 				get_ok_button()->set_disabled(false);
@@ -326,7 +326,7 @@ private:
 				install_path_container->show();
 				get_ok_button()->set_disabled(false);
 			} else {
-				set_message(TTR("Please choose a \"project.godot\" or \".zip\" file."), MESSAGE_ERROR);
+				set_message(TTR("Please choose a \"project.Fox\" or \".zip\" file."), MESSAGE_ERROR);
 				get_ok_button()->set_disabled(true);
 				return;
 			}
@@ -362,7 +362,7 @@ private:
 		if (mode == MODE_IMPORT) {
 			fdialog->set_file_mode(FileDialog::FILE_MODE_OPEN_FILE);
 			fdialog->clear_filters();
-			fdialog->add_filter(vformat("project.godot ; %s %s", VERSION_NAME, TTR("Project")));
+			fdialog->add_filter(vformat("project.Fox ; %s %s", VERSION_NAME, TTR("Project")));
 			fdialog->add_filter("*.zip ; " + TTR("ZIP File"));
 		} else {
 			fdialog->set_file_mode(FileDialog::FILE_MODE_OPEN_DIR);
@@ -437,13 +437,13 @@ private:
 
 			int err = current->setup(dir2, "");
 			if (err != OK) {
-				set_message(vformat(TTR("Couldn't load project.godot in project path (error %d). It may be missing or corrupted."), err), MESSAGE_ERROR);
+				set_message(vformat(TTR("Couldn't load project.Fox in project path (error %d). It may be missing or corrupted."), err), MESSAGE_ERROR);
 			} else {
 				ProjectSettings::CustomMap edited_settings;
 				edited_settings["application/config/name"] = project_name->get_text().strip_edges();
 
-				if (current->save_custom(dir2.plus_file("project.godot"), edited_settings, Vector<String>(), true) != OK) {
-					set_message(TTR("Couldn't edit project.godot in project path."), MESSAGE_ERROR);
+				if (current->save_custom(dir2.plus_file("project.Fox"), edited_settings, Vector<String>(), true) != OK) {
+					set_message(TTR("Couldn't edit project.Fox in project path."), MESSAGE_ERROR);
 				}
 			}
 
@@ -466,7 +466,7 @@ private:
 					if (!is_folder_empty) {
 						ConfirmationDialog *cd = memnew(ConfirmationDialog);
 						cd->set_title(TTR("Warning: This folder is not empty"));
-						cd->set_text(TTR("You are about to create a Godot project in a non-empty folder.\nThe entire contents of this folder will be imported as project resources!\n\nAre you sure you wish to continue?"));
+						cd->set_text(TTR("You are about to create a Fox project in a non-empty folder.\nThe entire contents of this folder will be imported as project resources!\n\nAre you sure you wish to continue?"));
 						cd->get_ok_button()->connect("pressed", callable_mp(this, &ProjectDialog::_nonempty_confirmation_ok_pressed));
 						get_parent()->add_child(cd);
 						cd->popup_centered();
@@ -485,14 +485,14 @@ private:
 					initial_settings["application/config/icon"] = "res://icon.png";
 					initial_settings["rendering/environment/defaults/default_environment"] = "res://default_env.tres";
 
-					if (ProjectSettings::get_singleton()->save_custom(dir.plus_file("project.godot"), initial_settings, Vector<String>(), false) != OK) {
-						set_message(TTR("Couldn't create project.godot in project path."), MESSAGE_ERROR);
+					if (ProjectSettings::get_singleton()->save_custom(dir.plus_file("project.Fox"), initial_settings, Vector<String>(), false) != OK) {
+						set_message(TTR("Couldn't create project.Fox in project path."), MESSAGE_ERROR);
 					} else {
 						ResourceSaver::save(dir.plus_file("icon.png"), create_unscaled_default_project_icon());
 
 						FileAccess *f = FileAccess::open(dir.plus_file("default_env.tres"), FileAccess::WRITE);
 						if (!f) {
-							set_message(TTR("Couldn't create project.godot in project path."), MESSAGE_ERROR);
+							set_message(TTR("Couldn't create project.Fox in project path."), MESSAGE_ERROR);
 						} else {
 							f->store_line("[gd_resource type=\"Environment\" load_steps=2 format=2]");
 							f->store_line("");
@@ -530,8 +530,8 @@ private:
 						unzGetCurrentFileInfo(pkg, &info, fname, 16384, nullptr, 0, nullptr, 0);
 
 						String name = fname;
-						if (name.ends_with("project.godot")) {
-							zip_root = name.substr(0, name.rfind("project.godot"));
+						if (name.ends_with("project.Fox")) {
+							zip_root = name.substr(0, name.rfind("project.Fox"));
 							break;
 						}
 
@@ -705,7 +705,7 @@ public:
 
 			int err = current->setup(project_path->get_text(), "");
 			if (err != OK) {
-				set_message(vformat(TTR("Couldn't load project.godot in project path (error %d). It may be missing or corrupted."), err), MESSAGE_ERROR);
+				set_message(vformat(TTR("Couldn't load project.Fox in project path (error %d). It may be missing or corrupted."), err), MESSAGE_ERROR);
 				status_rect->show();
 				msg->show();
 				get_ok_button()->set_disabled(true);
@@ -881,7 +881,7 @@ public:
 		rshb->add_child(memnew(VSeparator));
 
 		const String gles2_unsupported_tooltip =
-				TTR("The GLES2 renderer is currently unavailable, as it needs to be reworked for Godot 4.0.\nUse Godot 3.2 if you need GLES2 support.");
+				TTR("The GLES2 renderer is currently unavailable, as it needs to be reworked for Fox 4.0.\nUse Fox 3.2 if you need GLES2 support.");
 
 		rvb = memnew(VBoxContainer);
 		rvb->set_h_size_flags(Control::SIZE_EXPAND_FILL);
@@ -1164,7 +1164,7 @@ void ProjectList::load_project_icon(int p_index) {
 
 void ProjectList::load_project_data(const String &p_property_key, Item &p_item, bool p_favorite) {
 	String path = EditorSettings::get_singleton()->get(p_property_key);
-	String conf = path.plus_file("project.godot");
+	String conf = path.plus_file("project.Fox");
 	bool grayed = false;
 	bool missing = false;
 
@@ -1182,7 +1182,7 @@ void ProjectList::load_project_data(const String &p_property_key, Item &p_item, 
 	}
 
 	if (config_version > ProjectSettings::CONFIG_VERSION) {
-		// Comes from an incompatible (more recent) Godot version, grey it out
+		// Comes from an incompatible (more recent) Fox version, grey it out
 		grayed = true;
 	}
 
@@ -1193,7 +1193,7 @@ void ProjectList::load_project_data(const String &p_property_key, Item &p_item, 
 	uint64_t last_edited = 0;
 	if (FileAccess::exists(conf)) {
 		// The modification date marks the date the project was last edited.
-		// This is because the `project.godot` file will always be modified
+		// This is because the `project.Fox` file will always be modified
 		// when editing a project (but not when running it).
 		last_edited = FileAccess::get_modified_time(conf);
 
@@ -1246,7 +1246,7 @@ void ProjectList::load_projects() {
 	}
 
 	for (List<PropertyInfo>::Element *E = properties.front(); E; E = E->next()) {
-		// This is actually something like "projects/C:::Documents::Godot::Projects::MyGame"
+		// This is actually something like "projects/C:::Documents::Fox::Projects::MyGame"
 		String property_key = E->get().name;
 		if (!property_key.begins_with("projects/")) {
 			continue;
@@ -1312,7 +1312,7 @@ void ProjectList::_global_menu_open_project(const Variant &p_tag) {
 	int idx = (int)p_tag;
 
 	if (idx >= 0 && idx < _projects.size()) {
-		String conf = _projects[idx].path.plus_file("project.godot");
+		String conf = _projects[idx].path.plus_file("project.Fox");
 		List<String> args;
 		args.push_back(conf);
 		String exec = OS::get_singleton()->get_executable_path();
@@ -2029,7 +2029,7 @@ void ProjectManager::_open_selected_projects() {
 	for (const Set<String>::Element *E = selected_list.front(); E; E = E->next()) {
 		const String &selected = E->get();
 		String path = EditorSettings::get_singleton()->get("projects/" + selected);
-		String conf = path.plus_file("project.godot");
+		String conf = path.plus_file("project.Fox");
 
 		if (!FileAccess::exists(conf)) {
 			dialog_error->set_text(vformat(TTR("Can't open project at '%s'."), path));
@@ -2086,12 +2086,12 @@ void ProjectManager::_open_selected_projects_ask() {
 	}
 
 	// Update the project settings or don't open
-	String conf = project.path.plus_file("project.godot");
+	String conf = project.path.plus_file("project.Fox");
 	int config_version = project.version;
 
 	// Check if the config_version property was empty or 0
 	if (config_version == 0) {
-		ask_update_settings->set_text(vformat(TTR("The following project settings file does not specify the version of Godot through which it was created.\n\n%s\n\nIf you proceed with opening it, it will be converted to Godot's current configuration file format.\nWarning: You won't be able to open the project with previous versions of the engine anymore."), conf));
+		ask_update_settings->set_text(vformat(TTR("The following project settings file does not specify the version of Fox through which it was created.\n\n%s\n\nIf you proceed with opening it, it will be converted to Fox's current configuration file format.\nWarning: You won't be able to open the project with previous versions of the engine anymore."), conf));
 		ask_update_settings->popup_centered();
 		return;
 	}
@@ -2174,7 +2174,7 @@ void ProjectManager::_scan_dir(const String &path, List<String> *r_projects) {
 	while (n != String()) {
 		if (da->current_is_dir() && !n.begins_with(".")) {
 			_scan_dir(da->get_current_dir().plus_file(n), r_projects);
-		} else if (n == "project.godot") {
+		} else if (n == "project.Fox") {
 			r_projects->push_back(da->get_current_dir());
 		}
 		n = da->get_next();
@@ -2315,7 +2315,7 @@ void ProjectManager::_files_dropped(PackedStringArray p_files, int p_screen) {
 				dir->list_dir_begin();
 				String file = dir->get_next();
 				while (confirm && file != String()) {
-					if (!dir->current_is_dir() && file.ends_with("project.godot")) {
+					if (!dir->current_is_dir() && file.ends_with("project.Fox")) {
 						confirm = false;
 					}
 					file = dir->get_next();
@@ -2328,7 +2328,7 @@ void ProjectManager::_files_dropped(PackedStringArray p_files, int p_screen) {
 			multi_scan_ask->get_ok_button()->disconnect("pressed", callable_mp(this, &ProjectManager::_scan_multiple_folders));
 			multi_scan_ask->get_ok_button()->connect("pressed", callable_mp(this, &ProjectManager::_scan_multiple_folders), varray(folders));
 			multi_scan_ask->set_text(
-					vformat(TTR("Are you sure to scan %s folders for existing Godot projects?\nThis could take a while."), folders.size()));
+					vformat(TTR("Are you sure to scan %s folders for existing Fox projects?\nThis could take a while."), folders.size()));
 			multi_scan_ask->popup_centered();
 		} else {
 			_scan_multiple_folders(folders);
@@ -2433,7 +2433,7 @@ ProjectManager::ProjectManager() {
 		DisplayServer::get_singleton()->window_set_size(Vector2i(window_size.x * scale_factor, window_size.y * scale_factor));
 	}
 
-	// TRANSLATORS: This refers to the application where users manage their Godot projects.
+	// TRANSLATORS: This refers to the application where users manage their Fox projects.
 	DisplayServer::get_singleton()->window_set_title(VERSION_NAME + String(" - ") + TTR("Project Manager"));
 
 	FileDialog::set_default_show_hidden_files(EditorSettings::get_singleton()->get("filesystem/file_dialog/show_hidden_files"));

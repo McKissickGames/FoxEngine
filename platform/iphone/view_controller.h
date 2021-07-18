@@ -2,11 +2,11 @@
 /*  view_controller.h                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -30,13 +30,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class GodotView;
-@class GodotNativeVideoView;
-@class GodotKeyboardInputView;
+@class FoxView;
+@class FoxNativeVideoView;
+@class FoxKeyboardInputView;
 
 @interface ViewController : UIViewController
 
-@property(nonatomic, readonly, strong) GodotView *godotView;
-@property(nonatomic, readonly, strong) GodotKeyboardInputView *keyboardView;
+@property(nonatomic, readonly, strong) FoxView *FoxView;
+@property(nonatomic, readonly, strong) FoxKeyboardInputView *keyboardView;
 
 @end

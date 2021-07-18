@@ -1,6 +1,6 @@
 using System;
 
-namespace Godot
+namespace Fox
 {
     public struct Callable
     {

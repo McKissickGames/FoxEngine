@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a bug in Godot
+description: Report a bug in Fox
 body:
 
 - type: markdown
@@ -7,12 +7,12 @@ body:
     value: |
       - Read our [CONTRIBUTING.md guide](CONTRIBUTING.md#reporting-bugs) on reporting bugs.
       - Write a descriptive issue title above.
-      - Search [open](https://github.com/godotengine/godot/issues) and [closed](https://github.com/godotengine/godot/issues?q=is%3Aissue+is%3Aclosed) issues to ensure it has not already been reported.
-      - Verify that you are using a [supported Godot version](https://docs.godotengine.org/en/stable/about/release_policy.html).
+      - Search [open](https://github.com/Foxengine/Fox/issues) and [closed](https://github.com/Foxengine/Fox/issues?q=is%3Aissue+is%3Aclosed) issues to ensure it has not already been reported.
+      - Verify that you are using a [supported Fox version](https://docs.Foxengine.org/en/stable/about/release_policy.html).
 
 - type: input
   attributes:
-    label: Godot version
+    label: Fox version
     description: >
       Specify the Git commit hash if using a development or non-official build.
       If you use a custom build, please test if your issue is reproducible in official builds too.
@@ -52,5 +52,5 @@ body:
   attributes:
     label: Minimal reproduction project
     description: |
-      A small Godot project which reproduces the issue. Highly recommended to speed up troubleshooting.
+      A small Fox project which reproduces the issue. Highly recommended to speed up troubleshooting.
       Drag and drop a ZIP archive to upload it.

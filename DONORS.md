@@ -1,14 +1,14 @@
-# Donors to the Godot Engine project
+# Donors to the Fox Engine project
 
-Godot Engine is a non-profit project developed by a community of voluntary
+Fox Engine is a non-profit project developed by a community of voluntary
 contributors, as well as occasional paid contributors thanks to the financial
 support of generous donors.
 
 The ways to donate to the project, as well as details on how the funds are
-used, are described on [Godot's website](https://godotengine.org/donate).
+used, are described on [Fox's website](https://Foxengine.org/donate).
 
 The following is a list of the current monthly donors, who will have their
-generous deed immortalized in the next stable release of Godot Engine.
+generous deed immortalized in the next stable release of Fox Engine.
 
 ## Platinum sponsors
 
@@ -18,7 +18,7 @@ generous deed immortalized in the next stable release of Godot Engine.
 
 ## Gold sponsors
 
-    None currently, become one! <https://godotengine.org/donate>
+    None currently, become one! <https://Foxengine.org/donate>
 
 ## Silver sponsors
 

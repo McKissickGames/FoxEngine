@@ -2,11 +2,11 @@
 /*  array.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,32 +33,32 @@
 #include "core/os/memory.h"
 #include "core/variant/array.h"
 
-static_assert(sizeof(godot_array) == sizeof(Array), "Array size mismatch");
+static_assert(sizeof(Fox_array) == sizeof(Array), "Array size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_array_new(godot_array *p_self) {
+void GDAPI Fox_array_new(Fox_array *p_self) {
 	memnew_placement(p_self, Array);
 }
 
-void GDAPI godot_array_new_copy(godot_array *r_dest, const godot_array *p_src) {
+void GDAPI Fox_array_new_copy(Fox_array *r_dest, const Fox_array *p_src) {
 	memnew_placement(r_dest, Array(*(Array *)p_src));
 }
 
-void GDAPI godot_array_destroy(godot_array *p_self) {
+void GDAPI Fox_array_destroy(Fox_array *p_self) {
 	((Array *)p_self)->~Array();
 }
 
-godot_variant GDAPI *godot_array_operator_index(godot_array *p_self, godot_int p_index) {
+Fox_variant GDAPI *Fox_array_operator_index(Fox_array *p_self, Fox_int p_index) {
 	Array *self = (Array *)p_self;
-	return (godot_variant *)&self->operator[](p_index);
+	return (Fox_variant *)&self->operator[](p_index);
 }
 
-const godot_variant GDAPI *godot_array_operator_index_const(const godot_array *p_self, godot_int p_index) {
+const Fox_variant GDAPI *Fox_array_operator_index_const(const Fox_array *p_self, Fox_int p_index) {
 	const Array *self = (const Array *)p_self;
-	return (const godot_variant *)&self->operator[](p_index);
+	return (const Fox_variant *)&self->operator[](p_index);
 }
 
 #ifdef __cplusplus

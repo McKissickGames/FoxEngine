@@ -2,11 +2,11 @@
 /*  generic_6dof_joint_3d_sw.cpp                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -29,7 +29,7 @@
 /*************************************************************************/
 
 /*
-Adapted to Godot from the Bullet library.
+Adapted to Fox from the Bullet library.
 */
 
 /*
@@ -499,28 +499,28 @@ void Generic6DOFJoint3DSW::set_param(Vector3::Axis p_axis, PhysicsServer3D::G6DO
 
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_STIFFNESS: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_DAMPING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_STIFFNESS: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_DAMPING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_MAX:
 			break; // Can't happen, but silences warning
@@ -586,28 +586,28 @@ real_t Generic6DOFJoint3DSW::get_param(Vector3::Axis p_axis, PhysicsServer3D::G6
 
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_STIFFNESS: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_DAMPING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_LINEAR_SPRING_EQUILIBRIUM_POINT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_STIFFNESS: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_DAMPING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_ANGULAR_SPRING_EQUILIBRIUM_POINT: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_MAX:
 			break; // Can't happen, but silences warning
@@ -629,13 +629,13 @@ void Generic6DOFJoint3DSW::set_flag(Vector3::Axis p_axis, PhysicsServer3D::G6DOF
 			m_angularLimits[p_axis].m_enableMotor = p_value;
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_MAX:
 			break; // Can't happen, but silences warning
@@ -655,13 +655,13 @@ bool Generic6DOFJoint3DSW::get_flag(Vector3::Axis p_axis, PhysicsServer3D::G6DOF
 			return m_angularLimits[p_axis].m_enableMotor;
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_LINEAR_SPRING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING: {
-			// Not implemented in GodotPhysics3D backend
+			// Not implemented in FoxPhysics3D backend
 		} break;
 		case PhysicsServer3D::G6DOF_JOINT_FLAG_MAX:
 			break; // Can't happen, but silences warning

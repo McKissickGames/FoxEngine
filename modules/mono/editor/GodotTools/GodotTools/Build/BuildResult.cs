@@ -1,4 +1,4 @@
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public enum BuildResult
     {

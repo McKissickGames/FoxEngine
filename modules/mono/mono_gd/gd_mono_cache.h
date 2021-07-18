@@ -2,11 +2,11 @@
 /*  gd_mono_cache.h                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -88,8 +88,8 @@ struct CachedData {
 	GDMonoClass *class_StringName;
 	GDMonoClass *class_NodePath;
 	GDMonoClass *class_RID;
-	GDMonoClass *class_GodotObject;
-	GDMonoClass *class_GodotResource;
+	GDMonoClass *class_FoxObject;
+	GDMonoClass *class_FoxResource;
 	GDMonoClass *class_Node;
 	GDMonoClass *class_Control;
 	GDMonoClass *class_Node3D;
@@ -117,25 +117,25 @@ struct CachedData {
 	GDMonoClass *class_RemoteSyncAttribute;
 	GDMonoClass *class_MasterSyncAttribute;
 	GDMonoClass *class_PuppetSyncAttribute;
-	GDMonoClass *class_GodotMethodAttribute;
-	GDMonoField *field_GodotMethodAttribute_methodName;
+	GDMonoClass *class_FoxMethodAttribute;
+	GDMonoField *field_FoxMethodAttribute_methodName;
 	GDMonoClass *class_ScriptPathAttribute;
 	GDMonoField *field_ScriptPathAttribute_path;
 	GDMonoClass *class_AssemblyHasScriptsAttribute;
 	GDMonoField *field_AssemblyHasScriptsAttribute_requiresLookup;
 	GDMonoField *field_AssemblyHasScriptsAttribute_scriptTypes;
 
-	GDMonoField *field_GodotObject_ptr;
+	GDMonoField *field_FoxObject_ptr;
 	GDMonoField *field_StringName_ptr;
 	GDMonoField *field_NodePath_ptr;
 	GDMonoField *field_Image_ptr;
 	GDMonoField *field_RID_ptr;
 
-	GDMonoMethodThunk<MonoObject *> methodthunk_GodotObject_Dispose;
+	GDMonoMethodThunk<MonoObject *> methodthunk_FoxObject_Dispose;
 	GDMonoMethodThunkR<Array *, MonoObject *> methodthunk_Array_GetPtr;
 	GDMonoMethodThunkR<Dictionary *, MonoObject *> methodthunk_Dictionary_GetPtr;
 	GDMonoMethodThunk<MonoObject *, MonoArray *> methodthunk_SignalAwaiter_SignalCallback;
-	GDMonoMethodThunk<MonoObject *> methodthunk_GodotTaskScheduler_Activate;
+	GDMonoMethodThunk<MonoObject *> methodthunk_FoxTaskScheduler_Activate;
 
 	GDMonoMethodThunkR<MonoBoolean, MonoObject *, MonoObject *> methodthunk_Delegate_Equals;
 
@@ -163,28 +163,28 @@ struct CachedData {
 	Ref<MonoGCHandleRef> task_scheduler_handle;
 
 	bool corlib_cache_updated;
-	bool godot_api_cache_updated;
+	bool Fox_api_cache_updated;
 
 	void clear_corlib_cache();
-	void clear_godot_api_cache();
+	void clear_Fox_api_cache();
 
 	CachedData() {
 		clear_corlib_cache();
-		clear_godot_api_cache();
+		clear_Fox_api_cache();
 	}
 };
 
 extern CachedData cached_data;
 
 void update_corlib_cache();
-void update_godot_api_cache();
+void update_Fox_api_cache();
 
 inline void clear_corlib_cache() {
 	cached_data.clear_corlib_cache();
 }
 
-inline void clear_godot_api_cache() {
-	cached_data.clear_godot_api_cache();
+inline void clear_Fox_api_cache() {
+	cached_data.clear_Fox_api_cache();
 }
 } // namespace GDMonoCache
 

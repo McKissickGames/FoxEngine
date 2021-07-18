@@ -2,11 +2,11 @@
 /*  csharp_script.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -53,7 +53,7 @@
 #endif
 
 #include "editor/editor_internal_calls.h"
-#include "godotsharp_dirs.h"
+#include "Foxsharp_dirs.h"
 #include "mono_gd/gd_mono_cache.h"
 #include "mono_gd/gd_mono_class.h"
 #include "mono_gd/gd_mono_marshal.h"
@@ -66,14 +66,14 @@
 
 #ifdef TOOLS_ENABLED
 static bool _create_project_solution_if_needed() {
-	String sln_path = GodotSharpDirs::get_project_sln_path();
-	String csproj_path = GodotSharpDirs::get_project_csproj_path();
+	String sln_path = FoxSharpDirs::get_project_sln_path();
+	String csproj_path = FoxSharpDirs::get_project_csproj_path();
 
 	if (!FileAccess::exists(sln_path) || !FileAccess::exists(csproj_path)) {
 		// A solution does not yet exist, create a new one
 
-		CRASH_COND(CSharpLanguage::get_singleton()->get_godotsharp_editor() == nullptr);
-		return CSharpLanguage::get_singleton()->get_godotsharp_editor()->call("CreateProjectSolution");
+		CRASH_COND(CSharpLanguage::get_singleton()->get_Foxsharp_editor() == nullptr);
+		return CSharpLanguage::get_singleton()->get_Foxsharp_editor()->call("CreateProjectSolution");
 	}
 
 	return true;
@@ -338,7 +338,7 @@ void CSharpLanguage::get_string_delimiters(List<String> *p_delimiters) const {
 static String get_base_class_name(const String &p_base_class_name, const String p_class_name) {
 	String base_class = p_base_class_name;
 	if (p_class_name == base_class) {
-		base_class = "Godot." + base_class;
+		base_class = "Fox." + base_class;
 	}
 	return base_class;
 }
@@ -429,7 +429,7 @@ static String variant_type_to_managed_name(const String &p_var_type_name) {
 	}
 
 	if (p_var_type_name == Variant::get_type_name(Variant::OBJECT)) {
-		return "Godot.Object";
+		return "Fox.Object";
 	}
 
 	if (p_var_type_name == Variant::get_type_name(Variant::FLOAT)) {
@@ -517,7 +517,7 @@ static String variant_type_to_managed_name(const String &p_var_type_name) {
 
 String CSharpLanguage::make_function(const String &, const String &p_name, const PackedStringArray &p_args) const {
 	// FIXME
-	// - Due to Godot's API limitation this just appends the function to the end of the file
+	// - Due to Fox's API limitation this just appends the function to the end of the file
 	// - Use fully qualified name if there is ambiguity
 	String s = "private void " + p_name + "(";
 	for (int i = 0; i < p_args.size(); i++) {
@@ -678,9 +678,9 @@ Vector<ScriptLanguage::StackInfo> CSharpLanguage::stack_trace_get_info(MonoObjec
 		// what if the StackFrame method is null (method_decl is empty). should we skip this frame?
 		// can reproduce with a MissingMethodException on internal calls
 
-		sif.file = GDMonoMarshal::mono_string_to_godot(file_name);
+		sif.file = GDMonoMarshal::mono_string_to_Fox(file_name);
 		sif.line = file_line_num;
-		sif.func = GDMonoMarshal::mono_string_to_godot(method_decl);
+		sif.func = GDMonoMarshal::mono_string_to_Fox(method_decl);
 	}
 
 	return si;
@@ -716,7 +716,7 @@ void CSharpLanguage::frame() {
 
 			if (task_scheduler) {
 				MonoException *exc = nullptr;
-				CACHED_METHOD_THUNK(GodotTaskScheduler, Activate).invoke(task_scheduler, &exc);
+				CACHED_METHOD_THUNK(FoxTaskScheduler, Activate).invoke(task_scheduler, &exc);
 
 				if (exc) {
 					GDMonoUtils::debug_unhandled_exception(exc);
@@ -761,7 +761,7 @@ void CSharpLanguage::reload_tool_script(const Ref<Script> &p_script, bool p_soft
 	CRASH_COND(!Engine::get_singleton()->is_editor_hint());
 
 #ifdef TOOLS_ENABLED
-	get_godotsharp_editor()->get_node(NodePath("HotReloadAssemblyWatcher"))->call("RestartTimer");
+	get_Foxsharp_editor()->get_node(NodePath("HotReloadAssemblyWatcher"))->call("RestartTimer");
 #endif
 
 #ifdef GD_MONO_HOT_RELOAD
@@ -793,7 +793,7 @@ bool CSharpLanguage::is_assembly_reloading_needed() {
 
 		if (!FileAccess::exists(proj_asm_path)) {
 			// Maybe it wasn't loaded from the default path, so check this as well
-			proj_asm_path = GodotSharpDirs::get_res_temp_assemblies_dir().plus_file(appname_safe);
+			proj_asm_path = FoxSharpDirs::get_res_temp_assemblies_dir().plus_file(appname_safe);
 			if (!FileAccess::exists(proj_asm_path)) {
 				return false; // No assembly to load
 			}
@@ -803,7 +803,7 @@ bool CSharpLanguage::is_assembly_reloading_needed() {
 			return false; // Already up to date
 		}
 	} else {
-		if (!FileAccess::exists(GodotSharpDirs::get_res_temp_assemblies_dir().plus_file(appname_safe))) {
+		if (!FileAccess::exists(FoxSharpDirs::get_res_temp_assemblies_dir().plus_file(appname_safe))) {
 			return false; // No assembly to load
 		}
 	}
@@ -1028,9 +1028,9 @@ void CSharpLanguage::reload_assemblies(bool p_soft_reload) {
 				continue;
 			}
 
-			bool obj_type = CACHED_CLASS(GodotObject)->is_assignable_from(script_class);
+			bool obj_type = CACHED_CLASS(FoxObject)->is_assignable_from(script_class);
 			if (!obj_type) {
-				// The class no longer inherits Godot.Object, can't reload
+				// The class no longer inherits Fox.Object, can't reload
 				script->pending_reload_instances.clear();
 				continue;
 			}
@@ -1063,7 +1063,7 @@ void CSharpLanguage::reload_assemblies(bool p_soft_reload) {
 #ifdef TOOLS_ENABLED
 				if (si) {
 					// If the script instance is not null, then it must be a placeholder.
-					// Non-placeholder script instances are removed in godot_icall_Object_Disposed.
+					// Non-placeholder script instances are removed in Fox_icall_Object_Disposed.
 					CRASH_COND(!si->is_placeholder());
 
 					if (script->is_tool() || ScriptServer::is_scripting_enabled()) {
@@ -1231,7 +1231,7 @@ void CSharpLanguage::lookup_scripts_in_assembly(GDMonoAssembly *p_assembly) {
 				// We don't search inner classes, only top-level.
 				MonoClass *mono_class = mono_class_get(image, (i + 1) | MONO_TOKEN_TYPE_DEF);
 
-				if (!mono_class_is_assignable_from(CACHED_CLASS_RAW(GodotObject), mono_class)) {
+				if (!mono_class_is_assignable_from(CACHED_CLASS_RAW(FoxObject), mono_class)) {
 					continue;
 				}
 
@@ -1262,11 +1262,11 @@ void CSharpLanguage::get_recognized_extensions(List<String> *p_extensions) const
 
 #ifdef TOOLS_ENABLED
 Error CSharpLanguage::open_in_external_editor(const Ref<Script> &p_script, int p_line, int p_col) {
-	return (Error)(int)get_godotsharp_editor()->call("OpenInExternalEditor", p_script, p_line, p_col);
+	return (Error)(int)get_Foxsharp_editor()->call("OpenInExternalEditor", p_script, p_line, p_col);
 }
 
 bool CSharpLanguage::overrides_external_editor() {
-	return get_godotsharp_editor()->call("OverridesExternalEditor");
+	return get_Foxsharp_editor()->call("OverridesExternalEditor");
 }
 #endif
 
@@ -1337,9 +1337,9 @@ void CSharpLanguage::_on_scripts_domain_unloaded() {
 void CSharpLanguage::_editor_init_callback() {
 	register_editor_internal_calls();
 
-	// Initialize GodotSharpEditor
+	// Initialize FoxSharpEditor
 
-	GDMonoClass *editor_klass = GDMono::get_singleton()->get_tools_assembly()->get_class("GodotTools", "GodotSharpEditor");
+	GDMonoClass *editor_klass = GDMono::get_singleton()->get_tools_assembly()->get_class("FoxTools", "FoxSharpEditor");
 	CRASH_COND(editor_klass == nullptr);
 
 	MonoObject *mono_object = mono_object_new(mono_domain_get(), editor_klass->get_mono_ptr());
@@ -1349,15 +1349,15 @@ void CSharpLanguage::_editor_init_callback() {
 	GDMonoUtils::runtime_object_init(mono_object, editor_klass, &exc);
 	UNHANDLED_EXCEPTION(exc);
 
-	EditorPlugin *godotsharp_editor = Object::cast_to<EditorPlugin>(
+	EditorPlugin *Foxsharp_editor = Object::cast_to<EditorPlugin>(
 			GDMonoMarshal::mono_object_to_variant(mono_object).operator Object *());
-	CRASH_COND(godotsharp_editor == nullptr);
+	CRASH_COND(Foxsharp_editor == nullptr);
 
 	// Enable it as a plugin
-	EditorNode::add_editor_plugin(godotsharp_editor);
-	godotsharp_editor->enable_plugin();
+	EditorNode::add_editor_plugin(Foxsharp_editor);
+	Foxsharp_editor->enable_plugin();
 
-	get_singleton()->godotsharp_editor = godotsharp_editor;
+	get_singleton()->Foxsharp_editor = Foxsharp_editor;
 }
 #endif
 
@@ -1426,7 +1426,7 @@ bool CSharpLanguage::setup_csharp_script_binding(CSharpScriptBinding &r_script_b
 
 	ERR_FAIL_NULL_V(type_class, false);
 
-	MonoObject *mono_object = GDMonoUtils::create_managed_for_godot_object(type_class, type_name, p_object);
+	MonoObject *mono_object = GDMonoUtils::create_managed_for_Fox_object(type_class, type_name, p_object);
 
 	ERR_FAIL_NULL_V(mono_object, false);
 
@@ -1443,7 +1443,7 @@ bool CSharpLanguage::setup_csharp_script_binding(CSharpScriptBinding &r_script_b
 		// Unsafe refcount increment. The managed instance also counts as a reference.
 		// This way if the unmanaged world has no references to our owner
 		// but the managed instance is alive, the refcount will be 1 instead of 0.
-		// See: godot_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
+		// See: Fox_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
 
 		rc->reference();
 		CSharpLanguage::get_singleton()->post_unsafe_reference(rc);
@@ -1500,7 +1500,7 @@ void CSharpLanguage::free_instance_binding_data(void *p_data) {
 			// This is done to avoid trying to dispose the native instance from Dispose(bool).
 			MonoObject *mono_object = script_binding.gchandle.get_target();
 			if (mono_object) {
-				CACHED_FIELD(GodotObject, ptr)->set_value_raw(mono_object, nullptr);
+				CACHED_FIELD(FoxObject, ptr)->set_value_raw(mono_object, nullptr);
 			}
 			script_binding.gchandle.release();
 		}
@@ -1978,7 +1978,7 @@ MonoObject *CSharpInstance::_internal_new_managed() {
 		_reference_owner_unsafe(); // Here, after assigning the gchandle (for the refcount_incremented callback)
 	}
 
-	CACHED_FIELD(GodotObject, ptr)->set_value_raw(mono_object, owner);
+	CACHED_FIELD(FoxObject, ptr)->set_value_raw(mono_object, owner);
 
 	// Construct
 	ctor->invoke_raw(mono_object, nullptr);
@@ -2129,7 +2129,7 @@ void CSharpInstance::notification(int p_notification) {
 			// that's not a problem. The refcount wouldn't have reached 0 otherwise, since the
 			// managed side references it and Dispose() needs to be called to release it.
 			// However, this means C# RefCounted scripts can't receive NOTIFICATION_PREDELETE, but
-			// this is likely the case with GDScript as well: https://github.com/godotengine/godot/issues/6784
+			// this is likely the case with GDScript as well: https://github.com/Foxengine/Fox/issues/6784
 			return;
 		}
 
@@ -2207,7 +2207,7 @@ String CSharpInstance::to_string(bool *r_valid) {
 		return String();
 	}
 
-	return GDMonoMarshal::mono_string_to_godot(result);
+	return GDMonoMarshal::mono_string_to_Fox(result);
 }
 
 Ref<Script> CSharpInstance::get_script() const {
@@ -2429,7 +2429,7 @@ bool CSharpScript::_update_exports(PlaceHolderScriptInstance *p_instance_to_upda
 			MonoException *ctor_exc = nullptr;
 			ctor->invoke(tmp_object, nullptr, &ctor_exc);
 
-			tmp_native = GDMonoMarshal::unbox<Object *>(CACHED_FIELD(GodotObject, ptr)->get_value(tmp_object));
+			tmp_native = GDMonoMarshal::unbox<Object *>(CACHED_FIELD(FoxObject, ptr)->get_value(tmp_object));
 
 			if (ctor_exc) {
 				// TODO: Should we free 'tmp_native' if the exception was thrown after its creation?
@@ -2842,7 +2842,7 @@ int CSharpScript::_try_get_member_export_hint(IMonoClassMember *p_member, Manage
 			// This may not be needed in the future if the editor is changed to not display values.
 			r_hint_string = name_only_hint_string;
 		}
-	} else if (p_variant_type == Variant::OBJECT && CACHED_CLASS(GodotResource)->is_assignable_from(p_type.type_class)) {
+	} else if (p_variant_type == Variant::OBJECT && CACHED_CLASS(FoxResource)->is_assignable_from(p_type.type_class)) {
 		GDMonoClass *field_native_class = GDMonoUtils::get_class_native_base(p_type.type_class);
 		CRASH_COND(field_native_class == nullptr);
 
@@ -3007,9 +3007,9 @@ void CSharpScript::update_script_class_info(Ref<CSharpScript> p_script) {
 	if (p_script->script_class != p_script->native) {
 		GDMonoClass *native_top = p_script->native;
 		while (native_top) {
-			native_top->fetch_methods_with_godot_api_checks(p_script->native);
+			native_top->fetch_methods_with_Fox_api_checks(p_script->native);
 
-			if (native_top == CACHED_CLASS(GodotObject)) {
+			if (native_top == CACHED_CLASS(FoxObject)) {
 				break;
 			}
 
@@ -3018,14 +3018,14 @@ void CSharpScript::update_script_class_info(Ref<CSharpScript> p_script) {
 	}
 #endif
 
-	p_script->script_class->fetch_methods_with_godot_api_checks(p_script->native);
+	p_script->script_class->fetch_methods_with_Fox_api_checks(p_script->native);
 
 	p_script->rpc_functions.clear();
 
 	GDMonoClass *top = p_script->script_class;
 	while (top && top != p_script->native) {
 		// Fetch methods from base classes as well
-		top->fetch_methods_with_godot_api_checks(p_script->native);
+		top->fetch_methods_with_Fox_api_checks(p_script->native);
 
 		// Update RPC info
 		{
@@ -3167,7 +3167,7 @@ CSharpInstance *CSharpScript::_create_instance(const Variant **p_args, int p_arg
 		instances.insert(instance->owner);
 	}
 
-	CACHED_FIELD(GodotObject, ptr)->set_value_raw(mono_object, instance->owner);
+	CACHED_FIELD(FoxObject, ptr)->set_value_raw(mono_object, instance->owner);
 
 	// Construct
 	ctor->invoke(mono_object, p_args);
@@ -3333,7 +3333,7 @@ Error CSharpScript::reload(bool p_keep_state) {
 	if (lookup_info) {
 		GDMonoClass *klass = lookup_info->script_class;
 		if (klass) {
-			ERR_FAIL_COND_V(!CACHED_CLASS(GodotObject)->is_assignable_from(klass), FAILED);
+			ERR_FAIL_COND_V(!CACHED_CLASS(FoxObject)->is_assignable_from(klass), FAILED);
 			script_class = klass;
 		}
 	}

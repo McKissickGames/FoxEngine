@@ -12,7 +12,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 2-element structure that can be used to represent positions in 2D space or any other pair of numeric values.

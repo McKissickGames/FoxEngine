@@ -291,7 +291,7 @@ def configure(env):
     env["neon_enabled"] = False
     if env["android_arch"] == "x86":
         target_opts = ["-target", "i686-none-linux-android"]
-        # The NDK adds this if targeting API < 21, so we can drop it when Godot targets it at least
+        # The NDK adds this if targeting API < 21, so we can drop it when Fox targets it at least
         env.Append(CCFLAGS=["-mstackrealign"])
 
     elif env["android_arch"] == "x86_64":
@@ -336,7 +336,7 @@ def configure(env):
     if env["android_arch"] == "armv7":
         env.Append(LINKFLAGS="-Wl,--fix-cortex-a8".split())
     env.Append(LINKFLAGS="-Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now".split())
-    env.Append(LINKFLAGS="-Wl,-soname,libgodot_android.so -Wl,--gc-sections".split())
+    env.Append(LINKFLAGS="-Wl,-soname,libFox_android.so -Wl,--gc-sections".split())
 
     env.Append(LINKFLAGS=target_opts)
     env.Append(LINKFLAGS=common_opts)

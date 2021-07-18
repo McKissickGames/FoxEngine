@@ -2,11 +2,11 @@
 /*  engine.cpp                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -179,7 +179,7 @@ Dictionary Engine::get_license_info() const {
 }
 
 String Engine::get_license_text() const {
-	return String(GODOT_LICENSE_TEXT);
+	return String(Fox_LICENSE_TEXT);
 }
 
 bool Engine::is_abort_on_gpu_errors_enabled() const {

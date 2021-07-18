@@ -214,7 +214,7 @@ if env["builtin_bullet"]:
     env.modules_sources += thirdparty_obj
 
 
-# Godot source files
+# Fox source files
 
 module_obj = []
 

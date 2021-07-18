@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public sealed partial class NodePath : IDisposable
     {
@@ -38,7 +38,7 @@ namespace Godot
 
             if (ptr != IntPtr.Zero)
             {
-                godot_icall_NodePath_Dtor(ptr);
+                Fox_icall_NodePath_Dtor(ptr);
                 ptr = IntPtr.Zero;
             }
 
@@ -54,7 +54,7 @@ namespace Godot
 
         public NodePath(string path)
         {
-            ptr = godot_icall_NodePath_Ctor(path);
+            ptr = Fox_icall_NodePath_Ctor(path);
         }
 
         public static implicit operator NodePath(string from) => new NodePath(from);
@@ -63,80 +63,80 @@ namespace Godot
 
         public override string ToString()
         {
-            return godot_icall_NodePath_operator_String(GetPtr(this));
+            return Fox_icall_NodePath_operator_String(GetPtr(this));
         }
 
         public NodePath GetAsPropertyPath()
         {
-            return new NodePath(godot_icall_NodePath_get_as_property_path(GetPtr(this)));
+            return new NodePath(Fox_icall_NodePath_get_as_property_path(GetPtr(this)));
         }
 
         public string GetConcatenatedSubnames()
         {
-            return godot_icall_NodePath_get_concatenated_subnames(GetPtr(this));
+            return Fox_icall_NodePath_get_concatenated_subnames(GetPtr(this));
         }
 
         public string GetName(int idx)
         {
-            return godot_icall_NodePath_get_name(GetPtr(this), idx);
+            return Fox_icall_NodePath_get_name(GetPtr(this), idx);
         }
 
         public int GetNameCount()
         {
-            return godot_icall_NodePath_get_name_count(GetPtr(this));
+            return Fox_icall_NodePath_get_name_count(GetPtr(this));
         }
 
         public string GetSubname(int idx)
         {
-            return godot_icall_NodePath_get_subname(GetPtr(this), idx);
+            return Fox_icall_NodePath_get_subname(GetPtr(this), idx);
         }
 
         public int GetSubnameCount()
         {
-            return godot_icall_NodePath_get_subname_count(GetPtr(this));
+            return Fox_icall_NodePath_get_subname_count(GetPtr(this));
         }
 
         public bool IsAbsolute()
         {
-            return godot_icall_NodePath_is_absolute(GetPtr(this));
+            return Fox_icall_NodePath_is_absolute(GetPtr(this));
         }
 
         public bool IsEmpty()
         {
-            return godot_icall_NodePath_is_empty(GetPtr(this));
+            return Fox_icall_NodePath_is_empty(GetPtr(this));
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern IntPtr godot_icall_NodePath_Ctor(string path);
+        private static extern IntPtr Fox_icall_NodePath_Ctor(string path);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void godot_icall_NodePath_Dtor(IntPtr ptr);
+        private static extern void Fox_icall_NodePath_Dtor(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string godot_icall_NodePath_operator_String(IntPtr ptr);
+        private static extern string Fox_icall_NodePath_operator_String(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern IntPtr godot_icall_NodePath_get_as_property_path(IntPtr ptr);
+        private static extern IntPtr Fox_icall_NodePath_get_as_property_path(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string godot_icall_NodePath_get_concatenated_subnames(IntPtr ptr);
+        private static extern string Fox_icall_NodePath_get_concatenated_subnames(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string godot_icall_NodePath_get_name(IntPtr ptr, int arg1);
+        private static extern string Fox_icall_NodePath_get_name(IntPtr ptr, int arg1);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern int godot_icall_NodePath_get_name_count(IntPtr ptr);
+        private static extern int Fox_icall_NodePath_get_name_count(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string godot_icall_NodePath_get_subname(IntPtr ptr, int arg1);
+        private static extern string Fox_icall_NodePath_get_subname(IntPtr ptr, int arg1);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern int godot_icall_NodePath_get_subname_count(IntPtr ptr);
+        private static extern int Fox_icall_NodePath_get_subname_count(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern bool godot_icall_NodePath_is_absolute(IntPtr ptr);
+        private static extern bool Fox_icall_NodePath_is_absolute(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern bool godot_icall_NodePath_is_empty(IntPtr ptr);
+        private static extern bool Fox_icall_NodePath_is_empty(IntPtr ptr);
     }
 }

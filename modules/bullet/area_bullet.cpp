@@ -2,11 +2,11 @@
 /*  area_bullet.cpp                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -58,7 +58,7 @@ AreaBullet::AreaBullet() :
 }
 
 AreaBullet::~AreaBullet() {
-	// signal are handled by godot, so just clear without notify
+	// signal are handled by Fox, so just clear without notify
 	for (int i = overlappingObjects.size() - 1; 0 <= i; --i) {
 		overlappingObjects[i].object->on_exit_area(this);
 	}
@@ -156,7 +156,7 @@ void AreaBullet::set_monitorable(bool p_monitorable) {
 }
 
 bool AreaBullet::is_monitoring() const {
-	return get_godot_object_flags() & GOF_IS_MONITORING_AREA;
+	return get_Fox_object_flags() & GOF_IS_MONITORING_AREA;
 }
 
 void AreaBullet::main_shape_changed() {
@@ -274,9 +274,9 @@ void AreaBullet::set_event_callback(Type p_callbackObjectType, ObjectID p_id, co
 
 	/// Set if monitoring
 	if (eventsCallbacks[0].event_callback_id.is_valid() || eventsCallbacks[1].event_callback_id.is_valid()) {
-		set_godot_object_flags(get_godot_object_flags() | GOF_IS_MONITORING_AREA);
+		set_Fox_object_flags(get_Fox_object_flags() | GOF_IS_MONITORING_AREA);
 	} else {
-		set_godot_object_flags(get_godot_object_flags() & (~GOF_IS_MONITORING_AREA));
+		set_Fox_object_flags(get_Fox_object_flags() & (~GOF_IS_MONITORING_AREA));
 	}
 }
 

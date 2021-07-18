@@ -4,7 +4,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Godot.Collections
+namespace Fox.Collections
 {
     class ArraySafeHandle : SafeHandle
     {
@@ -20,7 +20,7 @@ namespace Godot.Collections
 
         protected override bool ReleaseHandle()
         {
-            Array.godot_icall_Array_Dtor(handle);
+            Array.Fox_icall_Array_Dtor(handle);
             return true;
         }
     }
@@ -32,7 +32,7 @@ namespace Godot.Collections
 
         public Array()
         {
-            safeHandle = new ArraySafeHandle(godot_icall_Array_Ctor());
+            safeHandle = new ArraySafeHandle(Fox_icall_Array_Ctor());
         }
 
         public Array(IEnumerable collection) : this()
@@ -50,7 +50,7 @@ namespace Godot.Collections
             {
                 throw new NullReferenceException($"Parameter '{nameof(array)} cannot be null.'");
             }
-            safeHandle = new ArraySafeHandle(godot_icall_Array_Ctor_MonoArray(array));
+            safeHandle = new ArraySafeHandle(Fox_icall_Array_Ctor_MonoArray(array));
         }
 
         internal Array(ArraySafeHandle handle)
@@ -73,22 +73,22 @@ namespace Godot.Collections
 
         public Array Duplicate(bool deep = false)
         {
-            return new Array(godot_icall_Array_Duplicate(GetPtr(), deep));
+            return new Array(Fox_icall_Array_Duplicate(GetPtr(), deep));
         }
 
         public Error Resize(int newSize)
         {
-            return godot_icall_Array_Resize(GetPtr(), newSize);
+            return Fox_icall_Array_Resize(GetPtr(), newSize);
         }
 
         public void Shuffle()
         {
-            godot_icall_Array_Shuffle(GetPtr());
+            Fox_icall_Array_Shuffle(GetPtr());
         }
 
         public static Array operator +(Array left, Array right)
         {
-            return new Array(godot_icall_Array_Concatenate(left.GetPtr(), right.GetPtr()));
+            return new Array(Fox_icall_Array_Concatenate(left.GetPtr(), right.GetPtr()));
         }
 
         // IDisposable
@@ -115,27 +115,27 @@ namespace Godot.Collections
 
         public object this[int index]
         {
-            get => godot_icall_Array_At(GetPtr(), index);
-            set => godot_icall_Array_SetAt(GetPtr(), index, value);
+            get => Fox_icall_Array_At(GetPtr(), index);
+            set => Fox_icall_Array_SetAt(GetPtr(), index, value);
         }
 
-        public int Add(object value) => godot_icall_Array_Add(GetPtr(), value);
+        public int Add(object value) => Fox_icall_Array_Add(GetPtr(), value);
 
-        public bool Contains(object value) => godot_icall_Array_Contains(GetPtr(), value);
+        public bool Contains(object value) => Fox_icall_Array_Contains(GetPtr(), value);
 
-        public void Clear() => godot_icall_Array_Clear(GetPtr());
+        public void Clear() => Fox_icall_Array_Clear(GetPtr());
 
-        public int IndexOf(object value) => godot_icall_Array_IndexOf(GetPtr(), value);
+        public int IndexOf(object value) => Fox_icall_Array_IndexOf(GetPtr(), value);
 
-        public void Insert(int index, object value) => godot_icall_Array_Insert(GetPtr(), index, value);
+        public void Insert(int index, object value) => Fox_icall_Array_Insert(GetPtr(), index, value);
 
-        public void Remove(object value) => godot_icall_Array_Remove(GetPtr(), value);
+        public void Remove(object value) => Fox_icall_Array_Remove(GetPtr(), value);
 
-        public void RemoveAt(int index) => godot_icall_Array_RemoveAt(GetPtr(), index);
+        public void RemoveAt(int index) => Fox_icall_Array_RemoveAt(GetPtr(), index);
 
         // ICollection
 
-        public int Count => godot_icall_Array_Count(GetPtr());
+        public int Count => Fox_icall_Array_Count(GetPtr());
 
         public object SyncRoot => this;
 
@@ -150,7 +150,7 @@ namespace Godot.Collections
                 throw new ArgumentOutOfRangeException(nameof(index), "Number was less than the array's lower bound in the first dimension.");
 
             // Internal call may throw ArgumentException
-            godot_icall_Array_CopyTo(GetPtr(), array, index);
+            Fox_icall_Array_CopyTo(GetPtr(), array, index);
         }
 
         // IEnumerable
@@ -167,71 +167,71 @@ namespace Godot.Collections
 
         public override string ToString()
         {
-            return godot_icall_Array_ToString(GetPtr());
+            return Fox_icall_Array_ToString(GetPtr());
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static IntPtr godot_icall_Array_Ctor();
+        internal extern static IntPtr Fox_icall_Array_Ctor();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static IntPtr godot_icall_Array_Ctor_MonoArray(System.Array array);
+        internal extern static IntPtr Fox_icall_Array_Ctor_MonoArray(System.Array array);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_Dtor(IntPtr ptr);
+        internal extern static void Fox_icall_Array_Dtor(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static object godot_icall_Array_At(IntPtr ptr, int index);
+        internal extern static object Fox_icall_Array_At(IntPtr ptr, int index);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static object godot_icall_Array_At_Generic(IntPtr ptr, int index, int elemTypeEncoding, IntPtr elemTypeClass);
+        internal extern static object Fox_icall_Array_At_Generic(IntPtr ptr, int index, int elemTypeEncoding, IntPtr elemTypeClass);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_SetAt(IntPtr ptr, int index, object value);
+        internal extern static void Fox_icall_Array_SetAt(IntPtr ptr, int index, object value);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_Array_Count(IntPtr ptr);
+        internal extern static int Fox_icall_Array_Count(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_Array_Add(IntPtr ptr, object item);
+        internal extern static int Fox_icall_Array_Add(IntPtr ptr, object item);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_Clear(IntPtr ptr);
+        internal extern static void Fox_icall_Array_Clear(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static IntPtr godot_icall_Array_Concatenate(IntPtr left, IntPtr right);
+        internal extern static IntPtr Fox_icall_Array_Concatenate(IntPtr left, IntPtr right);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static bool godot_icall_Array_Contains(IntPtr ptr, object item);
+        internal extern static bool Fox_icall_Array_Contains(IntPtr ptr, object item);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_CopyTo(IntPtr ptr, System.Array array, int arrayIndex);
+        internal extern static void Fox_icall_Array_CopyTo(IntPtr ptr, System.Array array, int arrayIndex);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static IntPtr godot_icall_Array_Duplicate(IntPtr ptr, bool deep);
+        internal extern static IntPtr Fox_icall_Array_Duplicate(IntPtr ptr, bool deep);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_Array_IndexOf(IntPtr ptr, object item);
+        internal extern static int Fox_icall_Array_IndexOf(IntPtr ptr, object item);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_Insert(IntPtr ptr, int index, object item);
+        internal extern static void Fox_icall_Array_Insert(IntPtr ptr, int index, object item);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static bool godot_icall_Array_Remove(IntPtr ptr, object item);
+        internal extern static bool Fox_icall_Array_Remove(IntPtr ptr, object item);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_RemoveAt(IntPtr ptr, int index);
+        internal extern static void Fox_icall_Array_RemoveAt(IntPtr ptr, int index);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static Error godot_icall_Array_Resize(IntPtr ptr, int newSize);
+        internal extern static Error Fox_icall_Array_Resize(IntPtr ptr, int newSize);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static Error godot_icall_Array_Shuffle(IntPtr ptr);
+        internal extern static Error Fox_icall_Array_Shuffle(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static void godot_icall_Array_Generic_GetElementTypeInfo(Type elemType, out int elemTypeEncoding, out IntPtr elemTypeClass);
+        internal extern static void Fox_icall_Array_Generic_GetElementTypeInfo(Type elemType, out int elemTypeEncoding, out IntPtr elemTypeClass);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static string godot_icall_Array_ToString(IntPtr ptr);
+        internal extern static string Fox_icall_Array_ToString(IntPtr ptr);
     }
 
     public class Array<T> : IList<T>, ICollection<T>, IEnumerable<T>
@@ -243,7 +243,7 @@ namespace Godot.Collections
 
         static Array()
         {
-            Array.godot_icall_Array_Generic_GetElementTypeInfo(typeof(T), out elemTypeEncoding, out elemTypeClass);
+            Array.Fox_icall_Array_Generic_GetElementTypeInfo(typeof(T), out elemTypeEncoding, out elemTypeClass);
         }
 
         public Array()
@@ -317,7 +317,7 @@ namespace Godot.Collections
 
         public T this[int index]
         {
-            get { return (T)Array.godot_icall_Array_At_Generic(GetPtr(), index, elemTypeEncoding, elemTypeClass); }
+            get { return (T)Array.Fox_icall_Array_At_Generic(GetPtr(), index, elemTypeEncoding, elemTypeClass); }
             set { objectArray[index] = value; }
         }
 
@@ -388,7 +388,7 @@ namespace Godot.Collections
 
         public bool Remove(T item)
         {
-            return Array.godot_icall_Array_Remove(GetPtr(), item);
+            return Array.Fox_icall_Array_Remove(GetPtr(), item);
         }
 
         // IEnumerable<T>

@@ -9,7 +9,7 @@
 		The position of the controller node is automatically updated by the [XRServer]. This makes this node ideal to add child nodes to visualize the controller.
 	</description>
 	<tutorials>
-		<link title="VR tutorial index">https://docs.godotengine.org/en/latest/tutorials/vr/index.html</link>
+		<link title="VR tutorial index">https://docs.Foxengine.org/en/latest/tutorials/vr/index.html</link>
 	</tutorials>
 	<methods>
 		<method name="get_controller_name" qualifiers="const">
@@ -39,7 +39,7 @@
 			<return type="int">
 			</return>
 			<description>
-				Returns the ID of the joystick object bound to this. Every controller tracked by the [XRServer] that has buttons and axis will also be registered as a joystick within Godot. This means that all the normal joystick tracking and input mapping will work for buttons and axis found on the AR/VR controllers. This ID is purely offered as information so you can link up the controller with its joystick entry.
+				Returns the ID of the joystick object bound to this. Every controller tracked by the [XRServer] that has buttons and axis will also be registered as a joystick within Fox. This means that all the normal joystick tracking and input mapping will work for buttons and axis found on the AR/VR controllers. This ID is purely offered as information so you can link up the controller with its joystick entry.
 			</description>
 		</method>
 		<method name="get_mesh" qualifiers="const">

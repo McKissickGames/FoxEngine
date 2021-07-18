@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace GodotTools.Export
+namespace FoxTools.Export
 {
     public static class XcodeHelper
     {
@@ -25,9 +25,9 @@ namespace GodotTools.Export
 
         private static string FindSelectedXcode()
         {
-            var outputWrapper = new Godot.Collections.Array();
+            var outputWrapper = new Fox.Collections.Array();
 
-            int exitCode = Godot.OS.Execute("xcode-select", new string[] { "--print-path" }, output: outputWrapper);
+            int exitCode = Fox.OS.Execute("xcode-select", new string[] { "--print-path" }, output: outputWrapper);
 
             if (exitCode == 0)
             {

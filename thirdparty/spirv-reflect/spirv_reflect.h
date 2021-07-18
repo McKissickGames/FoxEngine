@@ -292,7 +292,7 @@ typedef struct SpvReflectTypeDescription {
   struct SpvReflectTypeDescription* members;
 } SpvReflectTypeDescription;
 
-// -- GODOT begin --
+// -- Fox begin --
 /*! @struct SpvReflectSpecializationConstant
 
 */
@@ -313,7 +313,7 @@ typedef struct SpvReflectSpecializationConstant {
     uint32_t int_bool_value;
   } default_value;
 } SpvReflectSpecializationConstant;
-// -- GODOT end --
+// -- Fox end --
 
 /*! @struct SpvReflectInterfaceVariable
 
@@ -461,10 +461,10 @@ typedef struct SpvReflectShaderModule {
   SpvReflectInterfaceVariable*      interface_variables;
   uint32_t                          push_constant_block_count;
   SpvReflectBlockVariable*          push_constant_blocks;
-  // -- GODOT begin --
+  // -- Fox begin --
   uint32_t                          specialization_constant_count;
   SpvReflectSpecializationConstant* specialization_constants;
-  // -- GODOT end --
+  // -- Fox end --
 
   struct Internal {
     size_t                          spirv_size;
@@ -745,7 +745,7 @@ SpvReflectResult spvReflectEnumerateSpecializationConstants(
   uint32_t*                          p_count,
   SpvReflectSpecializationConstant** pp_constants
 );
-// -- GODOT end --
+// -- Fox end --
 
 /*! @fn spvReflectEnumerateEntryPointInputVariables
  @brief  Enumerate the input variables for a given entry point.

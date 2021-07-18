@@ -2,11 +2,11 @@
 /*  gd_mono_utils.h                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -100,7 +100,7 @@ GDMonoClass *get_object_class(MonoObject *p_object);
 GDMonoClass *type_get_proxy_class(const StringName &p_type);
 GDMonoClass *get_class_native_base(GDMonoClass *p_class);
 
-MonoObject *create_managed_for_godot_object(GDMonoClass *p_class, const StringName &p_native, Object *p_object);
+MonoObject *create_managed_for_Fox_object(GDMonoClass *p_class, const StringName &p_native, Object *p_object);
 
 MonoObject *create_managed_from(const StringName &p_from);
 MonoObject *create_managed_from(const NodePath &p_from);
@@ -156,7 +156,7 @@ private:
 	MonoThread *mono_thread = nullptr;
 };
 
-StringName get_native_godot_class_name(GDMonoClass *p_class);
+StringName get_native_Fox_class_name(GDMonoClass *p_class);
 
 template <typename... P>
 void add_internal_call(const char *p_name, void (*p_func)(P...)) {
@@ -175,7 +175,7 @@ void add_internal_call(const char *p_name, R (*p_func)(P...)) {
 }
 } // namespace GDMonoUtils
 
-#define NATIVE_GDMONOCLASS_NAME(m_class) (GDMonoUtils::get_native_godot_class_name(m_class))
+#define NATIVE_GDMONOCLASS_NAME(m_class) (GDMonoUtils::get_native_Fox_class_name(m_class))
 
 #define GD_MONO_BEGIN_RUNTIME_INVOKE                                              \
 	int &_runtime_invoke_count_ref = GDMonoUtils::get_runtime_invoke_count_ref(); \

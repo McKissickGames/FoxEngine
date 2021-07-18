@@ -2,11 +2,11 @@
 /*  multiplayer_peer_gdnative.h                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,21 +33,21 @@
 
 #include "core/io/multiplayer_peer.h"
 #include "modules/gdnative/gdnative.h"
-#include "modules/gdnative/include/net/godot_net.h"
+#include "modules/gdnative/include/net/Fox_net.h"
 
 class MultiplayerPeerGDNative : public MultiplayerPeer {
 	GDCLASS(MultiplayerPeerGDNative, MultiplayerPeer);
 
 protected:
 	static void _bind_methods();
-	const godot_net_multiplayer_peer *interface;
+	const Fox_net_multiplayer_peer *interface;
 
 public:
 	MultiplayerPeerGDNative();
 	~MultiplayerPeerGDNative();
 
 	/* Sets the interface implementation from GDNative */
-	void set_native_multiplayer_peer(const godot_net_multiplayer_peer *p_impl);
+	void set_native_multiplayer_peer(const Fox_net_multiplayer_peer *p_impl);
 
 	/* Specific to PacketPeer */
 	virtual Error get_packet(const uint8_t **r_buffer, int &r_buffer_size) override;

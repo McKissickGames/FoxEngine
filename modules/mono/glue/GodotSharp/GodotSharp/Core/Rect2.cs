@@ -6,7 +6,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 2D axis-aligned bounding box. Rect2 consists of a position, a size, and

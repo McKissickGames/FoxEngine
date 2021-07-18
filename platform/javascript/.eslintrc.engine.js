@@ -4,7 +4,7 @@ module.exports = {
 	],
 	"globals": {
 		"InternalConfig": true,
-		"Godot": true,
+		"Fox": true,
 		"Preloader": true,
 	},
 };

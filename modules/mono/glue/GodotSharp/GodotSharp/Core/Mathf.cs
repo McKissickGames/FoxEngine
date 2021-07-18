@@ -5,7 +5,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     public static partial class Mathf
     {

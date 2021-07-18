@@ -45,12 +45,12 @@
 #include <stdlib.h>
 #include "zlib.h"
 
-/* GODOT start */
+/* Fox start */
 /* Mighty Gentoo saves the day by breaking the API of their zlib.h,
  * removing this definition of OF(args) for no practical reason
  * worth breaking compatibility with all projects that embed minizip
  * while trying not to diverge too much from upstream zlib.
- * Cf. https://github.com/godotengine/godot/issues/10539
+ * Cf. https://github.com/Foxengine/Fox/issues/10539
  *
  *   "By and large, this is good open source behaviour, and fits with
  *    the gentoo _don't fuck with upstream's releases_ philosophy"
@@ -59,7 +59,7 @@
 #ifndef OF /* function prototypes */
  #define OF(args)  args
 #endif
-/* GODOT end */
+/* Fox end */
 
 #if defined(USE_FILE32API)
 #define fopen64 fopen
@@ -169,10 +169,10 @@ typedef struct zlib_filefunc_def_s
     close_file_func     zclose_file;
     testerror_file_func zerror_file;
     voidpf              opaque;
-    /* GODOT start */
+    /* Fox start */
     alloc_func          alloc_mem;
     free_func           free_mem;
-    /* GODOT end */
+    /* Fox end */
 } zlib_filefunc_def;
 
 typedef ZPOS64_T (ZCALLBACK *tell64_file_func)    OF((voidpf opaque, voidpf stream));
@@ -189,10 +189,10 @@ typedef struct zlib_filefunc64_def_s
     close_file_func     zclose_file;
     testerror_file_func zerror_file;
     voidpf              opaque;
-    /* GODOT start */
+    /* Fox start */
     alloc_func          alloc_mem;
     free_func           free_mem;
-    /* GODOT end */
+    /* Fox end */
 } zlib_filefunc64_def;
 
 void fill_fopen64_filefunc OF((zlib_filefunc64_def* pzlib_filefunc_def));

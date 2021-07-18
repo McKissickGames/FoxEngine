@@ -2,11 +2,11 @@
 /*  gd_glue.cpp                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -41,7 +41,7 @@
 #include "../mono_gd/gd_mono_marshal.h"
 #include "../mono_gd/gd_mono_utils.h"
 
-MonoObject *godot_icall_GD_bytes2var(MonoArray *p_bytes, MonoBoolean p_allow_objects) {
+MonoObject *Fox_icall_GD_bytes2var(MonoArray *p_bytes, MonoBoolean p_allow_objects) {
 	Variant ret;
 	PackedByteArray varr = GDMonoMarshal::mono_array_to_PackedByteArray(p_bytes);
 	Error err = decode_variant(ret, varr.ptr(), varr.size(), nullptr, p_allow_objects);
@@ -51,7 +51,7 @@ MonoObject *godot_icall_GD_bytes2var(MonoArray *p_bytes, MonoBoolean p_allow_obj
 	return GDMonoMarshal::variant_to_mono_object(ret);
 }
 
-MonoObject *godot_icall_GD_convert(MonoObject *p_what, int32_t p_type) {
+MonoObject *Fox_icall_GD_convert(MonoObject *p_what, int32_t p_type) {
 	Variant what = GDMonoMarshal::mono_object_to_variant(p_what);
 	const Variant *args[1] = { &what };
 	Callable::CallError ce;
@@ -61,15 +61,15 @@ MonoObject *godot_icall_GD_convert(MonoObject *p_what, int32_t p_type) {
 	return GDMonoMarshal::variant_to_mono_object(ret);
 }
 
-int godot_icall_GD_hash(MonoObject *p_var) {
+int Fox_icall_GD_hash(MonoObject *p_var) {
 	return GDMonoMarshal::mono_object_to_variant(p_var).hash();
 }
 
-MonoObject *godot_icall_GD_instance_from_id(uint64_t p_instance_id) {
+MonoObject *Fox_icall_GD_instance_from_id(uint64_t p_instance_id) {
 	return GDMonoUtils::unmanaged_get_managed(ObjectDB::get_instance(ObjectID(p_instance_id)));
 }
 
-void godot_icall_GD_print(MonoArray *p_what) {
+void Fox_icall_GD_print(MonoArray *p_what) {
 	String str;
 	int length = mono_array_length(p_what);
 
@@ -90,7 +90,7 @@ void godot_icall_GD_print(MonoArray *p_what) {
 	print_line(str);
 }
 
-void godot_icall_GD_printerr(MonoArray *p_what) {
+void Fox_icall_GD_printerr(MonoArray *p_what) {
 	String str;
 	int length = mono_array_length(p_what);
 
@@ -111,7 +111,7 @@ void godot_icall_GD_printerr(MonoArray *p_what) {
 	print_error(str);
 }
 
-void godot_icall_GD_printraw(MonoArray *p_what) {
+void Fox_icall_GD_printraw(MonoArray *p_what) {
 	String str;
 	int length = mono_array_length(p_what);
 
@@ -132,7 +132,7 @@ void godot_icall_GD_printraw(MonoArray *p_what) {
 	OS::get_singleton()->print("%s", str.utf8().get_data());
 }
 
-void godot_icall_GD_prints(MonoArray *p_what) {
+void Fox_icall_GD_prints(MonoArray *p_what) {
 	String str;
 	int length = mono_array_length(p_what);
 
@@ -157,7 +157,7 @@ void godot_icall_GD_prints(MonoArray *p_what) {
 	print_line(str);
 }
 
-void godot_icall_GD_printt(MonoArray *p_what) {
+void Fox_icall_GD_printt(MonoArray *p_what) {
 	String str;
 	int length = mono_array_length(p_what);
 
@@ -182,37 +182,37 @@ void godot_icall_GD_printt(MonoArray *p_what) {
 	print_line(str);
 }
 
-float godot_icall_GD_randf() {
+float Fox_icall_GD_randf() {
 	return Math::randf();
 }
 
-uint32_t godot_icall_GD_randi() {
+uint32_t Fox_icall_GD_randi() {
 	return Math::rand();
 }
 
-void godot_icall_GD_randomize() {
+void Fox_icall_GD_randomize() {
 	Math::randomize();
 }
 
-double godot_icall_GD_randf_range(double from, double to) {
+double Fox_icall_GD_randf_range(double from, double to) {
 	return Math::random(from, to);
 }
 
-int32_t godot_icall_GD_randi_range(int32_t from, int32_t to) {
+int32_t Fox_icall_GD_randi_range(int32_t from, int32_t to) {
 	return Math::random(from, to);
 }
 
-uint32_t godot_icall_GD_rand_seed(uint64_t seed, uint64_t *newSeed) {
+uint32_t Fox_icall_GD_rand_seed(uint64_t seed, uint64_t *newSeed) {
 	uint32_t ret = Math::rand_from_seed(&seed);
 	*newSeed = seed;
 	return ret;
 }
 
-void godot_icall_GD_seed(uint64_t p_seed) {
+void Fox_icall_GD_seed(uint64_t p_seed) {
 	Math::seed(p_seed);
 }
 
-MonoString *godot_icall_GD_str(MonoArray *p_what) {
+MonoString *Fox_icall_GD_str(MonoArray *p_what) {
 	String str;
 	Array what = GDMonoMarshal::mono_array_to_Array(p_what);
 
@@ -226,14 +226,14 @@ MonoString *godot_icall_GD_str(MonoArray *p_what) {
 		}
 	}
 
-	return GDMonoMarshal::mono_string_from_godot(str);
+	return GDMonoMarshal::mono_string_from_Fox(str);
 }
 
-MonoObject *godot_icall_GD_str2var(MonoString *p_str) {
+MonoObject *Fox_icall_GD_str2var(MonoString *p_str) {
 	Variant ret;
 
 	VariantParser::StreamString ss;
-	ss.s = GDMonoMarshal::mono_string_to_godot(p_str);
+	ss.s = GDMonoMarshal::mono_string_to_Fox(p_str);
 
 	String errs;
 	int line;
@@ -247,20 +247,20 @@ MonoObject *godot_icall_GD_str2var(MonoString *p_str) {
 	return GDMonoMarshal::variant_to_mono_object(ret);
 }
 
-MonoBoolean godot_icall_GD_type_exists(StringName *p_type) {
+MonoBoolean Fox_icall_GD_type_exists(StringName *p_type) {
 	StringName type = p_type ? *p_type : StringName();
 	return ClassDB::class_exists(type);
 }
 
-void godot_icall_GD_pusherror(MonoString *p_str) {
-	ERR_PRINT(GDMonoMarshal::mono_string_to_godot(p_str));
+void Fox_icall_GD_pusherror(MonoString *p_str) {
+	ERR_PRINT(GDMonoMarshal::mono_string_to_Fox(p_str));
 }
 
-void godot_icall_GD_pushwarning(MonoString *p_str) {
-	WARN_PRINT(GDMonoMarshal::mono_string_to_godot(p_str));
+void Fox_icall_GD_pushwarning(MonoString *p_str) {
+	WARN_PRINT(GDMonoMarshal::mono_string_to_Fox(p_str));
 }
 
-MonoArray *godot_icall_GD_var2bytes(MonoObject *p_var, MonoBoolean p_full_objects) {
+MonoArray *Fox_icall_GD_var2bytes(MonoObject *p_var, MonoBoolean p_full_objects) {
 	Variant var = GDMonoMarshal::mono_object_to_variant(p_var);
 
 	PackedByteArray barr;
@@ -274,48 +274,48 @@ MonoArray *godot_icall_GD_var2bytes(MonoObject *p_var, MonoBoolean p_full_object
 	return GDMonoMarshal::PackedByteArray_to_mono_array(barr);
 }
 
-MonoString *godot_icall_GD_var2str(MonoObject *p_var) {
+MonoString *Fox_icall_GD_var2str(MonoObject *p_var) {
 	String vars;
 	VariantWriter::write_to_string(GDMonoMarshal::mono_object_to_variant(p_var), vars);
-	return GDMonoMarshal::mono_string_from_godot(vars);
+	return GDMonoMarshal::mono_string_from_Fox(vars);
 }
 
-uint32_t godot_icall_TypeToVariantType(MonoReflectionType *p_refl_type) {
+uint32_t Fox_icall_TypeToVariantType(MonoReflectionType *p_refl_type) {
 	return (uint32_t)GDMonoMarshal::managed_to_variant_type(ManagedType::from_reftype(p_refl_type));
 }
 
-MonoObject *godot_icall_DefaultGodotTaskScheduler() {
+MonoObject *Fox_icall_DefaultFoxTaskScheduler() {
 	return GDMonoCache::cached_data.task_scheduler_handle->get_target();
 }
 
-void godot_register_gd_icalls() {
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_bytes2var", godot_icall_GD_bytes2var);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_convert", godot_icall_GD_convert);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_hash", godot_icall_GD_hash);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_instance_from_id", godot_icall_GD_instance_from_id);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_pusherror", godot_icall_GD_pusherror);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_pushwarning", godot_icall_GD_pushwarning);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_print", godot_icall_GD_print);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_printerr", godot_icall_GD_printerr);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_printraw", godot_icall_GD_printraw);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_prints", godot_icall_GD_prints);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_printt", godot_icall_GD_printt);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_randf", godot_icall_GD_randf);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_randi", godot_icall_GD_randi);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_randomize", godot_icall_GD_randomize);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_randf_range", godot_icall_GD_randf_range);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_randi_range", godot_icall_GD_randi_range);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_rand_seed", godot_icall_GD_rand_seed);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_seed", godot_icall_GD_seed);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_str", godot_icall_GD_str);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_str2var", godot_icall_GD_str2var);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_type_exists", godot_icall_GD_type_exists);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_var2bytes", godot_icall_GD_var2bytes);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_GD_var2str", godot_icall_GD_var2str);
-	GDMonoUtils::add_internal_call("Godot.GD::godot_icall_TypeToVariantType", godot_icall_TypeToVariantType);
+void Fox_register_gd_icalls() {
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_bytes2var", Fox_icall_GD_bytes2var);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_convert", Fox_icall_GD_convert);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_hash", Fox_icall_GD_hash);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_instance_from_id", Fox_icall_GD_instance_from_id);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_pusherror", Fox_icall_GD_pusherror);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_pushwarning", Fox_icall_GD_pushwarning);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_print", Fox_icall_GD_print);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_printerr", Fox_icall_GD_printerr);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_printraw", Fox_icall_GD_printraw);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_prints", Fox_icall_GD_prints);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_printt", Fox_icall_GD_printt);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_randf", Fox_icall_GD_randf);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_randi", Fox_icall_GD_randi);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_randomize", Fox_icall_GD_randomize);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_randf_range", Fox_icall_GD_randf_range);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_randi_range", Fox_icall_GD_randi_range);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_rand_seed", Fox_icall_GD_rand_seed);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_seed", Fox_icall_GD_seed);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_str", Fox_icall_GD_str);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_str2var", Fox_icall_GD_str2var);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_type_exists", Fox_icall_GD_type_exists);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_var2bytes", Fox_icall_GD_var2bytes);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_GD_var2str", Fox_icall_GD_var2str);
+	GDMonoUtils::add_internal_call("Fox.GD::Fox_icall_TypeToVariantType", Fox_icall_TypeToVariantType);
 
 	// Dispatcher
-	GDMonoUtils::add_internal_call("Godot.Dispatcher::godot_icall_DefaultGodotTaskScheduler", godot_icall_DefaultGodotTaskScheduler);
+	GDMonoUtils::add_internal_call("Fox.Dispatcher::Fox_icall_DefaultFoxTaskScheduler", Fox_icall_DefaultFoxTaskScheduler);
 }
 
 #endif // MONO_GLUE_ENABLED

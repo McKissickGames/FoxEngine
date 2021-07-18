@@ -2,9 +2,9 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GodotTools.IdeMessaging.Utils;
+using FoxTools.IdeMessaging.Utils;
 
-namespace GodotTools.IdeMessaging.CLI
+namespace FoxTools.IdeMessaging.CLI
 {
     public class ForwarderMessageHandler : IMessageHandler
     {

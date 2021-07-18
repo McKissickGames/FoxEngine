@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace GodotTools.IdeMessaging.Utils
+namespace FoxTools.IdeMessaging.Utils
 {
     public class NotifyAwaiter<T> : INotifyCompletion
     {

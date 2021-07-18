@@ -2,11 +2,11 @@
 /*  test_regex.h                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -64,7 +64,7 @@ TEST_CASE("[RegEx] Initialization") {
 }
 
 TEST_CASE("[RegEx] Clearing") {
-	RegEx re("Godot");
+	RegEx re("Fox");
 	REQUIRE(re.is_valid());
 	re.clear();
 	CHECK(re.is_valid() == false);
@@ -110,7 +110,7 @@ TEST_CASE("[RegEx] Substitution") {
 }
 
 TEST_CASE("[RegEx] Uninitialized use") {
-	const String s = "Godot";
+	const String s = "Fox";
 
 	RegEx re;
 	ERR_PRINT_OFF;
@@ -123,7 +123,7 @@ TEST_CASE("[RegEx] Uninitialized use") {
 }
 
 TEST_CASE("[RegEx] Empty Pattern") {
-	const String s = "Godot";
+	const String s = "Fox";
 
 	RegEx re;
 	CHECK(re.compile("") == OK);
@@ -131,7 +131,7 @@ TEST_CASE("[RegEx] Empty Pattern") {
 }
 
 TEST_CASE("[RegEx] Invalid offset") {
-	const String s = "Godot";
+	const String s = "Fox";
 
 	RegEx re("o");
 	REQUIRE(re.is_valid());
@@ -141,7 +141,7 @@ TEST_CASE("[RegEx] Invalid offset") {
 }
 
 TEST_CASE("[RegEx] Invalid end position") {
-	const String s = "Godot";
+	const String s = "Fox";
 
 	RegEx re("o");
 	REQUIRE(re.is_valid());

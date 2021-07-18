@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Build.Construction;
 
-namespace GodotTools.ProjectEditor
+namespace FoxTools.ProjectEditor
 {
     public sealed class MSBuildProject
     {
@@ -37,15 +37,15 @@ namespace GodotTools.ProjectEditor
             project.HasUnsavedChanges = true;
         }
 
-        public static void EnsureGodotSdkIsUpToDate(MSBuildProject project)
+        public static void EnsureFoxSdkIsUpToDate(MSBuildProject project)
         {
             var root = project.Root;
-            string godotSdkAttrValue = ProjectGenerator.GodotSdkAttrValue;
+            string FoxSdkAttrValue = ProjectGenerator.FoxSdkAttrValue;
 
-            if (!string.IsNullOrEmpty(root.Sdk) && root.Sdk.Trim().Equals(godotSdkAttrValue, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(root.Sdk) && root.Sdk.Trim().Equals(FoxSdkAttrValue, StringComparison.OrdinalIgnoreCase))
                 return;
 
-            root.Sdk = godotSdkAttrValue;
+            root.Sdk = FoxSdkAttrValue;
             project.HasUnsavedChanges = true;
         }
     }

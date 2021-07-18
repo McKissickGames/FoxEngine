@@ -31,8 +31,8 @@
 		}
 		[/gdscript]
 		[csharp]
-		var myDict = new Godot.Collections.Dictionary(); // Creates an empty dictionary.
-		var pointsDict = new Godot.Collections.Dictionary
+		var myDict = new Fox.Collections.Dictionary(); // Creates an empty dictionary.
+		var pointsDict = new Fox.Collections.Dictionary
 		{
 		    {"White", 50},
 		    {"Yellow", 75},
@@ -52,7 +52,7 @@
 		[csharp]
 		[Export(PropertyHint.Enum, "White,Yellow,Orange")]
 		public string MyColor { get; set; }
-		public Godot.Collections.Dictionary pointsDict = new Godot.Collections.Dictionary
+		public Fox.Collections.Dictionary pointsDict = new Fox.Collections.Dictionary
 		{
 		    {"White", 50},
 		    {"Yellow", 75},
@@ -72,9 +72,9 @@
 		my_dict = {"First Array": [1, 2, 3, 4]} # Assigns an Array to a String key.
 		[/gdscript]
 		[csharp]
-		var myDir = new Godot.Collections.Dictionary
+		var myDir = new Fox.Collections.Dictionary
 		{
-		    {"First Array", new Godot.Collections.Array{1, 2, 3, 4}}
+		    {"First Array", new Fox.Collections.Array{1, 2, 3, 4}}
 		};
 		[/csharp]
 		[/codeblocks]
@@ -85,7 +85,7 @@
 		points_dict["Blue"] = 150 # Add "Blue" as a key and assign 150 as its value.
 		[/gdscript]
 		[csharp]
-		var pointsDir = new Godot.Collections.Dictionary
+		var pointsDir = new Fox.Collections.Dictionary
 		{
 		    {"White", 50},
 		    {"Yellow", 75},
@@ -111,11 +111,11 @@
 		// This is a valid dictionary.
 		// To access the string "Nested value" below, use `my_dir.sub_dir.sub_key` or `my_dir["sub_dir"]["sub_key"]`.
 		// Indexing styles can be mixed and matched depending on your needs.
-		var myDict = new Godot.Collections.Dictionary {
+		var myDict = new Fox.Collections.Dictionary {
 		    {"String Key", 5},
-		    {4, new Godot.Collections.Array{1,2,3}},
+		    {4, new Fox.Collections.Array{1,2,3}},
 		    {7, "Hello"},
-		    {"sub_dict", new Godot.Collections.Dictionary{{"sub_key", "Nested value"}}}
+		    {"sub_dict", new Fox.Collections.Dictionary{{"sub_key", "Nested value"}}}
 		};
 		[/csharp]
 		[/codeblocks]
@@ -137,8 +137,8 @@
 		[csharp]
 		// You have to use GD.Hash().
 
-		public Godot.Collections.Array array1 = new Godot.Collections.Array{1, 2, 3};
-		public Godot.Collections.Array array2 = new Godot.Collections.Array{1, 2, 3};
+		public Fox.Collections.Array array1 = new Fox.Collections.Array{1, 2, 3};
+		public Fox.Collections.Array array2 = new Fox.Collections.Array{1, 2, 3};
 
 		public void CompareArrays()
 		{
@@ -146,8 +146,8 @@
 		    GD.Print(GD.Hash(array1) == GD.Hash(array2)); // Will print true.
 		}
 
-		public Godot.Collections.Dictionary dict1 = new Godot.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
-		public Godot.Collections.Dictionary dict2 = new Godot.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
+		public Fox.Collections.Dictionary dict1 = new Fox.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
+		public Fox.Collections.Dictionary dict2 = new Fox.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
 
 		public void CompareDictionaries()
 		{
@@ -166,8 +166,8 @@
 		[/gdscript]
 		[csharp]
 		// You have to use GD.Hash().
-		public Godot.Collections.Dictionary dict1 = new Godot.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
-		public Godot.Collections.Dictionary dict2 = new Godot.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
+		public Fox.Collections.Dictionary dict1 = new Fox.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
+		public Fox.Collections.Dictionary dict2 = new Fox.Collections.Dictionary{{"a", 1}, {"b", 2}, {"c", 3}};
 
 		public void CompareDictionaries()
 		{
@@ -178,9 +178,9 @@
 		[b]Note:[/b] When declaring a dictionary with [code]const[/code], the dictionary itself can still be mutated by defining the values of individual keys. Using [code]const[/code] will only prevent assigning the constant with another value after it was initialized.
 	</description>
 	<tutorials>
-		<link title="GDScript basics: Dictionary">https://docs.godotengine.org/en/latest/getting_started/scripting/gdscript/gdscript_basics.html#dictionary</link>
-		<link title="3D Voxel Demo">https://godotengine.org/asset-library/asset/676</link>
-		<link title="OS Test Demo">https://godotengine.org/asset-library/asset/677</link>
+		<link title="GDScript basics: Dictionary">https://docs.Foxengine.org/en/latest/getting_started/scripting/gdscript/gdscript_basics.html#dictionary</link>
+		<link title="3D Voxel Demo">https://Foxengine.org/asset-library/asset/676</link>
+		<link title="OS Test Demo">https://Foxengine.org/asset-library/asset/677</link>
 	</tutorials>
 	<methods>
 		<method name="Dictionary" qualifiers="constructor">
@@ -246,12 +246,12 @@
 				[codeblocks]
 				[gdscript]
 				# Will evaluate to `true`.
-				if "godot" in {"godot": "engine"}:
+				if "Fox" in {"Fox": "engine"}:
 				    pass
 				[/gdscript]
 				[csharp]
 				// You have to use Contains() here as an alternative to GDScript's `in` operator.
-				if (new Godot.Collections.Dictionary{{"godot", "engine"}}.Contains("godot"))
+				if (new Fox.Collections.Dictionary{{"Fox", "engine"}}.Contains("Fox"))
 				{
 				    // I am executed.
 				}
@@ -282,8 +282,8 @@
 				print(dict1.hash() == dict2.hash())
 				[/gdscript]
 				[csharp]
-				var dict1 = new Godot.Collections.Dictionary{{0, 10}};
-				var dict2 = new Godot.Collections.Dictionary{{0, 10}};
+				var dict1 = new Fox.Collections.Dictionary{{0, 10}};
+				var dict2 = new Fox.Collections.Dictionary{{0, 10}};
 				// The line below prints `true`, whereas it would have printed `false` if both variables were compared directly.
 				// Dictionary has no Hash() method. Use GD.Hash() instead.
 				GD.Print(GD.Hash(dict1) == GD.Hash(dict2));

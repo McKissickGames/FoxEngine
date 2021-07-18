@@ -1,4 +1,4 @@
-namespace GodotTools.IdeMessaging
+namespace FoxTools.IdeMessaging
 {
     public class Message
     {

@@ -2,11 +2,11 @@
 /*  gdscript_highlighter.cpp                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -556,9 +556,9 @@ void GDScriptSyntaxHighlighter::_update_cache() {
 	}
 
 	const String text_edit_color_theme = EditorSettings::get_singleton()->get("text_editor/theme/color_theme");
-	const bool godot_2_theme = text_edit_color_theme == "Godot 2";
+	const bool Fox_2_theme = text_edit_color_theme == "Fox 2";
 
-	if (godot_2_theme || EditorSettings::get_singleton()->is_dark_theme()) {
+	if (Fox_2_theme || EditorSettings::get_singleton()->is_dark_theme()) {
 		function_definition_color = Color(0.4, 0.9, 1.0);
 		node_path_color = Color(0.39, 0.76, 0.35);
 		annotation_color = Color(1.0, 0.7, 0.45);
@@ -571,7 +571,7 @@ void GDScriptSyntaxHighlighter::_update_cache() {
 	EDITOR_DEF("text_editor/highlighting/gdscript/function_definition_color", function_definition_color);
 	EDITOR_DEF("text_editor/highlighting/gdscript/node_path_color", node_path_color);
 	EDITOR_DEF("text_editor/highlighting/gdscript/annotation_color", annotation_color);
-	if (text_edit_color_theme == "Default" || godot_2_theme) {
+	if (text_edit_color_theme == "Default" || Fox_2_theme) {
 		EditorSettings::get_singleton()->set_initial_value(
 				"text_editor/highlighting/gdscript/function_definition_color",
 				function_definition_color,

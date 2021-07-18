@@ -2,11 +2,11 @@
 /*  nativescript.h                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -46,11 +46,11 @@
 
 #include "modules/gdnative/gdnative.h"
 
-#include <nativescript/godot_nativescript.h>
+#include <nativescript/Fox_nativescript.h>
 
 struct NativeScriptDesc {
 	struct Method {
-		godot_nativescript_instance_method method;
+		Fox_nativescript_instance_method method;
 		MethodInfo info;
 		int rpc_mode = 0;
 		uint16_t rpc_method_id = 0;
@@ -58,8 +58,8 @@ struct NativeScriptDesc {
 	};
 
 	struct Property {
-		godot_nativescript_property_set_func setter;
-		godot_nativescript_property_get_func getter;
+		Fox_nativescript_property_set_func setter;
+		Fox_nativescript_property_get_func getter;
 		PropertyInfo info;
 		Variant default_value;
 		String documentation;
@@ -77,8 +77,8 @@ struct NativeScriptDesc {
 	StringName base;
 	StringName base_native_type;
 	NativeScriptDesc *base_data = nullptr;
-	godot_nativescript_instance_create_func create_func;
-	godot_nativescript_instance_destroy_func destroy_func;
+	Fox_nativescript_instance_create_func create_func;
+	Fox_nativescript_instance_destroy_func destroy_func;
 
 	String documentation;
 
@@ -87,8 +87,8 @@ struct NativeScriptDesc {
 	bool is_tool = false;
 
 	inline NativeScriptDesc() {
-		memset(&create_func, 0, sizeof(godot_nativescript_instance_create_func));
-		memset(&destroy_func, 0, sizeof(godot_nativescript_instance_destroy_func));
+		memset(&create_func, 0, sizeof(Fox_nativescript_instance_create_func));
+		memset(&destroy_func, 0, sizeof(Fox_nativescript_instance_destroy_func));
 	}
 };
 
@@ -250,7 +250,7 @@ private:
 
 	void call_libraries_cb(const StringName &name);
 
-	Vector<Pair<bool, godot_nativescript_instance_binding_functions>> binding_functions;
+	Vector<Pair<bool, Fox_nativescript_instance_binding_functions>> binding_functions;
 	Set<Vector<void *> *> binding_instances;
 
 	Map<int, HashMap<StringName, const void *>> global_type_tags;
@@ -344,7 +344,7 @@ public:
 	virtual int profiling_get_accumulated_data(ProfilingInfo *p_info_arr, int p_info_max);
 	virtual int profiling_get_frame_data(ProfilingInfo *p_info_arr, int p_info_max);
 
-	int register_binding_functions(godot_nativescript_instance_binding_functions p_binding_functions);
+	int register_binding_functions(Fox_nativescript_instance_binding_functions p_binding_functions);
 	void unregister_binding_functions(int p_idx);
 
 	void *get_instance_binding_data(int p_idx, Object *p_object);

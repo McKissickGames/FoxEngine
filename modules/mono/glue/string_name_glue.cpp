@@ -2,11 +2,11 @@
 /*  string_name_glue.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -35,28 +35,28 @@
 
 #include "../mono_gd/gd_mono_marshal.h"
 
-StringName *godot_icall_StringName_Ctor(MonoString *p_path) {
-	return memnew(StringName(GDMonoMarshal::mono_string_to_godot(p_path)));
+StringName *Fox_icall_StringName_Ctor(MonoString *p_path) {
+	return memnew(StringName(GDMonoMarshal::mono_string_to_Fox(p_path)));
 }
 
-void godot_icall_StringName_Dtor(StringName *p_ptr) {
+void Fox_icall_StringName_Dtor(StringName *p_ptr) {
 	ERR_FAIL_NULL(p_ptr);
 	memdelete(p_ptr);
 }
 
-MonoString *godot_icall_StringName_operator_String(StringName *p_np) {
-	return GDMonoMarshal::mono_string_from_godot(p_np->operator String());
+MonoString *Fox_icall_StringName_operator_String(StringName *p_np) {
+	return GDMonoMarshal::mono_string_from_Fox(p_np->operator String());
 }
 
-MonoBoolean godot_icall_StringName_is_empty(StringName *p_ptr) {
+MonoBoolean Fox_icall_StringName_is_empty(StringName *p_ptr) {
 	return (MonoBoolean)(*p_ptr == StringName());
 }
 
-void godot_register_string_name_icalls() {
-	GDMonoUtils::add_internal_call("Godot.StringName::godot_icall_StringName_Ctor", godot_icall_StringName_Ctor);
-	GDMonoUtils::add_internal_call("Godot.StringName::godot_icall_StringName_Dtor", godot_icall_StringName_Dtor);
-	GDMonoUtils::add_internal_call("Godot.StringName::godot_icall_StringName_operator_String", godot_icall_StringName_operator_String);
-	GDMonoUtils::add_internal_call("Godot.StringName::godot_icall_StringName_is_empty", godot_icall_StringName_is_empty);
+void Fox_register_string_name_icalls() {
+	GDMonoUtils::add_internal_call("Fox.StringName::Fox_icall_StringName_Ctor", Fox_icall_StringName_Ctor);
+	GDMonoUtils::add_internal_call("Fox.StringName::Fox_icall_StringName_Dtor", Fox_icall_StringName_Dtor);
+	GDMonoUtils::add_internal_call("Fox.StringName::Fox_icall_StringName_operator_String", Fox_icall_StringName_operator_String);
+	GDMonoUtils::add_internal_call("Fox.StringName::Fox_icall_StringName_is_empty", Fox_icall_StringName_is_empty);
 }
 
 #endif // MONO_GLUE_ENABLED

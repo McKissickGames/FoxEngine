@@ -248,9 +248,9 @@ namespace embree
 #if defined(__X86_ASM__)
   __noinline int64_t get_xcr0() 
   {
-// -- GODOT start --
+// -- Fox start --
 #if defined (__WIN32__) && !defined (__MINGW32__)
-// -- GODOT end --
+// -- Fox end --
     int64_t xcr0 = 0; // int64_t is workaround for compiler bug under VS2013, Win32
     xcr0 = _xgetbv(0);
     return xcr0;
@@ -620,10 +620,10 @@ namespace embree
     static int nThreads = -1;
     if (nThreads != -1) return nThreads;
 
-// -- GODOT start --
+// -- Fox start --
 // #if defined(__MACOSX__)
 #if defined(__MACOSX__) || defined(__ANDROID__)
-// -- GODOT end --
+// -- Fox end --
     nThreads = sysconf(_SC_NPROCESSORS_ONLN); // does not work in Linux LXC container
     assert(nThreads);
 #else

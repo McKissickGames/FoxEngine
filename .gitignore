@@ -1,4 +1,4 @@
-# Godot auto generated files
+# Fox auto generated files
 *.gen.*
 .import/
 
@@ -341,10 +341,10 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-godot.creator.*
+Fox.creator.*
 
 projects/
-platform/windows/godot_res.res
+platform/windows/Fox_res.res
 
 # Visual Studio 2017 and Visual Studio Code workspace folder
 /.vs
@@ -378,7 +378,7 @@ cppcheck-cppcheck-build-dir/
 *index-sort-f.html
 *index-sort-l.html
 *index.html
-godot.info
+Fox.info
 amber.png
 emerald.png
 glass.png

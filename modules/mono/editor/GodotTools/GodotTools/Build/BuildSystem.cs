@@ -1,16 +1,16 @@
-using GodotTools.Core;
+using FoxTools.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using GodotTools.BuildLogger;
-using GodotTools.Internals;
-using GodotTools.Utils;
+using FoxTools.BuildLogger;
+using FoxTools.Internals;
+using FoxTools.Utils;
 using Directory = System.IO.Directory;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public static class BuildSystem
     {
@@ -27,8 +27,8 @@ namespace GodotTools.Build
             }
         }
 
-        private static Godot.EditorSettings EditorSettings =>
-            GodotSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
+        private static Fox.EditorSettings EditorSettings =>
+            FoxSharpEditor.Instance.GetEditorInterface().GetEditorSettings();
 
         private static bool UsingMonoMsBuildOnWindows
         {
@@ -57,7 +57,7 @@ namespace GodotTools.Build
 
             string launchMessage = $"Running: \"{startInfo.FileName}\" {startInfo.Arguments}";
             stdOutHandler?.Invoke(launchMessage);
-            if (Godot.OS.IsStdoutVerbose())
+            if (Fox.OS.IsStdoutVerbose())
                 Console.WriteLine(launchMessage);
 
             startInfo.RedirectStandardOutput = true;
@@ -126,7 +126,7 @@ namespace GodotTools.Build
 
             arguments += $@" /t:{string.Join(",", buildInfo.Targets)} " +
                          $@"""/p:{"Configuration=" + buildInfo.Configuration}"" /v:normal " +
-                         $@"""/l:{typeof(GodotBuildLogger).FullName},{GodotBuildLogger.AssemblyPath};{buildInfo.LogsDirPath}""";
+                         $@"""/l:{typeof(FoxBuildLogger).FullName},{FoxBuildLogger.AssemblyPath};{buildInfo.LogsDirPath}""";
 
             foreach (string customProperty in buildInfo.CustomProperties)
             {

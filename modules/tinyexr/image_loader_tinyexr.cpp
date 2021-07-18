@@ -2,11 +2,11 @@
 /*  image_loader_tinyexr.cpp                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -47,8 +47,8 @@ Error ImageLoaderTinyEXR::load_image(Ref<Image> p_image, FileAccess *f, bool p_f
 
 	f->close();
 
-	// Re-implementation of tinyexr's LoadEXRFromMemory using Godot types to store the Image data
-	// and Godot's error codes.
+	// Re-implementation of tinyexr's LoadEXRFromMemory using Fox types to store the Image data
+	// and Fox's error codes.
 	// When debugging after updating the thirdparty library, check that we're still in sync with
 	// their API usage in LoadEXRFromMemory.
 
@@ -111,7 +111,7 @@ Error ImageLoaderTinyEXR::load_image(Ref<Image> p_image, FileAccess *f, bool p_f
 		}
 	}
 
-	// EXR image data loaded, now parse it into Godot-friendly image data
+	// EXR image data loaded, now parse it into Fox-friendly image data
 
 	Vector<uint8_t> imgdata;
 	Image::Format format;

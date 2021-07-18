@@ -1,0 +1,7 @@
+<Project>
+  <ItemGroup>
+    <!-- $(FoxProjectDir) is defined by Fox.NET.Sdk -->
+    <CompilerVisibleProperty Include="FoxProjectDir" />
+    <CompilerVisibleProperty Include="FoxScriptPathAttributeGenerator" />
+  </ItemGroup>
+</Project>

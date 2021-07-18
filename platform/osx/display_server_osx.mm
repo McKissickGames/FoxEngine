@@ -2,11 +2,11 @@
 /*  display_server_osx.mm                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -105,13 +105,13 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 }
 
 /*************************************************************************/
-/* GodotApplication                                                      */
+/* FoxApplication                                                      */
 /*************************************************************************/
 
-@interface GodotApplication : NSApplication
+@interface FoxApplication : NSApplication
 @end
 
-@implementation GodotApplication
+@implementation FoxApplication
 
 - (void)sendEvent:(NSEvent *)event {
 	// special case handling of command-period, which is traditionally a special
@@ -161,16 +161,16 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 @end
 
 /*************************************************************************/
-/* GodotApplicationDelegate                                              */
+/* FoxApplicationDelegate                                              */
 /*************************************************************************/
 
-@interface GodotApplicationDelegate : NSObject
+@interface FoxApplicationDelegate : NSObject
 - (void)forceUnbundledWindowActivationHackStep1;
 - (void)forceUnbundledWindowActivationHackStep2;
 - (void)forceUnbundledWindowActivationHackStep3;
 @end
 
-@implementation GodotApplicationDelegate
+@implementation FoxApplicationDelegate
 
 - (void)forceUnbundledWindowActivationHackStep1 {
 	// Step1: Switch focus to macOS Dock.
@@ -276,10 +276,10 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 @end
 
 /*************************************************************************/
-/* GodotWindowDelegate                                                   */
+/* FoxWindowDelegate                                                   */
 /*************************************************************************/
 
-@interface GodotWindowDelegate : NSObject {
+@interface FoxWindowDelegate : NSObject {
 	DisplayServerOSX::WindowID window_id;
 }
 
@@ -288,7 +288,7 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 
 @end
 
-@implementation GodotWindowDelegate
+@implementation FoxWindowDelegate
 
 - (void)setWindowID:(DisplayServerOSX::WindowID)wid {
 	window_id = wid;
@@ -517,10 +517,10 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 @end
 
 /*************************************************************************/
-/* GodotContentView                                                      */
+/* FoxContentView                                                      */
 /*************************************************************************/
 
-@interface GodotContentView : NSView <NSTextInputClient> {
+@interface FoxContentView : NSView <NSTextInputClient> {
 	DisplayServerOSX::WindowID window_id;
 	NSTrackingArea *trackingArea;
 	NSMutableAttributedString *markedText;
@@ -535,14 +535,14 @@ static NSCursor *_cursorFromSelector(SEL selector, SEL fallback = nil) {
 
 @end
 
-@implementation GodotContentView
+@implementation FoxContentView
 
 - (void)setWindowID:(DisplayServerOSX::WindowID)wid {
 	window_id = wid;
 }
 
 + (void)initialize {
-	if (self == [GodotContentView class]) {
+	if (self == [FoxContentView class]) {
 		// nothing left to do here at the moment..
 	}
 }
@@ -1073,7 +1073,7 @@ static bool isNumpadKey(unsigned int key) {
 	return false;
 }
 
-// Translates a OS X keycode to a Godot keycode
+// Translates a OS X keycode to a Fox keycode
 //
 static int translateKey(unsigned int key) {
 	// Keyboard symbol translation table
@@ -1573,15 +1573,15 @@ inline void sendPanEvent(DisplayServer::WindowID window_id, double dx, double dy
 @end
 
 /*************************************************************************/
-/* GodotWindow                                                           */
+/* FoxWindow                                                           */
 /*************************************************************************/
 
-@interface GodotWindow : NSWindow {
+@interface FoxWindow : NSWindow {
 }
 
 @end
 
-@implementation GodotWindow
+@implementation FoxWindow
 
 - (BOOL)canBecomeKeyWindow {
 	// Required for NSBorderlessWindowMask windows
@@ -2228,7 +2228,7 @@ int DisplayServerOSX::get_screen_count() const {
 // Returns the native top-left screen coordinate of the smallest rectangle
 // that encompasses all screens. Needed in get_screen_position(),
 // window_get_position, and window_set_position()
-// to convert between OS X native screen coordinates and the ones expected by Godot
+// to convert between OS X native screen coordinates and the ones expected by Fox
 
 static bool displays_arrangement_dirty = true;
 static bool displays_scale_dirty = true;
@@ -2278,7 +2278,7 @@ Point2i DisplayServerOSX::screen_get_position(int p_screen) const {
 
 	Point2i position = _get_native_screen_position(p_screen) - _get_screens_origin();
 	// OS X native y-coordinate relative to _get_screens_origin() is negative,
-	// Godot expects a positive value
+	// Fox expects a positive value
 	position.y *= -1;
 	return position;
 }
@@ -2593,7 +2593,7 @@ Point2i DisplayServerOSX::window_get_position(WindowID p_window) const {
 	pos *= scale;
 	pos -= _get_screens_origin();
 	// OS X native y-coordinate relative to _get_screens_origin() is negative,
-	// Godot expects a positive value
+	// Fox expects a positive value
 	pos.y *= -1;
 	return pos;
 }
@@ -2606,7 +2606,7 @@ void DisplayServerOSX::window_set_position(const Point2i &p_position, WindowID p
 
 	Point2i position = p_position;
 	// OS X native y-coordinate relative to _get_screens_origin() is negative,
-	// Godot passes a positive value
+	// Fox passes a positive value
 	position.y *= -1;
 	position += _get_screens_origin();
 	position /= screen_get_max_scale();
@@ -3626,25 +3626,25 @@ DisplayServerOSX::WindowID DisplayServerOSX::_create_window(WindowMode p_mode, V
 	{
 		WindowData wd;
 
-		wd.window_delegate = [[GodotWindowDelegate alloc] init];
+		wd.window_delegate = [[FoxWindowDelegate alloc] init];
 		ERR_FAIL_COND_V_MSG(wd.window_delegate == nil, INVALID_WINDOW_ID, "Can't create a window delegate");
 		[wd.window_delegate setWindowID:window_id_counter];
 
 		Point2i position = p_rect.position;
 		// OS X native y-coordinate relative to _get_screens_origin() is negative,
-		// Godot passes a positive value
+		// Fox passes a positive value
 		position.y *= -1;
 		position += _get_screens_origin();
 
 		// initWithContentRect uses bottom-left corner of the window’s frame as origin.
-		wd.window_object = [[GodotWindow alloc]
+		wd.window_object = [[FoxWindow alloc]
 				initWithContentRect:NSMakeRect(position.x / scale, (position.y - p_rect.size.height) / scale, p_rect.size.width / scale, p_rect.size.height / scale)
 						  styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable
 							backing:NSBackingStoreBuffered
 							  defer:NO];
 		ERR_FAIL_COND_V_MSG(wd.window_object == nil, INVALID_WINDOW_ID, "Can't create a window");
 
-		wd.window_view = [[GodotContentView alloc] init];
+		wd.window_view = [[FoxContentView alloc] init];
 		ERR_FAIL_COND_V_MSG(wd.window_view == nil, INVALID_WINDOW_ID, "Can't create a window view");
 		[wd.window_view setWindowID:window_id_counter];
 		[wd.window_view setWantsLayer:TRUE];
@@ -3786,7 +3786,7 @@ DisplayServerOSX::DisplayServerOSX(const String &p_rendering_driver, WindowMode 
 	CGEventSourceSetLocalEventsSuppressionInterval(eventSource, 0.0);
 
 	// Implicitly create shared NSApplication instance
-	[GodotApplication sharedApplication];
+	[FoxApplication sharedApplication];
 
 	// In case we are unbundled, make us a proper UI application
 	[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
@@ -3854,7 +3854,7 @@ DisplayServerOSX::DisplayServerOSX(const String &p_rendering_driver, WindowMode 
 
 	[NSApp finishLaunching];
 
-	delegate = [[GodotApplicationDelegate alloc] init];
+	delegate = [[FoxApplicationDelegate alloc] init];
 	ERR_FAIL_COND(!delegate);
 	[NSApp setDelegate:delegate];
 

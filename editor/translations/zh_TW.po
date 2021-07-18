@@ -1,7 +1,7 @@
-# Chinese (Taiwan) translation of the Godot Engine editor
+# Chinese (Taiwan) translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 # Allen H <w84miracle@gmail.com>, 2017.
 # Billy SU <g4691821@gmail.com>, 2018.
 # Chao Yu <casd82@gmail.com>, 2017.
@@ -28,12 +28,12 @@
 # meowmeowmeowcat <meowmeowcat1211@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2021-07-13 06:13+0000\n"
 "Last-Translator: meowmeowmeowcat <meowmeowcat1211@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"godot-engine/godot/zh_Hant/>\n"
+"Fox-engine/Fox/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1118,16 +1118,16 @@ msgid "Change Dictionary Value"
 msgstr "改變字典值"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Godot 社群感謝你！"
+msgid "Thanks from the Fox community!"
+msgstr "Fox 社群感謝你！"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr "按一下以複製。"
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Godot Engine 貢獻者"
+msgid "Fox Engine contributors"
+msgstr "Fox Engine 貢獻者"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1198,12 +1198,12 @@ msgstr "第三方授權條款"
 
 #: editor/editor_about.cpp
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot Engine 依賴數個自由且開放原始碼的第三方函式庫，所有函式庫皆相容於 MIT "
+"Fox Engine 依賴數個自由且開放原始碼的第三方函式庫，所有函式庫皆相容於 MIT "
 "授權條款。以下為這些第三方元件的完整列表與其著作權宣告及授權條款。"
 
 #: editor/editor_about.cpp
@@ -1779,8 +1779,8 @@ msgid "Erase Profile"
 msgstr "清除設定檔"
 
 #: editor/editor_feature_profile.cpp
-msgid "Godot Feature Profile"
-msgstr "Godot 功能設定檔"
+msgid "Fox Feature Profile"
+msgstr "Fox 功能設定檔"
 
 #: editor/editor_feature_profile.cpp
 msgid "Import Profile(s)"
@@ -2946,8 +2946,8 @@ msgid "About"
 msgstr "關於"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
-msgstr "支援 Godot 開發"
+msgid "Support Fox Development"
+msgstr "支援 Fox 開發"
 
 #: editor/editor_node.cpp
 msgid "Play the project."
@@ -3594,8 +3594,8 @@ msgid "Select Template File"
 msgstr "選擇樣板檔案"
 
 #: editor/export_template_manager.cpp
-msgid "Godot Export Templates"
-msgstr "Godot 匯出樣板"
+msgid "Fox Export Templates"
+msgstr "Fox 匯出樣板"
 
 #: editor/export_template_manager.cpp
 msgid "Export Template Manager"
@@ -5141,9 +5141,9 @@ msgstr "部分網格無效。請確保 UV2 通道的值位於 [0.0,1.0] 矩形�
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 #, fuzzy
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
-"Godot 編輯器在建制時未啟用光線追蹤 (Ray Tracing) 支援，無法烘焙光照圖。"
+"Fox 編輯器在建制時未啟用光線追蹤 (Ray Tracing) 支援，無法烘焙光照圖。"
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid "Bake Lightmaps"
@@ -6912,8 +6912,8 @@ msgid "Debug with External Editor"
 msgstr "使用外部編輯器進行除錯"
 
 #: editor/plugins/script_editor_plugin.cpp
-msgid "Open Godot online documentation."
-msgstr "打開 Godot 線上說明文件。"
+msgid "Open Fox online documentation."
+msgstr "打開 Fox 線上說明文件。"
 
 #: editor/plugins/script_editor_plugin.cpp
 msgid "Search the reference documentation."
@@ -9344,11 +9344,11 @@ msgstr "向量均勻。"
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
-"自定 Godot 著色器語言表示式，使用自定數量的輸入與輸出埠口。這是通過直接插向頂"
+"自定 Fox 著色器語言表示式，使用自定數量的輸入與輸出埠口。這是通過直接插向頂"
 "點／片段／光照函式插入程式碼來實現的，請勿在其中聲明函式。"
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
@@ -9359,12 +9359,12 @@ msgstr "依據表面法線與相機檢視方向的內積來回傳下降率（將
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
 msgstr ""
-"自定 Godot 著色器語言表示式，將被放入最終的著色器頂部。可以放入數個函數聲明在"
+"自定 Fox 著色器語言表示式，將被放入最終的著色器頂部。可以放入數個函數聲明在"
 "裡面，並於稍後在表示式中呼叫。也可以聲明 Varying、Uniform 與常數。"
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
@@ -9589,8 +9589,8 @@ msgid "ZIP File"
 msgstr "ZIP 檔案"
 
 #: editor/project_export.cpp
-msgid "Godot Game Pack"
-msgstr "Godot 遊戲包"
+msgid "Fox Game Pack"
+msgstr "Fox 遊戲包"
 
 #: editor/project_export.cpp
 msgid "Export templates for this platform are missing:"
@@ -9614,20 +9614,20 @@ msgstr "開啟套件檔案時發生錯誤（非 ZIP 格式）。"
 
 #: editor/project_manager.cpp
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr "無效的「.zip」專案檔；未包含「project.godot」檔案。"
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
+msgstr "無效的「.zip」專案檔；未包含「project.Fox」檔案。"
 
 #: editor/project_manager.cpp
 msgid "Please choose an empty folder."
 msgstr "請選擇一個空資料夾。"
 
 #: editor/project_manager.cpp
-msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "請選擇一個「project.godot」或「.zip」檔案。"
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
+msgstr "請選擇一個「project.Fox」或「.zip」檔案。"
 
 #: editor/project_manager.cpp
-msgid "This directory already contains a Godot project."
-msgstr "該目錄已經包含了一個 Godot 專案。"
+msgid "This directory already contains a Fox project."
+msgstr "該目錄已經包含了一個 Fox 專案。"
 
 #: editor/project_manager.cpp
 msgid "New Game Project"
@@ -9659,17 +9659,17 @@ msgstr "不正確的專案路徑（有修改了什麼嗎？）。"
 
 #: editor/project_manager.cpp
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
-msgstr "無法自專案路徑內載入 project.godot（錯誤 %d）。檔案可能遺失或損毀。"
+msgstr "無法自專案路徑內載入 project.Fox（錯誤 %d）。檔案可能遺失或損毀。"
 
 #: editor/project_manager.cpp
-msgid "Couldn't edit project.godot in project path."
-msgstr "無法在專案路徑中編輯 project.godot。"
+msgid "Couldn't edit project.Fox in project path."
+msgstr "無法在專案路徑中編輯 project.Fox。"
 
 #: editor/project_manager.cpp
-msgid "Couldn't create project.godot in project path."
-msgstr "無法在項目路徑中建立 project.godot。"
+msgid "Couldn't create project.Fox in project path."
+msgstr "無法在項目路徑中建立 project.Fox。"
 
 #: editor/project_manager.cpp
 msgid "Rename Project"
@@ -9777,22 +9777,22 @@ msgstr "確定要打開多個專案嗎？"
 
 #: editor/project_manager.cpp
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
 msgstr ""
-"下列專案設定檔未指定建立其之 Godot 版本。\n"
+"下列專案設定檔未指定建立其之 Fox 版本。\n"
 "\n"
 "%s\n"
 "\n"
-"若您繼續開啟，會將其轉換為目前 Godot 版本的組態設定檔案格式。\n"
-"警告：您將不再可使用舊版的 Godot 開啟該專案。"
+"若您繼續開啟，會將其轉換為目前 Fox 版本的組態設定檔案格式。\n"
+"警告：您將不再可使用舊版的 Fox 開啟該專案。"
 
 #: editor/project_manager.cpp
 msgid ""
@@ -9805,19 +9805,19 @@ msgid ""
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
 msgstr ""
-"下列專案設定檔是由較舊版本的 Godot 產生，需進行轉換以適用於目前版本的 "
-"Godot：\n"
+"下列專案設定檔是由較舊版本的 Fox 產生，需進行轉換以適用於目前版本的 "
+"Fox：\n"
 "\n"
 "%s\n"
 "\n"
 "要進行轉換嗎？\n"
-"警告：您將不再可使用舊版的 Godot 開啟該專案。"
+"警告：您將不再可使用舊版的 Fox 開啟該專案。"
 
 #: editor/project_manager.cpp
 msgid ""
 "The project settings were created by a newer engine version, whose settings "
 "are not compatible with this version."
-msgstr "該專案設定是由新版本的 Godot 所建立，其設定無法相容於這個版本。"
+msgstr "該專案設定是由新版本的 Fox 所建立，其設定無法相容於這個版本。"
 
 #: editor/project_manager.cpp
 msgid ""
@@ -9874,13 +9874,13 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
-"確定要掃描 %s 中的 Godot 專案嗎？\n"
+"確定要掃描 %s 中的 Fox 專案嗎？\n"
 "這可能需要一段時間。"
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr "專案管理員"
@@ -10163,8 +10163,8 @@ msgid "Changed Locale Filter Mode"
 msgstr "更改地區設定篩選模式"
 
 #: editor/project_settings_editor.cpp
-msgid "Project Settings (project.godot)"
-msgstr "專案設定 (project.godot)"
+msgid "Project Settings (project.Fox)"
+msgstr "專案設定 (project.Fox)"
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
 msgid "General"
@@ -12037,11 +12037,11 @@ msgstr "無效的套件名稱："
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
-"「andoird/modules」專案設定中包含了無效的「GodotPaymentV3」模組（更改於 "
-"Godot 3.2.2）。\n"
+"「andoird/modules」專案設定中包含了無效的「FoxPaymentV3」模組（更改於 "
+"Fox 3.2.2）。\n"
 
 #: platform/android/export/export.cpp
 msgid "\"Use Custom Build\" must be enabled to use the plugins."
@@ -12096,12 +12096,12 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 "Android 建置版本不符合：\n"
 "   已安裝的樣板：%s\n"
-"   Godot 版本：%s\n"
+"   Fox 版本：%s\n"
 "請自「專案」目錄中重新安裝 Android 建置樣板。"
 
 #: platform/android/export/export.cpp
@@ -12111,10 +12111,10 @@ msgstr "建置 Android 專案（Gradle）"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 "建置 Android 專案失敗，請檢查輸出以確認錯誤。\n"
-"也可以瀏覽 docs.godotengine.org 以瀏覽 Android 建置說明文件。"
+"也可以瀏覽 docs.Foxengine.org 以瀏覽 Android 建置說明文件。"
 
 #: platform/android/export/export.cpp
 msgid "Moving output"
@@ -12898,8 +12898,8 @@ msgstr "不可修改常數。"
 #~ msgstr "剪貼板為空"
 
 #~ msgid ""
-#~ "InterpolatedCamera has been deprecated and will be removed in Godot 4.0."
-#~ msgstr "InterpolatedCamera 已停止維護，且將於 Godot 4.0 中移除。"
+#~ "InterpolatedCamera has been deprecated and will be removed in Fox 4.0."
+#~ msgstr "InterpolatedCamera 已停止維護，且將於 Fox 4.0 中移除。"
 
 #~ msgid "No"
 #~ msgstr "否"
@@ -13026,8 +13026,8 @@ msgstr "不可修改常數。"
 #~ msgstr "請求檔案"
 
 #, fuzzy
-#~ msgid "Help improve the Godot documentation by giving feedback."
-#~ msgstr "通過提供回饋幫助改進 Godot 文檔"
+#~ msgid "Help improve the Fox documentation by giving feedback."
+#~ msgstr "通過提供回饋幫助改進 Fox 文檔"
 
 #~ msgid "Replaced %d occurrence(s)."
 #~ msgstr "取代了 %d 個。"

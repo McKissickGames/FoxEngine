@@ -1,10 +1,10 @@
-namespace GodotTools
+namespace FoxTools
 {
     public static class ApiAssemblyNames
     {
-        public const string SolutionName = "GodotSharp";
-        public const string Core = "GodotSharp";
-        public const string Editor = "GodotSharpEditor";
+        public const string SolutionName = "FoxSharp";
+        public const string Core = "FoxSharp";
+        public const string Editor = "FoxSharpEditor";
     }
 
     public enum ApiAssemblyType

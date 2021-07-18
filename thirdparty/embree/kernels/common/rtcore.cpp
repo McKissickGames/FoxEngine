@@ -197,10 +197,10 @@ RTC_NAMESPACE_BEGIN;
     if (quality != RTC_BUILD_QUALITY_LOW &&
         quality != RTC_BUILD_QUALITY_MEDIUM &&
         quality != RTC_BUILD_QUALITY_HIGH)
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::runtime_error("invalid build quality");
       abort();
-      // -- GODOT end --
+      // -- Fox end --
     scene->setBuildQuality(quality);
     RTC_CATCH_END2(scene);
   }
@@ -1353,10 +1353,10 @@ RTC_NAMESPACE_BEGIN;
         quality != RTC_BUILD_QUALITY_MEDIUM &&
         quality != RTC_BUILD_QUALITY_HIGH &&
         quality != RTC_BUILD_QUALITY_REFIT)
-      // -- GODOT start --
+      // -- Fox start --
       // throw std::runtime_error("invalid build quality");
       abort();
-      // -- GODOT end --
+      // -- Fox end --
     geometry->setBuildQuality(quality);
     RTC_CATCH_END2(geometry);
   }

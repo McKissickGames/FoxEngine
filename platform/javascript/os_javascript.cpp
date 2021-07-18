@@ -2,11 +2,11 @@
 /*  os_javascript.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -45,7 +45,7 @@
 #include <emscripten.h>
 #include <stdlib.h>
 
-#include "godot_js.h"
+#include "Fox_js.h"
 
 // Lifecycle
 void OS_JavaScript::initialize() {
@@ -80,7 +80,7 @@ bool OS_JavaScript::main_loop_iterate() {
 	if (is_userfs_persistent() && idb_needs_sync && !idb_is_syncing) {
 		idb_is_syncing = true;
 		idb_needs_sync = false;
-		godot_js_os_fs_sync(&fs_sync_callback);
+		Fox_js_os_fs_sync(&fs_sync_callback);
 	}
 
 	DisplayServer::get_singleton()->process_events();
@@ -115,7 +115,7 @@ Error OS_JavaScript::create_process(const String &p_path, const List<String> &p_
 		args.push_back(E->get());
 	}
 	String json_args = Variant(args).to_json_string();
-	int failed = godot_js_os_execute(json_args.utf8().get_data());
+	int failed = Fox_js_os_execute(json_args.utf8().get_data());
 	ERR_FAIL_COND_V_MSG(failed, ERR_UNAVAILABLE, "OS::execute() or create_process() must be implemented in JavaScript via 'engine.setOnExecute' if required.");
 	return OK;
 }
@@ -129,7 +129,7 @@ int OS_JavaScript::get_process_id() const {
 }
 
 int OS_JavaScript::get_processor_count() const {
-	return godot_js_os_hw_concurrency_get();
+	return Fox_js_os_hw_concurrency_get();
 }
 
 bool OS_JavaScript::_check_internal_feature_support(const String &p_feature) {
@@ -162,7 +162,7 @@ String OS_JavaScript::get_executable_path() const {
 
 Error OS_JavaScript::shell_open(String p_uri) {
 	// Open URI in a new tab, browser will deal with it by protocol.
-	godot_js_os_shell_open(p_uri.utf8().get_data());
+	Fox_js_os_shell_open(p_uri.utf8().get_data());
 	return OK;
 }
 
@@ -221,7 +221,7 @@ void OS_JavaScript::initialize_joypads() {
 
 OS_JavaScript::OS_JavaScript() {
 	char locale_ptr[16];
-	godot_js_config_locale_get(locale_ptr, 16);
+	Fox_js_config_locale_get(locale_ptr, 16);
 	setenv("LANG", locale_ptr, true);
 
 	if (AudioDriverJavaScript::is_available()) {
@@ -229,7 +229,7 @@ OS_JavaScript::OS_JavaScript() {
 		AudioDriverManager::add_driver(audio_driver_javascript);
 	}
 
-	idb_available = godot_js_os_fs_is_persistent();
+	idb_available = Fox_js_os_fs_is_persistent();
 
 	Vector<Logger *> loggers;
 	loggers.push_back(memnew(StdLogger));

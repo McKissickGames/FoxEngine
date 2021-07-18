@@ -2,11 +2,11 @@
 /*  nativescript.cpp                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -225,10 +225,10 @@ ScriptInstance *NativeScript::instance_create(Object *p_this) {
 	if (!ScriptServer::is_scripting_enabled()) {
 		nsi->userdata = nullptr;
 	} else {
-		nsi->userdata = script_data->create_func.create_func((godot_object *)p_this, script_data->create_func.method_data);
+		nsi->userdata = script_data->create_func.create_func((Fox_object *)p_this, script_data->create_func.method_data);
 	}
 #else
-	nsi->userdata = script_data->create_func.create_func((godot_object *)p_this, script_data->create_func.method_data);
+	nsi->userdata = script_data->create_func.create_func((Fox_object *)p_this, script_data->create_func.method_data);
 #endif
 
 	{
@@ -555,8 +555,8 @@ void NativeScriptInstance::_ml_call_reversed(NativeScriptDesc *script_data, cons
 
 	Map<StringName, NativeScriptDesc::Method>::Element *E = script_data->methods.find(p_method);
 	if (E) {
-		godot_variant res = E->get().method.method((godot_object *)owner, E->get().method.method_data, userdata, p_argcount, (godot_variant **)p_args);
-		godot_variant_destroy(&res);
+		Fox_variant res = E->get().method.method((Fox_object *)owner, E->get().method.method_data, userdata, p_argcount, (Fox_variant **)p_args);
+		Fox_variant_destroy(&res);
 	}
 }
 
@@ -566,10 +566,10 @@ bool NativeScriptInstance::set(const StringName &p_name, const Variant &p_value)
 	while (script_data) {
 		OrderedHashMap<StringName, NativeScriptDesc::Property>::Element P = script_data->properties.find(p_name);
 		if (P) {
-			P.get().setter.set_func((godot_object *)owner,
+			P.get().setter.set_func((Fox_object *)owner,
 					P.get().setter.method_data,
 					userdata,
-					(godot_variant *)&p_value);
+					(Fox_variant *)&p_value);
 			return true;
 		}
 
@@ -578,14 +578,14 @@ bool NativeScriptInstance::set(const StringName &p_name, const Variant &p_value)
 			Variant name = p_name;
 			const Variant *args[2] = { &name, &p_value };
 
-			godot_variant result;
-			result = E->get().method.method((godot_object *)owner,
+			Fox_variant result;
+			result = E->get().method.method((Fox_object *)owner,
 					E->get().method.method_data,
 					userdata,
 					2,
-					(godot_variant **)args);
+					(Fox_variant **)args);
 			bool handled = *(Variant *)&result;
-			godot_variant_destroy(&result);
+			Fox_variant_destroy(&result);
 			if (handled) {
 				return true;
 			}
@@ -602,12 +602,12 @@ bool NativeScriptInstance::get(const StringName &p_name, Variant &r_ret) const {
 	while (script_data) {
 		OrderedHashMap<StringName, NativeScriptDesc::Property>::Element P = script_data->properties.find(p_name);
 		if (P) {
-			godot_variant value;
-			value = P.get().getter.get_func((godot_object *)owner,
+			Fox_variant value;
+			value = P.get().getter.get_func((Fox_object *)owner,
 					P.get().getter.method_data,
 					userdata);
 			r_ret = *(Variant *)&value;
-			godot_variant_destroy(&value);
+			Fox_variant_destroy(&value);
 			return true;
 		}
 
@@ -616,14 +616,14 @@ bool NativeScriptInstance::get(const StringName &p_name, Variant &r_ret) const {
 			Variant name = p_name;
 			const Variant *args[1] = { &name };
 
-			godot_variant result;
-			result = E->get().method.method((godot_object *)owner,
+			Fox_variant result;
+			result = E->get().method.method((Fox_object *)owner,
 					E->get().method.method_data,
 					userdata,
 					1,
-					(godot_variant **)args);
+					(Fox_variant **)args);
 			r_ret = *(Variant *)&result;
-			godot_variant_destroy(&result);
+			Fox_variant_destroy(&result);
 			if (r_ret.get_type() != Variant::NIL) {
 				return true;
 			}
@@ -642,14 +642,14 @@ void NativeScriptInstance::get_property_list(List<PropertyInfo> *p_properties) c
 	while (script_data) {
 		Map<StringName, NativeScriptDesc::Method>::Element *E = script_data->methods.find("_get_property_list");
 		if (E) {
-			godot_variant result;
-			result = E->get().method.method((godot_object *)owner,
+			Fox_variant result;
+			result = E->get().method.method((Fox_object *)owner,
 					E->get().method.method_data,
 					userdata,
 					0,
 					nullptr);
 			Variant res = *(Variant *)&result;
-			godot_variant_destroy(&result);
+			Fox_variant_destroy(&result);
 
 			ERR_FAIL_COND_MSG(res.get_type() != Variant::ARRAY, "_get_property_list must return an array of dictionaries.");
 
@@ -718,24 +718,24 @@ Variant NativeScriptInstance::call(const StringName &p_method, const Variant **p
 	while (script_data) {
 		Map<StringName, NativeScriptDesc::Method>::Element *E = script_data->methods.find(p_method);
 		if (E) {
-			godot_variant result;
+			Fox_variant result;
 
 #ifdef DEBUG_ENABLED
 			current_method_call = p_method;
 #endif
 
-			result = E->get().method.method((godot_object *)owner,
+			result = E->get().method.method((Fox_object *)owner,
 					E->get().method.method_data,
 					userdata,
 					p_argcount,
-					(godot_variant **)p_args);
+					(Fox_variant **)p_args);
 
 #ifdef DEBUG_ENABLED
 			current_method_call = "";
 #endif
 
 			Variant res = *(Variant *)&result;
-			godot_variant_destroy(&result);
+			Fox_variant_destroy(&result);
 			r_error.error = Callable::CallError::CALL_OK;
 			return res;
 		}
@@ -827,7 +827,7 @@ NativeScriptInstance::~NativeScriptInstance() {
 		return;
 	}
 
-	script_data->destroy_func.destroy_func((godot_object *)owner, script_data->destroy_func.method_data, userdata);
+	script_data->destroy_func.destroy_func((Fox_object *)owner, script_data->destroy_func.method_data, userdata);
 
 	if (owner) {
 		MutexLock lock(script->owners_lock);
@@ -1214,7 +1214,7 @@ void NativeScriptLanguage::profiling_add_data(StringName p_signature, uint64_t p
 #endif
 }
 
-int NativeScriptLanguage::register_binding_functions(godot_nativescript_instance_binding_functions p_binding_functions) {
+int NativeScriptLanguage::register_binding_functions(Fox_nativescript_instance_binding_functions p_binding_functions) {
 	// find index
 
 	int idx = -1;
@@ -1285,7 +1285,7 @@ void *NativeScriptLanguage::get_instance_binding_data(int p_idx, Object *p_objec
 		const void *global_type_tag = get_global_type_tag(p_idx, p_object->get_class_name());
 
 		// no binding data yet, soooooo alloc new one \o/
-		(*binding_data).write[p_idx] = binding_functions[p_idx].second.alloc_instance_binding_data(binding_functions[p_idx].second.data, global_type_tag, (godot_object *)p_object);
+		(*binding_data).write[p_idx] = binding_functions[p_idx].second.alloc_instance_binding_data(binding_functions[p_idx].second.data, global_type_tag, (Fox_object *)p_object);
 	}
 
 	return (*binding_data)[p_idx];
@@ -1456,7 +1456,7 @@ void NativeScriptLanguage::init_library(const Ref<GDNativeLibrary> &lib) {
 		if (err != OK) {
 			ERR_PRINT(String("No " + _init_call_name + " in \"" + lib_path + "\" found").utf8().get_data());
 		} else {
-			((void (*)(godot_string *))proc_ptr)((godot_string *)&lib_path);
+			((void (*)(Fox_string *))proc_ptr)((Fox_string *)&lib_path);
 		}
 	} else {
 		// already initialized. Nice.
@@ -1698,7 +1698,7 @@ void NativeReloadNode::_notification(int p_what) {
 				void *proc_ptr;
 				Error err = gdn->get_symbol(gdn->get_library()->get_symbol_prefix() + "nativescript_init", proc_ptr);
 				if (err != OK) {
-					ERR_PRINT(String("No godot_nativescript_init in \"" + L->key() + "\" found").utf8().get_data());
+					ERR_PRINT(String("No Fox_nativescript_init in \"" + L->key() + "\" found").utf8().get_data());
 				} else {
 					((void (*)(void *))proc_ptr)((void *)&L->key());
 				}

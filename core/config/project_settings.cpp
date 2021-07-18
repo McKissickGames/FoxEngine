@@ -2,11 +2,11 @@
 /*  project_settings.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -52,7 +52,7 @@ String ProjectSettings::get_resource_path() const {
 	return resource_path;
 }
 
-const String ProjectSettings::IMPORTED_FILES_PATH("res://.godot/imported");
+const String ProjectSettings::IMPORTED_FILES_PATH("res://.Fox/imported");
 
 String ProjectSettings::localize_path(const String &p_path) const {
 	if (resource_path == "") {
@@ -336,7 +336,7 @@ void ProjectSettings::_convert_to_last_version(int p_from_version) {
 }
 
 /*
- * This method is responsible for loading a project.godot file and/or data file
+ * This method is responsible for loading a project.Fox file and/or data file
  * using the following merit order:
  *  - If using NetworkClient, try to lookup project file or fail.
  *  - If --main-pack was passed by the user (`p_main_pack`), load it or fail.
@@ -364,7 +364,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 	// If looking for files in a network client, use it directly
 
 	if (FileAccessNetworkClient::get_singleton()) {
-		Error err = _load_settings_text_or_binary("res://project.godot", "res://project.binary");
+		Error err = _load_settings_text_or_binary("res://project.Fox", "res://project.binary");
 		if (err == OK) {
 			// Optional, we don't mind if it fails
 			_load_settings_text("res://override.cfg");
@@ -378,7 +378,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 		bool ok = _load_resource_pack(p_main_pack);
 		ERR_FAIL_COND_V_MSG(!ok, ERR_CANT_OPEN, "Cannot open resource pack '" + p_main_pack + "'.");
 
-		Error err = _load_settings_text_or_binary("res://project.godot", "res://project.binary");
+		Error err = _load_settings_text_or_binary("res://project.Fox", "res://project.binary");
 		if (err == OK) {
 			// Load override from location of the main pack
 			// Optional, we don't mind if it fails
@@ -397,7 +397,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 		bool found = _load_resource_pack(exec_path);
 
 		// Attempt with exec_name.pck.
-		// (This is the usual case when distributing a Godot game.)
+		// (This is the usual case when distributing a Fox game.)
 		String exec_dir = exec_path.get_base_dir();
 		String exec_filename = exec_path.get_file();
 		String exec_basename = exec_filename.get_basename();
@@ -428,7 +428,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 
 		// If we opened our package, try and load our project.
 		if (found) {
-			Error err = _load_settings_text_or_binary("res://project.godot", "res://project.binary");
+			Error err = _load_settings_text_or_binary("res://project.Fox", "res://project.binary");
 			if (err == OK) {
 				// Load override from location of the executable.
 				// Optional, we don't mind if it fails.
@@ -449,7 +449,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 			resource_path = resource_path.substr(0, resource_path.length() - 1); // Chop end.
 		}
 
-		Error err = _load_settings_text_or_binary("res://project.godot", "res://project.binary");
+		Error err = _load_settings_text_or_binary("res://project.Fox", "res://project.binary");
 		if (err == OK) {
 			// Optional, we don't mind if it fails.
 			_load_settings_text("res://override.cfg");
@@ -472,7 +472,7 @@ Error ProjectSettings::_setup(const String &p_path, const String &p_main_pack, b
 		// Set the resource path early so things can be resolved when loading.
 		resource_path = current_dir;
 		resource_path = resource_path.replace("\\", "/"); // Windows path to Unix path just in case.
-		err = _load_settings_text_or_binary(current_dir.plus_file("project.godot"), current_dir.plus_file("project.binary"));
+		err = _load_settings_text_or_binary(current_dir.plus_file("project.Fox"), current_dir.plus_file("project.binary"));
 		if (err == OK) {
 			// Optional, we don't mind if it fails.
 			_load_settings_text(current_dir.plus_file("override.cfg"));
@@ -601,10 +601,10 @@ Error ProjectSettings::_load_settings_text(const String &p_path) {
 		err = VariantParser::parse_tag_assign_eof(&stream, lines, error_text, next_tag, assign, value, nullptr, true);
 		if (err == ERR_FILE_EOF) {
 			memdelete(f);
-			// If we're loading a project.godot from source code, we can operate some
+			// If we're loading a project.Fox from source code, we can operate some
 			// ProjectSettings conversions if need be.
 			_convert_to_last_version(config_version);
-			last_save_time = FileAccess::get_modified_time(get_resource_path().plus_file("project.godot"));
+			last_save_time = FileAccess::get_modified_time(get_resource_path().plus_file("project.Fox"));
 			return OK;
 		} else if (err != OK) {
 			ERR_PRINT("Error parsing " + p_path + " at line " + itos(lines) + ": " + error_text + " File might be corrupted.");
@@ -633,7 +633,7 @@ Error ProjectSettings::_load_settings_text(const String &p_path) {
 }
 
 Error ProjectSettings::_load_settings_text_or_binary(const String &p_text_path, const String &p_bin_path) {
-	// Attempt first to load the binary project.godot file.
+	// Attempt first to load the binary project.Fox file.
 	Error err = _load_settings_binary(p_bin_path);
 	if (err == OK) {
 		return OK;
@@ -642,7 +642,7 @@ Error ProjectSettings::_load_settings_text_or_binary(const String &p_text_path, 
 		ERR_PRINT("Couldn't load file '" + p_bin_path + "', error code " + itos(err) + ".");
 	}
 
-	// Fallback to text-based project.godot file if binary was not found.
+	// Fallback to text-based project.Fox file if binary was not found.
 	err = _load_settings_text(p_text_path);
 	if (err == OK) {
 		return OK;
@@ -682,9 +682,9 @@ void ProjectSettings::clear(const String &p_name) {
 }
 
 Error ProjectSettings::save() {
-	Error error = save_custom(get_resource_path().plus_file("project.godot"));
+	Error error = save_custom(get_resource_path().plus_file("project.Fox"));
 	if (error == OK) {
-		last_save_time = FileAccess::get_modified_time(get_resource_path().plus_file("project.godot"));
+		last_save_time = FileAccess::get_modified_time(get_resource_path().plus_file("project.Fox"));
 	}
 	return error;
 }
@@ -778,7 +778,7 @@ Error ProjectSettings::_save_settings_text(const String &p_file, const Map<Strin
 	Error err;
 	FileAccess *file = FileAccess::open(p_file, FileAccess::WRITE, &err);
 
-	ERR_FAIL_COND_V_MSG(err != OK, err, "Couldn't save project.godot - " + p_file + ".");
+	ERR_FAIL_COND_V_MSG(err != OK, err, "Couldn't save project.Fox - " + p_file + ".");
 
 	file->store_line("; Engine configuration file.");
 	file->store_line("; It's best edited using the editor UI and not directly,");
@@ -902,7 +902,7 @@ Error ProjectSettings::save_custom(const String &p_path, const CustomMap &p_cust
 		custom_features += f;
 	}
 
-	if (p_path.ends_with(".godot") || p_path.ends_with("override.cfg")) {
+	if (p_path.ends_with(".Fox") || p_path.ends_with("override.cfg")) {
 		return _save_settings_text(p_path, props, p_custom, custom_features);
 	} else if (p_path.ends_with(".binary")) {
 		return _save_settings_binary(p_path, props, p_custom, custom_features);
@@ -1076,7 +1076,7 @@ void ProjectSettings::_add_builtin_input_map() {
 
 ProjectSettings::ProjectSettings() {
 	// Initialization of engine variables should be done in the setup() method,
-	// so that the values can be overridden from project.godot or project.binary.
+	// so that the values can be overridden from project.Fox or project.binary.
 
 	singleton = this;
 
@@ -1095,7 +1095,7 @@ ProjectSettings::ProjectSettings() {
 
 	PackedStringArray extensions = PackedStringArray();
 	extensions.push_back("gd");
-	if (Engine::get_singleton()->has_singleton("GodotSharp")) {
+	if (Engine::get_singleton()->has_singleton("FoxSharp")) {
 		extensions.push_back("cs");
 	}
 	extensions.push_back("gdshader");

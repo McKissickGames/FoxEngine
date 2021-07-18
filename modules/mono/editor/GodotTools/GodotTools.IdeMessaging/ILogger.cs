@@ -1,6 +1,6 @@
 using System;
 
-namespace GodotTools.IdeMessaging
+namespace FoxTools.IdeMessaging
 {
     public interface ILogger
     {

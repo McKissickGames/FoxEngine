@@ -2,11 +2,11 @@
 /*  file_access_zip.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -38,7 +38,7 @@ ZipArchive *ZipArchive::instance = nullptr;
 
 extern "C" {
 
-static void *godot_open(void *data, const char *p_fname, int mode) {
+static void *Fox_open(void *data, const char *p_fname, int mode) {
 	if (mode & ZLIB_FILEFUNC_MODE_WRITE) {
 		return nullptr;
 	}
@@ -49,22 +49,22 @@ static void *godot_open(void *data, const char *p_fname, int mode) {
 	return f;
 }
 
-static uLong godot_read(void *data, void *fdata, void *buf, uLong size) {
+static uLong Fox_read(void *data, void *fdata, void *buf, uLong size) {
 	FileAccess *f = (FileAccess *)fdata;
 	f->get_buffer((uint8_t *)buf, size);
 	return size;
 }
 
-static uLong godot_write(voidpf opaque, voidpf stream, const void *buf, uLong size) {
+static uLong Fox_write(voidpf opaque, voidpf stream, const void *buf, uLong size) {
 	return 0;
 }
 
-static long godot_tell(voidpf opaque, voidpf stream) {
+static long Fox_tell(voidpf opaque, voidpf stream) {
 	FileAccess *f = (FileAccess *)stream;
 	return f->get_position();
 }
 
-static long godot_seek(voidpf opaque, voidpf stream, uLong offset, int origin) {
+static long Fox_seek(voidpf opaque, voidpf stream, uLong offset, int origin) {
 	FileAccess *f = (FileAccess *)stream;
 
 	uint64_t pos = offset;
@@ -83,7 +83,7 @@ static long godot_seek(voidpf opaque, voidpf stream, uLong offset, int origin) {
 	return 0;
 }
 
-static int godot_close(voidpf opaque, voidpf stream) {
+static int Fox_close(voidpf opaque, voidpf stream) {
 	FileAccess *f = (FileAccess *)stream;
 	if (f) {
 		f->close();
@@ -93,16 +93,16 @@ static int godot_close(voidpf opaque, voidpf stream) {
 	return 0;
 }
 
-static int godot_testerror(voidpf opaque, voidpf stream) {
+static int Fox_testerror(voidpf opaque, voidpf stream) {
 	FileAccess *f = (FileAccess *)stream;
 	return f->get_error() != OK ? 1 : 0;
 }
 
-static voidpf godot_alloc(voidpf opaque, uInt items, uInt size) {
+static voidpf Fox_alloc(voidpf opaque, uInt items, uInt size) {
 	return memalloc(items * size);
 }
 
-static void godot_free(voidpf opaque, voidpf address) {
+static void Fox_free(voidpf opaque, voidpf address) {
 	memfree(address);
 }
 } // extern "C"
@@ -121,17 +121,17 @@ unzFile ZipArchive::get_file_handle(String p_file) const {
 	memset(&io, 0, sizeof(io));
 
 	io.opaque = nullptr;
-	io.zopen_file = godot_open;
-	io.zread_file = godot_read;
-	io.zwrite_file = godot_write;
+	io.zopen_file = Fox_open;
+	io.zread_file = Fox_read;
+	io.zwrite_file = Fox_write;
 
-	io.ztell_file = godot_tell;
-	io.zseek_file = godot_seek;
-	io.zclose_file = godot_close;
-	io.zerror_file = godot_testerror;
+	io.ztell_file = Fox_tell;
+	io.zseek_file = Fox_seek;
+	io.zclose_file = Fox_close;
+	io.zerror_file = Fox_testerror;
 
-	io.alloc_mem = godot_alloc;
-	io.free_mem = godot_free;
+	io.alloc_mem = Fox_alloc;
+	io.free_mem = Fox_free;
 
 	unzFile pkg = unzOpen2(packages[file.package].filename.utf8().get_data(), &io);
 	ERR_FAIL_COND_V_MSG(!pkg, nullptr, "Cannot open file '" + packages[file.package].filename + "'.");
@@ -156,14 +156,14 @@ bool ZipArchive::try_open_pack(const String &p_path, bool p_replace_files, uint6
 	memset(&io, 0, sizeof(io));
 
 	io.opaque = nullptr;
-	io.zopen_file = godot_open;
-	io.zread_file = godot_read;
-	io.zwrite_file = godot_write;
+	io.zopen_file = Fox_open;
+	io.zread_file = Fox_read;
+	io.zwrite_file = Fox_write;
 
-	io.ztell_file = godot_tell;
-	io.zseek_file = godot_seek;
-	io.zclose_file = godot_close;
-	io.zerror_file = godot_testerror;
+	io.ztell_file = Fox_tell;
+	io.zseek_file = Fox_seek;
+	io.zclose_file = Fox_close;
+	io.zerror_file = Fox_testerror;
 
 	unzFile zfile = unzOpen2(p_path.utf8().get_data(), &io);
 	ERR_FAIL_COND_V(!zfile, false);

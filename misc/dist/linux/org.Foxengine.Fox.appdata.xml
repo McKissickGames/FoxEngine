@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017-2021 Rémi Verschelde <remi@Foxengine.org> -->
+<component type="desktop">
+  <id>org.Foxengine.Fox</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Fox Engine</name>
+  <summary>Multi-platform 2D and 3D game engine with a feature-rich editor</summary>
+  ​<launchable type="desktop-id">org.Foxengine.Fox.desktop</launchable>
+  <description>
+    <p>
+      Fox is an advanced, feature-packed, multi-platform 2D and 3D game
+      engine. It provides a huge set of common tools, so you can just focus on
+      making your game without reinventing the wheel.
+    </p>
+    <p>
+      Fox is completely free and open source under the very permissive MIT
+      license. No strings attached, no royalties, nothing. Your game is yours,
+      down to the last line of engine code.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default" width="1330" height="720">
+      <caption>3D project loaded in the Fox Engine editor</caption>
+      <image>https://download.tuxfamily.org/Foxengine/media/screenshots/editor_3d_fracteed-720p.jpg</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://Foxengine.org</url>
+  <url type="bugtracker">https://github.com/Foxengine/Fox/issues</url>
+  <url type="faq">https://docs.Foxengine.org/en/latest/about/faq.html</url>
+  <url type="help">https://docs.Foxengine.org</url>
+  <url type="donation">https://Foxengine.org/donate</url>
+  <url type="translate">https://hosted.weblate.org/projects/Fox-engine/Fox</url>
+  <developer_name>The Fox Engine Community</developer_name>
+  <update_contact>akien_at_Foxengine_dot_org</update_contact>
+</component>

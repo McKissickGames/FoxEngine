@@ -2,11 +2,11 @@
 /*  test_validate_testing.h                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -46,10 +46,10 @@ TEST_SUITE("Validate tests") {
 			CHECK_MESSAGE(true, "Pending test is run with `--no-skip`");
 		}
 	}
-	TEST_CASE("Muting Godot error messages") {
+	TEST_CASE("Muting Fox error messages") {
 		ERR_PRINT_OFF;
 		CHECK_MESSAGE(!_print_error_enabled, "Error printing should be disabled.");
-		ERR_PRINT("Still waiting for Godot!"); // This should never get printed!
+		ERR_PRINT("Still waiting for Fox!"); // This should never get printed!
 		ERR_PRINT_ON;
 		CHECK_MESSAGE(_print_error_enabled, "Error printing should be re-enabled.");
 	}
@@ -57,7 +57,7 @@ TEST_SUITE("Validate tests") {
 		Variant var;
 		INFO(var);
 
-		String string("Godot is finally here!");
+		String string("Fox is finally here!");
 		INFO(string);
 
 		Vector2 vec2(0.5, 1.0);
@@ -102,7 +102,7 @@ TEST_SUITE("Validate tests") {
 		StringName string_name("has_method");
 		INFO(string_name);
 
-		NodePath node_path("godot/sprite");
+		NodePath node_path("Fox/sprite");
 		INFO(node_path);
 
 		INFO(RID());

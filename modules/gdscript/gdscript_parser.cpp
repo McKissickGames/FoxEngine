@@ -2,11 +2,11 @@
 /*  gdscript_parser.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -102,7 +102,7 @@ static const char *underscore_classes[] = {
 	"Engine",
 	"File",
 	"Geometry",
-	"GodotSharp",
+	"FoxSharp",
 	"JSON",
 	"Marshalls",
 	"Mutex",
@@ -2984,7 +2984,7 @@ void GDScriptParser::get_class_doc_comment(int p_line, String &p_brief, String &
 			}
 
 			if (striped_line[begin_scan] == ':') { // No title.
-				// Syntax: ## @tutorial: https://godotengine.org/ // The title argument is optional.
+				// Syntax: ## @tutorial: https://Foxengine.org/ // The title argument is optional.
 				title = "";
 				link = striped_line.trim_prefix("@tutorial:").strip_edges();
 

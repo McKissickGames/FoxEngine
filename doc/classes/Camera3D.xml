@@ -7,7 +7,7 @@
 		[Camera3D] is a special node that displays what is visible from its current location. Cameras register themselves in the nearest [Viewport] node (when ascending the tree). Only one camera can be active per viewport. If no viewport is available ascending the tree, the camera will register in the global viewport. In other words, a camera just provides 3D display capabilities to a [Viewport], and, without one, a scene registered in that [Viewport] (or higher viewports) can't be displayed.
 	</description>
 	<tutorials>
-		<link title="Third Person Shooter Demo">https://godotengine.org/asset-library/asset/678</link>
+		<link title="Third Person Shooter Demo">https://Foxengine.org/asset-library/asset/678</link>
 	</tutorials>
 	<methods>
 		<method name="clear_current">
@@ -55,7 +55,7 @@
 			<argument index="0" name="world_point" type="Vector3">
 			</argument>
 			<description>
-				Returns [code]true[/code] if the given position is behind the camera (the blue part of the linked diagram). [url=https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png]See this diagram[/url] for an overview of position query methods.
+				Returns [code]true[/code] if the given position is behind the camera (the blue part of the linked diagram). [url=https://raw.githubusercontent.com/Foxengine/Fox-docs/master/img/camera3d_position_frustum.png]See this diagram[/url] for an overview of position query methods.
 				[b]Note:[/b] A position which returns [code]false[/code] may still be outside the camera's field of view.
 			</description>
 		</method>
@@ -65,7 +65,7 @@
 			<argument index="0" name="world_point" type="Vector3">
 			</argument>
 			<description>
-				Returns [code]true[/code] if the given position is inside the camera's frustum (the green part of the linked diagram). [url=https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png]See this diagram[/url] for an overview of position query methods.
+				Returns [code]true[/code] if the given position is inside the camera's frustum (the green part of the linked diagram). [url=https://raw.githubusercontent.com/Foxengine/Fox-docs/master/img/camera3d_position_frustum.png]See this diagram[/url] for an overview of position query methods.
 			</description>
 		</method>
 		<method name="make_current">

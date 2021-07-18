@@ -5,7 +5,7 @@
 	</brief_description>
 	<description>
 		RandomNumberGenerator is a class for generating pseudo-random numbers. It currently uses [url=http://www.pcg-random.org/]PCG32[/url].
-		[b]Note:[/b] The underlying algorithm is an implementation detail. As a result, it should not be depended upon for reproducible random streams across Godot versions.
+		[b]Note:[/b] The underlying algorithm is an implementation detail. As a result, it should not be depended upon for reproducible random streams across Fox versions.
 		To generate a random float number (within a given range) based on a time-dependant seed:
 		[codeblock]
 		var rng = RandomNumberGenerator.new()
@@ -16,7 +16,7 @@
 		[b]Note:[/b] The default values of [member seed] and [member state] properties are pseudo-random, and changes when calling [method randomize]. The [code]0[/code] value documented here is a placeholder, and not the actual default seed.
 	</description>
 	<tutorials>
-		<link title="Random number generation">https://docs.godotengine.org/en/latest/tutorials/math/random_number_generation.html</link>
+		<link title="Random number generation">https://docs.Foxengine.org/en/latest/tutorials/math/random_number_generation.html</link>
 	</tutorials>
 	<methods>
 		<method name="randf">
@@ -81,7 +81,7 @@
 			[b]Note:[/b] Setting this property produces a side effect of changing the internal [member state], so make sure to initialize the seed [i]before[/i] modifying the [member state]:
 			[codeblock]
 			var rng = RandomNumberGenerator.new()
-			rng.seed = hash("Godot")
+			rng.seed = hash("Fox")
 			rng.state = 100 # Restore to some previously saved state.
 			[/codeblock]
 		</member>

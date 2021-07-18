@@ -2,11 +2,11 @@
 /*  gdnative.cpp                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -43,37 +43,37 @@
 extern "C" {
 #endif
 
-void GDAPI godot_object_destroy(godot_object *p_o) {
+void GDAPI Fox_object_destroy(Fox_object *p_o) {
 	memdelete((Object *)p_o);
 }
 
 // Singleton API
 
-godot_object GDAPI *godot_global_get_singleton(char *p_name) {
-	return (godot_object *)Engine::get_singleton()->get_singleton_object(String(p_name));
+Fox_object GDAPI *Fox_global_get_singleton(char *p_name) {
+	return (Fox_object *)Engine::get_singleton()->get_singleton_object(String(p_name));
 } // result shouldn't be freed
 
 // MethodBind API
 
-godot_method_bind GDAPI *godot_method_bind_get_method(const char *p_classname, const char *p_methodname) {
+Fox_method_bind GDAPI *Fox_method_bind_get_method(const char *p_classname, const char *p_methodname) {
 	MethodBind *mb = ClassDB::get_method(StringName(p_classname), StringName(p_methodname));
 	// MethodBind *mb = ClassDB::get_method("Node", "get_name");
-	return (godot_method_bind *)mb;
+	return (Fox_method_bind *)mb;
 }
 
-void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_object *p_instance, const void **p_args, void *p_ret) {
+void GDAPI Fox_method_bind_ptrcall(Fox_method_bind *p_method_bind, Fox_object *p_instance, const void **p_args, void *p_ret) {
 	MethodBind *mb = (MethodBind *)p_method_bind;
 	Object *o = (Object *)p_instance;
 	mb->ptrcall(o, p_args, p_ret);
 }
 
-godot_variant GDAPI godot_method_bind_call(godot_method_bind *p_method_bind, godot_object *p_instance, const godot_variant **p_args, const int p_arg_count, godot_variant_call_error *p_call_error) {
+Fox_variant GDAPI Fox_method_bind_call(Fox_method_bind *p_method_bind, Fox_object *p_instance, const Fox_variant **p_args, const int p_arg_count, Fox_variant_call_error *p_call_error) {
 	MethodBind *mb = (MethodBind *)p_method_bind;
 	Object *o = (Object *)p_instance;
 	const Variant **args = (const Variant **)p_args;
 
-	godot_variant ret;
-	godot_variant_new_nil(&ret);
+	Fox_variant ret;
+	Fox_variant_new_nil(&ret);
 
 	Variant *ret_val = (Variant *)&ret;
 
@@ -81,24 +81,24 @@ godot_variant GDAPI godot_method_bind_call(godot_method_bind *p_method_bind, god
 	*ret_val = mb->call(o, args, p_arg_count, r_error);
 
 	if (p_call_error) {
-		p_call_error->error = (godot_variant_call_error_error)r_error.error;
+		p_call_error->error = (Fox_variant_call_error_error)r_error.error;
 		p_call_error->argument = r_error.argument;
-		p_call_error->expected = (godot_variant_type)r_error.expected;
+		p_call_error->expected = (Fox_variant_type)r_error.expected;
 	}
 
 	return ret;
 }
 
-godot_class_constructor GDAPI godot_get_class_constructor(const char *p_classname) {
+Fox_class_constructor GDAPI Fox_get_class_constructor(const char *p_classname) {
 	ClassDB::ClassInfo *class_info = ClassDB::classes.getptr(StringName(p_classname));
 	if (class_info) {
-		return (godot_class_constructor)class_info->creation_func;
+		return (Fox_class_constructor)class_info->creation_func;
 	}
 	return nullptr;
 }
 
-godot_dictionary GDAPI godot_get_global_constants() {
-	godot_dictionary constants;
+Fox_dictionary GDAPI Fox_get_global_constants() {
+	Fox_dictionary constants;
 	memnew_placement(&constants, Dictionary);
 	Dictionary *p_constants = (Dictionary *)&constants;
 	const int constants_count = CoreConstants::get_global_constant_count();
@@ -111,34 +111,34 @@ godot_dictionary GDAPI godot_get_global_constants() {
 }
 
 // System functions
-void GDAPI godot_register_native_call_type(const char *p_call_type, native_call_cb p_callback) {
+void GDAPI Fox_register_native_call_type(const char *p_call_type, native_call_cb p_callback) {
 	GDNativeCallRegistry::get_singleton()->register_native_call_type(StringName(p_call_type), p_callback);
 }
 
-void GDAPI *godot_alloc(int p_bytes) {
+void GDAPI *Fox_alloc(int p_bytes) {
 	return memalloc(p_bytes);
 }
 
-void GDAPI *godot_realloc(void *p_ptr, int p_bytes) {
+void GDAPI *Fox_realloc(void *p_ptr, int p_bytes) {
 	return memrealloc(p_ptr, p_bytes);
 }
 
-void GDAPI godot_free(void *p_ptr) {
+void GDAPI Fox_free(void *p_ptr) {
 	memfree(p_ptr);
 }
 
 // Helper print functions.
-void GDAPI godot_print_error(const char *p_description, const char *p_function, const char *p_file, int p_line) {
+void GDAPI Fox_print_error(const char *p_description, const char *p_function, const char *p_file, int p_line) {
 	_err_print_error(p_function, p_file, p_line, p_description, ERR_HANDLER_ERROR);
 }
-void GDAPI godot_print_warning(const char *p_description, const char *p_function, const char *p_file, int p_line) {
+void GDAPI Fox_print_warning(const char *p_description, const char *p_function, const char *p_file, int p_line) {
 	_err_print_error(p_function, p_file, p_line, p_description, ERR_HANDLER_WARNING);
 }
-void GDAPI godot_print_script_error(const char *p_description, const char *p_function, const char *p_file, int p_line) {
+void GDAPI Fox_print_script_error(const char *p_description, const char *p_function, const char *p_file, int p_line) {
 	_err_print_error(p_function, p_file, p_line, p_description, ERR_HANDLER_SCRIPT);
 }
 
-void _gdnative_report_version_mismatch(const godot_object *p_library, const char *p_ext, godot_gdnative_api_version p_want, godot_gdnative_api_version p_have) {
+void _gdnative_report_version_mismatch(const Fox_object *p_library, const char *p_ext, Fox_gdnative_api_version p_want, Fox_gdnative_api_version p_have) {
 	String message = "Error loading GDNative file ";
 	GDNativeLibrary *library = (GDNativeLibrary *)p_library;
 
@@ -155,7 +155,7 @@ void _gdnative_report_version_mismatch(const godot_object *p_library, const char
 	_err_print_error("gdnative_init", library->get_current_library_path().utf8().ptr(), 0, message.utf8().ptr());
 }
 
-void _gdnative_report_loading_error(const godot_object *p_library, const char *p_what) {
+void _gdnative_report_loading_error(const Fox_object *p_library, const char *p_what) {
 	String message = "Error loading GDNative file ";
 	GDNativeLibrary *library = (GDNativeLibrary *)p_library;
 
@@ -164,26 +164,26 @@ void _gdnative_report_loading_error(const godot_object *p_library, const char *p
 	_err_print_error("gdnative_init", library->get_current_library_path().utf8().ptr(), 0, message.utf8().ptr());
 }
 
-godot_object GDAPI *godot_instance_from_id(uint64_t p_instance_id) {
-	return (godot_object *)ObjectDB::get_instance(ObjectID(p_instance_id));
+Fox_object GDAPI *Fox_instance_from_id(uint64_t p_instance_id) {
+	return (Fox_object *)ObjectDB::get_instance(ObjectID(p_instance_id));
 }
 
-void *godot_get_class_tag(const godot_string_name *p_class) {
+void *Fox_get_class_tag(const Fox_string_name *p_class) {
 	StringName class_name = *(StringName *)p_class;
 	ClassDB::ClassInfo *class_info = ClassDB::classes.getptr(class_name);
 	return class_info ? class_info->class_ptr : nullptr;
 }
 
-godot_object *godot_object_cast_to(const godot_object *p_object, void *p_class_tag) {
+Fox_object *Fox_object_cast_to(const Fox_object *p_object, void *p_class_tag) {
 	if (!p_object) {
 		return nullptr;
 	}
 	Object *o = (Object *)p_object;
 
-	return o->is_class_ptr(p_class_tag) ? (godot_object *)o : nullptr;
+	return o->is_class_ptr(p_class_tag) ? (Fox_object *)o : nullptr;
 }
 
-uint64_t GDAPI godot_object_get_instance_id(const godot_object *p_object) {
+uint64_t GDAPI Fox_object_get_instance_id(const Fox_object *p_object) {
 	const Object *o = (const Object *)p_object;
 	return (uint64_t)o->get_instance_id();
 }

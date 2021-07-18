@@ -2,11 +2,11 @@
 /*  geometry_2d.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -146,7 +146,7 @@ public:
 	}
 
 // Disable False Positives in MSVC compiler; we correctly check for 0 here to prevent a division by 0.
-// See: https://github.com/godotengine/godot/pull/44274
+// See: https://github.com/Foxengine/Fox/pull/44274
 #ifdef _MSC_VER
 #pragma warning(disable : 4723)
 #endif

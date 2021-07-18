@@ -2,11 +2,11 @@
 /*  transform2d.cpp                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,28 +32,28 @@
 
 #include "core/math/transform_2d.h"
 
-static_assert(sizeof(godot_transform2d) == sizeof(Transform2D), "Transform2D size mismatch");
+static_assert(sizeof(Fox_transform2d) == sizeof(Transform2D), "Transform2D size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_transform2d_new(godot_transform2d *p_self) {
+void GDAPI Fox_transform2d_new(Fox_transform2d *p_self) {
 	memnew_placement(p_self, Transform2D);
 }
 
-void GDAPI godot_transform2d_new_copy(godot_transform2d *r_dest, const godot_transform2d *p_src) {
+void GDAPI Fox_transform2d_new_copy(Fox_transform2d *r_dest, const Fox_transform2d *p_src) {
 	memnew_placement(r_dest, Transform2D(*(Transform2D *)p_src));
 }
 
-godot_vector2 GDAPI *godot_transform2d_operator_index(godot_transform2d *p_self, godot_int p_index) {
+Fox_vector2 GDAPI *Fox_transform2d_operator_index(Fox_transform2d *p_self, Fox_int p_index) {
 	Transform2D *self = (Transform2D *)p_self;
-	return (godot_vector2 *)&self->operator[](p_index);
+	return (Fox_vector2 *)&self->operator[](p_index);
 }
 
-const godot_vector2 GDAPI *godot_transform2d_operator_index_const(const godot_transform2d *p_self, godot_int p_index) {
+const Fox_vector2 GDAPI *Fox_transform2d_operator_index_const(const Fox_transform2d *p_self, Fox_int p_index) {
 	const Transform2D *self = (const Transform2D *)p_self;
-	return (const godot_vector2 *)&self->operator[](p_index);
+	return (const Fox_vector2 *)&self->operator[](p_index);
 }
 
 #ifdef __cplusplus

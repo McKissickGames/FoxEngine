@@ -4,7 +4,7 @@
 
 using Newtonsoft.Json;
 
-namespace GodotTools.IdeMessaging.Requests
+namespace FoxTools.IdeMessaging.Requests
 {
     public abstract class Request
     {

@@ -2,11 +2,11 @@
 /*  dictionary.cpp                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,33 +33,33 @@
 #include "core/variant/dictionary.h"
 #include "core/variant/variant.h"
 
-static_assert(sizeof(godot_dictionary) == sizeof(Dictionary), "Dictionary size mismatch");
+static_assert(sizeof(Fox_dictionary) == sizeof(Dictionary), "Dictionary size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_dictionary_new(godot_dictionary *p_self) {
+void GDAPI Fox_dictionary_new(Fox_dictionary *p_self) {
 	memnew_placement(p_self, Dictionary);
 }
 
-void GDAPI godot_dictionary_new_copy(godot_dictionary *r_dest, const godot_dictionary *p_src) {
+void GDAPI Fox_dictionary_new_copy(Fox_dictionary *r_dest, const Fox_dictionary *p_src) {
 	memnew_placement(r_dest, Dictionary(*(Dictionary *)p_src));
 }
 
-void GDAPI godot_dictionary_destroy(godot_dictionary *p_self) {
+void GDAPI Fox_dictionary_destroy(Fox_dictionary *p_self) {
 	Dictionary *self = (Dictionary *)p_self;
 	self->~Dictionary();
 }
 
-godot_variant GDAPI *godot_dictionary_operator_index(godot_dictionary *p_self, const godot_variant *p_key) {
+Fox_variant GDAPI *Fox_dictionary_operator_index(Fox_dictionary *p_self, const Fox_variant *p_key) {
 	Dictionary *self = (Dictionary *)p_self;
-	return (godot_variant *)&self->operator[](*((const Variant *)p_key));
+	return (Fox_variant *)&self->operator[](*((const Variant *)p_key));
 }
 
-const godot_variant GDAPI *godot_dictionary_operator_index_const(const godot_dictionary *p_self, const godot_variant *p_key) {
+const Fox_variant GDAPI *Fox_dictionary_operator_index_const(const Fox_dictionary *p_self, const Fox_variant *p_key) {
 	const Dictionary *self = (const Dictionary *)p_self;
-	return (const godot_variant *)&self->operator[](*((const Variant *)p_key));
+	return (const Fox_variant *)&self->operator[](*((const Variant *)p_key));
 }
 
 #ifdef __cplusplus

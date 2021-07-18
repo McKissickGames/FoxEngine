@@ -2,11 +2,11 @@
 /*  gdnative_interface.h                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -287,7 +287,7 @@ typedef struct {
 	uint32_t version_patch;
 	const char *version_string;
 
-	/* GODOT CORE */
+	/* Fox CORE */
 	void *(*mem_alloc)(size_t p_bytes);
 	void *(*mem_realloc)(void *p_ptr, size_t p_bytes);
 	void (*mem_free)(void *p_ptr);
@@ -296,7 +296,7 @@ typedef struct {
 	void (*print_warning)(const char *p_description, const char *p_function, const char *p_file, int32_t p_line);
 	void (*print_script_error)(const char *p_description, const char *p_function, const char *p_file, int32_t p_line);
 
-	/* GODOT VARIANT */
+	/* Fox VARIANT */
 
 	/* variant general */
 	void (*variant_new_copy)(GDNativeVariantPtr r_dest, const GDNativeVariantPtr p_src);

@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace GodotTools.IdeMessaging
+namespace FoxTools.IdeMessaging
 {
     public interface IMessageHandler
     {

@@ -2,11 +2,11 @@
 /*  glue_header.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,28 +32,28 @@
 
 #include "../mono_gd/gd_mono_marshal.h"
 
-void godot_register_collections_icalls();
-void godot_register_gd_icalls();
-void godot_register_string_name_icalls();
-void godot_register_nodepath_icalls();
-void godot_register_object_icalls();
-void godot_register_rid_icalls();
-void godot_register_string_icalls();
-void godot_register_scene_tree_icalls();
+void Fox_register_collections_icalls();
+void Fox_register_gd_icalls();
+void Fox_register_string_name_icalls();
+void Fox_register_nodepath_icalls();
+void Fox_register_object_icalls();
+void Fox_register_rid_icalls();
+void Fox_register_string_icalls();
+void Fox_register_scene_tree_icalls();
 
 /**
  * Registers internal calls that were not generated. This function is called
- * from the generated GodotSharpBindings::register_generated_icalls() function.
+ * from the generated FoxSharpBindings::register_generated_icalls() function.
  */
-void godot_register_glue_header_icalls() {
-	godot_register_collections_icalls();
-	godot_register_gd_icalls();
-	godot_register_string_name_icalls();
-	godot_register_nodepath_icalls();
-	godot_register_object_icalls();
-	godot_register_rid_icalls();
-	godot_register_string_icalls();
-	godot_register_scene_tree_icalls();
+void Fox_register_glue_header_icalls() {
+	Fox_register_collections_icalls();
+	Fox_register_gd_icalls();
+	Fox_register_string_name_icalls();
+	Fox_register_nodepath_icalls();
+	Fox_register_object_icalls();
+	Fox_register_rid_icalls();
+	Fox_register_string_icalls();
+	Fox_register_scene_tree_icalls();
 }
 
 // Used by the generated glue
@@ -72,7 +72,7 @@ void godot_register_glue_header_icalls() {
 #include "../mono_gd/gd_mono_internals.h"
 #include "../mono_gd/gd_mono_utils.h"
 
-#define GODOTSHARP_INSTANCE_OBJECT(m_instance, m_type) \
+#define FoxSHARP_INSTANCE_OBJECT(m_instance, m_type) \
 	static ClassDB::ClassInfo *ci = nullptr;           \
 	if (!ci) {                                         \
 		ci = ClassDB::classes.getptr(m_type);          \

@@ -6,7 +6,7 @@ using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Godot
+namespace Fox
 {
     public static class StringExtensions
     {
@@ -830,22 +830,22 @@ namespace Godot
         // </summary>
         public static byte[] MD5Buffer(this string instance)
         {
-            return godot_icall_String_md5_buffer(instance);
+            return Fox_icall_String_md5_buffer(instance);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static byte[] godot_icall_String_md5_buffer(string str);
+        internal extern static byte[] Fox_icall_String_md5_buffer(string str);
 
         // <summary>
         // Return the MD5 hash of the string as a string.
         // </summary>
         public static string MD5Text(this string instance)
         {
-            return godot_icall_String_md5_text(instance);
+            return Fox_icall_String_md5_text(instance);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static string godot_icall_String_md5_text(string str);
+        internal extern static string Fox_icall_String_md5_text(string str);
 
         // <summary>
         // Perform a case-insensitive comparison to another string, return -1 if less, 0 if equal and +1 if greater.
@@ -963,22 +963,22 @@ namespace Godot
         // </summary>
         public static int RFind(this string instance, string what, int from = -1)
         {
-            return godot_icall_String_rfind(instance, what, from);
+            return Fox_icall_String_rfind(instance, what, from);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_String_rfind(string str, string what, int from);
+        internal extern static int Fox_icall_String_rfind(string str, string what, int from);
 
         // <summary>
         // Perform a search for a substring, but start from the end of the string instead of the beginning. Also search case-insensitive.
         // </summary>
         public static int RFindN(this string instance, string what, int from = -1)
         {
-            return godot_icall_String_rfindn(instance, what, from);
+            return Fox_icall_String_rfindn(instance, what, from);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static int godot_icall_String_rfindn(string str, string what, int from);
+        internal extern static int Fox_icall_String_rfindn(string str, string what, int from);
 
         // <summary>
         // Return the right side of the string from a given position.
@@ -1023,22 +1023,22 @@ namespace Godot
 
         public static byte[] SHA256Buffer(this string instance)
         {
-            return godot_icall_String_sha256_buffer(instance);
+            return Fox_icall_String_sha256_buffer(instance);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static byte[] godot_icall_String_sha256_buffer(string str);
+        internal extern static byte[] Fox_icall_String_sha256_buffer(string str);
 
         // <summary>
         // Return the SHA-256 hash of the string as a string.
         // </summary>
         public static string SHA256Text(this string instance)
         {
-            return godot_icall_String_sha256_text(instance);
+            return Fox_icall_String_sha256_text(instance);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal extern static string godot_icall_String_sha256_text(string str);
+        internal extern static string Fox_icall_String_sha256_text(string str);
 
         // <summary>
         // Return the similarity index of the text compared to this string. 1 means totally similar and 0 means totally dissimilar.

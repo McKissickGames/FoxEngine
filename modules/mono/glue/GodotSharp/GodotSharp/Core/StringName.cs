@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public sealed partial class StringName : IDisposable
     {
@@ -33,7 +33,7 @@ namespace Godot
         {
             if (ptr != IntPtr.Zero)
             {
-                godot_icall_StringName_Dtor(ptr);
+                Fox_icall_StringName_Dtor(ptr);
                 ptr = IntPtr.Zero;
             }
         }
@@ -50,7 +50,7 @@ namespace Godot
 
         public StringName(string path)
         {
-            ptr = path == null ? IntPtr.Zero : godot_icall_StringName_Ctor(path);
+            ptr = path == null ? IntPtr.Zero : Fox_icall_StringName_Ctor(path);
         }
 
         public static implicit operator StringName(string from) => new StringName(from);
@@ -59,24 +59,24 @@ namespace Godot
 
         public override string ToString()
         {
-            return ptr == IntPtr.Zero ? string.Empty : godot_icall_StringName_operator_String(GetPtr(this));
+            return ptr == IntPtr.Zero ? string.Empty : Fox_icall_StringName_operator_String(GetPtr(this));
         }
 
         public bool IsEmpty()
         {
-            return ptr == IntPtr.Zero || godot_icall_StringName_is_empty(GetPtr(this));
+            return ptr == IntPtr.Zero || Fox_icall_StringName_is_empty(GetPtr(this));
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern IntPtr godot_icall_StringName_Ctor(string path);
+        private static extern IntPtr Fox_icall_StringName_Ctor(string path);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void godot_icall_StringName_Dtor(IntPtr ptr);
+        private static extern void Fox_icall_StringName_Dtor(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string godot_icall_StringName_operator_String(IntPtr ptr);
+        private static extern string Fox_icall_StringName_operator_String(IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern bool godot_icall_StringName_is_empty(IntPtr ptr);
+        private static extern bool Fox_icall_StringName_is_empty(IntPtr ptr);
     }
 }

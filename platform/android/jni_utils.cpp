@@ -2,11 +2,11 @@
 /*  jni_utils.cpp                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -100,7 +100,7 @@ jvalret _variant_to_jvalue(JNIEnv *env, Variant::Type p_type, const Variant *p_a
 
 		case Variant::DICTIONARY: {
 			Dictionary dict = *p_arg;
-			jclass dclass = env->FindClass("org/godotengine/godot/Dictionary");
+			jclass dclass = env->FindClass("org/Foxengine/Fox/Dictionary");
 			jmethodID ctor = env->GetMethodID(dclass, "<init>", "()V");
 			jobject jdict = env->NewObject(dclass, ctor);
 
@@ -310,7 +310,7 @@ Variant _jobject_to_variant(JNIEnv *env, jobject obj) {
 		return varr;
 	};
 
-	if (name == "java.util.HashMap" || name == "org.godotengine.godot.Dictionary") {
+	if (name == "java.util.HashMap" || name == "org.Foxengine.Fox.Dictionary") {
 		Dictionary ret;
 		jclass oclass = c;
 		jmethodID get_keys = env->GetMethodID(oclass, "get_keys", "()[Ljava/lang/String;");
@@ -352,7 +352,7 @@ Variant::Type get_jni_type(const String &p_type) {
 		{ "[B", Variant::PACKED_BYTE_ARRAY },
 		{ "[F", Variant::PACKED_FLOAT32_ARRAY },
 		{ "[Ljava.lang.String;", Variant::PACKED_STRING_ARRAY },
-		{ "org.godotengine.godot.Dictionary", Variant::DICTIONARY },
+		{ "org.Foxengine.Fox.Dictionary", Variant::DICTIONARY },
 		{ nullptr, Variant::NIL }
 	};
 
@@ -379,7 +379,7 @@ const char *get_jni_sig(const String &p_type) {
 		{ "float", "F" },
 		{ "double", "D" },
 		{ "java.lang.String", "Ljava/lang/String;" },
-		{ "org.godotengine.godot.Dictionary", "Lorg/godotengine/godot/Dictionary;" },
+		{ "org.Foxengine.Fox.Dictionary", "Lorg/Foxengine/Fox/Dictionary;" },
 		{ "[I", "[I" },
 		{ "[B", "[B" },
 		{ "[F", "[F" },

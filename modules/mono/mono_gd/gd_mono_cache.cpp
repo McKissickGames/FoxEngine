@@ -2,11 +2,11 @@
 /*  gd_mono_cache.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -96,8 +96,8 @@ void CachedData::clear_corlib_cache() {
 	class_KeyNotFoundException = nullptr;
 }
 
-void CachedData::clear_godot_api_cache() {
-	godot_api_cache_updated = false;
+void CachedData::clear_Fox_api_cache() {
+	Fox_api_cache_updated = false;
 
 	rawclass_Dictionary = nullptr;
 
@@ -117,8 +117,8 @@ void CachedData::clear_godot_api_cache() {
 	class_StringName = nullptr;
 	class_NodePath = nullptr;
 	class_RID = nullptr;
-	class_GodotObject = nullptr;
-	class_GodotResource = nullptr;
+	class_FoxObject = nullptr;
+	class_FoxResource = nullptr;
 	class_Node = nullptr;
 	class_Control = nullptr;
 	class_Node3D = nullptr;
@@ -146,25 +146,25 @@ void CachedData::clear_godot_api_cache() {
 	class_RemoteSyncAttribute = nullptr;
 	class_MasterSyncAttribute = nullptr;
 	class_PuppetSyncAttribute = nullptr;
-	class_GodotMethodAttribute = nullptr;
-	field_GodotMethodAttribute_methodName = nullptr;
+	class_FoxMethodAttribute = nullptr;
+	field_FoxMethodAttribute_methodName = nullptr;
 	class_ScriptPathAttribute = nullptr;
 	field_ScriptPathAttribute_path = nullptr;
 	class_AssemblyHasScriptsAttribute = nullptr;
 	field_AssemblyHasScriptsAttribute_requiresLookup = nullptr;
 	field_AssemblyHasScriptsAttribute_scriptTypes = nullptr;
 
-	field_GodotObject_ptr = nullptr;
+	field_FoxObject_ptr = nullptr;
 	field_StringName_ptr = nullptr;
 	field_NodePath_ptr = nullptr;
 	field_Image_ptr = nullptr;
 	field_RID_ptr = nullptr;
 
-	methodthunk_GodotObject_Dispose.nullify();
+	methodthunk_FoxObject_Dispose.nullify();
 	methodthunk_Array_GetPtr.nullify();
 	methodthunk_Dictionary_GetPtr.nullify();
 	methodthunk_SignalAwaiter_SignalCallback.nullify();
-	methodthunk_GodotTaskScheduler_Activate.nullify();
+	methodthunk_FoxTaskScheduler_Activate.nullify();
 
 	methodthunk_Delegate_Equals.nullify();
 
@@ -192,8 +192,8 @@ void CachedData::clear_godot_api_cache() {
 	task_scheduler_handle = Ref<MonoGCHandleRef>();
 }
 
-#define GODOT_API_CLASS(m_class) (GDMono::get_singleton()->get_core_api_assembly()->get_class(BINDINGS_NAMESPACE, #m_class))
-#define GODOT_API_NS_CLASS(m_ns, m_class) (GDMono::get_singleton()->get_core_api_assembly()->get_class(m_ns, #m_class))
+#define Fox_API_CLASS(m_class) (GDMono::get_singleton()->get_core_api_assembly()->get_class(BINDINGS_NAMESPACE, #m_class))
+#define Fox_API_NS_CLASS(m_ns, m_class) (GDMono::get_singleton()->get_core_api_assembly()->get_class(m_ns, #m_class))
 
 void update_corlib_cache() {
 	CACHE_CLASS_AND_CHECK(MonoObject, GDMono::get_singleton()->get_corlib_assembly()->get_class(mono_get_object_class()));
@@ -229,101 +229,101 @@ void update_corlib_cache() {
 	cached_data.corlib_cache_updated = true;
 }
 
-void update_godot_api_cache() {
-	CACHE_CLASS_AND_CHECK(Vector2, GODOT_API_CLASS(Vector2));
-	CACHE_CLASS_AND_CHECK(Vector2i, GODOT_API_CLASS(Vector2i));
-	CACHE_CLASS_AND_CHECK(Rect2, GODOT_API_CLASS(Rect2));
-	CACHE_CLASS_AND_CHECK(Rect2i, GODOT_API_CLASS(Rect2i));
-	CACHE_CLASS_AND_CHECK(Transform2D, GODOT_API_CLASS(Transform2D));
-	CACHE_CLASS_AND_CHECK(Vector3, GODOT_API_CLASS(Vector3));
-	CACHE_CLASS_AND_CHECK(Vector3i, GODOT_API_CLASS(Vector3i));
-	CACHE_CLASS_AND_CHECK(Basis, GODOT_API_CLASS(Basis));
-	CACHE_CLASS_AND_CHECK(Quaternion, GODOT_API_CLASS(Quaternion));
-	CACHE_CLASS_AND_CHECK(Transform3D, GODOT_API_CLASS(Transform3D));
-	CACHE_CLASS_AND_CHECK(AABB, GODOT_API_CLASS(AABB));
-	CACHE_CLASS_AND_CHECK(Color, GODOT_API_CLASS(Color));
-	CACHE_CLASS_AND_CHECK(Plane, GODOT_API_CLASS(Plane));
-	CACHE_CLASS_AND_CHECK(StringName, GODOT_API_CLASS(StringName));
-	CACHE_CLASS_AND_CHECK(NodePath, GODOT_API_CLASS(NodePath));
-	CACHE_CLASS_AND_CHECK(RID, GODOT_API_CLASS(RID));
-	CACHE_CLASS_AND_CHECK(GodotObject, GODOT_API_CLASS(Object));
-	CACHE_CLASS_AND_CHECK(GodotResource, GODOT_API_CLASS(Resource));
-	CACHE_CLASS_AND_CHECK(Node, GODOT_API_CLASS(Node));
-	CACHE_CLASS_AND_CHECK(Control, GODOT_API_CLASS(Control));
-	CACHE_CLASS_AND_CHECK(Node3D, GODOT_API_CLASS(Node3D));
-	CACHE_CLASS_AND_CHECK(WeakRef, GODOT_API_CLASS(WeakRef));
-	CACHE_CLASS_AND_CHECK(Callable, GODOT_API_CLASS(Callable));
-	CACHE_CLASS_AND_CHECK(SignalInfo, GODOT_API_CLASS(SignalInfo));
-	CACHE_CLASS_AND_CHECK(Array, GODOT_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Array));
-	CACHE_CLASS_AND_CHECK(Dictionary, GODOT_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Dictionary));
-	CACHE_CLASS_AND_CHECK(MarshalUtils, GODOT_API_CLASS(MarshalUtils));
-	CACHE_CLASS_AND_CHECK(ISerializationListener, GODOT_API_CLASS(ISerializationListener));
+void update_Fox_api_cache() {
+	CACHE_CLASS_AND_CHECK(Vector2, Fox_API_CLASS(Vector2));
+	CACHE_CLASS_AND_CHECK(Vector2i, Fox_API_CLASS(Vector2i));
+	CACHE_CLASS_AND_CHECK(Rect2, Fox_API_CLASS(Rect2));
+	CACHE_CLASS_AND_CHECK(Rect2i, Fox_API_CLASS(Rect2i));
+	CACHE_CLASS_AND_CHECK(Transform2D, Fox_API_CLASS(Transform2D));
+	CACHE_CLASS_AND_CHECK(Vector3, Fox_API_CLASS(Vector3));
+	CACHE_CLASS_AND_CHECK(Vector3i, Fox_API_CLASS(Vector3i));
+	CACHE_CLASS_AND_CHECK(Basis, Fox_API_CLASS(Basis));
+	CACHE_CLASS_AND_CHECK(Quaternion, Fox_API_CLASS(Quaternion));
+	CACHE_CLASS_AND_CHECK(Transform3D, Fox_API_CLASS(Transform3D));
+	CACHE_CLASS_AND_CHECK(AABB, Fox_API_CLASS(AABB));
+	CACHE_CLASS_AND_CHECK(Color, Fox_API_CLASS(Color));
+	CACHE_CLASS_AND_CHECK(Plane, Fox_API_CLASS(Plane));
+	CACHE_CLASS_AND_CHECK(StringName, Fox_API_CLASS(StringName));
+	CACHE_CLASS_AND_CHECK(NodePath, Fox_API_CLASS(NodePath));
+	CACHE_CLASS_AND_CHECK(RID, Fox_API_CLASS(RID));
+	CACHE_CLASS_AND_CHECK(FoxObject, Fox_API_CLASS(Object));
+	CACHE_CLASS_AND_CHECK(FoxResource, Fox_API_CLASS(Resource));
+	CACHE_CLASS_AND_CHECK(Node, Fox_API_CLASS(Node));
+	CACHE_CLASS_AND_CHECK(Control, Fox_API_CLASS(Control));
+	CACHE_CLASS_AND_CHECK(Node3D, Fox_API_CLASS(Node3D));
+	CACHE_CLASS_AND_CHECK(WeakRef, Fox_API_CLASS(WeakRef));
+	CACHE_CLASS_AND_CHECK(Callable, Fox_API_CLASS(Callable));
+	CACHE_CLASS_AND_CHECK(SignalInfo, Fox_API_CLASS(SignalInfo));
+	CACHE_CLASS_AND_CHECK(Array, Fox_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Array));
+	CACHE_CLASS_AND_CHECK(Dictionary, Fox_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Dictionary));
+	CACHE_CLASS_AND_CHECK(MarshalUtils, Fox_API_CLASS(MarshalUtils));
+	CACHE_CLASS_AND_CHECK(ISerializationListener, Fox_API_CLASS(ISerializationListener));
 
 #ifdef DEBUG_ENABLED
-	CACHE_CLASS_AND_CHECK(DebuggingUtils, GODOT_API_CLASS(DebuggingUtils));
+	CACHE_CLASS_AND_CHECK(DebuggingUtils, Fox_API_CLASS(DebuggingUtils));
 #endif
 
 	// Attributes
-	CACHE_CLASS_AND_CHECK(ExportAttribute, GODOT_API_CLASS(ExportAttribute));
+	CACHE_CLASS_AND_CHECK(ExportAttribute, Fox_API_CLASS(ExportAttribute));
 	CACHE_FIELD_AND_CHECK(ExportAttribute, hint, CACHED_CLASS(ExportAttribute)->get_field("hint"));
 	CACHE_FIELD_AND_CHECK(ExportAttribute, hintString, CACHED_CLASS(ExportAttribute)->get_field("hintString"));
-	CACHE_CLASS_AND_CHECK(SignalAttribute, GODOT_API_CLASS(SignalAttribute));
-	CACHE_CLASS_AND_CHECK(ToolAttribute, GODOT_API_CLASS(ToolAttribute));
-	CACHE_CLASS_AND_CHECK(RemoteAttribute, GODOT_API_CLASS(RemoteAttribute));
-	CACHE_CLASS_AND_CHECK(MasterAttribute, GODOT_API_CLASS(MasterAttribute));
-	CACHE_CLASS_AND_CHECK(PuppetAttribute, GODOT_API_CLASS(PuppetAttribute));
-	CACHE_CLASS_AND_CHECK(RemoteSyncAttribute, GODOT_API_CLASS(RemoteSyncAttribute));
-	CACHE_CLASS_AND_CHECK(MasterSyncAttribute, GODOT_API_CLASS(MasterSyncAttribute));
-	CACHE_CLASS_AND_CHECK(PuppetSyncAttribute, GODOT_API_CLASS(PuppetSyncAttribute));
-	CACHE_CLASS_AND_CHECK(GodotMethodAttribute, GODOT_API_CLASS(GodotMethodAttribute));
-	CACHE_FIELD_AND_CHECK(GodotMethodAttribute, methodName, CACHED_CLASS(GodotMethodAttribute)->get_field("methodName"));
-	CACHE_CLASS_AND_CHECK(ScriptPathAttribute, GODOT_API_CLASS(ScriptPathAttribute));
+	CACHE_CLASS_AND_CHECK(SignalAttribute, Fox_API_CLASS(SignalAttribute));
+	CACHE_CLASS_AND_CHECK(ToolAttribute, Fox_API_CLASS(ToolAttribute));
+	CACHE_CLASS_AND_CHECK(RemoteAttribute, Fox_API_CLASS(RemoteAttribute));
+	CACHE_CLASS_AND_CHECK(MasterAttribute, Fox_API_CLASS(MasterAttribute));
+	CACHE_CLASS_AND_CHECK(PuppetAttribute, Fox_API_CLASS(PuppetAttribute));
+	CACHE_CLASS_AND_CHECK(RemoteSyncAttribute, Fox_API_CLASS(RemoteSyncAttribute));
+	CACHE_CLASS_AND_CHECK(MasterSyncAttribute, Fox_API_CLASS(MasterSyncAttribute));
+	CACHE_CLASS_AND_CHECK(PuppetSyncAttribute, Fox_API_CLASS(PuppetSyncAttribute));
+	CACHE_CLASS_AND_CHECK(FoxMethodAttribute, Fox_API_CLASS(FoxMethodAttribute));
+	CACHE_FIELD_AND_CHECK(FoxMethodAttribute, methodName, CACHED_CLASS(FoxMethodAttribute)->get_field("methodName"));
+	CACHE_CLASS_AND_CHECK(ScriptPathAttribute, Fox_API_CLASS(ScriptPathAttribute));
 	CACHE_FIELD_AND_CHECK(ScriptPathAttribute, path, CACHED_CLASS(ScriptPathAttribute)->get_field("path"));
-	CACHE_CLASS_AND_CHECK(AssemblyHasScriptsAttribute, GODOT_API_CLASS(AssemblyHasScriptsAttribute));
+	CACHE_CLASS_AND_CHECK(AssemblyHasScriptsAttribute, Fox_API_CLASS(AssemblyHasScriptsAttribute));
 	CACHE_FIELD_AND_CHECK(AssemblyHasScriptsAttribute, requiresLookup, CACHED_CLASS(AssemblyHasScriptsAttribute)->get_field("requiresLookup"));
 	CACHE_FIELD_AND_CHECK(AssemblyHasScriptsAttribute, scriptTypes, CACHED_CLASS(AssemblyHasScriptsAttribute)->get_field("scriptTypes"));
 
-	CACHE_FIELD_AND_CHECK(GodotObject, ptr, CACHED_CLASS(GodotObject)->get_field(BINDINGS_PTR_FIELD));
+	CACHE_FIELD_AND_CHECK(FoxObject, ptr, CACHED_CLASS(FoxObject)->get_field(BINDINGS_PTR_FIELD));
 	CACHE_FIELD_AND_CHECK(StringName, ptr, CACHED_CLASS(StringName)->get_field(BINDINGS_PTR_FIELD));
 	CACHE_FIELD_AND_CHECK(NodePath, ptr, CACHED_CLASS(NodePath)->get_field(BINDINGS_PTR_FIELD));
 	CACHE_FIELD_AND_CHECK(RID, ptr, CACHED_CLASS(RID)->get_field(BINDINGS_PTR_FIELD));
 
-	CACHE_METHOD_THUNK_AND_CHECK(GodotObject, Dispose, CACHED_CLASS(GodotObject)->get_method("Dispose", 0));
-	CACHE_METHOD_THUNK_AND_CHECK(Array, GetPtr, GODOT_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Array)->get_method("GetPtr", 0));
-	CACHE_METHOD_THUNK_AND_CHECK(Dictionary, GetPtr, GODOT_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Dictionary)->get_method("GetPtr", 0));
-	CACHE_METHOD_THUNK_AND_CHECK(SignalAwaiter, SignalCallback, GODOT_API_CLASS(SignalAwaiter)->get_method("SignalCallback", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(GodotTaskScheduler, Activate, GODOT_API_CLASS(GodotTaskScheduler)->get_method("Activate", 0));
+	CACHE_METHOD_THUNK_AND_CHECK(FoxObject, Dispose, CACHED_CLASS(FoxObject)->get_method("Dispose", 0));
+	CACHE_METHOD_THUNK_AND_CHECK(Array, GetPtr, Fox_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Array)->get_method("GetPtr", 0));
+	CACHE_METHOD_THUNK_AND_CHECK(Dictionary, GetPtr, Fox_API_NS_CLASS(BINDINGS_NAMESPACE_COLLECTIONS, Dictionary)->get_method("GetPtr", 0));
+	CACHE_METHOD_THUNK_AND_CHECK(SignalAwaiter, SignalCallback, Fox_API_CLASS(SignalAwaiter)->get_method("SignalCallback", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(FoxTaskScheduler, Activate, Fox_API_CLASS(FoxTaskScheduler)->get_method("Activate", 0));
 
-	CACHE_METHOD_THUNK_AND_CHECK(DelegateUtils, TrySerializeDelegate, GODOT_API_CLASS(DelegateUtils)->get_method("TrySerializeDelegate", 2));
-	CACHE_METHOD_THUNK_AND_CHECK(DelegateUtils, TryDeserializeDelegate, GODOT_API_CLASS(DelegateUtils)->get_method("TryDeserializeDelegate", 2));
+	CACHE_METHOD_THUNK_AND_CHECK(DelegateUtils, TrySerializeDelegate, Fox_API_CLASS(DelegateUtils)->get_method("TrySerializeDelegate", 2));
+	CACHE_METHOD_THUNK_AND_CHECK(DelegateUtils, TryDeserializeDelegate, Fox_API_CLASS(DelegateUtils)->get_method("TryDeserializeDelegate", 2));
 
 	// Start of MarshalUtils methods
 
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericArray, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsGenericArray", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericDictionary, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsGenericDictionary", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsSystemGenericList, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsSystemGenericList", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsSystemGenericDictionary, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsSystemGenericDictionary", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericIEnumerable, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsGenericIEnumerable", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericICollection, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsGenericICollection", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericIDictionary, GODOT_API_CLASS(MarshalUtils)->get_method("TypeIsGenericIDictionary", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericArray, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsGenericArray", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericDictionary, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsGenericDictionary", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsSystemGenericList, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsSystemGenericList", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsSystemGenericDictionary, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsSystemGenericDictionary", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericIEnumerable, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsGenericIEnumerable", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericICollection, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsGenericICollection", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, TypeIsGenericIDictionary, Fox_API_CLASS(MarshalUtils)->get_method("TypeIsGenericIDictionary", 1));
 
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, ArrayGetElementType, GODOT_API_CLASS(MarshalUtils)->get_method("ArrayGetElementType", 2));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, DictionaryGetKeyValueTypes, GODOT_API_CLASS(MarshalUtils)->get_method("DictionaryGetKeyValueTypes", 3));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, ArrayGetElementType, Fox_API_CLASS(MarshalUtils)->get_method("ArrayGetElementType", 2));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, DictionaryGetKeyValueTypes, Fox_API_CLASS(MarshalUtils)->get_method("DictionaryGetKeyValueTypes", 3));
 
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, MakeGenericArrayType, GODOT_API_CLASS(MarshalUtils)->get_method("MakeGenericArrayType", 1));
-	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, MakeGenericDictionaryType, GODOT_API_CLASS(MarshalUtils)->get_method("MakeGenericDictionaryType", 2));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, MakeGenericArrayType, Fox_API_CLASS(MarshalUtils)->get_method("MakeGenericArrayType", 1));
+	CACHE_METHOD_THUNK_AND_CHECK(MarshalUtils, MakeGenericDictionaryType, Fox_API_CLASS(MarshalUtils)->get_method("MakeGenericDictionaryType", 2));
 
 	// End of MarshalUtils methods
 
 #ifdef DEBUG_ENABLED
-	CACHE_METHOD_THUNK_AND_CHECK(DebuggingUtils, GetStackFrameInfo, GODOT_API_CLASS(DebuggingUtils)->get_method("GetStackFrameInfo", 4));
+	CACHE_METHOD_THUNK_AND_CHECK(DebuggingUtils, GetStackFrameInfo, Fox_API_CLASS(DebuggingUtils)->get_method("GetStackFrameInfo", 4));
 #endif
 
 	// TODO Move to CSharpLanguage::init() and do handle disposal
-	MonoObject *task_scheduler = mono_object_new(mono_domain_get(), GODOT_API_CLASS(GodotTaskScheduler)->get_mono_ptr());
-	GDMonoUtils::runtime_object_init(task_scheduler, GODOT_API_CLASS(GodotTaskScheduler));
+	MonoObject *task_scheduler = mono_object_new(mono_domain_get(), Fox_API_CLASS(FoxTaskScheduler)->get_mono_ptr());
+	GDMonoUtils::runtime_object_init(task_scheduler, Fox_API_CLASS(FoxTaskScheduler));
 	cached_data.task_scheduler_handle = MonoGCHandleRef::create_strong(task_scheduler);
 
-	cached_data.godot_api_cache_updated = true;
+	cached_data.Fox_api_cache_updated = true;
 }
 } // namespace GDMonoCache

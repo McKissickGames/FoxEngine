@@ -38,8 +38,8 @@
 #ifndef RVO_API_H_
 #define RVO_API_H_
 
-// -- GODOT start --
+// -- Fox start --
 #define RVO_API
-// -- GODOT end --
+// -- Fox end --
 
 #endif /* RVO_API_H_ */

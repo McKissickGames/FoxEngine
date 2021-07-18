@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// This class contains color constants created from standardized color names.

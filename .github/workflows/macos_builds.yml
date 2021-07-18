@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 # Global Settings
 env:
-  GODOT_BASE_BRANCH: master
+  Fox_BASE_BRANCH: master
   SCONSFLAGS: platform=osx verbose=yes warnings=extra werror=yes debug_symbols=no --jobs=2 module_text_server_fb_enabled=yes
   SCONS_CACHE_LIMIT: 4096
 
@@ -22,11 +22,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{github.workspace}}/.scons_cache/
-          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
           restore-keys: |
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
       # Use python 3.x release (works cross platform; best to keep self contained in it's own step)
       - name: Set up Python 3.x
@@ -56,7 +56,7 @@ jobs:
       # Execute unit tests for the editor
       - name: Unit Tests
         run: |
-          ./bin/godot.osx.opt.tools.64 --test
+          ./bin/Fox.osx.opt.tools.64 --test
 
       - uses: actions/upload-artifact@v2
         with:
@@ -77,11 +77,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{github.workspace}}/.scons_cache/
-          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
           restore-keys: |
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
       # Use python 3.x release (works cross platform)
       - name: Set up Python 3.x

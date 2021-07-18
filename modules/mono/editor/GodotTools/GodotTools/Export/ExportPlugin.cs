@@ -1,21 +1,21 @@
-using Godot;
+using Fox;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using GodotTools.Build;
-using GodotTools.Core;
-using GodotTools.Internals;
+using FoxTools.Build;
+using FoxTools.Core;
+using FoxTools.Internals;
 using JetBrains.Annotations;
-using static GodotTools.Internals.Globals;
-using Directory = GodotTools.Utils.Directory;
-using File = GodotTools.Utils.File;
-using OS = GodotTools.Utils.OS;
+using static FoxTools.Internals.Globals;
+using Directory = FoxTools.Utils.Directory;
+using File = FoxTools.Utils.File;
+using OS = FoxTools.Utils.OS;
 using Path = System.IO.Path;
 
-namespace GodotTools.Export
+namespace FoxTools.Export
 {
     public class ExportPlugin : EditorExportPlugin
     {
@@ -31,7 +31,7 @@ namespace GodotTools.Export
             All = CJK | MidEast | Other | Rare | West
         }
 
-        private void AddI18NAssemblies(Godot.Collections.Dictionary<string, string> assemblies, string bclDir)
+        private void AddI18NAssemblies(Fox.Collections.Dictionary<string, string> assemblies, string bclDir)
         {
             var codesets = (I18NCodesets)ProjectSettings.GetSetting("mono/export/i18n_codesets");
 
@@ -63,7 +63,7 @@ namespace GodotTools.Export
 
             GlobalDef("mono/export/i18n_codesets", I18NCodesets.All);
 
-            ProjectSettings.AddPropertyInfo(new Godot.Collections.Dictionary
+            ProjectSettings.AddPropertyInfo(new Fox.Collections.Dictionary
             {
                 ["type"] = Variant.Type.Int,
                 ["name"] = "mono/export/i18n_codesets",
@@ -110,11 +110,11 @@ namespace GodotTools.Export
             {
                 // We don't want to include the source code on exported games.
 
-                // Sadly, Godot prints errors when adding an empty file (nothing goes wrong, it's just noise).
+                // Sadly, Fox prints errors when adding an empty file (nothing goes wrong, it's just noise).
                 // Because of this, we add a file which contains a line break.
                 AddFile(path, System.Text.Encoding.UTF8.GetBytes("\n"), remap: false);
 
-                // Tell the Godot exporter that we already took care of the file
+                // Tell the Fox exporter that we already took care of the file
                 Skip();
             }
         }
@@ -146,7 +146,7 @@ namespace GodotTools.Export
         {
             _ = flags; // Unused
 
-            if (!File.Exists(GodotSharpDirs.ProjectSlnPath))
+            if (!File.Exists(FoxSharpDirs.ProjectSlnPath))
                 return;
 
             if (!DeterminePlatformFromFeatures(features, out string platform))
@@ -162,10 +162,10 @@ namespace GodotTools.Export
 
             // Add dependency assemblies
 
-            var assemblies = new Godot.Collections.Dictionary<string, string>();
+            var assemblies = new Fox.Collections.Dictionary<string, string>();
 
-            string projectDllName = GodotSharpEditor.ProjectAssemblyName;
-            string projectDllSrcDir = Path.Combine(GodotSharpDirs.ResTempAssembliesBaseDir, buildConfig);
+            string projectDllName = FoxSharpEditor.ProjectAssemblyName;
+            string projectDllSrcDir = Path.Combine(FoxSharpDirs.ResTempAssembliesBaseDir, buildConfig);
             string projectDllSrcPath = Path.Combine(projectDllSrcDir, $"{projectDllName}.dll");
 
             assemblies[projectDllName] = projectDllSrcPath;
@@ -174,8 +174,8 @@ namespace GodotTools.Export
 
             if (platform == OS.Platforms.Android)
             {
-                string godotAndroidExtProfileDir = GetBclProfileDir("godot_android_ext");
-                string monoAndroidAssemblyPath = Path.Combine(godotAndroidExtProfileDir, "Mono.Android.dll");
+                string FoxAndroidExtProfileDir = GetBclProfileDir("Fox_android_ext");
+                string monoAndroidAssemblyPath = Path.Combine(FoxAndroidExtProfileDir, "Mono.Android.dll");
 
                 if (!File.Exists(monoAndroidAssemblyPath))
                     throw new FileNotFoundException("Assembly not found: 'Mono.Android'", monoAndroidAssemblyPath);
@@ -237,7 +237,7 @@ namespace GodotTools.Export
                 outputDataDir = ExportDataDirectory(features, platform, isDebug, outputDir);
 
             string apiConfig = isDebug ? "Debug" : "Release";
-            string resAssembliesDir = Path.Combine(GodotSharpDirs.ResAssembliesBaseDir, apiConfig);
+            string resAssembliesDir = Path.Combine(FoxSharpDirs.ResAssembliesBaseDir, apiConfig);
 
             bool assembliesInsidePck = (bool)ProjectSettings.GetSetting("mono/export/export_assemblies_inside_pck") || outputDataDir == null;
 
@@ -311,7 +311,7 @@ namespace GodotTools.Export
         {
             base._ExportEnd();
 
-            string aotTempDir = Path.Combine(Path.GetTempPath(), $"godot-aot-{Process.GetCurrentProcess().Id}");
+            string aotTempDir = Path.Combine(Path.GetTempPath(), $"Fox-aot-{Process.GetCurrentProcess().Id}");
 
             if (Directory.Exists(aotTempDir))
                 Directory.Delete(aotTempDir, recursive: true);
@@ -322,7 +322,7 @@ namespace GodotTools.Export
                 string lastExportError = maybeLastExportError;
                 maybeLastExportError = null;
 
-                GodotSharpEditor.Instance.ShowErrorDialog(lastExportError, "Failed to export C# project");
+                FoxSharpEditor.Instance.ShowErrorDialog(lastExportError, "Failed to export C# project");
             }
         }
 
@@ -380,7 +380,7 @@ namespace GodotTools.Export
 
         private static bool PlatformHasTemplateDir(string platform)
         {
-            // OSX export templates are contained in a zip, so we place our custom template inside it and let Godot do the rest.
+            // OSX export templates are contained in a zip, so we place our custom template inside it and let Fox do the rest.
             return !new[] {OS.Platforms.MacOS, OS.Platforms.Android, OS.Platforms.iOS, OS.Platforms.HTML5}.Contains(platform);
         }
 
@@ -425,7 +425,7 @@ namespace GodotTools.Export
         }
 
         /// <summary>
-        /// Determines whether the BCL bundled with the Godot editor can be used for the target platform,
+        /// Determines whether the BCL bundled with the Fox editor can be used for the target platform,
         /// or if it requires a custom BCL that must be distributed with the export templates.
         /// </summary>
         private static bool PlatformRequiresCustomBcl(string platform)
@@ -476,7 +476,7 @@ namespace GodotTools.Export
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void internal_GetExportedAssemblyDependencies(Godot.Collections.Dictionary<string, string> initialAssemblies,
-            string buildConfig, string customBclDir, Godot.Collections.Dictionary<string, string> dependencyAssemblies);
+        private static extern void internal_GetExportedAssemblyDependencies(Fox.Collections.Dictionary<string, string> initialAssemblies,
+            string buildConfig, string customBclDir, Fox.Collections.Dictionary<string, string> dependencyAssemblies);
     }
 }

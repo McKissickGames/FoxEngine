@@ -2,11 +2,11 @@
 /*  http_client_javascript.h                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -40,20 +40,20 @@ extern "C" {
 #include "stddef.h"
 
 typedef enum {
-	GODOT_JS_FETCH_STATE_REQUESTING = 0,
-	GODOT_JS_FETCH_STATE_BODY = 1,
-	GODOT_JS_FETCH_STATE_DONE = 2,
-	GODOT_JS_FETCH_STATE_ERROR = -1,
-} godot_js_fetch_state_t;
+	Fox_JS_FETCH_STATE_REQUESTING = 0,
+	Fox_JS_FETCH_STATE_BODY = 1,
+	Fox_JS_FETCH_STATE_DONE = 2,
+	Fox_JS_FETCH_STATE_ERROR = -1,
+} Fox_js_fetch_state_t;
 
-extern int godot_js_fetch_create(const char *p_method, const char *p_url, const char **p_headers, int p_headers_len, const uint8_t *p_body, int p_body_len);
-extern int godot_js_fetch_read_headers(int p_id, void (*parse_callback)(int p_size, const char **p_headers, void *p_ref), void *p_ref);
-extern int godot_js_fetch_read_chunk(int p_id, uint8_t *p_buf, int p_buf_size);
-extern void godot_js_fetch_free(int p_id);
-extern godot_js_fetch_state_t godot_js_fetch_state_get(int p_id);
-extern int godot_js_fetch_body_length_get(int p_id);
-extern int godot_js_fetch_http_status_get(int p_id);
-extern int godot_js_fetch_is_chunked(int p_id);
+extern int Fox_js_fetch_create(const char *p_method, const char *p_url, const char **p_headers, int p_headers_len, const uint8_t *p_body, int p_body_len);
+extern int Fox_js_fetch_read_headers(int p_id, void (*parse_callback)(int p_size, const char **p_headers, void *p_ref), void *p_ref);
+extern int Fox_js_fetch_read_chunk(int p_id, uint8_t *p_buf, int p_buf_size);
+extern void Fox_js_fetch_free(int p_id);
+extern Fox_js_fetch_state_t Fox_js_fetch_state_get(int p_id);
+extern int Fox_js_fetch_body_length_get(int p_id);
+extern int Fox_js_fetch_http_status_get(int p_id);
+extern int Fox_js_fetch_is_chunked(int p_id);
 
 #ifdef __cplusplus
 }

@@ -2,11 +2,11 @@
 /*  rect2.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_RECT2_H
-#define GODOT_RECT2_H
+#ifndef Fox_RECT2_H
+#define Fox_RECT2_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,33 +37,33 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_RECT2_SIZE (sizeof(godot_real_t) * 4)
+#define Fox_RECT2_SIZE (sizeof(Fox_real_t) * 4)
 
-#ifndef GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-typedef struct godot_rect2 {
-	uint8_t _dont_touch_that[GODOT_RECT2_SIZE];
-} godot_rect2;
+#ifndef Fox_CORE_API_Fox_RECT2_TYPE_DEFINED
+#define Fox_CORE_API_Fox_RECT2_TYPE_DEFINED
+typedef struct Fox_rect2 {
+	uint8_t _dont_touch_that[Fox_RECT2_SIZE];
+} Fox_rect2;
 #endif
 
-#define GODOT_RECT2I_SIZE (sizeof(int32_t) * 4)
+#define Fox_RECT2I_SIZE (sizeof(int32_t) * 4)
 
-#ifndef GODOT_CORE_API_GODOT_RECT2I_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RECT2I_TYPE_DEFINED
-typedef struct godot_rect2i {
-	uint8_t _dont_touch_that[GODOT_RECT2I_SIZE];
-} godot_rect2i;
+#ifndef Fox_CORE_API_Fox_RECT2I_TYPE_DEFINED
+#define Fox_CORE_API_Fox_RECT2I_TYPE_DEFINED
+typedef struct Fox_rect2i {
+	uint8_t _dont_touch_that[Fox_RECT2I_SIZE];
+} Fox_rect2i;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_rect2_new(godot_rect2 *p_self);
-void GDAPI godot_rect2_new_copy(godot_rect2 *r_dest, const godot_rect2 *p_src);
-void GDAPI godot_rect2i_new(godot_rect2i *p_self);
-void GDAPI godot_rect2i_new_copy(godot_rect2i *r_dest, const godot_rect2i *p_src);
+void GDAPI Fox_rect2_new(Fox_rect2 *p_self);
+void GDAPI Fox_rect2_new_copy(Fox_rect2 *r_dest, const Fox_rect2 *p_src);
+void GDAPI Fox_rect2i_new(Fox_rect2i *p_self);
+void GDAPI Fox_rect2i_new_copy(Fox_rect2i *r_dest, const Fox_rect2i *p_src);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_RECT2_H
+#endif // Fox_RECT2_H

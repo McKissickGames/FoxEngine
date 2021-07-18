@@ -126,9 +126,9 @@ VPXDecoder::IMAGE_ERROR VPXDecoder::getImage(Image &image)
 
 /**/
 
-// -- GODOT begin --
+// -- Fox begin --
 #if 0
-// -- GODOT end --
+// -- Fox end --
 
 static inline int ceilRshift(int val, int shift)
 {
@@ -148,7 +148,7 @@ int VPXDecoder::Image::getHeight(int plane) const
 	return ceilRshift(h, chromaShiftH);
 }
 
-// -- GODOT begin --
+// -- Fox begin --
 #endif
-// -- GODOT end --
+// -- Fox end --
 

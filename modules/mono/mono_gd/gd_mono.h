@@ -2,11 +2,11 @@
 /*  gd_mono.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,7 +33,7 @@
 
 #include "core/io/config_file.h"
 
-#include "../godotsharp_defs.h"
+#include "../Foxsharp_defs.h"
 #include "gd_mono_assembly.h"
 #include "gd_mono_log.h"
 
@@ -48,22 +48,22 @@ enum Type {
 };
 
 struct Version {
-	uint64_t godot_api_hash = 0;
+	uint64_t Fox_api_hash = 0;
 	uint32_t bindings_version = 0;
 	uint32_t cs_glue_version = 0;
 
 	bool operator==(const Version &p_other) const {
-		return godot_api_hash == p_other.godot_api_hash &&
+		return Fox_api_hash == p_other.Fox_api_hash &&
 			   bindings_version == p_other.bindings_version &&
 			   cs_glue_version == p_other.cs_glue_version;
 	}
 
 	Version() {}
 
-	Version(uint64_t p_godot_api_hash,
+	Version(uint64_t p_Fox_api_hash,
 			uint32_t p_bindings_version,
 			uint32_t p_cs_glue_version) :
-			godot_api_hash(p_godot_api_hash),
+			Fox_api_hash(p_Fox_api_hash),
 			bindings_version(p_bindings_version),
 			cs_glue_version(p_cs_glue_version) {
 	}
@@ -147,7 +147,7 @@ private:
 #ifdef TOOLS_ENABLED
 	uint64_t api_editor_hash;
 #endif
-	void _init_godot_api_hashes();
+	void _init_Fox_api_hashes();
 	void _init_exception_policy();
 
 	GDMonoLog *gdmono_log;
@@ -293,8 +293,8 @@ public:
 	gdmono::ScopeExitDomainUnload __gdmono__scope__exit__domain__unload__(m_mono_domain); \
 	(void)__gdmono__scope__exit__domain__unload__;
 
-class _GodotSharp : public Object {
-	GDCLASS(_GodotSharp, Object);
+class _FoxSharp : public Object {
+	GDCLASS(_FoxSharp, Object);
 
 	friend class GDMono;
 
@@ -303,11 +303,11 @@ class _GodotSharp : public Object {
 	void _reload_assemblies(bool p_soft_reload);
 
 protected:
-	static _GodotSharp *singleton;
+	static _FoxSharp *singleton;
 	static void _bind_methods();
 
 public:
-	static _GodotSharp *get_singleton() { return singleton; }
+	static _FoxSharp *get_singleton() { return singleton; }
 
 	void attach_thread();
 	void detach_thread();
@@ -323,8 +323,8 @@ public:
 	bool is_runtime_shutting_down();
 	bool is_runtime_initialized();
 
-	_GodotSharp();
-	~_GodotSharp();
+	_FoxSharp();
+	~_FoxSharp();
 };
 
 #endif // GD_MONO_H

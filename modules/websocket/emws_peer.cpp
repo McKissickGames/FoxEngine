@@ -2,11 +2,11 @@
 /*  emws_peer.cpp                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -54,7 +54,7 @@ Error EMWSPeer::read_msg(const uint8_t *p_data, uint32_t p_size, bool p_is_strin
 
 Error EMWSPeer::put_packet(const uint8_t *p_buffer, int p_buffer_size) {
 	int is_bin = write_mode == WebSocketPeer::WRITE_MODE_BINARY ? 1 : 0;
-	godot_js_websocket_send(peer_sock, p_buffer, p_buffer_size, is_bin);
+	Fox_js_websocket_send(peer_sock, p_buffer, p_buffer_size, is_bin);
 	return OK;
 };
 
@@ -86,7 +86,7 @@ bool EMWSPeer::is_connected_to_host() const {
 
 void EMWSPeer::close(int p_code, String p_reason) {
 	if (peer_sock != -1) {
-		godot_js_websocket_close(peer_sock, p_code, p_reason.utf8().get_data());
+		Fox_js_websocket_close(peer_sock, p_code, p_reason.utf8().get_data());
 	}
 	_is_string = 0;
 	_in_buffer.clear();

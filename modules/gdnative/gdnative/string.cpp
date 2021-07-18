@@ -2,11 +2,11 @@
 /*  string.cpp                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,47 +32,47 @@
 
 #include "core/string/ustring.h"
 
-static_assert(sizeof(godot_string) == sizeof(String), "String size mismatch");
-static_assert(sizeof(godot_char_type) == sizeof(char32_t), "char32_t size mismatch");
+static_assert(sizeof(Fox_string) == sizeof(String), "String size mismatch");
+static_assert(sizeof(Fox_char_type) == sizeof(char32_t), "char32_t size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_string_new(godot_string *r_dest) {
+void GDAPI Fox_string_new(Fox_string *r_dest) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 }
 
-void GDAPI godot_string_new_copy(godot_string *r_dest, const godot_string *p_src) {
+void GDAPI Fox_string_new_copy(Fox_string *r_dest, const Fox_string *p_src) {
 	memnew_placement(r_dest, String(*(String *)p_src));
 }
 
-void GDAPI godot_string_new_with_latin1_chars(godot_string *r_dest, const char *p_contents) {
+void GDAPI Fox_string_new_with_latin1_chars(Fox_string *r_dest, const char *p_contents) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	*dest = String(p_contents);
 }
 
-void GDAPI godot_string_new_with_utf8_chars(godot_string *r_dest, const char *p_contents) {
+void GDAPI Fox_string_new_with_utf8_chars(Fox_string *r_dest, const char *p_contents) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	dest->parse_utf8(p_contents);
 }
 
-void GDAPI godot_string_new_with_utf16_chars(godot_string *r_dest, const char16_t *p_contents) {
+void GDAPI Fox_string_new_with_utf16_chars(Fox_string *r_dest, const char16_t *p_contents) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	dest->parse_utf16(p_contents);
 }
 
-void GDAPI godot_string_new_with_utf32_chars(godot_string *r_dest, const char32_t *p_contents) {
+void GDAPI Fox_string_new_with_utf32_chars(Fox_string *r_dest, const char32_t *p_contents) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	*dest = String((const char32_t *)p_contents);
 }
 
-void GDAPI godot_string_new_with_wide_chars(godot_string *r_dest, const wchar_t *p_contents) {
+void GDAPI Fox_string_new_with_wide_chars(Fox_string *r_dest, const wchar_t *p_contents) {
 	String *dest = (String *)r_dest;
 	if (sizeof(wchar_t) == 2) {
 		// wchar_t is 16 bit, parse.
@@ -85,31 +85,31 @@ void GDAPI godot_string_new_with_wide_chars(godot_string *r_dest, const wchar_t 
 	}
 }
 
-void GDAPI godot_string_new_with_latin1_chars_and_len(godot_string *r_dest, const char *p_contents, const int p_size) {
+void GDAPI Fox_string_new_with_latin1_chars_and_len(Fox_string *r_dest, const char *p_contents, const int p_size) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	*dest = String(p_contents, p_size);
 }
 
-void GDAPI godot_string_new_with_utf8_chars_and_len(godot_string *r_dest, const char *p_contents, const int p_size) {
+void GDAPI Fox_string_new_with_utf8_chars_and_len(Fox_string *r_dest, const char *p_contents, const int p_size) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	dest->parse_utf8(p_contents, p_size);
 }
 
-void GDAPI godot_string_new_with_utf16_chars_and_len(godot_string *r_dest, const char16_t *p_contents, const int p_size) {
+void GDAPI Fox_string_new_with_utf16_chars_and_len(Fox_string *r_dest, const char16_t *p_contents, const int p_size) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	dest->parse_utf16(p_contents, p_size);
 }
 
-void GDAPI godot_string_new_with_utf32_chars_and_len(godot_string *r_dest, const char32_t *p_contents, const int p_size) {
+void GDAPI Fox_string_new_with_utf32_chars_and_len(Fox_string *r_dest, const char32_t *p_contents, const int p_size) {
 	String *dest = (String *)r_dest;
 	memnew_placement(dest, String);
 	*dest = String((const char32_t *)p_contents, p_size);
 }
 
-void GDAPI godot_string_new_with_wide_chars_and_len(godot_string *r_dest, const wchar_t *p_contents, const int p_size) {
+void GDAPI Fox_string_new_with_wide_chars_and_len(Fox_string *r_dest, const wchar_t *p_contents, const int p_size) {
 	String *dest = (String *)r_dest;
 	if (sizeof(wchar_t) == 2) {
 		// wchar_t is 16 bit, parse.
@@ -122,27 +122,27 @@ void GDAPI godot_string_new_with_wide_chars_and_len(godot_string *r_dest, const 
 	}
 }
 
-const char GDAPI *godot_string_to_latin1_chars(const godot_string *p_self) {
+const char GDAPI *Fox_string_to_latin1_chars(const Fox_string *p_self) {
 	String *self = (String *)p_self;
 	return self->ascii(true).get_data();
 }
 
-const char GDAPI *godot_string_to_utf8_chars(const godot_string *p_self) {
+const char GDAPI *Fox_string_to_utf8_chars(const Fox_string *p_self) {
 	String *self = (String *)p_self;
 	return self->utf8().get_data();
 }
 
-const char16_t GDAPI *godot_string_to_utf16_chars(const godot_string *p_self) {
+const char16_t GDAPI *Fox_string_to_utf16_chars(const Fox_string *p_self) {
 	String *self = (String *)p_self;
 	return self->utf16().get_data();
 }
 
-const char32_t GDAPI *godot_string_to_utf32_chars(const godot_string *p_self) {
+const char32_t GDAPI *Fox_string_to_utf32_chars(const Fox_string *p_self) {
 	String *self = (String *)p_self;
 	return self->get_data();
 }
 
-const wchar_t GDAPI *godot_string_to_wide_chars(const godot_string *p_self) {
+const wchar_t GDAPI *Fox_string_to_wide_chars(const Fox_string *p_self) {
 	String *self = (String *)p_self;
 	if (sizeof(wchar_t) == 2) {
 		return (const wchar_t *)self->utf16().get_data();
@@ -151,17 +151,17 @@ const wchar_t GDAPI *godot_string_to_wide_chars(const godot_string *p_self) {
 	}
 }
 
-char32_t GDAPI *godot_string_operator_index(godot_string *p_self, godot_int p_index) {
+char32_t GDAPI *Fox_string_operator_index(Fox_string *p_self, Fox_int p_index) {
 	String *self = (String *)p_self;
 	return self->ptrw();
 }
 
-const char32_t GDAPI *godot_string_operator_index_const(const godot_string *p_self, godot_int p_index) {
+const char32_t GDAPI *Fox_string_operator_index_const(const Fox_string *p_self, Fox_int p_index) {
 	const String *self = (const String *)p_self;
 	return self->ptr();
 }
 
-void GDAPI godot_string_destroy(godot_string *p_self) {
+void GDAPI Fox_string_destroy(Fox_string *p_self) {
 	String *self = (String *)p_self;
 	self->~String();
 }

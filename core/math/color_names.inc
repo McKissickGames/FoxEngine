@@ -10,7 +10,7 @@ struct NamedColor {
 };
 
 // NOTE: This data is duplicated in the file:
-// modules/mono/glue/GodotSharp/GodotSharp/Core/Colors.cs
+// modules/mono/glue/FoxSharp/FoxSharp/Core/Colors.cs
 
 static NamedColor named_colors[] = {
 	{ "ALICE_BLUE", Color(0.94, 0.97, 1.00) },

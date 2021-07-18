@@ -2,11 +2,11 @@
 /*  app_delegate.mm                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -31,7 +31,7 @@
 #import "app_delegate.h"
 #include "core/config/project_settings.h"
 #include "drivers/coreaudio/audio_driver_coreaudio.h"
-#import "godot_view.h"
+#import "Fox_view.h"
 #include "main/main.h"
 #include "os_iphone.h"
 #import "view_controller.h"
@@ -58,7 +58,7 @@ static ViewController *mainViewController = nil;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// TODO: might be required to make an early return, so app wouldn't crash because of timeout.
 	// TODO: logo screen is not displayed while shaders are compiling
-	// DummyViewController(Splash/LoadingViewController) -> setup -> GodotViewController
+	// DummyViewController(Splash/LoadingViewController) -> setup -> FoxViewController
 
 	CGRect windowBounds = [[UIScreen mainScreen] bounds];
 
@@ -77,8 +77,8 @@ static ViewController *mainViewController = nil;
 	};
 
 	ViewController *viewController = [[ViewController alloc] init];
-	viewController.godotView.useCADisplayLink = bool(GLOBAL_DEF("display.iOS/use_cadisplaylink", true)) ? YES : NO;
-	viewController.godotView.renderingInterval = 1.0 / kRenderingFrequency;
+	viewController.FoxView.useCADisplayLink = bool(GLOBAL_DEF("display.iOS/use_cadisplaylink", true)) ? YES : NO;
+	viewController.FoxView.renderingInterval = 1.0 / kRenderingFrequency;
 
 	self.window.rootViewController = viewController;
 

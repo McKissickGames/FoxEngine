@@ -7,14 +7,14 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Godot.SourceGenerators
+namespace Fox.SourceGenerators
 {
     [Generator]
     public class ScriptPathAttributeGenerator : ISourceGenerator
     {
         public void Execute(GeneratorExecutionContext context)
         {
-            if (context.TryGetGlobalAnalyzerProperty("GodotScriptPathAttributeGenerator", out string? toggle)
+            if (context.TryGetGlobalAnalyzerProperty("FoxScriptPathAttributeGenerator", out string? toggle)
                 && toggle == "disabled")
             {
                 return;
@@ -22,25 +22,25 @@ namespace Godot.SourceGenerators
 
             // NOTE: IsNullOrEmpty doesn't work well with nullable checks
             // ReSharper disable once ReplaceWithStringIsNullOrEmpty
-            if (!context.TryGetGlobalAnalyzerProperty("GodotProjectDir", out string? godotProjectDir)
-                || godotProjectDir!.Length == 0)
+            if (!context.TryGetGlobalAnalyzerProperty("FoxProjectDir", out string? FoxProjectDir)
+                || FoxProjectDir!.Length == 0)
             {
-                throw new InvalidOperationException("Property 'GodotProjectDir' is null or empty.");
+                throw new InvalidOperationException("Property 'FoxProjectDir' is null or empty.");
             }
 
-            var godotClasses = context.Compilation.SyntaxTrees
+            var FoxClasses = context.Compilation.SyntaxTrees
                 .SelectMany(tree =>
                     tree.GetRoot().DescendantNodes()
                         .OfType<ClassDeclarationSyntax>()
                         // Ignore inner classes
                         .Where(cds => !(cds.Parent is ClassDeclarationSyntax))
-                        .SelectGodotScriptClasses(context.Compilation)
+                        .SelectFoxScriptClasses(context.Compilation)
                         // Report and skip non-partial classes
                         .Where(x =>
                         {
                             if (x.cds.IsPartial() || x.symbol.HasDisableGeneratorsAttribute())
                                 return true;
-                            Common.ReportNonPartialGodotScriptClass(context, x.cds, x.symbol);
+                            Common.ReportNonPartialFoxScriptClass(context, x.cds, x.symbol);
                             return false;
                         })
                 )
@@ -49,22 +49,22 @@ namespace Godot.SourceGenerators
                 .GroupBy(x => x.symbol)
                 .ToDictionary(g => g.Key, g => g.Select(x => x.cds));
 
-            foreach (var godotClass in godotClasses)
+            foreach (var FoxClass in FoxClasses)
             {
-                VisitGodotScriptClass(context, godotProjectDir,
-                    symbol: godotClass.Key,
-                    classDeclarations: godotClass.Value);
+                VisitFoxScriptClass(context, FoxProjectDir,
+                    symbol: FoxClass.Key,
+                    classDeclarations: FoxClass.Value);
             }
 
-            if (godotClasses.Count <= 0)
+            if (FoxClasses.Count <= 0)
                 return;
 
-            AddScriptTypesAssemblyAttr(context, godotClasses);
+            AddScriptTypesAssemblyAttr(context, FoxClasses);
         }
 
-        private static void VisitGodotScriptClass(
+        private static void VisitFoxScriptClass(
             GeneratorExecutionContext context,
-            string godotProjectDir,
+            string FoxProjectDir,
             INamedTypeSymbol symbol,
             IEnumerable<ClassDeclarationSyntax> classDeclarations
         )
@@ -85,7 +85,7 @@ namespace Godot.SourceGenerators
                     attributes.Append("\n");
 
                 attributes.Append(@"[ScriptPathAttribute(""res://");
-                attributes.Append(RelativeToDir(cds.SyntaxTree.FilePath, godotProjectDir));
+                attributes.Append(RelativeToDir(cds.SyntaxTree.FilePath, FoxProjectDir));
                 attributes.Append(@""")]");
             }
 
@@ -103,13 +103,13 @@ namespace Godot.SourceGenerators
 
             var source = new StringBuilder();
 
-            // using Godot;
+            // using Fox;
             // namespace {classNs} {
             //     {attributesBuilder}
             //     partial class {className} { }
             // }
 
-            source.Append("using Godot;\n");
+            source.Append("using Fox;\n");
 
             if (hasNamespace)
             {
@@ -132,19 +132,19 @@ namespace Godot.SourceGenerators
         }
 
         private static void AddScriptTypesAssemblyAttr(GeneratorExecutionContext context,
-            Dictionary<INamedTypeSymbol, IEnumerable<ClassDeclarationSyntax>> godotClasses)
+            Dictionary<INamedTypeSymbol, IEnumerable<ClassDeclarationSyntax>> FoxClasses)
         {
             var sourceBuilder = new StringBuilder();
 
             sourceBuilder.Append("[assembly:");
-            sourceBuilder.Append(GodotClasses.AssemblyHasScriptsAttr);
+            sourceBuilder.Append(FoxClasses.AssemblyHasScriptsAttr);
             sourceBuilder.Append("(new System.Type[] {");
 
             bool first = true;
 
-            foreach (var godotClass in godotClasses)
+            foreach (var FoxClass in FoxClasses)
             {
-                var qualifiedName = godotClass.Key.ToDisplayString(
+                var qualifiedName = FoxClass.Key.ToDisplayString(
                     NullableFlowState.NotNull, SymbolDisplayFormat.FullyQualifiedFormat);
                 if (!first)
                     sourceBuilder.Append(", ");

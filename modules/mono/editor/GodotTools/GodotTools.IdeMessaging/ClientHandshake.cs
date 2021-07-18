@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace GodotTools.IdeMessaging
+namespace FoxTools.IdeMessaging
 {
     public class ClientHandshake : IHandshake
     {

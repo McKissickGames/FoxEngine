@@ -2,11 +2,11 @@
 /*  main.cpp                                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -270,9 +270,9 @@ void Main::print_help(const char *p_binary) {
 	print_line(String(VERSION_NAME) + " v" + get_full_version_string() + " - " + String(VERSION_WEBSITE));
 	OS::get_singleton()->print("Free and open source software under the terms of the MIT license.\n");
 	OS::get_singleton()->print("(c) 2007-2021 Juan Linietsky, Ariel Manzur.\n");
-	OS::get_singleton()->print("(c) 2014-2021 Godot Engine contributors.\n");
+	OS::get_singleton()->print("(c) 2014-2021 Fox Engine contributors.\n");
 	OS::get_singleton()->print("\n");
-	OS::get_singleton()->print("Usage: %s [options] [path to scene or 'project.godot' file]\n", p_binary);
+	OS::get_singleton()->print("Usage: %s [options] [path to scene or 'project.Fox' file]\n", p_binary);
 	OS::get_singleton()->print("\n");
 
 	OS::get_singleton()->print("General options:\n");
@@ -289,8 +289,8 @@ void Main::print_help(const char *p_binary) {
 #endif
 	OS::get_singleton()->print("  -q, --quit                                   Quit after the first iteration.\n");
 	OS::get_singleton()->print("  -l, --language <locale>                      Use a specific locale (<locale> being a two-letter code).\n");
-	OS::get_singleton()->print("  --path <directory>                           Path to a project (<directory> must contain a 'project.godot' file).\n");
-	OS::get_singleton()->print("  -u, --upwards                                Scan folders upwards for project.godot file.\n");
+	OS::get_singleton()->print("  --path <directory>                           Path to a project (<directory> must contain a 'project.Fox' file).\n");
+	OS::get_singleton()->print("  -u, --upwards                                Scan folders upwards for project.Fox file.\n");
 	OS::get_singleton()->print("  --main-pack <file>                           Path to a pack (.pck) file to load.\n");
 	OS::get_singleton()->print("  --render-thread <mode>                       Render thread mode ('unsafe', 'safe', 'separate').\n");
 	OS::get_singleton()->print("  --remote-fs <address>                        Remote filesystem (<host/IP>[:<port>] address).\n");
@@ -377,8 +377,8 @@ void Main::print_help(const char *p_binary) {
 	OS::get_singleton()->print("  --no-docbase                                 Disallow dumping the base types (used with --doctool).\n");
 	OS::get_singleton()->print("  --build-solutions                            Build the scripting solutions (e.g. for C# projects). Implies --editor and requires a valid project to edit.\n");
 #ifdef DEBUG_METHODS_ENABLED
-	OS::get_singleton()->print("  --gdnative-generate-json-api <path>          Generate JSON dump of the Godot API for GDNative bindings and save it on the file specified in <path>.\n");
-	OS::get_singleton()->print("  --gdnative-generate-json-builtin-api <path>  Generate JSON dump of the Godot API of the builtin Variant types and utility functions for GDNative bindings and save it on the file specified in <path>.\n");
+	OS::get_singleton()->print("  --gdnative-generate-json-api <path>          Generate JSON dump of the Fox API for GDNative bindings and save it on the file specified in <path>.\n");
+	OS::get_singleton()->print("  --gdnative-generate-json-builtin-api <path>  Generate JSON dump of the Fox API of the builtin Variant types and utility functions for GDNative bindings and save it on the file specified in <path>.\n");
 #endif
 #ifdef TESTS_ENABLED
 	OS::get_singleton()->print("  --test [--help]                              Run unit tests. Use --test --help for more information.\n");
@@ -403,7 +403,7 @@ Error Main::test_setup() {
 	globals = memnew(ProjectSettings);
 
 	GLOBAL_DEF("debug/settings/crash_handler/message",
-			String("Please include this when reporting the bug on https://github.com/godotengine/godot/issues"));
+			String("Please include this when reporting the bug on https://github.com/Foxengine/Fox/issues"));
 
 	translation_server = memnew(TranslationServer);
 
@@ -558,7 +558,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	GLOBAL_DEF_RST("application/run/flush_stdout_on_print.debug", true);
 
 	GLOBAL_DEF("debug/settings/crash_handler/message",
-			String("Please include this when reporting the bug on https://github.com/godotengine/godot/issues"));
+			String("Please include this when reporting the bug on https://github.com/Foxengine/Fox/issues"));
 
 	MAIN_PRINT("Main: Parse CMDLine");
 
@@ -622,7 +622,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	while (I) {
 #ifdef OSX_ENABLED
 		// Ignore the process serial number argument passed by macOS Gatekeeper.
-		// Otherwise, Godot would try to open a non-existent project on the first start and abort.
+		// Otherwise, Fox would try to open a non-existent project on the first start and abort.
 		if (I->get().begins_with("-psn_")) {
 			I = I->next();
 			continue;
@@ -926,7 +926,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			upwards = true;
 		} else if (I->get() == "-q" || I->get() == "--quit") { // Auto quit at the end of the first main loop iteration
 			auto_quit = true;
-		} else if (I->get().ends_with("project.godot")) {
+		} else if (I->get().ends_with("project.Fox")) {
 			String path;
 			String file = I->get();
 			int sep = MAX(file.rfind("/"), file.rfind("\\"));
@@ -1047,7 +1047,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 #endif
 
 	// Network file system needs to be configured before globals, since globals are based on the
-	// 'project.godot' file which will only be available through the network if this is enabled
+	// 'project.Fox' file which will only be available through the network if this is enabled
 	FileAccessNetwork::configure();
 	if (remotefs != "") {
 		file_access_network_client = memnew(FileAccessNetworkClient);
@@ -1149,7 +1149,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 	// This also prevents logs from being created for the editor instance, as feature tags
 	// are disabled while in the editor (even if they should logically apply).
 	GLOBAL_DEF("debug/file_logging/enable_file_logging.pc", true);
-	GLOBAL_DEF("debug/file_logging/log_path", "user://logs/godot.log");
+	GLOBAL_DEF("debug/file_logging/log_path", "user://logs/Fox.log");
 	GLOBAL_DEF("debug/file_logging/max_log_files", 5);
 	ProjectSettings::get_singleton()->set_custom_property_info("debug/file_logging/max_log_files",
 			PropertyInfo(Variant::INT,
@@ -1316,7 +1316,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 		display_driver_idx = 0;
 	}
 
-	if (audio_driver == "") { // specified in project.godot
+	if (audio_driver == "") { // specified in project.Fox
 		audio_driver = GLOBAL_DEF_RST_NOVAL("audio/driver/driver", AudioDriverManager::get_driver(0)->get_name());
 	}
 
@@ -1561,7 +1561,7 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 		ProjectSettings::get_singleton()->set_custom_property_info("input_devices/pen_tablet/driver.Windows", PropertyInfo(Variant::STRING, "input_devices/pen_tablet/driver.Windows", PROPERTY_HINT_ENUM, "wintab,winink"));
 	}
 
-	if (tablet_driver == "") { // specified in project.godot
+	if (tablet_driver == "") { // specified in project.Fox
 		tablet_driver = GLOBAL_GET("input_devices/pen_tablet/driver");
 		if (tablet_driver == "") {
 			tablet_driver = DisplayServer::get_singleton()->tablet_get_driver_name(0);
@@ -1872,7 +1872,7 @@ bool Main::start() {
 					args[i].ends_with(".res") ||
 					args[i].ends_with(".tres")) {
 				// Only consider the positional argument to be a scene path if it ends with
-				// a file extension associated with Godot scenes. This makes it possible
+				// a file extension associated with Fox scenes. This makes it possible
 				// for projects to parse command-line arguments for custom CLI arguments
 				// or other file extensions without trouble. This can be used to implement
 				// "drag-and-drop onto executable" logic, which can prove helpful

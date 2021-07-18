@@ -1,6 +1,6 @@
-namespace Godot.SourceGenerators.Sample
+namespace Fox.SourceGenerators.Sample
 {
-    partial class Bar : Godot.Object
+    partial class Bar : Fox.Object
     {
     }
 
@@ -9,7 +9,7 @@ namespace Godot.SourceGenerators.Sample
     {
     }
 
-    partial class NotSameNameAsFile : Godot.Object
+    partial class NotSameNameAsFile : Fox.Object
     {
     }
 }

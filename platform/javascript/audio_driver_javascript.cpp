@@ -2,11 +2,11 @@
 /*  audio_driver_javascript.cpp                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -37,7 +37,7 @@
 AudioDriverJavaScript *AudioDriverJavaScript::singleton = nullptr;
 
 bool AudioDriverJavaScript::is_available() {
-	return godot_audio_is_available() != 0;
+	return Fox_audio_is_available() != 0;
 }
 
 const char *AudioDriverJavaScript::get_name() const {
@@ -108,7 +108,7 @@ Error AudioDriverJavaScript::init() {
 	mix_rate = GLOBAL_GET("audio/driver/mix_rate");
 	int latency = GLOBAL_GET("audio/driver/output_latency");
 
-	channel_count = godot_audio_init(mix_rate, latency, &_state_change_callback, &_latency_update_callback);
+	channel_count = Fox_audio_init(mix_rate, latency, &_state_change_callback, &_latency_update_callback);
 	buffer_length = closest_power_of_2((latency * mix_rate / 1000));
 #ifndef NO_THREADS
 	node = memnew(WorkletNode);
@@ -141,7 +141,7 @@ void AudioDriverJavaScript::start() {
 
 void AudioDriverJavaScript::resume() {
 	if (state == 0) { // 'suspended'
-		godot_audio_resume();
+		Fox_audio_resume();
 	}
 }
 
@@ -189,14 +189,14 @@ Error AudioDriverJavaScript::capture_start() {
 	lock();
 	input_buffer_init(buffer_length);
 	unlock();
-	if (godot_audio_capture_start()) {
+	if (Fox_audio_capture_start()) {
 		return FAILED;
 	}
 	return OK;
 }
 
 Error AudioDriverJavaScript::capture_stop() {
-	godot_audio_capture_stop();
+	Fox_audio_capture_stop();
 	lock();
 	input_buffer.clear();
 	unlock();
@@ -215,11 +215,11 @@ void AudioDriverJavaScript::ScriptProcessorNode::_process_callback() {
 }
 
 int AudioDriverJavaScript::ScriptProcessorNode::create(int p_buffer_samples, int p_channels) {
-	return godot_audio_script_create(p_buffer_samples, p_channels);
+	return Fox_audio_script_create(p_buffer_samples, p_channels);
 }
 
 void AudioDriverJavaScript::ScriptProcessorNode::start(float *p_out_buf, int p_out_buf_size, float *p_in_buf, int p_in_buf_size) {
-	godot_audio_script_start(p_in_buf, p_in_buf_size, p_out_buf, p_out_buf_size, &_process_callback);
+	Fox_audio_script_start(p_in_buf, p_in_buf_size, p_out_buf, p_out_buf_size, &_process_callback);
 }
 #else
 /// AudioWorkletNode implementation
@@ -237,7 +237,7 @@ void AudioDriverJavaScript::WorkletNode::_audio_thread_func(void *p_data) {
 		if (to_read) {
 			driver->lock();
 			driver->_audio_driver_capture(rpos, to_read);
-			godot_audio_worklet_state_add(obj->state, STATE_SAMPLES_IN, -to_read);
+			Fox_audio_worklet_state_add(obj->state, STATE_SAMPLES_IN, -to_read);
 			driver->unlock();
 			rpos += to_read;
 			if (rpos >= in_samples) {
@@ -247,26 +247,26 @@ void AudioDriverJavaScript::WorkletNode::_audio_thread_func(void *p_data) {
 		if (to_write) {
 			driver->lock();
 			driver->_audio_driver_process(wpos, to_write);
-			godot_audio_worklet_state_add(obj->state, STATE_SAMPLES_OUT, to_write);
+			Fox_audio_worklet_state_add(obj->state, STATE_SAMPLES_OUT, to_write);
 			driver->unlock();
 			wpos += to_write;
 			if (wpos >= out_samples) {
 				wpos -= out_samples;
 			}
 		}
-		step = godot_audio_worklet_state_wait(obj->state, STATE_PROCESS, step, 1);
-		to_write = out_samples - godot_audio_worklet_state_get(obj->state, STATE_SAMPLES_OUT);
-		to_read = godot_audio_worklet_state_get(obj->state, STATE_SAMPLES_IN);
+		step = Fox_audio_worklet_state_wait(obj->state, STATE_PROCESS, step, 1);
+		to_write = out_samples - Fox_audio_worklet_state_get(obj->state, STATE_SAMPLES_OUT);
+		to_read = Fox_audio_worklet_state_get(obj->state, STATE_SAMPLES_IN);
 	}
 }
 
 int AudioDriverJavaScript::WorkletNode::create(int p_buffer_size, int p_channels) {
-	godot_audio_worklet_create(p_channels);
+	Fox_audio_worklet_create(p_channels);
 	return p_buffer_size;
 }
 
 void AudioDriverJavaScript::WorkletNode::start(float *p_out_buf, int p_out_buf_size, float *p_in_buf, int p_in_buf_size) {
-	godot_audio_worklet_start(p_in_buf, p_in_buf_size, p_out_buf, p_out_buf_size, state);
+	Fox_audio_worklet_start(p_in_buf, p_in_buf_size, p_out_buf, p_out_buf_size, state);
 	thread.start(_audio_thread_func, this);
 }
 

@@ -2,11 +2,11 @@
 /*  fbx_mesh_data.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -380,12 +380,12 @@ EditorSceneImporterMeshNode3D *FBXMeshData::create_fbx_mesh(const ImportState &s
 		in_mesh_surface_id += 1;
 	}
 
-	EditorSceneImporterMeshNode3D *godot_mesh = memnew(EditorSceneImporterMeshNode3D);
-	godot_mesh->set_mesh(mesh);
+	EditorSceneImporterMeshNode3D *Fox_mesh = memnew(EditorSceneImporterMeshNode3D);
+	Fox_mesh->set_mesh(mesh);
 	const String name = ImportUtils::FBXNodeToName(model->Name());
-	godot_mesh->set_name(name); // hurry up compiling >.<
+	Fox_mesh->set_name(name); // hurry up compiling >.<
 	mesh->set_name("mesh3d-" + name);
-	return godot_mesh;
+	return Fox_mesh;
 }
 
 void FBXMeshData::sanitize_vertex_weights(const ImportState &state) {
@@ -406,7 +406,7 @@ void FBXMeshData::sanitize_vertex_weights(const ImportState &state) {
 	for (const FBXDocParser::Cluster *cluster : fbx_skin->Clusters()) {
 		ERR_CONTINUE_MSG(!state.fbx_bone_map.has(cluster->TargetNode()->ID()), "Missing bone map for cluster target node with id " + uitos(cluster->TargetNode()->ID()) + ".");
 		Ref<FBXBone> bone = state.fbx_bone_map[cluster->TargetNode()->ID()];
-		skeleton_to_skin_bind_id.insert(bone->godot_bone_id, bind_id);
+		skeleton_to_skin_bind_id.insert(bone->Fox_bone_id, bind_id);
 		bind_id++;
 	}
 
@@ -423,8 +423,8 @@ void FBXMeshData::sanitize_vertex_weights(const ImportState &state) {
 
 			for (int i = 0; i < vm->weights.size(); i += 1) {
 				// At this point this is not possible because the skeleton is already initialized.
-				CRASH_COND(bones_ref_ptr[i]->godot_bone_id == -2);
-				bones_ptr[i] = skeleton_to_skin_bind_id[bones_ref_ptr[i]->godot_bone_id];
+				CRASH_COND(bones_ref_ptr[i]->Fox_bone_id == -2);
+				bones_ptr[i] = skeleton_to_skin_bind_id[bones_ref_ptr[i]->Fox_bone_id];
 			}
 
 			// From this point on the data is no more valid.

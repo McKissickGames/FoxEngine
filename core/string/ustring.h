@@ -2,11 +2,11 @@
 /*  ustring.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef USTRING_GODOT_H
-#define USTRING_GODOT_H
+#ifndef USTRING_Fox_H
+#define USTRING_Fox_H
 // Note: Renamed to avoid conflict with ICU header with the same name.
 
 #include "core/templates/cowdata.h"
@@ -558,4 +558,4 @@ _FORCE_INLINE_ Vector<String> sarray(P... p_args) {
 	return arr;
 }
 
-#endif // USTRING_GODOT_H
+#endif // USTRING_Fox_H

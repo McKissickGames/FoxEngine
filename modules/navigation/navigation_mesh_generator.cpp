@@ -2,11 +2,11 @@
 /*  navigation_mesh_generator.cpp                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -291,7 +291,7 @@ void NavigationMeshGenerator::_convert_detail_mesh_to_native_navigation_mesh(con
 		for (unsigned int j = 0; j < ntris; j++) {
 			Vector<int> nav_indices;
 			nav_indices.resize(3);
-			// Polygon order in recast is opposite than godot's
+			// Polygon order in recast is opposite than Fox's
 			nav_indices.write[0] = ((int)(bverts + tris[j * 4 + 0]));
 			nav_indices.write[1] = ((int)(bverts + tris[j * 4 + 2]));
 			nav_indices.write[2] = ((int)(bverts + tris[j * 4 + 1]));

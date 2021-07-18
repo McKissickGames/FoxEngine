@@ -2,11 +2,11 @@
 /*  display_layer.h                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -43,16 +43,16 @@
 #if defined(TARGET_OS_SIMULATOR) && TARGET_OS_SIMULATOR
 #if defined(__IPHONE_13_0)
 API_AVAILABLE(ios(13.0))
-@interface GodotMetalLayer : CAMetalLayer <DisplayLayer>
+@interface FoxMetalLayer : CAMetalLayer <DisplayLayer>
 #else
-@interface GodotMetalLayer : CALayer <DisplayLayer>
+@interface FoxMetalLayer : CALayer <DisplayLayer>
 #endif
 #else
-@interface GodotMetalLayer : CAMetalLayer <DisplayLayer>
+@interface FoxMetalLayer : CAMetalLayer <DisplayLayer>
 #endif
 @end
 
 API_DEPRECATED("OpenGLES is deprecated", ios(2.0, 12.0))
-@interface GodotOpenGLLayer : CAEAGLLayer <DisplayLayer>
+@interface FoxOpenGLLayer : CAEAGLLayer <DisplayLayer>
 
 @end

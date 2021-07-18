@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.godotengine.godot.input;
+package org.Foxengine.Fox.input;
 
 import android.annotation.TargetApi;
 import android.content.Context;

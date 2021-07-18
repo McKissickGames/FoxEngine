@@ -2,11 +2,11 @@
 /*  gd_mono_class.h                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -76,7 +76,7 @@ class GDMonoClass {
 	bool attrs_fetched;
 	MonoCustomAttrInfo *attributes;
 
-	// This contains both the original method names and remapped method names from the native Godot identifiers to the C# functions.
+	// This contains both the original method names and remapped method names from the native Fox identifiers to the C# functions.
 	// Most method-related functions refer to this and it's possible this is unintuitive for outside users; this may be a prime location for refactoring or renaming.
 	bool methods_fetched;
 	HashMap<MethodKey, GDMonoMethod *, MethodKey::Hasher> methods;
@@ -133,7 +133,7 @@ public:
 	MonoObject *get_attribute(GDMonoClass *p_attr_class);
 
 	void fetch_attributes();
-	void fetch_methods_with_godot_api_checks(GDMonoClass *p_native_base);
+	void fetch_methods_with_Fox_api_checks(GDMonoClass *p_native_base);
 
 	bool implements_interface(GDMonoClass *p_interface);
 	bool has_public_parameterless_ctor();

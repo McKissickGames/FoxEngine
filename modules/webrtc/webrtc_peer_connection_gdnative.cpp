@@ -2,11 +2,11 @@
 /*  webrtc_peer_connection_gdnative.cpp                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -36,11 +36,11 @@
 #include "modules/gdnative/nativescript/nativescript.h"
 #include "webrtc_data_channel_gdnative.h"
 
-const godot_net_webrtc_library *WebRTCPeerConnectionGDNative::default_library = nullptr;
+const Fox_net_webrtc_library *WebRTCPeerConnectionGDNative::default_library = nullptr;
 
-Error WebRTCPeerConnectionGDNative::set_default_library(const godot_net_webrtc_library *p_lib) {
+Error WebRTCPeerConnectionGDNative::set_default_library(const Fox_net_webrtc_library *p_lib) {
 	if (default_library) {
-		const godot_net_webrtc_library *old = default_library;
+		const Fox_net_webrtc_library *old = default_library;
 		default_library = nullptr;
 		old->unregistered();
 	}
@@ -71,12 +71,12 @@ WebRTCPeerConnectionGDNative::~WebRTCPeerConnectionGDNative() {
 
 Error WebRTCPeerConnectionGDNative::initialize(Dictionary p_config) {
 	ERR_FAIL_COND_V(interface == nullptr, ERR_UNCONFIGURED);
-	return (Error)interface->initialize(interface->data, (const godot_dictionary *)&p_config);
+	return (Error)interface->initialize(interface->data, (const Fox_dictionary *)&p_config);
 }
 
 Ref<WebRTCDataChannel> WebRTCPeerConnectionGDNative::create_data_channel(String p_label, Dictionary p_options) {
 	ERR_FAIL_COND_V(interface == nullptr, nullptr);
-	return (WebRTCDataChannel *)interface->create_data_channel(interface->data, p_label.utf8().get_data(), (const godot_dictionary *)&p_options);
+	return (WebRTCDataChannel *)interface->create_data_channel(interface->data, p_label.utf8().get_data(), (const Fox_dictionary *)&p_options);
 }
 
 Error WebRTCPeerConnectionGDNative::create_offer() {
@@ -114,7 +114,7 @@ WebRTCPeerConnection::ConnectionState WebRTCPeerConnectionGDNative::get_connecti
 	return (ConnectionState)interface->get_connection_state(interface->data);
 }
 
-void WebRTCPeerConnectionGDNative::set_native_webrtc_peer_connection(const godot_net_webrtc_peer_connection *p_impl) {
+void WebRTCPeerConnectionGDNative::set_native_webrtc_peer_connection(const Fox_net_webrtc_peer_connection *p_impl) {
 	interface = p_impl;
 }
 

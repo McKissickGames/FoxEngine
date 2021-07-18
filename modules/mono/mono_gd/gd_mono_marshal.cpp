@@ -2,11 +2,11 @@
 /*  gd_mono_marshal.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -182,7 +182,7 @@ Variant::Type managed_to_variant_type(const ManagedType &p_type, bool *r_nil_is_
 			}
 
 			GDMonoClass *array_type_class = GDMono::get_singleton()->get_class(array_type->eklass);
-			if (CACHED_CLASS(GodotObject)->is_assignable_from(array_type_class)) {
+			if (CACHED_CLASS(FoxObject)->is_assignable_from(array_type_class)) {
 				return Variant::ARRAY;
 			}
 		} break;
@@ -190,8 +190,8 @@ Variant::Type managed_to_variant_type(const ManagedType &p_type, bool *r_nil_is_
 		case MONO_TYPE_CLASS: {
 			GDMonoClass *type_class = p_type.type_class;
 
-			// GodotObject
-			if (CACHED_CLASS(GodotObject)->is_assignable_from(type_class)) {
+			// FoxObject
+			if (CACHED_CLASS(FoxObject)->is_assignable_from(type_class)) {
 				return Variant::OBJECT;
 			}
 
@@ -237,12 +237,12 @@ Variant::Type managed_to_variant_type(const ManagedType &p_type, bool *r_nil_is_
 		case MONO_TYPE_GENERICINST: {
 			MonoReflectionType *reftype = mono_type_get_object(mono_domain_get(), p_type.type_class->get_mono_type());
 
-			// Godot.Collections.Dictionary<TKey, TValue>
+			// Fox.Collections.Dictionary<TKey, TValue>
 			if (GDMonoUtils::Marshal::type_is_generic_dictionary(reftype)) {
 				return Variant::DICTIONARY;
 			}
 
-			// Godot.Collections.Array<T>
+			// Fox.Collections.Array<T>
 			if (GDMonoUtils::Marshal::type_is_generic_array(reftype)) {
 				return Variant::ARRAY;
 			}
@@ -315,7 +315,7 @@ MonoString *variant_to_mono_string(const Variant &p_var) {
 	if (p_var.get_type() == Variant::NIL) {
 		return nullptr; // Otherwise, Variant -> String would return the string "Null"
 	}
-	return mono_string_from_godot(p_var.operator String());
+	return mono_string_from_Fox(p_var.operator String());
 }
 
 MonoArray *variant_to_mono_array(const Variant &p_var, GDMonoClass *p_type_class) {
@@ -361,7 +361,7 @@ MonoArray *variant_to_mono_array(const Variant &p_var, GDMonoClass *p_type_class
 		return PackedColorArray_to_mono_array(p_var.operator PackedColorArray());
 	}
 
-	if (mono_class_is_assignable_from(CACHED_CLASS(GodotObject)->get_mono_ptr(), array_type->eklass)) {
+	if (mono_class_is_assignable_from(CACHED_CLASS(FoxObject)->get_mono_ptr(), array_type->eklass)) {
 		return Array_to_mono_array(p_var.operator ::Array(), array_type->eklass);
 	}
 
@@ -370,8 +370,8 @@ MonoArray *variant_to_mono_array(const Variant &p_var, GDMonoClass *p_type_class
 }
 
 MonoObject *variant_to_mono_object_of_class(const Variant &p_var, GDMonoClass *p_type_class) {
-	// GodotObject
-	if (CACHED_CLASS(GodotObject)->is_assignable_from(p_type_class)) {
+	// FoxObject
+	if (CACHED_CLASS(FoxObject)->is_assignable_from(p_type_class)) {
 		return GDMonoUtils::unmanaged_get_managed(p_var.operator Object *());
 	}
 
@@ -387,12 +387,12 @@ MonoObject *variant_to_mono_object_of_class(const Variant &p_var, GDMonoClass *p
 		return GDMonoUtils::create_managed_from(p_var.operator ::RID());
 	}
 
-	// Godot.Collections.Dictionary or IDictionary
+	// Fox.Collections.Dictionary or IDictionary
 	if (CACHED_CLASS(Dictionary) == p_type_class || CACHED_CLASS(System_Collections_IDictionary) == p_type_class) {
 		return GDMonoUtils::create_managed_from(p_var.operator Dictionary(), CACHED_CLASS(Dictionary));
 	}
 
-	// Godot.Collections.Array or ICollection or IEnumerable
+	// Fox.Collections.Array or ICollection or IEnumerable
 	if (CACHED_CLASS(Array) == p_type_class ||
 			CACHED_CLASS(System_Collections_ICollection) == p_type_class ||
 			CACHED_CLASS(System_Collections_IEnumerable) == p_type_class) {
@@ -406,12 +406,12 @@ MonoObject *variant_to_mono_object_of_class(const Variant &p_var, GDMonoClass *p
 MonoObject *variant_to_mono_object_of_genericinst(const Variant &p_var, GDMonoClass *p_type_class) {
 	MonoReflectionType *reftype = mono_type_get_object(mono_domain_get(), p_type_class->get_mono_type());
 
-	// Godot.Collections.Dictionary<TKey, TValue>
+	// Fox.Collections.Dictionary<TKey, TValue>
 	if (GDMonoUtils::Marshal::type_is_generic_dictionary(reftype)) {
 		return GDMonoUtils::create_managed_from(p_var.operator Dictionary(), p_type_class);
 	}
 
-	// Godot.Collections.Array<T>
+	// Fox.Collections.Array<T>
 	if (GDMonoUtils::Marshal::type_is_generic_array(reftype)) {
 		return GDMonoUtils::create_managed_from(p_var.operator Array(), p_type_class);
 	}
@@ -436,18 +436,18 @@ MonoObject *variant_to_mono_object_of_genericinst(const Variant &p_var, GDMonoCl
 		MonoReflectionType *key_reftype;
 		MonoReflectionType *value_reftype;
 		GDMonoUtils::Marshal::dictionary_get_key_value_types(reftype, &key_reftype, &value_reftype);
-		GDMonoClass *godot_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(key_reftype, value_reftype);
+		GDMonoClass *Fox_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(key_reftype, value_reftype);
 
-		return GDMonoUtils::create_managed_from(p_var.operator Dictionary(), godot_dict_class);
+		return GDMonoUtils::create_managed_from(p_var.operator Dictionary(), Fox_dict_class);
 	}
 
 	// ICollection<T> or IEnumerable<T>
 	if (GDMonoUtils::Marshal::type_is_generic_icollection(reftype) || GDMonoUtils::Marshal::type_is_generic_ienumerable(reftype)) {
 		MonoReflectionType *elem_reftype;
 		GDMonoUtils::Marshal::array_get_element_type(reftype, &elem_reftype);
-		GDMonoClass *godot_array_class = GDMonoUtils::Marshal::make_generic_array_type(elem_reftype);
+		GDMonoClass *Fox_array_class = GDMonoUtils::Marshal::make_generic_array_type(elem_reftype);
 
-		return GDMonoUtils::create_managed_from(p_var.operator Array(), godot_array_class);
+		return GDMonoUtils::create_managed_from(p_var.operator Array(), Fox_array_class);
 	}
 
 	ERR_FAIL_V_MSG(nullptr, "Attempted to convert Variant to unsupported generic type: '" +
@@ -475,7 +475,7 @@ MonoObject *variant_to_mono_object(const Variant &p_var) {
 #endif
 		}
 		case Variant::STRING:
-			return (MonoObject *)mono_string_from_godot(p_var.operator String());
+			return (MonoObject *)mono_string_from_Fox(p_var.operator String());
 		case Variant::VECTOR2: {
 			GDMonoMarshal::M_Vector2 from = MARSHALLED_OUT(Vector2, p_var.operator ::Vector2());
 			return mono_value_box(mono_domain_get(), CACHED_CLASS_RAW(Vector2), &from);
@@ -1072,7 +1072,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 			if (p_obj == nullptr) {
 				return Variant(); // NIL
 			}
-			return mono_string_to_godot_not_null((MonoString *)p_obj);
+			return mono_string_to_Fox_not_null((MonoString *)p_obj);
 		} break;
 		case MONO_TYPE_ARRAY:
 		case MONO_TYPE_SZARRAY: {
@@ -1119,7 +1119,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 			}
 
 			GDMonoClass *array_type_class = GDMono::get_singleton()->get_class(array_type->eklass);
-			if (CACHED_CLASS(GodotObject)->is_assignable_from(array_type_class)) {
+			if (CACHED_CLASS(FoxObject)->is_assignable_from(array_type_class)) {
 				return mono_array_to_Array((MonoArray *)p_obj);
 			}
 
@@ -1132,9 +1132,9 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 		case MONO_TYPE_CLASS: {
 			GDMonoClass *type_class = p_type.type_class;
 
-			// GodotObject
-			if (CACHED_CLASS(GodotObject)->is_assignable_from(type_class)) {
-				Object *ptr = unbox<Object *>(CACHED_FIELD(GodotObject, ptr)->get_value(p_obj));
+			// FoxObject
+			if (CACHED_CLASS(FoxObject)->is_assignable_from(type_class)) {
+				Object *ptr = unbox<Object *>(CACHED_FIELD(FoxObject, ptr)->get_value(p_obj));
 				if (ptr != nullptr) {
 					RefCounted *rc = Object::cast_to<RefCounted>(ptr);
 					return rc ? Variant(Ref<RefCounted>(rc)) : Variant(ptr);
@@ -1157,7 +1157,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 				return ptr ? Variant(*ptr) : Variant();
 			}
 
-			// Godot.Collections.Dictionary
+			// Fox.Collections.Dictionary
 			if (CACHED_CLASS(Dictionary) == type_class) {
 				MonoException *exc = nullptr;
 				Dictionary *ptr = CACHED_METHOD_THUNK(Dictionary, GetPtr).invoke(p_obj, &exc);
@@ -1165,7 +1165,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 				return ptr ? Variant(*ptr) : Variant();
 			}
 
-			// Godot.Collections.Array
+			// Fox.Collections.Array
 			if (CACHED_CLASS(Array) == type_class) {
 				MonoException *exc = nullptr;
 				Array *ptr = CACHED_METHOD_THUNK(Array, GetPtr).invoke(p_obj, &exc);
@@ -1176,7 +1176,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 		case MONO_TYPE_GENERICINST: {
 			MonoReflectionType *reftype = mono_type_get_object(mono_domain_get(), p_type.type_class->get_mono_type());
 
-			// Godot.Collections.Dictionary<TKey, TValue>
+			// Fox.Collections.Dictionary<TKey, TValue>
 			if (GDMonoUtils::Marshal::type_is_generic_dictionary(reftype)) {
 				MonoException *exc = nullptr;
 				MonoObject *ret = p_type.type_class->get_method("GetPtr")->invoke(p_obj, &exc);
@@ -1184,7 +1184,7 @@ Variant mono_object_to_variant_impl(MonoObject *p_obj, const ManagedType &p_type
 				return *unbox<Dictionary *>(ret);
 			}
 
-			// Godot.Collections.Array<T>
+			// Fox.Collections.Array<T>
 			if (GDMonoUtils::Marshal::type_is_generic_array(reftype)) {
 				MonoException *exc = nullptr;
 				MonoObject *ret = p_type.type_class->get_method("GetPtr")->invoke(p_obj, &exc);
@@ -1263,7 +1263,7 @@ String mono_object_to_variant_string(MonoObject *p_obj, MonoException **r_exc) {
 			return String();
 		}
 
-		return GDMonoMarshal::mono_string_to_godot(mono_str);
+		return GDMonoMarshal::mono_string_to_Fox(mono_str);
 	} else {
 		return var.operator String();
 	}
@@ -1278,10 +1278,10 @@ MonoObject *Dictionary_to_system_generic_dict(const Dictionary &p_dict, GDMonoCl
 	MonoObject *mono_object = mono_object_new(mono_domain_get(), p_class->get_mono_ptr());
 	ERR_FAIL_NULL_V(mono_object, nullptr);
 
-	GDMonoClass *godot_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(p_key_reftype, p_value_reftype);
-	MonoObject *godot_dict = GDMonoUtils::create_managed_from(p_dict, godot_dict_class);
+	GDMonoClass *Fox_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(p_key_reftype, p_value_reftype);
+	MonoObject *Fox_dict = GDMonoUtils::create_managed_from(p_dict, Fox_dict_class);
 
-	void *ctor_args[1] = { godot_dict };
+	void *ctor_args[1] = { Fox_dict };
 
 	MonoException *exc = nullptr;
 	ctor->invoke_raw(mono_object, ctor_args, &exc);
@@ -1291,23 +1291,23 @@ MonoObject *Dictionary_to_system_generic_dict(const Dictionary &p_dict, GDMonoCl
 }
 
 Dictionary system_generic_dict_to_Dictionary(MonoObject *p_obj, [[maybe_unused]] GDMonoClass *p_class, MonoReflectionType *p_key_reftype, MonoReflectionType *p_value_reftype) {
-	GDMonoClass *godot_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(p_key_reftype, p_value_reftype);
+	GDMonoClass *Fox_dict_class = GDMonoUtils::Marshal::make_generic_dictionary_type(p_key_reftype, p_value_reftype);
 	String ctor_desc = ":.ctor(System.Collections.Generic.IDictionary`2<" + GDMonoUtils::get_type_desc(p_key_reftype) +
 					   ", " + GDMonoUtils::get_type_desc(p_value_reftype) + ">)";
-	GDMonoMethod *godot_dict_ctor = godot_dict_class->get_method_with_desc(ctor_desc, true);
-	CRASH_COND(godot_dict_ctor == nullptr);
+	GDMonoMethod *Fox_dict_ctor = Fox_dict_class->get_method_with_desc(ctor_desc, true);
+	CRASH_COND(Fox_dict_ctor == nullptr);
 
-	MonoObject *godot_dict = mono_object_new(mono_domain_get(), godot_dict_class->get_mono_ptr());
-	ERR_FAIL_NULL_V(godot_dict, Dictionary());
+	MonoObject *Fox_dict = mono_object_new(mono_domain_get(), Fox_dict_class->get_mono_ptr());
+	ERR_FAIL_NULL_V(Fox_dict, Dictionary());
 
 	void *ctor_args[1] = { p_obj };
 
 	MonoException *exc = nullptr;
-	godot_dict_ctor->invoke_raw(godot_dict, ctor_args, &exc);
+	Fox_dict_ctor->invoke_raw(Fox_dict, ctor_args, &exc);
 	UNHANDLED_EXCEPTION(exc);
 
 	exc = nullptr;
-	MonoObject *ret = godot_dict_class->get_method("GetPtr")->invoke(godot_dict, &exc);
+	MonoObject *ret = Fox_dict_class->get_method("GetPtr")->invoke(Fox_dict, &exc);
 	UNHANDLED_EXCEPTION(exc);
 
 	return *unbox<Dictionary *>(ret);
@@ -1533,7 +1533,7 @@ MonoArray *PackedStringArray_to_mono_array(const PackedStringArray &p_array) {
 	MonoArray *ret = mono_array_new(mono_domain_get(), CACHED_CLASS_RAW(String), length);
 
 	for (int i = 0; i < length; i++) {
-		MonoString *boxed = mono_string_from_godot(r[i]);
+		MonoString *boxed = mono_string_from_Fox(r[i]);
 		mono_array_setref(ret, i, boxed);
 	}
 
@@ -1551,7 +1551,7 @@ PackedStringArray mono_array_to_PackedStringArray(MonoArray *p_array) {
 
 	for (int i = 0; i < length; i++) {
 		MonoString *elem = mono_array_get(p_array, MonoString *, i);
-		w[i] = mono_string_to_godot(elem);
+		w[i] = mono_string_to_Fox(elem);
 	}
 
 	return ret;
@@ -1684,7 +1684,7 @@ Callable managed_to_callable(const M_Callable &p_managed_callable) {
 		return Callable(managed_callable);
 	} else {
 		Object *target = p_managed_callable.target ?
-								   unbox<Object *>(CACHED_FIELD(GodotObject, ptr)->get_value(p_managed_callable.target)) :
+								   unbox<Object *>(CACHED_FIELD(FoxObject, ptr)->get_value(p_managed_callable.target)) :
 								   nullptr;
 		StringName *method_ptr = unbox<StringName *>(CACHED_FIELD(StringName, ptr)->get_value(p_managed_callable.method_string_name));
 		StringName method = method_ptr ? *method_ptr : StringName();
@@ -1730,7 +1730,7 @@ M_Callable callable_to_managed(const Callable &p_callable) {
 
 Signal managed_to_signal_info(const M_SignalInfo &p_managed_signal) {
 	Object *owner = p_managed_signal.owner ?
-							  unbox<Object *>(CACHED_FIELD(GodotObject, ptr)->get_value(p_managed_signal.owner)) :
+							  unbox<Object *>(CACHED_FIELD(FoxObject, ptr)->get_value(p_managed_signal.owner)) :
 							  nullptr;
 	StringName *name_ptr = unbox<StringName *>(CACHED_FIELD(StringName, ptr)->get_value(p_managed_signal.name_string_name));
 	StringName name = name_ptr ? *name_ptr : StringName();

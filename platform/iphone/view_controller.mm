@@ -2,11 +2,11 @@
 /*  view_controller.mm                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -31,32 +31,32 @@
 #import "view_controller.h"
 #include "core/config/project_settings.h"
 #include "display_server_iphone.h"
-#import "godot_view.h"
-#import "godot_view_renderer.h"
+#import "Fox_view.h"
+#import "Fox_view_renderer.h"
 #import "keyboard_input_view.h"
 #include "os_iphone.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <GameController/GameController.h>
 
-@interface ViewController () <GodotViewDelegate>
+@interface ViewController () <FoxViewDelegate>
 
-@property(strong, nonatomic) GodotViewRenderer *renderer;
-@property(strong, nonatomic) GodotKeyboardInputView *keyboardView;
+@property(strong, nonatomic) FoxViewRenderer *renderer;
+@property(strong, nonatomic) FoxKeyboardInputView *keyboardView;
 
-@property(strong, nonatomic) UIView *godotLoadingOverlay;
+@property(strong, nonatomic) UIView *FoxLoadingOverlay;
 
 @end
 
 @implementation ViewController
 
-- (GodotView *)godotView {
-	return (GodotView *)self.view;
+- (FoxView *)FoxView {
+	return (FoxView *)self.view;
 }
 
 - (void)loadView {
-	GodotView *view = [[GodotView alloc] init];
-	GodotViewRenderer *renderer = [[GodotViewRenderer alloc] init];
+	FoxView *view = [[FoxView alloc] init];
+	FoxViewRenderer *renderer = [[FoxViewRenderer alloc] init];
 
 	self.renderer = renderer;
 	self.view = view;
@@ -69,7 +69,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
 	if (self) {
-		[self godot_commonInit];
+		[self Fox_commonInit];
 	}
 
 	return self;
@@ -79,13 +79,13 @@
 	self = [super initWithCoder:coder];
 
 	if (self) {
-		[self godot_commonInit];
+		[self Fox_commonInit];
 	}
 
 	return self;
 }
 
-- (void)godot_commonInit {
+- (void)Fox_commonInit {
 	// Initialize view controller values.
 }
 
@@ -107,7 +107,7 @@
 
 - (void)observeKeyboard {
 	printf("******** setting up keyboard input view\n");
-	self.keyboardView = [GodotKeyboardInputView new];
+	self.keyboardView = [FoxKeyboardInputView new];
 	[self.view addSubview:self.keyboardView];
 
 	printf("******** adding observer for keyboard show/hide\n");
@@ -134,16 +134,16 @@
 	UIStoryboard *launchStoryboard = [UIStoryboard storyboardWithName:storyboardName bundle:bundle];
 
 	UIViewController *controller = [launchStoryboard instantiateInitialViewController];
-	self.godotLoadingOverlay = controller.view;
-	self.godotLoadingOverlay.frame = self.view.bounds;
-	self.godotLoadingOverlay.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	self.FoxLoadingOverlay = controller.view;
+	self.FoxLoadingOverlay.frame = self.view.bounds;
+	self.FoxLoadingOverlay.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
-	[self.view addSubview:self.godotLoadingOverlay];
+	[self.view addSubview:self.FoxLoadingOverlay];
 }
 
-- (BOOL)godotViewFinishedSetup:(GodotView *)view {
-	[self.godotLoadingOverlay removeFromSuperview];
-	self.godotLoadingOverlay = nil;
+- (BOOL)FoxViewFinishedSetup:(FoxView *)view {
+	[self.FoxLoadingOverlay removeFromSuperview];
+	self.FoxLoadingOverlay = nil;
 
 	return YES;
 }
@@ -153,9 +153,9 @@
 
 	self.renderer = nil;
 
-	if (self.godotLoadingOverlay) {
-		[self.godotLoadingOverlay removeFromSuperview];
-		self.godotLoadingOverlay = nil;
+	if (self.FoxLoadingOverlay) {
+		[self.FoxLoadingOverlay removeFromSuperview];
+		self.FoxLoadingOverlay = nil;
 	}
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];

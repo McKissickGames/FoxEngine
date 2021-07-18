@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace GodotTools.Internals
+namespace FoxTools.Internals
 {
     public static class Globals
     {

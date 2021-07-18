@@ -2,11 +2,11 @@
 /*  plane.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,17 +32,17 @@
 
 #include "core/math/plane.h"
 
-static_assert(sizeof(godot_plane) == sizeof(Plane), "Plane size mismatch");
+static_assert(sizeof(Fox_plane) == sizeof(Plane), "Plane size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_plane_new(godot_plane *p_self) {
+void GDAPI Fox_plane_new(Fox_plane *p_self) {
 	memnew_placement(p_self, Plane);
 }
 
-void GDAPI godot_plane_new_copy(godot_plane *r_dest, const godot_plane *p_src) {
+void GDAPI Fox_plane_new_copy(Fox_plane *r_dest, const Fox_plane *p_src) {
 	memnew_placement(r_dest, Plane(*(Plane *)p_src));
 }
 

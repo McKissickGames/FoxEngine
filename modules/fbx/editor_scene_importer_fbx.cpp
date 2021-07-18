@@ -2,11 +2,11 @@
 /*  editor_scene_importer_fbx.cpp                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -224,7 +224,7 @@ Node3D *EditorSceneImporterFBX::import_scene(const String &p_path, uint32_t p_fl
 			}
 			tokens.clear();
 
-			ERR_PRINT(vformat("Cannot import FBX file: %s. It uses file format %d which is unsupported by Godot. Please re-export it or convert it to a newer format.", p_path, doc.FBXVersion()));
+			ERR_PRINT(vformat("Cannot import FBX file: %s. It uses file format %d which is unsupported by Fox. Please re-export it or convert it to a newer format.", p_path, doc.FBXVersion()));
 		}
 	}
 
@@ -374,7 +374,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 	state.root->set_owner(scene_root);
 
 	state.fbx_root_node.instantiate();
-	state.fbx_root_node->godot_node = state.root;
+	state.fbx_root_node->Fox_node = state.root;
 
 	// Size relative to cm.
 	const real_t fbx_unit_scale = p_document->GlobalSettingsPtr()->UnitScaleFactor();
@@ -397,7 +397,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 	root_node->pivot_transform = pivot_transform;
 	root_node->node_name = "root node";
 	root_node->current_node_id = 0;
-	root_node->godot_node = state.root;
+	root_node->Fox_node = state.root;
 
 	// cache this node onto the fbx_target map.
 	state.fbx_target_map.insert(0, root_node);
@@ -538,9 +538,9 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 			material.instantiate();
 			material->set_imported_material(mat);
 
-			Ref<StandardMaterial3D> godot_material = material->import_material(state);
+			Ref<StandardMaterial3D> Fox_material = material->import_material(state);
 
-			state.cached_materials.insert(material_id, godot_material);
+			state.cached_materials.insert(material_id, Fox_material);
 		}
 	}
 
@@ -621,7 +621,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 		}
 	}
 
-	// build godot node tree
+	// build Fox node tree
 	if (state.fbx_node_list.size() > 0) {
 		for (List<Ref<FBXNode>>::Element *node_element = state.fbx_node_list.front();
 				node_element;
@@ -674,27 +674,27 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 
 			if (node_skeleton.is_valid()) {
 				Skeleton3D *skel = node_skeleton->skeleton;
-				fbx_node->godot_node = skel;
+				fbx_node->Fox_node = skel;
 			} else if (mesh_node == nullptr) {
-				fbx_node->godot_node = memnew(Node3D);
+				fbx_node->Fox_node = memnew(Node3D);
 			} else {
-				fbx_node->godot_node = mesh_node;
+				fbx_node->Fox_node = mesh_node;
 			}
 
-			fbx_node->godot_node->set_name(fbx_node->node_name);
+			fbx_node->Fox_node->set_name(fbx_node->node_name);
 
 			// assign parent if valid
 			if (fbx_node->fbx_parent.is_valid()) {
-				fbx_node->fbx_parent->godot_node->add_child(fbx_node->godot_node);
-				fbx_node->godot_node->set_owner(state.root_owner);
+				fbx_node->fbx_parent->Fox_node->add_child(fbx_node->Fox_node);
+				fbx_node->Fox_node->set_owner(state.root_owner);
 			}
 
 			// Node Transform debug, set local xform data.
-			fbx_node->godot_node->set_transform(get_unscaled_transform(fbx_node->pivot_transform->LocalTransform, state.scale));
+			fbx_node->Fox_node->set_transform(get_unscaled_transform(fbx_node->pivot_transform->LocalTransform, state.scale));
 
 			// populate our mesh node reference
 			if (mesh_node != nullptr && mesh_data_precached.is_valid()) {
-				mesh_data_precached->godot_mesh_instance = mesh_node;
+				mesh_data_precached->Fox_mesh_instance = mesh_node;
 			}
 		}
 	}
@@ -768,7 +768,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 	for (Map<uint64_t, Ref<FBXMeshData>>::Element *mesh_data = state.renderer_mesh_data.front(); mesh_data; mesh_data = mesh_data->next()) {
 		Ref<FBXMeshData> mesh = mesh_data->value();
 		const uint64_t mesh_id = mesh_data->key();
-		EditorSceneImporterMeshNode3D *mesh_instance = mesh->godot_mesh_instance;
+		EditorSceneImporterMeshNode3D *mesh_instance = mesh->Fox_mesh_instance;
 		const int mesh_weights = mesh->max_weight_count;
 		Ref<FBXSkeleton> skeleton;
 		const bool valid_armature = mesh->valid_armature_id;
@@ -869,7 +869,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 					print_verbose("Layer: " + ImportUtils::FBXNodeToName(layer->Name()) + ", " + " AnimCurveNode count " + itos(node_list.size()));
 
 					// first thing to do here is that i need to first get the animcurvenode to a Vector3
-					// we now need to put this into the track information for godot.
+					// we now need to put this into the track information for Fox.
 					// to do this we need to know which track is what?
 
 					// target id, [ track name, [time index, vector] ]
@@ -928,7 +928,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 						// T, R, S is what we expect, although other tracks are possible
 						// like for example visibility tracks.
 
-						// We are not ordered here, we don't care about ordering, this happens automagically by godot when we insert with the
+						// We are not ordered here, we don't care about ordering, this happens automagically by Fox when we insert with the
 						// key time :), so order is unimportant because the insertion will happen at a time index
 						// good to know: we do not need a list of these in another format :)
 						//Map<String, Vector<const Assimp::FBX::AnimationCurve *> > unordered_track;
@@ -963,7 +963,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 
 						// extra const required by C++11 colon/Range operator
 						// note: do not use C++17 syntax here for dicts.
-						// this is banned in Godot.
+						// this is banned in Fox.
 						for (std::pair<const std::string, const FBXDocParser::AnimationCurve *> &kvp : curves) {
 							const String curve_element = ImportUtils::FBXNodeToName(kvp.first);
 							const FBXDocParser::AnimationCurve *curve = kvp.second;
@@ -971,7 +971,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 							uint64_t curve_id = curve->ID();
 
 							if (CheckForDuplication.has(curve_id)) {
-								print_error("(FBX spec changed?) We found a duplicate curve being used for an alternative node - report to godot issue tracker");
+								print_error("(FBX spec changed?) We found a duplicate curve being used for an alternative node - report to Fox issue tracker");
 							} else {
 								CheckForDuplication.insert(curve_id, curve);
 							}
@@ -1041,7 +1041,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 							if (bone->fbx_skeleton.is_valid() && bone.is_valid()) {
 								Ref<FBXSkeleton> fbx_skeleton = bone->fbx_skeleton;
 								String bone_path = state.root->get_path_to(fbx_skeleton->skeleton);
-								bone_path += ":" + fbx_skeleton->skeleton->get_bone_name(bone->godot_bone_id);
+								bone_path += ":" + fbx_skeleton->skeleton->get_bone_name(bone->Fox_bone_id);
 								print_verbose("[doc] track bone path: " + bone_path);
 								NodePath path = bone_path;
 								animation->track_set_path(track_idx, path);
@@ -1049,8 +1049,8 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 						} else if (state.fbx_target_map.has(target_id)) {
 							//print_verbose("[doc] we have a valid target for a node animation");
 							Ref<FBXNode> target_node = state.fbx_target_map[target_id];
-							if (target_node.is_valid() && target_node->godot_node != nullptr) {
-								String node_path = state.root->get_path_to(target_node->godot_node);
+							if (target_node.is_valid() && target_node->Fox_node != nullptr) {
+								String node_path = state.root->get_path_to(target_node->Fox_node);
 								NodePath path = node_path;
 								animation->track_set_path(track_idx, path);
 								//print_verbose("[doc] node animation path: " + node_path);
@@ -1169,7 +1169,7 @@ Node3D *EditorSceneImporterFBX::_generate_scene(
 						int skeleton_bone = -1;
 						if (state.fbx_bone_map.has(target_id)) {
 							if (bone.is_valid() && bone->fbx_skeleton.is_valid()) {
-								skeleton_bone = bone->godot_bone_id;
+								skeleton_bone = bone->Fox_bone_id;
 								if (skeleton_bone >= 0) {
 									bone_rest = bone->fbx_skeleton->skeleton->get_bone_rest(skeleton_bone);
 									valid_rest = true;

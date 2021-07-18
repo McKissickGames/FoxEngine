@@ -2,11 +2,11 @@
 /*  webrtc_gdnative.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -29,7 +29,7 @@
 /*************************************************************************/
 
 #include "modules/gdnative/gdnative.h"
-#include "modules/gdnative/include/net/godot_net.h"
+#include "modules/gdnative/include/net/Fox_net.h"
 
 #ifdef WEBRTC_GDNATIVE_ENABLED
 #include "modules/webrtc/webrtc_data_channel_gdnative.h"
@@ -38,23 +38,23 @@
 
 extern "C" {
 
-void GDAPI godot_net_bind_webrtc_peer_connection(godot_object *p_obj, const godot_net_webrtc_peer_connection *p_impl) {
+void GDAPI Fox_net_bind_webrtc_peer_connection(Fox_object *p_obj, const Fox_net_webrtc_peer_connection *p_impl) {
 #ifdef WEBRTC_GDNATIVE_ENABLED
 	((WebRTCPeerConnectionGDNative *)p_obj)->set_native_webrtc_peer_connection(p_impl);
 #endif
 }
 
-void GDAPI godot_net_bind_webrtc_data_channel(godot_object *p_obj, const godot_net_webrtc_data_channel *p_impl) {
+void GDAPI Fox_net_bind_webrtc_data_channel(Fox_object *p_obj, const Fox_net_webrtc_data_channel *p_impl) {
 #ifdef WEBRTC_GDNATIVE_ENABLED
 	((WebRTCDataChannelGDNative *)p_obj)->set_native_webrtc_data_channel(p_impl);
 #endif
 }
 
-godot_error GDAPI godot_net_set_webrtc_library(const godot_net_webrtc_library *p_lib) {
+Fox_error GDAPI Fox_net_set_webrtc_library(const Fox_net_webrtc_library *p_lib) {
 #ifdef WEBRTC_GDNATIVE_ENABLED
-	return (godot_error)WebRTCPeerConnectionGDNative::set_default_library(p_lib);
+	return (Fox_error)WebRTCPeerConnectionGDNative::set_default_library(p_lib);
 #else
-	return (godot_error)ERR_UNAVAILABLE;
+	return (Fox_error)ERR_UNAVAILABLE;
 #endif
 }
 }

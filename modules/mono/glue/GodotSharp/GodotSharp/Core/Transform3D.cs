@@ -6,7 +6,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 3×4 matrix (3 rows, 4 columns) used for 3D linear transformations.
@@ -15,7 +15,7 @@ namespace Godot
     /// <see cref="Vector3"/> for the origin (last column).
     ///
     /// For more information, read this documentation article:
-    /// https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+    /// https://docs.Foxengine.org/en/latest/tutorials/math/matrices_and_transforms.html
     /// </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
@@ -324,7 +324,7 @@ namespace Godot
         /// <summary>
         /// Constructs a transformation matrix from the given quaternion and origin vector.
         /// </summary>
-        /// <param name="quaternion">The <see cref="Godot.Quaternion"/> to create the basis from.</param>
+        /// <param name="quaternion">The <see cref="Fox.Quaternion"/> to create the basis from.</param>
         /// <param name="origin">The origin vector, or column index 3.</param>
         public Transform3D(Quaternion quaternion, Vector3 origin)
         {
@@ -335,7 +335,7 @@ namespace Godot
         /// <summary>
         /// Constructs a transformation matrix from the given basis and origin vector.
         /// </summary>
-        /// <param name="basis">The <see cref="Godot.Basis"/> to create the basis from.</param>
+        /// <param name="basis">The <see cref="Fox.Basis"/> to create the basis from.</param>
         /// <param name="origin">The origin vector, or column index 3.</param>
         public Transform3D(Basis basis, Vector3 origin)
         {

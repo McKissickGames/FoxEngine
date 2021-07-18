@@ -2,11 +2,11 @@
 /*  base_object_glue.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -43,13 +43,13 @@
 #include "../signal_awaiter_utils.h"
 #include "arguments_vector.h"
 
-Object *godot_icall_Object_Ctor(MonoObject *p_obj) {
+Object *Fox_icall_Object_Ctor(MonoObject *p_obj) {
 	Object *instance = memnew(Object);
 	GDMonoInternals::tie_managed_to_unmanaged(p_obj, instance);
 	return instance;
 }
 
-void godot_icall_Object_Disposed(MonoObject *p_obj, Object *p_ptr) {
+void Fox_icall_Object_Disposed(MonoObject *p_obj, Object *p_ptr) {
 #ifdef DEBUG_ENABLED
 	CRASH_COND(p_ptr == nullptr);
 #endif
@@ -79,7 +79,7 @@ void godot_icall_Object_Disposed(MonoObject *p_obj, Object *p_ptr) {
 #endif
 }
 
-void godot_icall_RefCounted_Disposed(MonoObject *p_obj, Object *p_ptr, MonoBoolean p_is_finalizer) {
+void Fox_icall_RefCounted_Disposed(MonoObject *p_obj, Object *p_ptr, MonoBoolean p_is_finalizer) {
 #ifdef DEBUG_ENABLED
 	CRASH_COND(p_ptr == nullptr);
 	// This is only called with RefCounted derived classes
@@ -128,20 +128,20 @@ void godot_icall_RefCounted_Disposed(MonoObject *p_obj, Object *p_ptr, MonoBoole
 #endif
 }
 
-void godot_icall_Object_ConnectEventSignals(Object *p_ptr) {
+void Fox_icall_Object_ConnectEventSignals(Object *p_ptr) {
 	CSharpInstance *csharp_instance = CAST_CSHARP_INSTANCE(p_ptr->get_script_instance());
 	if (csharp_instance) {
 		csharp_instance->connect_event_signals();
 	}
 }
 
-MethodBind *godot_icall_Object_ClassDB_get_method(StringName *p_type, MonoString *p_method) {
+MethodBind *Fox_icall_Object_ClassDB_get_method(StringName *p_type, MonoString *p_method) {
 	StringName type = p_type ? *p_type : StringName();
-	StringName method(GDMonoMarshal::mono_string_to_godot(p_method));
+	StringName method(GDMonoMarshal::mono_string_to_Fox(p_method));
 	return ClassDB::get_method(type, method);
 }
 
-MonoObject *godot_icall_Object_weakref(Object *p_ptr) {
+MonoObject *Fox_icall_Object_weakref(Object *p_ptr) {
 	if (!p_ptr) {
 		return nullptr;
 	}
@@ -165,12 +165,12 @@ MonoObject *godot_icall_Object_weakref(Object *p_ptr) {
 	return GDMonoUtils::unmanaged_get_managed(wref.ptr());
 }
 
-int32_t godot_icall_SignalAwaiter_connect(Object *p_source, StringName *p_signal, Object *p_target, MonoObject *p_awaiter) {
+int32_t Fox_icall_SignalAwaiter_connect(Object *p_source, StringName *p_signal, Object *p_target, MonoObject *p_awaiter) {
 	StringName signal = p_signal ? *p_signal : StringName();
 	return (int32_t)gd_mono_connect_signal_awaiter(p_source, signal, p_target, p_awaiter);
 }
 
-MonoArray *godot_icall_DynamicGodotObject_SetMemberList(Object *p_ptr) {
+MonoArray *Fox_icall_DynamicFoxObject_SetMemberList(Object *p_ptr) {
 	List<PropertyInfo> property_list;
 	p_ptr->get_property_list(&property_list);
 
@@ -178,7 +178,7 @@ MonoArray *godot_icall_DynamicGodotObject_SetMemberList(Object *p_ptr) {
 
 	int i = 0;
 	for (List<PropertyInfo>::Element *E = property_list.front(); E; E = E->next()) {
-		MonoString *boxed = GDMonoMarshal::mono_string_from_godot(E->get().name);
+		MonoString *boxed = GDMonoMarshal::mono_string_from_Fox(E->get().name);
 		mono_array_setref(result, i, boxed);
 		i++;
 	}
@@ -186,8 +186,8 @@ MonoArray *godot_icall_DynamicGodotObject_SetMemberList(Object *p_ptr) {
 	return result;
 }
 
-MonoBoolean godot_icall_DynamicGodotObject_InvokeMember(Object *p_ptr, MonoString *p_name, MonoArray *p_args, MonoObject **r_result) {
-	String name = GDMonoMarshal::mono_string_to_godot(p_name);
+MonoBoolean Fox_icall_DynamicFoxObject_InvokeMember(Object *p_ptr, MonoString *p_name, MonoArray *p_args, MonoObject **r_result) {
+	String name = GDMonoMarshal::mono_string_to_Fox(p_name);
 
 	int argc = mono_array_length(p_args);
 
@@ -208,8 +208,8 @@ MonoBoolean godot_icall_DynamicGodotObject_InvokeMember(Object *p_ptr, MonoStrin
 	return error.error == Callable::CallError::CALL_OK;
 }
 
-MonoBoolean godot_icall_DynamicGodotObject_GetMember(Object *p_ptr, MonoString *p_name, MonoObject **r_result) {
-	String name = GDMonoMarshal::mono_string_to_godot(p_name);
+MonoBoolean Fox_icall_DynamicFoxObject_GetMember(Object *p_ptr, MonoString *p_name, MonoObject **r_result) {
+	String name = GDMonoMarshal::mono_string_to_Fox(p_name);
 
 	bool valid;
 	Variant value = p_ptr->get(StringName(name), &valid);
@@ -221,8 +221,8 @@ MonoBoolean godot_icall_DynamicGodotObject_GetMember(Object *p_ptr, MonoString *
 	return valid;
 }
 
-MonoBoolean godot_icall_DynamicGodotObject_SetMember(Object *p_ptr, MonoString *p_name, MonoObject *p_value) {
-	String name = GDMonoMarshal::mono_string_to_godot(p_name);
+MonoBoolean Fox_icall_DynamicFoxObject_SetMember(Object *p_ptr, MonoString *p_name, MonoObject *p_value) {
+	String name = GDMonoMarshal::mono_string_to_Fox(p_name);
 	Variant value = GDMonoMarshal::mono_object_to_variant(p_value);
 
 	bool valid;
@@ -231,29 +231,29 @@ MonoBoolean godot_icall_DynamicGodotObject_SetMember(Object *p_ptr, MonoString *
 	return valid;
 }
 
-MonoString *godot_icall_Object_ToString(Object *p_ptr) {
+MonoString *Fox_icall_Object_ToString(Object *p_ptr) {
 #ifdef DEBUG_ENABLED
 	// Cannot happen in C#; would get an ObjectDisposedException instead.
 	CRASH_COND(p_ptr == nullptr);
 #endif
 	// Can't call 'Object::to_string()' here, as that can end up calling 'ToString' again resulting in an endless circular loop.
 	String result = "[" + p_ptr->get_class() + ":" + itos(p_ptr->get_instance_id()) + "]";
-	return GDMonoMarshal::mono_string_from_godot(result);
+	return GDMonoMarshal::mono_string_from_Fox(result);
 }
 
-void godot_register_object_icalls() {
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_Ctor", godot_icall_Object_Ctor);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_Disposed", godot_icall_Object_Disposed);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_RefCounted_Disposed", godot_icall_RefCounted_Disposed);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_ConnectEventSignals", godot_icall_Object_ConnectEventSignals);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_ClassDB_get_method", godot_icall_Object_ClassDB_get_method);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_ToString", godot_icall_Object_ToString);
-	GDMonoUtils::add_internal_call("Godot.Object::godot_icall_Object_weakref", godot_icall_Object_weakref);
-	GDMonoUtils::add_internal_call("Godot.SignalAwaiter::godot_icall_SignalAwaiter_connect", godot_icall_SignalAwaiter_connect);
-	GDMonoUtils::add_internal_call("Godot.DynamicGodotObject::godot_icall_DynamicGodotObject_SetMemberList", godot_icall_DynamicGodotObject_SetMemberList);
-	GDMonoUtils::add_internal_call("Godot.DynamicGodotObject::godot_icall_DynamicGodotObject_InvokeMember", godot_icall_DynamicGodotObject_InvokeMember);
-	GDMonoUtils::add_internal_call("Godot.DynamicGodotObject::godot_icall_DynamicGodotObject_GetMember", godot_icall_DynamicGodotObject_GetMember);
-	GDMonoUtils::add_internal_call("Godot.DynamicGodotObject::godot_icall_DynamicGodotObject_SetMember", godot_icall_DynamicGodotObject_SetMember);
+void Fox_register_object_icalls() {
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_Ctor", Fox_icall_Object_Ctor);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_Disposed", Fox_icall_Object_Disposed);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_RefCounted_Disposed", Fox_icall_RefCounted_Disposed);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_ConnectEventSignals", Fox_icall_Object_ConnectEventSignals);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_ClassDB_get_method", Fox_icall_Object_ClassDB_get_method);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_ToString", Fox_icall_Object_ToString);
+	GDMonoUtils::add_internal_call("Fox.Object::Fox_icall_Object_weakref", Fox_icall_Object_weakref);
+	GDMonoUtils::add_internal_call("Fox.SignalAwaiter::Fox_icall_SignalAwaiter_connect", Fox_icall_SignalAwaiter_connect);
+	GDMonoUtils::add_internal_call("Fox.DynamicFoxObject::Fox_icall_DynamicFoxObject_SetMemberList", Fox_icall_DynamicFoxObject_SetMemberList);
+	GDMonoUtils::add_internal_call("Fox.DynamicFoxObject::Fox_icall_DynamicFoxObject_InvokeMember", Fox_icall_DynamicFoxObject_InvokeMember);
+	GDMonoUtils::add_internal_call("Fox.DynamicFoxObject::Fox_icall_DynamicFoxObject_GetMember", Fox_icall_DynamicFoxObject_GetMember);
+	GDMonoUtils::add_internal_call("Fox.DynamicFoxObject::Fox_icall_DynamicFoxObject_SetMember", Fox_icall_DynamicFoxObject_SetMember);
 }
 
 #endif // MONO_GLUE_ENABLED

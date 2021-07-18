@@ -2,11 +2,11 @@
 /*  javascript_main.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -36,7 +36,7 @@
 #include <emscripten/emscripten.h>
 #include <stdlib.h>
 
-#include "godot_js.h"
+#include "Fox_js.h"
 
 static OS_JavaScript *os = nullptr;
 static uint64_t target_ticks = 0;
@@ -75,12 +75,12 @@ void main_loop_callback() {
 	}
 	if (os->main_loop_iterate()) {
 		emscripten_cancel_main_loop(); // Cancel current loop and wait for cleanup_after_sync.
-		godot_js_os_finish_async(cleanup_after_sync);
+		Fox_js_os_finish_async(cleanup_after_sync);
 	}
 }
 
 /// When calling main, it is assumed FS is setup and synced.
-extern EMSCRIPTEN_KEEPALIVE int godot_js_main(int argc, char *argv[]) {
+extern EMSCRIPTEN_KEEPALIVE int Fox_js_main(int argc, char *argv[]) {
 	os = new OS_JavaScript();
 
 	// We must override main when testing is enabled

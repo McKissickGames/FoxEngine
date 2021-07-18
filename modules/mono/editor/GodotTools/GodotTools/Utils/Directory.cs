@@ -1,7 +1,7 @@
 using System.IO;
-using Godot;
+using Fox;
 
-namespace GodotTools.Utils
+namespace FoxTools.Utils
 {
     public static class Directory
     {

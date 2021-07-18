@@ -2,11 +2,11 @@
 /*  vector2.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_VECTOR2_H
-#define GODOT_VECTOR2_H
+#ifndef Fox_VECTOR2_H
+#define Fox_VECTOR2_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,37 +37,37 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_VECTOR2_SIZE (sizeof(godot_real_t) * 2)
+#define Fox_VECTOR2_SIZE (sizeof(Fox_real_t) * 2)
 
-#ifndef GODOT_CORE_API_GODOT_VECTOR2_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_VECTOR2_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_VECTOR2_TYPE_DEFINED
+#define Fox_CORE_API_Fox_VECTOR2_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_VECTOR2_SIZE];
-} godot_vector2;
+	uint8_t _dont_touch_that[Fox_VECTOR2_SIZE];
+} Fox_vector2;
 #endif
 
-#define GODOT_VECTOR2I_SIZE (sizeof(int32_t) * 2)
+#define Fox_VECTOR2I_SIZE (sizeof(int32_t) * 2)
 
-#ifndef GODOT_CORE_API_GODOT_VECTOR2I_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_VECTOR2I_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_VECTOR2I_TYPE_DEFINED
+#define Fox_CORE_API_Fox_VECTOR2I_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_VECTOR2I_SIZE];
-} godot_vector2i;
+	uint8_t _dont_touch_that[Fox_VECTOR2I_SIZE];
+} Fox_vector2i;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_vector2_new(godot_vector2 *p_self);
-void GDAPI godot_vector2_new_copy(godot_vector2 *r_dest, const godot_vector2 *p_src);
-void GDAPI godot_vector2i_new(godot_vector2i *p_self);
-void GDAPI godot_vector2i_new_copy(godot_vector2i *r_dest, const godot_vector2i *p_src);
-godot_real_t GDAPI *godot_vector2_operator_index(godot_vector2 *p_self, godot_int p_index);
-const godot_real_t GDAPI *godot_vector2_operator_index_const(const godot_vector2 *p_self, godot_int p_index);
-int32_t GDAPI *godot_vector2i_operator_index(godot_vector2i *p_self, godot_int p_index);
-const int32_t GDAPI *godot_vector2i_operator_index_const(const godot_vector2i *p_self, godot_int p_index);
+void GDAPI Fox_vector2_new(Fox_vector2 *p_self);
+void GDAPI Fox_vector2_new_copy(Fox_vector2 *r_dest, const Fox_vector2 *p_src);
+void GDAPI Fox_vector2i_new(Fox_vector2i *p_self);
+void GDAPI Fox_vector2i_new_copy(Fox_vector2i *r_dest, const Fox_vector2i *p_src);
+Fox_real_t GDAPI *Fox_vector2_operator_index(Fox_vector2 *p_self, Fox_int p_index);
+const Fox_real_t GDAPI *Fox_vector2_operator_index_const(const Fox_vector2 *p_self, Fox_int p_index);
+int32_t GDAPI *Fox_vector2i_operator_index(Fox_vector2i *p_self, Fox_int p_index);
+const int32_t GDAPI *Fox_vector2i_operator_index_const(const Fox_vector2i *p_self, Fox_int p_index);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_VECTOR2_H
+#endif // Fox_VECTOR2_H

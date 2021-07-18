@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-namespace Godot
+namespace Fox
 {
     internal static class DebuggingUtils
     {
@@ -22,7 +22,7 @@ namespace Godot
         public static void InstallTraceListener()
         {
             Trace.Listeners.Clear();
-            Trace.Listeners.Add(new GodotTraceListener());
+            Trace.Listeners.Add(new FoxTraceListener());
         }
 
         public static void GetStackFrameInfo(StackFrame frame, out string fileName, out int fileLineNumber, out string methodDecl)

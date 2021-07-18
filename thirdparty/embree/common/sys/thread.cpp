@@ -158,9 +158,9 @@ namespace embree
 /// Linux Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-// -- GODOT start --
+// -- Fox start --
 #if defined(__LINUX__) && !defined(__ANDROID__)
-// -- GODOT end --
+// -- Fox end --
 
 #include <fstream>
 #include <sstream>
@@ -249,7 +249,7 @@ namespace embree
 }
 #endif
 
-// -- GODOT start --
+// -- Fox start --
 ////////////////////////////////////////////////////////////////////////////////
 /// Android Platform
 ////////////////////////////////////////////////////////////////////////////////
@@ -269,7 +269,7 @@ namespace embree
   }
 }
 #endif
-// -- GODOT end --
+// -- Fox end --
 
 ////////////////////////////////////////////////////////////////////////////////
 /// FreeBSD Platform
@@ -379,9 +379,9 @@ namespace embree
     pthread_attr_destroy(&attr);
 
     /* set affinity */
-// -- GODOT start --
+// -- Fox start --
 #if defined(__LINUX__) && !defined(__ANDROID__)
-// -- GODOT end --
+// -- Fox end --
     if (threadID >= 0) {
       cpu_set_t cset;
       CPU_ZERO(&cset);
@@ -396,7 +396,7 @@ namespace embree
       CPU_SET(threadID, &cset);
       pthread_setaffinity_np(*tid, sizeof(cset), &cset);
     }
-// -- GODOT start --
+// -- Fox start --
 #elif defined(__ANDROID__)
     if (threadID >= 0) {
       cpu_set_t cset;
@@ -405,7 +405,7 @@ namespace embree
       sched_setaffinity(pthread_gettid_np(*tid), sizeof(cset), &cset);
     }
 #endif
-// -- GODOT end --
+// -- Fox end --
 
     return thread_t(tid);
   }
@@ -424,14 +424,14 @@ namespace embree
 
   /*! destroy a hardware thread by its handle */
   void destroyThread(thread_t tid) {
-// -- GODOT start --
+// -- Fox start --
 #if defined(__ANDROID__)
     FATAL("Can't destroy threads on Android.");
 #else
     pthread_cancel(*(pthread_t*)tid);
     delete (pthread_t*)tid;
 #endif
-// -- GODOT end --
+// -- Fox end --
   }
 
   /*! creates thread local storage */

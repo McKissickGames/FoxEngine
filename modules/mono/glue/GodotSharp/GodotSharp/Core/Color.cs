@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// A color represented by red, green, blue, and alpha (RGBA) components.
@@ -398,7 +398,7 @@ namespace Godot
         /// <summary>
         /// Returns the color converted to an unsigned 32-bit integer in ARGB
         /// format (each byte represents a color channel).
-        /// ARGB is more compatible with DirectX, but not used much in Godot.
+        /// ARGB is more compatible with DirectX, but not used much in Fox.
         /// </summary>
         /// <returns>A uint representing this color in ARGB32 format.</returns>
         public uint ToArgb32()
@@ -417,7 +417,7 @@ namespace Godot
         /// <summary>
         /// Returns the color converted to an unsigned 64-bit integer in ARGB
         /// format (each word represents a color channel).
-        /// ARGB is more compatible with DirectX, but not used much in Godot.
+        /// ARGB is more compatible with DirectX, but not used much in Fox.
         /// </summary>
         /// <returns>A ulong representing this color in ARGB64 format.</returns>
         public ulong ToArgb64()
@@ -436,7 +436,7 @@ namespace Godot
         /// <summary>
         /// Returns the color converted to an unsigned 32-bit integer in RGBA
         /// format (each byte represents a color channel).
-        /// RGBA is Godot's default and recommended format.
+        /// RGBA is Fox's default and recommended format.
         /// </summary>
         /// <returns>A uint representing this color in RGBA32 format.</returns>
         public uint ToRgba32()
@@ -455,7 +455,7 @@ namespace Godot
         /// <summary>
         /// Returns the color converted to an unsigned 64-bit integer in RGBA
         /// format (each word represents a color channel).
-        /// RGBA is Godot's default and recommended format.
+        /// RGBA is Fox's default and recommended format.
         /// </summary>
         /// <returns>A ulong representing this color in RGBA64 format.</returns>
         public ulong ToRgba64()
@@ -994,7 +994,7 @@ namespace Godot
 
         /// <summary>
         /// Returns true if this color and `other` are approximately equal, by running
-        /// <see cref="Godot.Mathf.IsEqualApprox(float, float)"/> on each component.
+        /// <see cref="Fox.Mathf.IsEqualApprox(float, float)"/> on each component.
         /// </summary>
         /// <param name="other">The other color to compare.</param>
         /// <returns>Whether or not the colors are approximately equal.</returns>

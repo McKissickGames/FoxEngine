@@ -48,7 +48,7 @@ namespace embree
     {
       Task* prevTask = thread.task;
       thread.task = this;
-      // -- GODOT start --
+      // -- Fox start --
       // try {
       // if (thread.scheduler->cancellingException == nullptr)
           closure->execute();
@@ -56,7 +56,7 @@ namespace embree
       //   if (thread.scheduler->cancellingException == nullptr)
       //     thread.scheduler->cancellingException = std::current_exception();
       // }
-      // -- GODOT end --
+      // -- Fox end --
       thread.task = prevTask;
       add_dependencies(-1);
     }
@@ -293,11 +293,11 @@ namespace embree
     size_t threadIndex = allocThreadIndex();
     condition.wait(mutex, [&] () { return hasRootTask.load(); });
     mutex.unlock();
-    // -- GODOT start --
+    // -- Fox start --
     // std::exception_ptr except = thread_loop(threadIndex);
     // if (except != nullptr) std::rethrow_exception(except);
     thread_loop(threadIndex);
-    // -- GODOT end --
+    // -- Fox end --
   }
 
   void TaskScheduler::reset() {
@@ -329,10 +329,10 @@ namespace embree
     return thread->scheduler->cancellingException == nullptr;
   }
 
-// -- GODOT start --
+// -- Fox start --
 //   std::exception_ptr TaskScheduler::thread_loop(size_t threadIndex)
   void TaskScheduler::thread_loop(size_t threadIndex)
-// -- GODOT end --
+// -- Fox end --
   {
     /* allocate thread structure */
     std::unique_ptr<Thread> mthread(new Thread(threadIndex,this)); // too large for stack allocation
@@ -355,10 +355,10 @@ namespace embree
     swapThread(oldThread);
 
     /* remember exception to throw */
-    // -- GODOT start --
+    // -- Fox start --
     // std::exception_ptr except = nullptr;
     // if (cancellingException != nullptr) except = cancellingException;
-    // -- GODOT end --
+    // -- Fox end --
     /* wait for all threads to terminate */
     threadCounter--;
 #if defined(__WIN32__)
@@ -376,10 +376,10 @@ namespace embree
           yield();
 #endif
 	}
-     // -- GODOT start --
+     // -- Fox start --
      // return except;
      return;
-     // -- GODOT end --
+     // -- Fox end --
   }
 
   bool TaskScheduler::steal_from_other_threads(Thread& thread)

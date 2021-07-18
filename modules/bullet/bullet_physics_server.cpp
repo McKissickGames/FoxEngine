@@ -2,11 +2,11 @@
 /*  bullet_physics_server.cpp                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -802,11 +802,11 @@ int BulletPhysicsServer3D::body_get_max_contacts_reported(RID p_body) const {
 }
 
 void BulletPhysicsServer3D::body_set_contacts_reported_depth_threshold(RID p_body, real_t p_threshold) {
-	// Not supported by bullet and even Godot
+	// Not supported by bullet and even Fox
 }
 
 real_t BulletPhysicsServer3D::body_get_contacts_reported_depth_threshold(RID p_body) const {
-	// Not supported by bullet and even Godot
+	// Not supported by bullet and even Fox
 	return 0.;
 }
 

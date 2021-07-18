@@ -2,11 +2,11 @@
 /*  xr_interface_gdnative.h                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -46,7 +46,7 @@ class XRInterfaceGDNative : public XRInterface {
 	void cleanup();
 
 protected:
-	const godot_xr_interface_gdnative *interface;
+	const Fox_xr_interface_gdnative *interface;
 	void *data;
 
 	static void _bind_methods();
@@ -56,7 +56,7 @@ public:
 	XRInterfaceGDNative();
 	~XRInterfaceGDNative();
 
-	void set_interface(const godot_xr_interface_gdnative *p_interface);
+	void set_interface(const Fox_xr_interface_gdnative *p_interface);
 
 	virtual StringName get_name() const override;
 	virtual int get_capabilities() const override;

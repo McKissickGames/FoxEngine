@@ -2,11 +2,11 @@
 /*  image_saver_tinyexr.cpp                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -156,7 +156,7 @@ Error save_exr(const String &p_path, const Ref<Image> &p_img, bool p_grayscale) 
 
 	const int max_channels = 4;
 
-	// Godot does not support more than 4 channels,
+	// Fox does not support more than 4 channels,
 	// so we can preallocate header infos on the stack and use only the subset we need
 	PackedByteArray channels[max_channels];
 	unsigned char *channels_ptrs[max_channels];

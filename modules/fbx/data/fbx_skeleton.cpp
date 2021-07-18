@@ -2,11 +2,11 @@
 /*  fbx_skeleton.cpp                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -43,12 +43,12 @@ void FBXSkeleton::init_skeleton(const ImportState &state) {
 		if (fbx_node.is_valid()) {
 			// cache skeleton attachment for later during node creation
 			// can't be done until after node hierarchy is built
-			if (fbx_node->godot_node != state.root) {
+			if (fbx_node->Fox_node != state.root) {
 				fbx_node->skeleton_node = Ref<FBXSkeleton>(this);
 				print_verbose("cached armature skeleton attachment for node " + fbx_node->node_name);
 			} else {
 				// root node must never be a skeleton to prevent cyclic skeletons from being allowed (skeleton in a skeleton)
-				fbx_node->godot_node->add_child(skeleton);
+				fbx_node->Fox_node->add_child(skeleton);
 				skeleton->set_owner(state.root_owner);
 				skeleton->set_name("Skeleton3D");
 				print_verbose("created armature skeleton for root");
@@ -88,7 +88,7 @@ void FBXSkeleton::init_skeleton(const ImportState &state) {
 		Ref<FBXBone> bone = skeleton_bones[x];
 		if (bone.is_valid()) {
 			skeleton->add_bone(bone->bone_name);
-			bone->godot_bone_id = bone_count;
+			bone->Fox_bone_id = bone_count;
 			bone->fbx_skeleton = Ref<FBXSkeleton>(this);
 			bone_map.insert(bone_count, bone);
 			print_verbose("added bone " + itos(bone->bone_id) + " " + bone->bone_name);
@@ -103,7 +103,7 @@ void FBXSkeleton::init_skeleton(const ImportState &state) {
 		int bone_index = bone_element->key();
 		print_verbose("working on bone: " + itos(bone_index) + " bone name:" + bone->bone_name);
 
-		skeleton->set_bone_rest(bone->godot_bone_id, get_unscaled_transform(bone->node->pivot_transform->LocalTransform, state.scale));
+		skeleton->set_bone_rest(bone->Fox_bone_id, get_unscaled_transform(bone->node->pivot_transform->LocalTransform, state.scale));
 
 		// lookup parent ID
 		if (bone->valid_parent && state.fbx_bone_map.has(bone->parent_bone_id)) {
@@ -115,7 +115,7 @@ void FBXSkeleton::init_skeleton(const ImportState &state) {
 				print_error("invalid bone parent: " + parent_bone->bone_name);
 			}
 		} else {
-			if (bone->godot_bone_id != -1) {
+			if (bone->Fox_bone_id != -1) {
 				skeleton->set_bone_parent(bone_index, -1); // no parent for this bone
 			}
 		}

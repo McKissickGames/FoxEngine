@@ -1,8 +1,8 @@
-using Godot;
-using GodotTools.Internals;
-using static GodotTools.Internals.Globals;
+using Fox;
+using FoxTools.Internals;
+using static FoxTools.Internals.Globals;
 
-namespace GodotTools
+namespace FoxTools
 {
     public class HotReloadAssemblyWatcher : Node
     {

@@ -2,11 +2,11 @@
 /*  quaternion.cpp                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -32,28 +32,28 @@
 
 #include "core/math/quaternion.h"
 
-static_assert(sizeof(godot_quaternion) == sizeof(Quaternion), "Quaternion size mismatch");
+static_assert(sizeof(Fox_quaternion) == sizeof(Quaternion), "Quaternion size mismatch");
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_quaternion_new(godot_quaternion *p_self) {
+void GDAPI Fox_quaternion_new(Fox_quaternion *p_self) {
 	memnew_placement(p_self, Quaternion);
 }
 
-void GDAPI godot_quaternion_new_copy(godot_quaternion *r_dest, const godot_quaternion *p_src) {
+void GDAPI Fox_quaternion_new_copy(Fox_quaternion *r_dest, const Fox_quaternion *p_src) {
 	memnew_placement(r_dest, Quaternion(*(Quaternion *)p_src));
 }
 
-godot_real_t GDAPI *godot_quaternion_operator_index(godot_quaternion *p_self, godot_int p_index) {
+Fox_real_t GDAPI *Fox_quaternion_operator_index(Fox_quaternion *p_self, Fox_int p_index) {
 	Quaternion *self = (Quaternion *)p_self;
-	return (godot_real_t *)&self->operator[](p_index);
+	return (Fox_real_t *)&self->operator[](p_index);
 }
 
-const godot_real_t GDAPI *godot_quaternion_operator_index_const(const godot_quaternion *p_self, godot_int p_index) {
+const Fox_real_t GDAPI *Fox_quaternion_operator_index_const(const Fox_quaternion *p_self, Fox_int p_index) {
 	const Quaternion *self = (const Quaternion *)p_self;
-	return (const godot_real_t *)&self->operator[](p_index);
+	return (const Fox_real_t *)&self->operator[](p_index);
 }
 
 #ifdef __cplusplus

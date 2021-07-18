@@ -1,11 +1,11 @@
-using GodotTools.Core;
+using FoxTools.Core;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace GodotTools.ProjectEditor
+namespace FoxTools.ProjectEditor
 {
     public class DotNetSolution
     {

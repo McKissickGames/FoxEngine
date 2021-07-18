@@ -2,11 +2,11 @@
 /*  color.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_COLOR_H
-#define GODOT_COLOR_H
+#ifndef Fox_COLOR_H
+#define Fox_COLOR_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,24 +38,24 @@ extern "C" {
 #include <gdnative/math_defs.h>
 
 // Colors should always use 32-bit floats, so don't use real_t here.
-#define GODOT_COLOR_SIZE (sizeof(float) * 4)
+#define Fox_COLOR_SIZE (sizeof(float) * 4)
 
-#ifndef GODOT_CORE_API_GODOT_COLOR_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_COLOR_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_COLOR_TYPE_DEFINED
+#define Fox_CORE_API_Fox_COLOR_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_COLOR_SIZE];
-} godot_color;
+	uint8_t _dont_touch_that[Fox_COLOR_SIZE];
+} Fox_color;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_color_new(godot_color *p_self);
-void GDAPI godot_color_new_copy(godot_color *r_dest, const godot_color *p_src);
-float GDAPI *godot_color_operator_index(godot_color *p_self, godot_int p_index);
-const float GDAPI *godot_color_operator_index_const(const godot_color *p_self, godot_int p_index);
+void GDAPI Fox_color_new(Fox_color *p_self);
+void GDAPI Fox_color_new_copy(Fox_color *r_dest, const Fox_color *p_src);
+float GDAPI *Fox_color_operator_index(Fox_color *p_self, Fox_int p_index);
+const float GDAPI *Fox_color_operator_index_const(const Fox_color *p_self, Fox_int p_index);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_COLOR_H
+#endif // Fox_COLOR_H

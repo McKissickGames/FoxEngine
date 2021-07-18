@@ -1,6 +1,6 @@
-namespace Godot.SourceGenerators.Sample
+namespace Fox.SourceGenerators.Sample
 {
-    partial class Foo : Godot.Object
+    partial class Foo : Fox.Object
     {
     }
 

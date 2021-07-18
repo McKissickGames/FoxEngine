@@ -16,7 +16,7 @@
 		print(array[-2]) # Three.
 		[/gdscript]
 		[csharp]
-		var array = new Godot.Collections.Array{"One", 2, 3, "Four"};
+		var array = new Fox.Collections.Array{"One", 2, 3, "Four"};
 		GD.Print(array[0]); // One.
 		GD.Print(array[2]); // 3.
 		GD.Print(array[array.Count - 1]); // Four.
@@ -32,9 +32,9 @@
 		print(array1 + array2) # ["One", 2, 3, "Four"]
 		[/gdscript]
 		[csharp]
-		// Array concatenation is not possible with C# arrays, but is with Godot.Collections.Array.
-		var array1 = new Godot.Collections.Array{"One", 2};
-		var array2 = new Godot.Collections.Array{3, "Four"};
+		// Array concatenation is not possible with C# arrays, but is with Fox.Collections.Array.
+		var array1 = new Fox.Collections.Array{"One", 2};
+		var array2 = new Fox.Collections.Array{3, "Four"};
 		GD.Print(array1 + array2); // Prints [One, 2, 3, Four]
 		[/csharp]
 		[/codeblocks]
@@ -251,7 +251,7 @@
 				array.fill(0) # Initialize the 10 elements to 0.
 				[/gdscript]
 				[csharp]
-				var array = new Godot.Collections.Array{};
+				var array = new Fox.Collections.Array{};
 				array.Resize(10);
 				array.Fill(0); // Initialize the 10 elements to 0.
 				[/csharp]
@@ -319,7 +319,7 @@
 				print(["inside", 7].has("7")) # False
 				[/gdscript]
 				[csharp]
-				var arr = new Godot.Collections.Array{"inside", 7};
+				var arr = new Fox.Collections.Array{"inside", 7};
 				// has is renamed to Contains
 				GD.Print(arr.Contains("inside")); // True
 				GD.Print(arr.Contains("outside")); // False
@@ -337,7 +337,7 @@
 				[/gdscript]
 				[csharp]
 				// As there is no "in" keyword in C#, you have to use Contains
-				var array = new Godot.Collections.Array{2, 4, 6, 8};
+				var array = new Fox.Collections.Array{2, 4, 6, 8};
 				if (array.Contains(2))
 				{
 				    GD.Print("Contains!");
@@ -604,7 +604,7 @@
 				print(strings) # Prints [string1, string10, string11, string2]
 				[/gdscript]
 				[csharp]
-				// There is no sort support for Godot.Collections.Array
+				// There is no sort support for Fox.Collections.Array
 				[/csharp]
 				[/codeblocks]
 			</description>
@@ -630,7 +630,7 @@
 				print(my_items) # Prints [[4, Tomato], [5, Potato], [9, Rice]].
 				[/gdscript]
 				[csharp]
-				// There is no custom sort support for Godot.Collections.Array
+				// There is no custom sort support for Fox.Collections.Array
 				[/csharp]
 				[/codeblocks]
 			</description>

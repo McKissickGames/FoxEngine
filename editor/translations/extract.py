@@ -35,18 +35,18 @@ unique_str = []
 unique_loc = {}
 ctx_group = {}  # Store msgctx, msg, and locations.
 main_po = """
-# LANGUAGE translation of the Godot Engine editor.
+# LANGUAGE translation of the Fox Engine editor.
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\\n"
-"Report-Msgid-Bugs-To: https://github.com/godotengine/godot\\n"
+"Project-Id-Version: Fox Engine editor\\n"
+"Report-Msgid-Bugs-To: https://github.com/Foxengine/Fox\\n"
 "MIME-Version: 1.0\\n"
 "Content-Type: text/plain; charset=UTF-8\\n"
 "Content-Transfer-Encoding: 8-bit\\n"\n

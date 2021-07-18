@@ -2,11 +2,11 @@
 /*  pluginscript_language.cpp                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,7 +28,7 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-// Godot imports
+// Fox imports
 #include "core/config/project_settings.h"
 #include "core/io/file_access.h"
 #include "core/os/os.h"
@@ -105,9 +105,9 @@ Ref<Script> PluginScriptLanguage::get_template(const String &p_class_name, const
 	Script *ns = create_script();
 	Ref<Script> script = Ref<Script>(ns);
 	if (_desc.get_template_source_code) {
-		godot_string src = _desc.get_template_source_code(_data, (godot_string *)&p_class_name, (godot_string *)&p_base_class_name);
+		Fox_string src = _desc.get_template_source_code(_data, (Fox_string *)&p_class_name, (Fox_string *)&p_base_class_name);
 		script->set_source_code(*(String *)&src);
-		godot_string_destroy(&src);
+		Fox_string_destroy(&src);
 	}
 	return script;
 }
@@ -118,10 +118,10 @@ bool PluginScriptLanguage::validate(const String &p_script, const String &p_path
 	if (_desc.validate) {
 		bool ret = _desc.validate(
 				_data,
-				(godot_string *)&p_script,
-				(godot_string *)&p_path,
-				(godot_packed_string_array *)&functions,
-				(godot_array *)&errors);
+				(Fox_string *)&p_script,
+				(Fox_string *)&p_path,
+				(Fox_packed_string_array *)&functions,
+				(Fox_array *)&errors);
 		for (int i = 0; i < functions.size(); i++) {
 			r_functions->push_back(functions[i]);
 		}
@@ -161,16 +161,16 @@ bool PluginScriptLanguage::can_inherit_from_file() const {
 
 int PluginScriptLanguage::find_function(const String &p_function, const String &p_code) const {
 	if (_desc.find_function) {
-		return _desc.find_function(_data, (godot_string *)&p_function, (godot_string *)&p_code);
+		return _desc.find_function(_data, (Fox_string *)&p_function, (Fox_string *)&p_code);
 	}
 	return -1;
 }
 
 String PluginScriptLanguage::make_function(const String &p_class, const String &p_name, const PackedStringArray &p_args) const {
 	if (_desc.make_function) {
-		godot_string tmp = _desc.make_function(_data, (godot_string *)&p_class, (godot_string *)&p_name, (godot_packed_string_array *)&p_args);
+		Fox_string tmp = _desc.make_function(_data, (Fox_string *)&p_class, (Fox_string *)&p_name, (Fox_packed_string_array *)&p_args);
 		String ret = *(String *)&tmp;
-		godot_string_destroy(&tmp);
+		Fox_string_destroy(&tmp);
 		return ret;
 	}
 	return String();
@@ -179,14 +179,14 @@ String PluginScriptLanguage::make_function(const String &p_class, const String &
 Error PluginScriptLanguage::complete_code(const String &p_code, const String &p_path, Object *p_owner, List<ScriptCodeCompletionOption> *r_options, bool &r_force, String &r_call_hint) {
 	if (_desc.complete_code) {
 		Array options;
-		godot_error tmp = _desc.complete_code(
+		Fox_error tmp = _desc.complete_code(
 				_data,
-				(godot_string *)&p_code,
-				(godot_string *)&p_path,
-				(godot_object *)p_owner,
-				(godot_array *)&options,
+				(Fox_string *)&p_code,
+				(Fox_string *)&p_path,
+				(Fox_object *)p_owner,
+				(Fox_array *)&options,
 				&r_force,
-				(godot_string *)&r_call_hint);
+				(Fox_string *)&r_call_hint);
 		for (int i = 0; i < options.size(); i++) {
 			ScriptCodeCompletionOption option(options[i], ScriptCodeCompletionOption::KIND_PLAIN_TEXT);
 			r_options->push_back(option);
@@ -198,13 +198,13 @@ Error PluginScriptLanguage::complete_code(const String &p_code, const String &p_
 
 void PluginScriptLanguage::auto_indent_code(String &p_code, int p_from_line, int p_to_line) const {
 	if (_desc.auto_indent_code) {
-		_desc.auto_indent_code(_data, (godot_string *)&p_code, p_from_line, p_to_line);
+		_desc.auto_indent_code(_data, (Fox_string *)&p_code, p_from_line, p_to_line);
 	}
 	return;
 }
 
 void PluginScriptLanguage::add_global_constant(const StringName &p_variable, const Variant &p_value) {
-	_desc.add_global_constant(_data, (godot_string_name *)&p_variable, (godot_variant *)&p_value);
+	_desc.add_global_constant(_data, (Fox_string_name *)&p_variable, (Fox_variant *)&p_value);
 }
 
 /* LOADER FUNCTIONS */
@@ -216,10 +216,10 @@ void PluginScriptLanguage::get_recognized_extensions(List<String> *p_extensions)
 }
 
 void PluginScriptLanguage::get_public_functions(List<MethodInfo> *p_functions) const {
-	// TODO: provide this statically in `godot_pluginscript_language_desc` ?
+	// TODO: provide this statically in `Fox_pluginscript_language_desc` ?
 	if (_desc.get_public_functions) {
 		Array functions;
-		_desc.get_public_functions(_data, (godot_array *)&functions);
+		_desc.get_public_functions(_data, (Fox_array *)&functions);
 		for (int i = 0; i < functions.size(); i++) {
 			MethodInfo mi = MethodInfo::from_dict(functions[i]);
 			p_functions->push_back(mi);
@@ -228,10 +228,10 @@ void PluginScriptLanguage::get_public_functions(List<MethodInfo> *p_functions) c
 }
 
 void PluginScriptLanguage::get_public_constants(List<Pair<String, Variant>> *p_constants) const {
-	// TODO: provide this statically in `godot_pluginscript_language_desc` ?
+	// TODO: provide this statically in `Fox_pluginscript_language_desc` ?
 	if (_desc.get_public_constants) {
 		Dictionary constants;
-		_desc.get_public_constants(_data, (godot_dictionary *)&constants);
+		_desc.get_public_constants(_data, (Fox_dictionary *)&constants);
 		for (const Variant *key = constants.next(); key; key = constants.next(key)) {
 			Variant value = constants[*key];
 			p_constants->push_back(Pair<String, Variant>(*key, value));
@@ -263,15 +263,15 @@ int PluginScriptLanguage::profiling_get_accumulated_data(ProfilingInfo *p_info_a
 	int info_count = 0;
 #ifdef DEBUG_ENABLED
 	if (_desc.profiling_get_accumulated_data) {
-		godot_pluginscript_profiling_data *info = (godot_pluginscript_profiling_data *)memalloc(
-				sizeof(godot_pluginscript_profiling_data) * p_info_max);
+		Fox_pluginscript_profiling_data *info = (Fox_pluginscript_profiling_data *)memalloc(
+				sizeof(Fox_pluginscript_profiling_data) * p_info_max);
 		info_count = _desc.profiling_get_accumulated_data(_data, info, p_info_max);
 		for (int i = 0; i < info_count; ++i) {
 			p_info_arr[i].signature = *(StringName *)&info[i].signature;
 			p_info_arr[i].call_count = info[i].call_count;
 			p_info_arr[i].total_time = info[i].total_time;
 			p_info_arr[i].self_time = info[i].self_time;
-			godot_string_name_destroy(&info[i].signature);
+			Fox_string_name_destroy(&info[i].signature);
 		}
 	}
 #endif
@@ -282,15 +282,15 @@ int PluginScriptLanguage::profiling_get_frame_data(ProfilingInfo *p_info_arr, in
 	int info_count = 0;
 #ifdef DEBUG_ENABLED
 	if (_desc.profiling_get_frame_data) {
-		godot_pluginscript_profiling_data *info = (godot_pluginscript_profiling_data *)memalloc(
-				sizeof(godot_pluginscript_profiling_data) * p_info_max);
+		Fox_pluginscript_profiling_data *info = (Fox_pluginscript_profiling_data *)memalloc(
+				sizeof(Fox_pluginscript_profiling_data) * p_info_max);
 		info_count = _desc.profiling_get_frame_data(_data, info, p_info_max);
 		for (int i = 0; i < info_count; ++i) {
 			p_info_arr[i].signature = *(StringName *)&info[i].signature;
 			p_info_arr[i].call_count = info[i].call_count;
 			p_info_arr[i].total_time = info[i].total_time;
 			p_info_arr[i].self_time = info[i].self_time;
-			godot_string_name_destroy(&info[i].signature);
+			Fox_string_name_destroy(&info[i].signature);
 		}
 	}
 #endif
@@ -309,9 +309,9 @@ void PluginScriptLanguage::frame() {
 
 String PluginScriptLanguage::debug_get_error() const {
 	if (_desc.debug_get_error) {
-		godot_string tmp = _desc.debug_get_error(_data);
+		Fox_string tmp = _desc.debug_get_error(_data);
 		String ret = *(String *)&tmp;
-		godot_string_destroy(&tmp);
+		Fox_string_destroy(&tmp);
 		return ret;
 	}
 	return String("Nothing");
@@ -333,9 +333,9 @@ int PluginScriptLanguage::debug_get_stack_level_line(int p_level) const {
 
 String PluginScriptLanguage::debug_get_stack_level_function(int p_level) const {
 	if (_desc.debug_get_stack_level_function) {
-		godot_string tmp = _desc.debug_get_stack_level_function(_data, p_level);
+		Fox_string tmp = _desc.debug_get_stack_level_function(_data, p_level);
 		String ret = *(String *)&tmp;
-		godot_string_destroy(&tmp);
+		Fox_string_destroy(&tmp);
 		return ret;
 	}
 	return String("Nothing");
@@ -343,9 +343,9 @@ String PluginScriptLanguage::debug_get_stack_level_function(int p_level) const {
 
 String PluginScriptLanguage::debug_get_stack_level_source(int p_level) const {
 	if (_desc.debug_get_stack_level_source) {
-		godot_string tmp = _desc.debug_get_stack_level_source(_data, p_level);
+		Fox_string tmp = _desc.debug_get_stack_level_source(_data, p_level);
 		String ret = *(String *)&tmp;
-		godot_string_destroy(&tmp);
+		Fox_string_destroy(&tmp);
 		return ret;
 	}
 	return String("Nothing");
@@ -355,7 +355,7 @@ void PluginScriptLanguage::debug_get_stack_level_locals(int p_level, List<String
 	if (_desc.debug_get_stack_level_locals) {
 		PackedStringArray locals;
 		Array values;
-		_desc.debug_get_stack_level_locals(_data, p_level, (godot_packed_string_array *)&locals, (godot_array *)&values, p_max_subitems, p_max_depth);
+		_desc.debug_get_stack_level_locals(_data, p_level, (Fox_packed_string_array *)&locals, (Fox_array *)&values, p_max_subitems, p_max_depth);
 		for (int i = 0; i < locals.size(); i++) {
 			p_locals->push_back(locals[i]);
 		}
@@ -369,7 +369,7 @@ void PluginScriptLanguage::debug_get_stack_level_members(int p_level, List<Strin
 	if (_desc.debug_get_stack_level_members) {
 		PackedStringArray members;
 		Array values;
-		_desc.debug_get_stack_level_members(_data, p_level, (godot_packed_string_array *)&members, (godot_array *)&values, p_max_subitems, p_max_depth);
+		_desc.debug_get_stack_level_members(_data, p_level, (Fox_packed_string_array *)&members, (Fox_array *)&values, p_max_subitems, p_max_depth);
 		for (int i = 0; i < members.size(); i++) {
 			p_members->push_back(members[i]);
 		}
@@ -383,7 +383,7 @@ void PluginScriptLanguage::debug_get_globals(List<String> *p_locals, List<Varian
 	if (_desc.debug_get_globals) {
 		PackedStringArray locals;
 		Array values;
-		_desc.debug_get_globals(_data, (godot_packed_string_array *)&locals, (godot_array *)&values, p_max_subitems, p_max_depth);
+		_desc.debug_get_globals(_data, (Fox_packed_string_array *)&locals, (Fox_array *)&values, p_max_subitems, p_max_depth);
 		for (int i = 0; i < locals.size(); i++) {
 			p_locals->push_back(locals[i]);
 		}
@@ -395,9 +395,9 @@ void PluginScriptLanguage::debug_get_globals(List<String> *p_locals, List<Varian
 
 String PluginScriptLanguage::debug_parse_stack_level_expression(int p_level, const String &p_expression, int p_max_subitems, int p_max_depth) {
 	if (_desc.debug_parse_stack_level_expression) {
-		godot_string tmp = _desc.debug_parse_stack_level_expression(_data, p_level, (godot_string *)&p_expression, p_max_subitems, p_max_depth);
+		Fox_string tmp = _desc.debug_parse_stack_level_expression(_data, p_level, (Fox_string *)&p_expression, p_max_subitems, p_max_depth);
 		String ret = *(String *)&tmp;
-		godot_string_destroy(&tmp);
+		Fox_string_destroy(&tmp);
 		return ret;
 	}
 	return String("Nothing");
@@ -449,7 +449,7 @@ void PluginScriptLanguage::unlock() {
 	_lock.unlock();
 }
 
-PluginScriptLanguage::PluginScriptLanguage(const godot_pluginscript_language_desc *desc) :
+PluginScriptLanguage::PluginScriptLanguage(const Fox_pluginscript_language_desc *desc) :
 		_desc(*desc) {
 	_resource_loader = Ref<ResourceFormatLoaderPluginScript>(memnew(ResourceFormatLoaderPluginScript(this)));
 	_resource_saver = Ref<ResourceFormatSaverPluginScript>(memnew(ResourceFormatSaverPluginScript(this)));

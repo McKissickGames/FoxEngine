@@ -2,11 +2,11 @@
 /*  gd_mono_log.cpp                                                      */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -35,7 +35,7 @@
 #include "core/io/dir_access.h"
 #include "core/os/os.h"
 
-#include "../godotsharp_dirs.h"
+#include "../Foxsharp_dirs.h"
 #include "../utils/string_utils.h"
 
 static CharString get_default_log_level() {
@@ -141,10 +141,10 @@ void GDMonoLog::_delete_old_log_files(const String &p_logs_dir) {
 }
 
 void GDMonoLog::initialize() {
-	CharString log_level = OS::get_singleton()->get_environment("GODOT_MONO_LOG_LEVEL").utf8();
+	CharString log_level = OS::get_singleton()->get_environment("Fox_MONO_LOG_LEVEL").utf8();
 
 	if (log_level.length() != 0 && get_log_level_id(log_level.get_data()) == -1) {
-		ERR_PRINT(String() + "Mono: Ignoring invalid log level (GODOT_MONO_LOG_LEVEL): '" + log_level.get_data() + "'.");
+		ERR_PRINT(String() + "Mono: Ignoring invalid log level (Fox_MONO_LOG_LEVEL): '" + log_level.get_data() + "'.");
 		log_level = CharString();
 	}
 
@@ -152,7 +152,7 @@ void GDMonoLog::initialize() {
 		log_level = get_default_log_level();
 	}
 
-	String logs_dir = GodotSharpDirs::get_mono_logs_dir();
+	String logs_dir = FoxSharpDirs::get_mono_logs_dir();
 
 	if (_try_create_logs_dir(logs_dir)) {
 		_delete_old_log_files(logs_dir);

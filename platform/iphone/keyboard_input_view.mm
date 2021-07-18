@@ -2,11 +2,11 @@
 /*  keyboard_input_view.mm                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -34,20 +34,20 @@
 #include "display_server_iphone.h"
 #include "os_iphone.h"
 
-@interface GodotKeyboardInputView () <UITextViewDelegate>
+@interface FoxKeyboardInputView () <UITextViewDelegate>
 
 @property(nonatomic, copy) NSString *previousText;
 @property(nonatomic, assign) NSRange previousSelectedRange;
 
 @end
 
-@implementation GodotKeyboardInputView
+@implementation FoxKeyboardInputView
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 
 	if (self) {
-		[self godot_commonInit];
+		[self Fox_commonInit];
 	}
 
 	return self;
@@ -57,13 +57,13 @@
 	self = [super initWithFrame:frame textContainer:textContainer];
 
 	if (self) {
-		[self godot_commonInit];
+		[self Fox_commonInit];
 	}
 
 	return self;
 }
 
-- (void)godot_commonInit {
+- (void)Fox_commonInit {
 	self.hidden = YES;
 	self.delegate = self;
 

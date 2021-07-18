@@ -2,11 +2,11 @@
 /*  test_macros.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -44,7 +44,7 @@
 // The test case is marked as failed, but does not fail the entire test run.
 #define TEST_CASE_MAY_FAIL(name) TEST_CASE(name *doctest::may_fail())
 
-// Provide aliases to conform with Godot naming conventions (see error macros).
+// Provide aliases to conform with Fox naming conventions (see error macros).
 #define TEST_COND(cond, ...) DOCTEST_CHECK_FALSE_MESSAGE(cond, __VA_ARGS__)
 #define TEST_FAIL(cond, ...) DOCTEST_FAIL(cond, __VA_ARGS__)
 #define TEST_FAIL_COND(cond, ...) DOCTEST_REQUIRE_FALSE_MESSAGE(cond, __VA_ARGS__)
@@ -118,7 +118,7 @@ DOCTEST_STRINGIFY_VARIANT(PackedColorArray);
 
 // Register test commands to be launched from the command-line.
 // For instance: REGISTER_TEST_COMMAND("gdscript-parser" &test_parser_func).
-// Example usage: `godot --test gdscript-parser`.
+// Example usage: `Fox --test gdscript-parser`.
 
 typedef void (*TestFunc)();
 extern Map<String, TestFunc> *test_commands;

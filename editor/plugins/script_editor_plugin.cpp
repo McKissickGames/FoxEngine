@@ -2,11 +2,11 @@
 /*  script_editor_plugin.cpp                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -1205,7 +1205,7 @@ void ScriptEditor::_menu_option(int p_option) {
 			help_search_dialog->popup_dialog();
 		} break;
 		case SEARCH_WEBSITE: {
-			OS::get_singleton()->shell_open("https://docs.godotengine.org/");
+			OS::get_singleton()->shell_open("https://docs.Foxengine.org/");
 		} break;
 		case WINDOW_NEXT: {
 			_history_forward();
@@ -3508,7 +3508,7 @@ ScriptEditor::ScriptEditor(EditorNode *p_editor) {
 	site_search->set_text(TTR("Online Docs"));
 	site_search->connect("pressed", callable_mp(this, &ScriptEditor::_menu_option), varray(SEARCH_WEBSITE));
 	menu_hb->add_child(site_search);
-	site_search->set_tooltip(TTR("Open Godot online documentation."));
+	site_search->set_tooltip(TTR("Open Fox online documentation."));
 
 	help_search = memnew(Button);
 	help_search->set_flat(true);

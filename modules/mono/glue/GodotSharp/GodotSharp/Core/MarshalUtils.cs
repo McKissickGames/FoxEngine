@@ -2,32 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Godot
+namespace Fox
 {
-    using Array = Godot.Collections.Array;
-    using Dictionary = Godot.Collections.Dictionary;
+    using Array = Fox.Collections.Array;
+    using Dictionary = Fox.Collections.Dictionary;
 
     static class MarshalUtils
     {
         /// <summary>
         /// Returns <see langword="true"/> if the generic type definition of <paramref name="type"/>
-        /// is <see cref="Godot.Collections.Array{T}"/>; otherwise returns <see langword="false"/>.
+        /// is <see cref="Fox.Collections.Array{T}"/>; otherwise returns <see langword="false"/>.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">
         /// <paramref name="type"/> is not a generic type. That is, IsGenericType returns false.
         /// </exception>
         static bool TypeIsGenericArray(Type type) =>
-            type.GetGenericTypeDefinition() == typeof(Godot.Collections.Array<>);
+            type.GetGenericTypeDefinition() == typeof(Fox.Collections.Array<>);
 
         /// <summary>
         /// Returns <see langword="true"/> if the generic type definition of <paramref name="type"/>
-        /// is <see cref="Godot.Collections.Dictionary{TKey, TValue}"/>; otherwise returns <see langword="false"/>.
+        /// is <see cref="Fox.Collections.Dictionary{TKey, TValue}"/>; otherwise returns <see langword="false"/>.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">
         /// <paramref name="type"/> is not a generic type. That is, IsGenericType returns false.
         /// </exception>
         static bool TypeIsGenericDictionary(Type type) =>
-            type.GetGenericTypeDefinition() == typeof(Godot.Collections.Dictionary<,>);
+            type.GetGenericTypeDefinition() == typeof(Fox.Collections.Dictionary<,>);
 
         static bool TypeIsSystemGenericList(Type type) =>
             type.GetGenericTypeDefinition() == typeof(System.Collections.Generic.List<>);
@@ -55,12 +55,12 @@ namespace Godot
 
         static Type MakeGenericArrayType(Type elemType)
         {
-            return typeof(Godot.Collections.Array<>).MakeGenericType(elemType);
+            return typeof(Fox.Collections.Array<>).MakeGenericType(elemType);
         }
 
         static Type MakeGenericDictionaryType(Type keyType, Type valueType)
         {
-            return typeof(Godot.Collections.Dictionary<,>).MakeGenericType(keyType, valueType);
+            return typeof(Fox.Collections.Dictionary<,>).MakeGenericType(keyType, valueType);
         }
     }
 }

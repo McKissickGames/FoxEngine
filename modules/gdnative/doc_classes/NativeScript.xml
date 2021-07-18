@@ -11,7 +11,7 @@
 			<return type="String">
 			</return>
 			<description>
-				Returns the documentation string that was previously set with [code]godot_nativescript_set_class_documentation[/code].
+				Returns the documentation string that was previously set with [code]Fox_nativescript_set_class_documentation[/code].
 			</description>
 		</method>
 		<method name="get_method_documentation" qualifiers="const">
@@ -20,7 +20,7 @@
 			<argument index="0" name="method" type="StringName">
 			</argument>
 			<description>
-				Returns the documentation string that was previously set with [code]godot_nativescript_set_method_documentation[/code].
+				Returns the documentation string that was previously set with [code]Fox_nativescript_set_method_documentation[/code].
 			</description>
 		</method>
 		<method name="get_property_documentation" qualifiers="const">
@@ -29,7 +29,7 @@
 			<argument index="0" name="path" type="StringName">
 			</argument>
 			<description>
-				Returns the documentation string that was previously set with [code]godot_nativescript_set_property_documentation[/code].
+				Returns the documentation string that was previously set with [code]Fox_nativescript_set_property_documentation[/code].
 			</description>
 		</method>
 		<method name="get_signal_documentation" qualifiers="const">
@@ -38,7 +38,7 @@
 			<argument index="0" name="signal_name" type="StringName">
 			</argument>
 			<description>
-				Returns the documentation string that was previously set with [code]godot_nativescript_set_signal_documentation[/code].
+				Returns the documentation string that was previously set with [code]Fox_nativescript_set_signal_documentation[/code].
 			</description>
 		</method>
 		<method name="new" qualifiers="vararg">

@@ -495,7 +495,7 @@ if env["builtin_icu"]:
         env.Append(LIBS=[lib])
 
 
-# Godot source files
+# Fox source files
 
 module_obj = []
 

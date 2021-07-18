@@ -2,11 +2,11 @@
 /*  os.h                                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -47,7 +47,7 @@ class OS {
 	static uint64_t target_ticks;
 	String _execpath;
 	List<String> _cmdline;
-	bool _keep_screen_on = true; // set default value to true, because this had been true before godot 2.0.
+	bool _keep_screen_on = true; // set default value to true, because this had been true before Fox 2.0.
 	bool low_processor_usage_mode = false;
 	int low_processor_usage_mode_sleep_usec = 10000;
 	bool _verbose_stdout = false;
@@ -241,7 +241,7 @@ public:
 	virtual String get_locale() const;
 
 	String get_safe_dir_name(const String &p_dir_name, bool p_allow_dir_separator = false) const;
-	virtual String get_godot_dir_name() const;
+	virtual String get_Fox_dir_name() const;
 
 	virtual String get_data_path() const;
 	virtual String get_config_path() const;

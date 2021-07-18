@@ -2,11 +2,11 @@
 /*  gd_mono_utils.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -103,7 +103,7 @@ MonoObject *unmanaged_get_managed(Object *unmanaged) {
 	CRASH_COND(script_binding.wrapper_class == nullptr);
 #endif
 
-	MonoObject *mono_object = GDMonoUtils::create_managed_for_godot_object(script_binding.wrapper_class, script_binding.type_name, unmanaged);
+	MonoObject *mono_object = GDMonoUtils::create_managed_for_Fox_object(script_binding.wrapper_class, script_binding.type_name, unmanaged);
 	ERR_FAIL_NULL_V(mono_object, nullptr);
 
 	gchandle = MonoGCHandleData::new_strong_handle(mono_object);
@@ -115,7 +115,7 @@ MonoObject *unmanaged_get_managed(Object *unmanaged) {
 		// Unsafe refcount increment. The managed instance also counts as a reference.
 		// This way if the unmanaged world has no references to our owner
 		// but the managed instance is alive, the refcount will be 1 instead of 0.
-		// See: godot_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
+		// See: Fox_icall_RefCounted_Dtor(MonoObject *p_obj, Object *p_ptr)
 		rc->reference();
 		CSharpLanguage::get_singleton()->post_unsafe_reference(rc);
 	}
@@ -206,8 +206,8 @@ GDMonoClass *type_get_proxy_class(const StringName &p_type) {
 	GDMonoClass *klass = GDMono::get_singleton()->get_core_api_assembly()->get_class(BINDINGS_NAMESPACE, class_name);
 
 	if (klass && klass->is_static()) {
-		// A static class means this is a Godot singleton class. If an instance is needed we use Godot.Object.
-		return GDMonoCache::cached_data.class_GodotObject;
+		// A static class means this is a Fox singleton class. If an instance is needed we use Fox.Object.
+		return GDMonoCache::cached_data.class_FoxObject;
 	}
 
 #ifdef TOOLS_ENABLED
@@ -238,7 +238,7 @@ GDMonoClass *get_class_native_base(GDMonoClass *p_class) {
 	return nullptr;
 }
 
-MonoObject *create_managed_for_godot_object(GDMonoClass *p_class, const StringName &p_native, Object *p_object) {
+MonoObject *create_managed_for_Fox_object(GDMonoClass *p_class, const StringName &p_native, Object *p_object) {
 	bool parent_is_object_class = ClassDB::is_parent_class(p_object->get_class_name(), p_native);
 	ERR_FAIL_COND_V_MSG(!parent_is_object_class, nullptr,
 			"Type inherits from native type '" + p_native + "', so it can't be instantiated in object of type: '" + p_object->get_class() + "'.");
@@ -246,7 +246,7 @@ MonoObject *create_managed_for_godot_object(GDMonoClass *p_class, const StringNa
 	MonoObject *mono_object = mono_object_new(mono_domain_get(), p_class->get_mono_ptr());
 	ERR_FAIL_NULL_V(mono_object, nullptr);
 
-	CACHED_FIELD(GodotObject, ptr)->set_value_raw(mono_object, p_object);
+	CACHED_FIELD(FoxObject, ptr)->set_value_raw(mono_object, p_object);
 
 	// Construct
 	GDMonoUtils::runtime_object_init(mono_object, p_class);
@@ -387,7 +387,7 @@ String get_exception_name_and_message(MonoException *p_exc) {
 
 	MonoProperty *prop = mono_class_get_property_from_name(klass, "Message");
 	MonoString *msg = (MonoString *)property_get_value(prop, (MonoObject *)p_exc, nullptr, nullptr);
-	res += GDMonoMarshal::mono_string_to_godot(msg);
+	res += GDMonoMarshal::mono_string_to_Fox(msg);
 
 	return res;
 }
@@ -552,7 +552,7 @@ uint64_t unbox_enum_value(MonoObject *p_boxed, MonoType *p_enum_basetype, bool &
 }
 
 void dispose(MonoObject *p_mono_object, MonoException **r_exc) {
-	CACHED_METHOD_THUNK(GodotObject, Dispose).invoke(p_mono_object, r_exc);
+	CACHED_METHOD_THUNK(FoxObject, Dispose).invoke(p_mono_object, r_exc);
 }
 
 namespace Marshal {
@@ -561,7 +561,7 @@ namespace Marshal {
 #ifdef TOOLS_ENABLED
 #define NO_GLUE_RET(m_ret)                                     \
 	{                                                          \
-		if (!GDMonoCache::cached_data.godot_api_cache_updated) \
+		if (!GDMonoCache::cached_data.Fox_api_cache_updated) \
 			return m_ret;                                      \
 	}
 #else
@@ -670,7 +670,7 @@ ScopeThreadAttach::~ScopeThreadAttach() {
 	}
 }
 
-StringName get_native_godot_class_name(GDMonoClass *p_class) {
+StringName get_native_Fox_class_name(GDMonoClass *p_class) {
 	MonoObject *native_name_obj = p_class->get_field(BINDINGS_NATIVE_NAME_FIELD)->get_value(nullptr);
 	StringName *ptr = GDMonoMarshal::unbox<StringName *>(CACHED_FIELD(StringName, ptr)->get_value(native_name_obj));
 	return ptr ? *ptr : StringName();

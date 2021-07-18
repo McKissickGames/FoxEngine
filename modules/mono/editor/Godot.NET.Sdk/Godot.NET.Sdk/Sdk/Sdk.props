@@ -3,34 +3,34 @@
 
   <PropertyGroup>
     <!-- Determines if we should import Microsoft.NET.Sdk, if it wasn't already imported. -->
-    <GodotSdkImportsMicrosoftNetSdk Condition=" '$(UsingMicrosoftNETSdk)' != 'true' ">true</GodotSdkImportsMicrosoftNetSdk>
+    <FoxSdkImportsMicrosoftNetSdk Condition=" '$(UsingMicrosoftNETSdk)' != 'true' ">true</FoxSdkImportsMicrosoftNetSdk>
 
-    <GodotProjectTypeGuid>{8F3E2DF0-C35C-4265-82FC-BEA011F4A7ED}</GodotProjectTypeGuid>
+    <FoxProjectTypeGuid>{8F3E2DF0-C35C-4265-82FC-BEA011F4A7ED}</FoxProjectTypeGuid>
   </PropertyGroup>
 
   <PropertyGroup>
     <Configurations>Debug;ExportDebug;ExportRelease</Configurations>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 
-    <GodotProjectDir Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)</GodotProjectDir>
-    <GodotProjectDir Condition=" '$(SolutionDir)' == '' ">$(MSBuildProjectDirectory)</GodotProjectDir>
-    <GodotProjectDir>$([MSBuild]::EnsureTrailingSlash('$(GodotProjectDir)'))</GodotProjectDir>
+    <FoxProjectDir Condition=" '$(SolutionDir)' != '' ">$(SolutionDir)</FoxProjectDir>
+    <FoxProjectDir Condition=" '$(SolutionDir)' == '' ">$(MSBuildProjectDirectory)</FoxProjectDir>
+    <FoxProjectDir>$([MSBuild]::EnsureTrailingSlash('$(FoxProjectDir)'))</FoxProjectDir>
 
-    <!-- Custom output paths for Godot projects. In brief, 'bin\' and 'obj\' are moved to '$(GodotProjectDir)\.godot\mono\temp\'. -->
-    <BaseOutputPath>$(GodotProjectDir).godot\mono\temp\bin\</BaseOutputPath>
-    <OutputPath>$(GodotProjectDir).godot\mono\temp\bin\$(Configuration)\</OutputPath>
+    <!-- Custom output paths for Fox projects. In brief, 'bin\' and 'obj\' are moved to '$(FoxProjectDir)\.Fox\mono\temp\'. -->
+    <BaseOutputPath>$(FoxProjectDir).Fox\mono\temp\bin\</BaseOutputPath>
+    <OutputPath>$(FoxProjectDir).Fox\mono\temp\bin\$(Configuration)\</OutputPath>
     <!--
     Use custom IntermediateOutputPath and BaseIntermediateOutputPath only if it wasn't already set.
     Otherwise the old values may have already been changed by MSBuild which can cause problems with NuGet.
     -->
-    <IntermediateOutputPath Condition=" '$(IntermediateOutputPath)' == '' ">$(GodotProjectDir).godot\mono\temp\obj\$(Configuration)\</IntermediateOutputPath>
-    <BaseIntermediateOutputPath Condition=" '$(BaseIntermediateOutputPath)' == '' ">$(GodotProjectDir).godot\mono\temp\obj\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath Condition=" '$(IntermediateOutputPath)' == '' ">$(FoxProjectDir).Fox\mono\temp\obj\$(Configuration)\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition=" '$(BaseIntermediateOutputPath)' == '' ">$(FoxProjectDir).Fox\mono\temp\obj\</BaseIntermediateOutputPath>
 
     <!-- Do not append the target framework name to the output path. -->
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" Condition=" '$(GodotSdkImportsMicrosoftNetSdk)' == 'true' " />
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" Condition=" '$(FoxSdkImportsMicrosoftNetSdk)' == 'true' " />
 
   <PropertyGroup>
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
@@ -49,42 +49,42 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <GodotApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</GodotApiConfiguration>
-    <GodotApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</GodotApiConfiguration>
+    <FoxApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</FoxApiConfiguration>
+    <FoxApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</FoxApiConfiguration>
   </PropertyGroup>
 
-  <!-- Auto-detect the target Godot platform if it was not specified. -->
-  <PropertyGroup Condition=" '$(GodotTargetPlatform)' == '' ">
-    <GodotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Linux))' ">linuxbsd</GodotTargetPlatform>
-    <GodotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(FreeBSD))' ">linuxbsd</GodotTargetPlatform>
-    <GodotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(OSX))' ">osx</GodotTargetPlatform>
-    <GodotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Windows))' ">windows</GodotTargetPlatform>
+  <!-- Auto-detect the target Fox platform if it was not specified. -->
+  <PropertyGroup Condition=" '$(FoxTargetPlatform)' == '' ">
+    <FoxTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Linux))' ">linuxbsd</FoxTargetPlatform>
+    <FoxTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(FreeBSD))' ">linuxbsd</FoxTargetPlatform>
+    <FoxTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(OSX))' ">osx</FoxTargetPlatform>
+    <FoxTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Windows))' ">windows</FoxTargetPlatform>
   </PropertyGroup>
 
   <PropertyGroup>
-    <GodotRealTIsDouble Condition=" '$(GodotRealTIsDouble)' == '' ">false</GodotRealTIsDouble>
+    <FoxRealTIsDouble Condition=" '$(FoxRealTIsDouble)' == '' ">false</FoxRealTIsDouble>
   </PropertyGroup>
 
-  <!-- Godot DefineConstants. -->
+  <!-- Fox DefineConstants. -->
   <PropertyGroup>
-    <!-- Define constant to identify Godot builds. -->
-    <GodotDefineConstants>GODOT</GodotDefineConstants>
+    <!-- Define constant to identify Fox builds. -->
+    <FoxDefineConstants>Fox</FoxDefineConstants>
 
     <!--
-    Define constant to determine the target Godot platform. This includes the
+    Define constant to determine the target Fox platform. This includes the
     recognized platform names and the platform category (PC, MOBILE or WEB).
     -->
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'windows' ">GODOT_WINDOWS;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'linuxbsd' ">GODOT_LINUXBSD;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'osx' ">GODOT_OSX;GODOT_MACOS;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'server' ">GODOT_SERVER;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'uwp' ">GODOT_UWP;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'haiku' ">GODOT_HAIKU;GODOT_PC</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'android' ">GODOT_ANDROID;GODOT_MOBILE</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'iphone' ">GODOT_IPHONE;GODOT_IOS;GODOT_MOBILE</GodotPlatformConstants>
-    <GodotPlatformConstants Condition=" '$(GodotTargetPlatform)' == 'javascript' ">GODOT_JAVASCRIPT;GODOT_HTML5;GODOT_WASM;GODOT_WEB</GodotPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'windows' ">Fox_WINDOWS;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'linuxbsd' ">Fox_LINUXBSD;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'osx' ">Fox_OSX;Fox_MACOS;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'server' ">Fox_SERVER;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'uwp' ">Fox_UWP;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'haiku' ">Fox_HAIKU;Fox_PC</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'android' ">Fox_ANDROID;Fox_MOBILE</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'iphone' ">Fox_IPHONE;Fox_IOS;Fox_MOBILE</FoxPlatformConstants>
+    <FoxPlatformConstants Condition=" '$(FoxTargetPlatform)' == 'javascript' ">Fox_JAVASCRIPT;Fox_HTML5;Fox_WASM;Fox_WEB</FoxPlatformConstants>
 
-    <GodotDefineConstants>$(GodotDefineConstants);$(GodotPlatformConstants)</GodotDefineConstants>
+    <FoxDefineConstants>$(FoxDefineConstants);$(FoxPlatformConstants)</FoxDefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -93,23 +93,23 @@
     <!-- Debug defines TOOLS to differentiate between Debug and ExportDebug configurations. -->
     <DefineConstants Condition=" '$(Configuration)' == 'Debug' ">$(DefineConstants);TOOLS</DefineConstants>
 
-    <DefineConstants>$(GodotDefineConstants);$(DefineConstants)</DefineConstants>
+    <DefineConstants>$(FoxDefineConstants);$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
-  <!-- Godot API references -->
+  <!-- Fox API references -->
   <ItemGroup>
     <!--
     TODO:
     We should consider a nuget package for reference assemblies. This is difficult because the
-    Godot scripting API is continuaslly breaking backwards compatibility even in patch releases.
+    Fox scripting API is continuaslly breaking backwards compatibility even in patch releases.
     -->
-    <Reference Include="GodotSharp">
+    <Reference Include="FoxSharp">
       <Private>false</Private>
-      <HintPath>$(GodotProjectDir).godot\mono\assemblies\$(GodotApiConfiguration)\GodotSharp.dll</HintPath>
+      <HintPath>$(FoxProjectDir).Fox\mono\assemblies\$(FoxApiConfiguration)\FoxSharp.dll</HintPath>
     </Reference>
-    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
+    <Reference Include="FoxSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
       <Private>false</Private>
-      <HintPath>$(GodotProjectDir).godot\mono\assemblies\$(GodotApiConfiguration)\GodotSharpEditor.dll</HintPath>
+      <HintPath>$(FoxProjectDir).Fox\mono\assemblies\$(FoxApiConfiguration)\FoxSharpEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

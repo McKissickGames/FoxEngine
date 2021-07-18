@@ -1,7 +1,7 @@
-# Bengali translation of the Godot Engine editor
+# Bengali translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 # Abu Md. Maruf Sarker <maruf.webdev@gmail.com>, 2016-2017.
 # Abdullah Zubair <abdullahzubair109@gmail.com>, 2017.
 # Tahmid Karim <tahmidk15@gmail.com>, 2016.
@@ -13,12 +13,12 @@
 # Hasibul Hasan <d1hasib@yahoo.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2021-06-11 14:49+0000\n"
 "Last-Translator: Mokarrom Hossain <mhb2016.bzs@gmail.com>\n"
-"Language-Team: Bengali <https://hosted.weblate.org/projects/godot-engine/"
-"godot/bn/>\n"
+"Language-Team: Bengali <https://hosted.weblate.org/projects/Fox-engine/"
+"Fox/bn/>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1138,16 +1138,16 @@ msgid "Change Dictionary Value"
 msgstr "ডিকশনারি ভ্যালু  পরিবর্তন করুন"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Godot কমিউনিটি হতে আপনাকে ধন্যবাদ!"
+msgid "Thanks from the Fox community!"
+msgstr "Fox কমিউনিটি হতে আপনাকে ধন্যবাদ!"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr ""
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Godot Engine কন্ট্রিবিউটরস"
+msgid "Fox Engine contributors"
+msgstr "Fox Engine কন্ট্রিবিউটরস"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1223,12 +1223,12 @@ msgstr "থার্ড পার্টি লাইসেন্স"
 #: editor/editor_about.cpp
 #, fuzzy
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot ইঞ্জিন বিভিন্ন থার্ড পার্টি ফ্রি এবং ওপেন সোর্স লাইব্রেরি ব্যাবহার করে থাকে। "
+"Fox ইঞ্জিন বিভিন্ন থার্ড পার্টি ফ্রি এবং ওপেন সোর্স লাইব্রেরি ব্যাবহার করে থাকে। "
 "এই লাইব্রেরিগুলি এমআইটি লাইসেন্সের শর্তসমূহ মেনে চলে। এখানে এই সকল থার্ড পার্টি "
 "কম্পনেন্টের কপিরাইট বিবৃতি এবং লাইসেন্স সংক্রান্ত একটি তালিকা প্রদান করা হল।"
 
@@ -1840,7 +1840,7 @@ msgstr "TileMap মুছে ফেলুন"
 
 #: editor/editor_feature_profile.cpp
 #, fuzzy
-msgid "Godot Feature Profile"
+msgid "Fox Feature Profile"
 msgstr "এক্সপোর্ট টেমপ্লেটসমূহ লোড হচ্ছে"
 
 #: editor/editor_feature_profile.cpp
@@ -3131,7 +3131,7 @@ msgid "About"
 msgstr "সম্বন্ধে"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
+msgid "Support Fox Development"
 msgstr ""
 
 #: editor/editor_node.cpp
@@ -3838,7 +3838,7 @@ msgstr "টেমপ্লেট ফাইল নির্বাচন করু
 
 #: editor/export_template_manager.cpp
 #, fuzzy
-msgid "Godot Export Templates"
+msgid "Fox Export Templates"
 msgstr "এক্সপোর্ট টেমপ্লেটসমূহ লোড হচ্ছে"
 
 #: editor/export_template_manager.cpp
@@ -5546,7 +5546,7 @@ msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
@@ -7468,7 +7468,7 @@ msgstr "এডিটরে খুলুন"
 
 #: editor/plugins/script_editor_plugin.cpp
 #, fuzzy
-msgid "Open Godot online documentation."
+msgid "Open Fox online documentation."
 msgstr "রেফারেন্সের ডকুমেন্টেশনে খুঁজুন।"
 
 #: editor/plugins/script_editor_plugin.cpp
@@ -10082,7 +10082,7 @@ msgstr "ভেক্টর ইউনিফর্ম পরিবর্তন ক
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
@@ -10095,7 +10095,7 @@ msgstr ""
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
@@ -10340,7 +10340,7 @@ msgid "ZIP File"
 msgstr "ফাইল"
 
 #: editor/project_export.cpp
-msgid "Godot Game Pack"
+msgid "Fox Game Pack"
 msgstr ""
 
 #: editor/project_export.cpp
@@ -10370,8 +10370,8 @@ msgstr "জিপ ফরম্যাট খুঁজে পেতে ব্য�
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr "এমন একটি ফোল্ডার বাছাই করুন যেখানে 'project.godot' নামে কোন ফাইল নেই।"
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
+msgstr "এমন একটি ফোল্ডার বাছাই করুন যেখানে 'project.Fox' নামে কোন ফাইল নেই।"
 
 #: editor/project_manager.cpp
 #, fuzzy
@@ -10380,11 +10380,11 @@ msgstr "অনুগ্রহ করে প্রকল্পের ফোল্
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Please choose a \"project.godot\" or \".zip\" file."
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
 msgstr "অনুগ্রহ করে প্রকল্পের ফোল্ডারের বাইরে এক্সপোর্ট করুন!"
 
 #: editor/project_manager.cpp
-msgid "This directory already contains a Godot project."
+msgid "This directory already contains a Fox project."
 msgstr ""
 
 #: editor/project_manager.cpp
@@ -10420,18 +10420,18 @@ msgstr "অকার্যকর প্রকল্পের পথ (কোন�
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
 msgstr "প্রকল্পের পথে engine.cfg তৈরি করা সম্ভব হয়নি।"
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Couldn't edit project.godot in project path."
+msgid "Couldn't edit project.Fox in project path."
 msgstr "প্রকল্পের পথে engine.cfg তৈরি করা সম্ভব হয়নি।"
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Couldn't create project.godot in project path."
+msgid "Couldn't create project.Fox in project path."
 msgstr "প্রকল্পের পথে engine.cfg তৈরি করা সম্ভব হয়নি।"
 
 #: editor/project_manager.cpp
@@ -10539,12 +10539,12 @@ msgstr "একধিক প্রকল্প খোলায় আপনি স�
 
 #: editor/project_manager.cpp
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
@@ -10625,13 +10625,13 @@ msgstr ""
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
-"বিদ্যমান Godot প্রজেক্টের খোঁজে আপনি %s ফোল্ডারসমূহ স্ক্যান করতে যাচ্ছেন। আপনি কি "
+"বিদ্যমান Fox প্রজেক্টের খোঁজে আপনি %s ফোল্ডারসমূহ স্ক্যান করতে যাচ্ছেন। আপনি কি "
 "সুনিশ্চিত?"
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr "প্রজেক্ট ম্যানেজার"
@@ -10933,7 +10933,7 @@ msgstr "লোকাল ফিল্টার মোড পরিবর্তি
 
 #: editor/project_settings_editor.cpp
 #, fuzzy
-msgid "Project Settings (project.godot)"
+msgid "Project Settings (project.Fox)"
 msgstr "প্রকল্পের সেটিংস (engine.cfg)"
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
@@ -13011,8 +13011,8 @@ msgstr "অগ্রহণযোগ্য ক্লাস নাম"
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -13061,7 +13061,7 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 
@@ -13072,7 +13072,7 @@ msgstr ""
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -14822,11 +14822,11 @@ msgstr ""
 #~ msgstr "টাইলটি খুঁজে পাওয়া যায়নি:"
 
 #, fuzzy
-#~ msgid "Couldn't get project.godot in project path."
+#~ msgid "Couldn't get project.Fox in project path."
 #~ msgstr "প্রকল্পের পথে engine.cfg তৈরি করা সম্ভব হয়নি।"
 
 #, fuzzy
-#~ msgid "Couldn't get project.godot in the project path."
+#~ msgid "Couldn't get project.Fox in the project path."
 #~ msgstr "প্রকল্পের পথে engine.cfg তৈরি করা সম্ভব হয়নি।"
 
 #~ msgid "Not found!"
@@ -15061,10 +15061,10 @@ msgstr ""
 #~ msgstr "ফন্ট ইম্পোর্ট করুন"
 
 #~ msgid ""
-#~ "This file is already a Godot font file, please supply a BMFont type file "
+#~ "This file is already a Fox font file, please supply a BMFont type file "
 #~ "instead."
 #~ msgstr ""
-#~ "এই ফাইলটি ইতিমধ্যেই একটি Godot ফন্ট ফাইল, পরিবর্তে অনুগ্রহ করে BMFont ধরণের "
+#~ "এই ফাইলটি ইতিমধ্যেই একটি Fox ফন্ট ফাইল, পরিবর্তে অনুগ্রহ করে BMFont ধরণের "
 #~ "ফাইল প্রদান করুন।"
 
 #~ msgid "Failed opening as BMFont file."
@@ -15318,7 +15318,7 @@ msgstr ""
 #~ msgstr "সঙ্কোচন করুন"
 
 #, fuzzy
-#~ msgid "Add to Project (project.godot)"
+#~ msgid "Add to Project (project.Fox)"
 #~ msgstr "প্রকল্পে সংযুক্ত করুন (engine.cfg)"
 
 #~ msgid "Import Languages:"
@@ -15398,11 +15398,11 @@ msgstr ""
 #~ msgstr "অকার্যকর প্রকল্পের পথ, পথটি অবশ্যই বিদ্যমান হতে হবে!"
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must not exist."
+#~ msgid "Invalid project path, project.Fox must not exist."
 #~ msgstr "অকার্যকর প্রকল্পের পথ, engine.cfg অবশ্যই অনুপস্থিত হতে হবে।"
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must exist."
+#~ msgid "Invalid project path, project.Fox must exist."
 #~ msgstr "অকার্যকর প্রকল্পের পথ, engine.cfg অবশ্যই উপস্থিত হতে হবে।"
 
 #~ msgid "Project Path (Must Exist):"
@@ -15473,8 +15473,8 @@ msgstr ""
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "বহি:স্থ রিসোর্সের পরিবর্তনে সতর্ক করে।"
 
-#~ msgid "Open https://godotengine.org at tutorials section."
-#~ msgstr "টিউটোরিয়ালের স্থানে https://godotengine.org খুলুন।"
+#~ msgid "Open https://Foxengine.org at tutorials section."
+#~ msgstr "টিউটোরিয়ালের স্থানে https://Foxengine.org খুলুন।"
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "ইন্সট্যান্স করার জন্য কোনো দৃশ্য নির্বাচন করা হয়নি!"

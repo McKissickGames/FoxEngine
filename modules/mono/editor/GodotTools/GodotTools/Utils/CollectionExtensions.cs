@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace GodotTools.Utils
+namespace FoxTools.Utils
 {
     public static class CollectionExtensions
     {

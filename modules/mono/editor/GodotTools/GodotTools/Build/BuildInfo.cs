@@ -1,10 +1,10 @@
 using System;
-using Godot;
-using Godot.Collections;
-using GodotTools.Internals;
+using Fox;
+using Fox.Collections;
+using FoxTools.Internals;
 using Path = System.IO.Path;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     [Serializable]
     public sealed class BuildInfo : RefCounted // TODO Remove RefCounted once we have proper serialization
@@ -15,7 +15,7 @@ namespace GodotTools.Build
         public bool Restore { get; }
         public Array<string> CustomProperties { get; } = new Array<string>(); // TODO Use List once we have proper serialization
 
-        public string LogsDirPath => Path.Combine(GodotSharpDirs.BuildLogsDirs, $"{Solution.MD5Text()}_{Configuration}");
+        public string LogsDirPath => Path.Combine(FoxSharpDirs.BuildLogsDirs, $"{Solution.MD5Text()}_{Configuration}");
 
         public override bool Equals(object obj)
         {

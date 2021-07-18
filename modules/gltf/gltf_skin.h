@@ -2,11 +2,11 @@
 /*  gltf_skin.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -64,13 +64,13 @@ private:
 	GLTFSkeletonIndex skeleton = -1;
 
 	// A mapping from the joint indices (in the order of joints_original) to the
-	// Godot Skeleton's bone_indices
+	// Fox Skeleton's bone_indices
 	Map<int, int> joint_i_to_bone_i;
 	Map<int, StringName> joint_i_to_name;
 
 	// The Actual Skin that will be created as a mapping between the IBM's of
 	// this skin to the generated skeleton for the mesh instances.
-	Ref<Skin> godot_skin;
+	Ref<Skin> Fox_skin;
 
 protected:
 	static void _bind_methods();
@@ -103,7 +103,7 @@ public:
 	Dictionary get_joint_i_to_name();
 	void set_joint_i_to_name(Dictionary p_joint_i_to_name);
 
-	Ref<Skin> get_godot_skin();
-	void set_godot_skin(Ref<Skin> p_godot_skin);
+	Ref<Skin> get_Fox_skin();
+	void set_Fox_skin(Ref<Skin> p_Fox_skin);
 };
 #endif // GLTF_SKIN_H

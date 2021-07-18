@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     public partial class Object : IDisposable
     {
@@ -15,13 +15,13 @@ namespace Godot
         public Object() : this(false)
         {
             if (ptr == IntPtr.Zero)
-                ptr = godot_icall_Object_Ctor(this);
-            _InitializeGodotScriptInstanceInternals();
+                ptr = Fox_icall_Object_Ctor(this);
+            _InitializeFoxScriptInstanceInternals();
         }
 
-        internal void _InitializeGodotScriptInstanceInternals()
+        internal void _InitializeFoxScriptInstanceInternals()
         {
-            godot_icall_Object_ConnectEventSignals(ptr);
+            Fox_icall_Object_ConnectEventSignals(ptr);
         }
 
         internal Object(bool memoryOwn)
@@ -66,11 +66,11 @@ namespace Godot
                 if (memoryOwn)
                 {
                     memoryOwn = false;
-                    godot_icall_RefCounted_Disposed(this, ptr, !disposing);
+                    Fox_icall_RefCounted_Disposed(this, ptr, !disposing);
                 }
                 else
                 {
-                    godot_icall_Object_Disposed(this, ptr);
+                    Fox_icall_Object_Disposed(this, ptr);
                 }
 
                 this.ptr = IntPtr.Zero;
@@ -81,11 +81,11 @@ namespace Godot
 
         public override string ToString()
         {
-            return godot_icall_Object_ToString(GetPtr(this));
+            return Fox_icall_Object_ToString(GetPtr(this));
         }
 
         /// <summary>
-        /// Returns a new <see cref="Godot.SignalAwaiter"/> awaiter configured to complete when the instance
+        /// Returns a new <see cref="Fox.SignalAwaiter"/> awaiter configured to complete when the instance
         /// <paramref name="source"/> emits the signal specified by the <paramref name="signal"/> parameter.
         /// </summary>
         /// <param name="source">
@@ -113,32 +113,32 @@ namespace Godot
         }
 
         /// <summary>
-        /// Gets a new <see cref="Godot.DynamicGodotObject"/> associated with this instance.
+        /// Gets a new <see cref="Fox.DynamicFoxObject"/> associated with this instance.
         /// </summary>
-        public dynamic DynamicObject => new DynamicGodotObject(this);
+        public dynamic DynamicObject => new DynamicFoxObject(this);
 
         internal static IntPtr __ClassDB_get_method(StringName type, string method)
         {
-            return godot_icall_Object_ClassDB_get_method(StringName.GetPtr(type), method);
+            return Fox_icall_Object_ClassDB_get_method(StringName.GetPtr(type), method);
         }
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern IntPtr godot_icall_Object_Ctor(Object obj);
+        internal static extern IntPtr Fox_icall_Object_Ctor(Object obj);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern void godot_icall_Object_Disposed(Object obj, IntPtr ptr);
+        internal static extern void Fox_icall_Object_Disposed(Object obj, IntPtr ptr);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern void godot_icall_RefCounted_Disposed(Object obj, IntPtr ptr, bool isFinalizer);
+        internal static extern void Fox_icall_RefCounted_Disposed(Object obj, IntPtr ptr, bool isFinalizer);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern void godot_icall_Object_ConnectEventSignals(IntPtr obj);
+        internal static extern void Fox_icall_Object_ConnectEventSignals(IntPtr obj);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern string godot_icall_Object_ToString(IntPtr ptr);
+        internal static extern string Fox_icall_Object_ToString(IntPtr ptr);
 
         // Used by the generated API
         [MethodImpl(MethodImplOptions.InternalCall)]
-        internal static extern IntPtr godot_icall_Object_ClassDB_get_method(IntPtr type, string method);
+        internal static extern IntPtr Fox_icall_Object_ClassDB_get_method(IntPtr type, string method);
     }
 }

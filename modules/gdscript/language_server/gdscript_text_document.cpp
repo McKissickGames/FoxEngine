@@ -2,11 +2,11 @@
 /*  gdscript_text_document.cpp                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -63,7 +63,7 @@ void GDScriptTextDocument::didOpen(const Variant &p_param) {
 }
 
 void GDScriptTextDocument::didClose(const Variant &p_param) {
-	// Left empty on purpose. Godot does nothing special on closing a document,
+	// Left empty on purpose. Fox does nothing special on closing a document,
 	// but it satisfies LSP clients that require didClose be implemented.
 }
 

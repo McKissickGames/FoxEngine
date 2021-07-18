@@ -2,11 +2,11 @@
 /*  test_json.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -127,11 +127,11 @@ TEST_CASE("[JSON] Parsing arrays") {
 TEST_CASE("[JSON] Parsing objects (dictionaries)") {
 	JSON json;
 
-	json.parse(R"({"name": "Godot Engine", "is_free": true, "bugs": null, "apples": {"red": 500, "green": 0, "blue": -20}, "empty_object": {}})");
+	json.parse(R"({"name": "Fox Engine", "is_free": true, "bugs": null, "apples": {"red": 500, "green": 0, "blue": -20}, "empty_object": {}})");
 
 	const Dictionary dictionary = json.get_data();
 	CHECK_MESSAGE(
-			dictionary["name"] == "Godot Engine",
+			dictionary["name"] == "Fox Engine",
 			"The parsed JSON should contain the expected values.");
 	CHECK_MESSAGE(
 			dictionary["is_free"],

@@ -2,11 +2,11 @@
 /*  variant_struct.h                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_VARIANT_STRUCT_H
-#define GODOT_VARIANT_STRUCT_H
+#ifndef Fox_VARIANT_STRUCT_H
+#define Fox_VARIANT_STRUCT_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,13 +37,13 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_VARIANT_SIZE (sizeof(godot_real_t) * 4 + sizeof(int64_t))
+#define Fox_VARIANT_SIZE (sizeof(Fox_real_t) * 4 + sizeof(int64_t))
 
-#ifndef GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_VARIANT_TYPE_DEFINED
+#define Fox_CORE_API_Fox_VARIANT_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_VARIANT_SIZE];
-} godot_variant;
+	uint8_t _dont_touch_that[Fox_VARIANT_SIZE];
+} Fox_variant;
 #endif
 
 #ifdef __cplusplus

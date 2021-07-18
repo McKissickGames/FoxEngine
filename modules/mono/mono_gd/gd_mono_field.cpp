@@ -2,11 +2,11 @@
 /*  gd_mono_field.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -257,7 +257,7 @@ void GDMonoField::set_value_from_variant(MonoObject *p_object, const Variant &p_
 				MonoString *mono_string = nullptr;
 				mono_field_set_value(p_object, mono_field, mono_string);
 			} else {
-				MonoString *mono_string = GDMonoMarshal::mono_string_from_godot(p_value);
+				MonoString *mono_string = GDMonoMarshal::mono_string_from_Fox(p_value);
 				mono_field_set_value(p_object, mono_field, mono_string);
 			}
 		} break;
@@ -301,7 +301,7 @@ void GDMonoField::set_value_from_variant(MonoObject *p_object, const Variant &p_
 #endif
 				} break;
 				case Variant::STRING: {
-					MonoString *mono_string = GDMonoMarshal::mono_string_from_godot(p_value);
+					MonoString *mono_string = GDMonoMarshal::mono_string_from_Fox(p_value);
 					mono_field_set_value(p_object, mono_field, mono_string);
 				} break;
 				case Variant::VECTOR2: {
@@ -448,7 +448,7 @@ int GDMonoField::get_int_value(MonoObject *p_object) {
 
 String GDMonoField::get_string_value(MonoObject *p_object) {
 	MonoObject *val = get_value(p_object);
-	return GDMonoMarshal::mono_string_to_godot((MonoString *)val);
+	return GDMonoMarshal::mono_string_to_Fox((MonoString *)val);
 }
 
 bool GDMonoField::has_attribute(GDMonoClass *p_attr_class) {

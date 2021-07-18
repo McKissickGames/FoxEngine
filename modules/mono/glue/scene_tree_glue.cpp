@@ -2,11 +2,11 @@
 /*  scene_tree_glue.cpp                                                  */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -40,7 +40,7 @@
 #include "../mono_gd/gd_mono_marshal.h"
 #include "../mono_gd/gd_mono_utils.h"
 
-Array *godot_icall_SceneTree_get_nodes_in_group_Generic(SceneTree *ptr, StringName *group, MonoReflectionType *refltype) {
+Array *Fox_icall_SceneTree_get_nodes_in_group_Generic(SceneTree *ptr, StringName *group, MonoReflectionType *refltype) {
 	List<Node *> nodes;
 	Array ret;
 
@@ -55,7 +55,7 @@ Array *godot_icall_SceneTree_get_nodes_in_group_Generic(SceneTree *ptr, StringNa
 
 		if (klass == GDMonoUtils::get_class_native_base(klass)) {
 			// If we're trying to get native objects, just check the inheritance list
-			StringName native_class_name = GDMonoUtils::get_native_godot_class_name(klass);
+			StringName native_class_name = GDMonoUtils::get_native_Fox_class_name(klass);
 			for (int i = 0; i < nodes.size(); ++i) {
 				if (ClassDB::is_parent_class(nodes[i]->get_class(), native_class_name)) {
 					ret.push_back(nodes[i]);
@@ -79,8 +79,8 @@ Array *godot_icall_SceneTree_get_nodes_in_group_Generic(SceneTree *ptr, StringNa
 	return memnew(Array(ret));
 }
 
-void godot_register_scene_tree_icalls() {
-	GDMonoUtils::add_internal_call("Godot.SceneTree::godot_icall_SceneTree_get_nodes_in_group_Generic", godot_icall_SceneTree_get_nodes_in_group_Generic);
+void Fox_register_scene_tree_icalls() {
+	GDMonoUtils::add_internal_call("Fox.SceneTree::Fox_icall_SceneTree_get_nodes_in_group_Generic", Fox_icall_SceneTree_get_nodes_in_group_Generic);
 }
 
 #endif // MONO_GLUE_ENABLED

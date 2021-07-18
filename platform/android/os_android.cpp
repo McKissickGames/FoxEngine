@@ -2,11 +2,11 @@
 /*  os_android.cpp                                                       */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -42,8 +42,8 @@
 
 #include <dlfcn.h>
 
-#include "java_godot_io_wrapper.h"
-#include "java_godot_wrapper.h"
+#include "java_Fox_io_wrapper.h"
+#include "java_Fox_wrapper.h"
 
 String _remove_symlink(const String &dir) {
 	// Workaround for Android 6.0+ using a symlink.
@@ -65,7 +65,7 @@ String _remove_symlink(const String &dir) {
 class AndroidLogger : public Logger {
 public:
 	virtual void logv(const char *p_format, va_list p_list, bool p_err) {
-		__android_log_vprint(p_err ? ANDROID_LOG_ERROR : ANDROID_LOG_INFO, "godot", p_format, p_list);
+		__android_log_vprint(p_err ? ANDROID_LOG_ERROR : ANDROID_LOG_INFO, "Fox", p_format, p_list);
 	}
 
 	virtual ~AndroidLogger() {}
@@ -96,10 +96,10 @@ void OS_Android::initialize() {
 }
 
 void OS_Android::initialize_joypads() {
-	Input::get_singleton()->set_fallback_mapping(godot_java->get_input_fallback_mapping());
+	Input::get_singleton()->set_fallback_mapping(Fox_java->get_input_fallback_mapping());
 
 	// This queries/updates the currently connected devices/joypads.
-	godot_java->init_input_devices();
+	Fox_java->init_input_devices();
 }
 
 void OS_Android::set_main_loop(MainLoop *p_main_loop) {
@@ -120,24 +120,24 @@ OS_Android *OS_Android::get_singleton() {
 	return (OS_Android *)OS::get_singleton();
 }
 
-GodotJavaWrapper *OS_Android::get_godot_java() {
-	return godot_java;
+FoxJavaWrapper *OS_Android::get_Fox_java() {
+	return Fox_java;
 }
 
-GodotIOJavaWrapper *OS_Android::get_godot_io_java() {
-	return godot_io_java;
+FoxIOJavaWrapper *OS_Android::get_Fox_io_java() {
+	return Fox_io_java;
 }
 
 bool OS_Android::request_permission(const String &p_name) {
-	return godot_java->request_permission(p_name);
+	return Fox_java->request_permission(p_name);
 }
 
 bool OS_Android::request_permissions() {
-	return godot_java->request_permissions();
+	return Fox_java->request_permissions();
 }
 
 Vector<String> OS_Android::get_granted_permissions() const {
-	return godot_java->get_granted_permissions();
+	return Fox_java->get_granted_permissions();
 }
 
 Error OS_Android::open_dynamic_library(const String p_path, void *&p_library_handle, bool p_also_set_library_path) {
@@ -186,7 +186,7 @@ void OS_Android::main_loop_request_go_back() {
 }
 
 Error OS_Android::shell_open(String p_uri) {
-	return godot_io_java->open_uri(p_uri);
+	return Fox_io_java->open_uri(p_uri);
 }
 
 String OS_Android::get_resource_dir() const {
@@ -194,7 +194,7 @@ String OS_Android::get_resource_dir() const {
 }
 
 String OS_Android::get_locale() const {
-	String locale = godot_io_java->get_locale();
+	String locale = Fox_io_java->get_locale();
 	if (locale != "") {
 		return locale;
 	}
@@ -203,7 +203,7 @@ String OS_Android::get_locale() const {
 }
 
 String OS_Android::get_model_name() const {
-	String model = godot_io_java->get_model();
+	String model = Fox_io_java->get_model();
 	if (model != "")
 		return model;
 
@@ -214,7 +214,7 @@ String OS_Android::get_user_data_dir() const {
 	if (data_dir_cache != String())
 		return data_dir_cache;
 
-	String data_dir = godot_io_java->get_user_data_dir();
+	String data_dir = Fox_io_java->get_user_data_dir();
 	if (data_dir != "") {
 		data_dir_cache = _remove_symlink(data_dir);
 		return data_dir_cache;
@@ -223,7 +223,7 @@ String OS_Android::get_user_data_dir() const {
 }
 
 String OS_Android::get_external_data_dir() const {
-	String data_dir = godot_io_java->get_external_data_dir();
+	String data_dir = Fox_io_java->get_external_data_dir();
 	if (data_dir != "") {
 		data_dir = _remove_symlink(data_dir);
 		return data_dir;
@@ -232,7 +232,7 @@ String OS_Android::get_external_data_dir() const {
 }
 
 String OS_Android::get_unique_id() const {
-	String unique_id = godot_io_java->get_unique_id();
+	String unique_id = Fox_io_java->get_unique_id();
 	if (unique_id != "")
 		return unique_id;
 
@@ -240,7 +240,7 @@ String OS_Android::get_unique_id() const {
 }
 
 String OS_Android::get_system_dir(SystemDir p_dir) const {
-	return godot_io_java->get_system_dir(p_dir);
+	return Fox_io_java->get_system_dir(p_dir);
 }
 
 void OS_Android::set_display_size(const Size2i &p_size) {
@@ -281,7 +281,7 @@ ANativeWindow *OS_Android::get_native_window() const {
 }
 
 void OS_Android::vibrate_handheld(int p_duration_ms) {
-	godot_java->vibrate(p_duration_ms);
+	Fox_java->vibrate(p_duration_ms);
 }
 
 bool OS_Android::_check_internal_feature_support(const String &p_feature) {
@@ -304,7 +304,7 @@ bool OS_Android::_check_internal_feature_support(const String &p_feature) {
 	return false;
 }
 
-OS_Android::OS_Android(GodotJavaWrapper *p_godot_java, GodotIOJavaWrapper *p_godot_io_java, bool p_use_apk_expansion) {
+OS_Android::OS_Android(FoxJavaWrapper *p_Fox_java, FoxIOJavaWrapper *p_Fox_io_java, bool p_use_apk_expansion) {
 	display_size.width = 800;
 	display_size.height = 600;
 
@@ -322,8 +322,8 @@ OS_Android::OS_Android(GodotJavaWrapper *p_godot_java, GodotIOJavaWrapper *p_god
 	native_window = nullptr;
 #endif
 
-	godot_java = p_godot_java;
-	godot_io_java = p_godot_io_java;
+	Fox_java = p_Fox_java;
+	Fox_io_java = p_Fox_io_java;
 
 	Vector<Logger *> loggers;
 	loggers.push_back(memnew(AndroidLogger));

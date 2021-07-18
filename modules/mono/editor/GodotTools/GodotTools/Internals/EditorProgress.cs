@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
-using Godot;
+using Fox;
 
-namespace GodotTools.Internals
+namespace FoxTools.Internals
 {
     public class EditorProgress : IDisposable
     {

@@ -2,11 +2,11 @@
 /*  script_editor_debugger.cpp                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -1429,13 +1429,13 @@ void ScriptEditorDebugger::_item_menu_id_pressed(int p_option) {
 			// Construct a GitHub repository URL and open it in the user's default web browser.
 			if (String(VERSION_HASH).length() >= 1) {
 				// Git commit hash information available; use it for greater accuracy, including for development versions.
-				OS::get_singleton()->shell_open(vformat("https://github.com/godotengine/godot/blob/%s/%s#L%d",
+				OS::get_singleton()->shell_open(vformat("https://github.com/Foxengine/Fox/blob/%s/%s#L%d",
 						VERSION_HASH,
 						file,
 						line_number));
 			} else {
 				// Git commit hash information unavailable; fall back to tagged releases.
-				OS::get_singleton()->shell_open(vformat("https://github.com/godotengine/godot/blob/%s-stable/%s#L%d",
+				OS::get_singleton()->shell_open(vformat("https://github.com/Foxengine/Fox/blob/%s-stable/%s#L%d",
 						VERSION_NUMBER,
 						file,
 						line_number));

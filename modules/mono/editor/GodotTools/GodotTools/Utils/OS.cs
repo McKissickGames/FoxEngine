@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace GodotTools.Utils
+namespace FoxTools.Utils
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class OS

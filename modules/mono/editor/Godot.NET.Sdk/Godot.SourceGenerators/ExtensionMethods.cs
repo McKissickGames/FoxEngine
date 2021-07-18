@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace Godot.SourceGenerators
+namespace Fox.SourceGenerators
 {
     static class ExtensionMethods
     {
@@ -37,7 +37,7 @@ namespace Godot.SourceGenerators
             return false;
         }
 
-        private static bool IsGodotScriptClass(
+        private static bool IsFoxScriptClass(
             this ClassDeclarationSyntax cds, Compilation compilation,
             out INamedTypeSymbol? symbol
         )
@@ -47,7 +47,7 @@ namespace Godot.SourceGenerators
             var classTypeSymbol = sm.GetDeclaredSymbol(cds);
 
             if (classTypeSymbol?.BaseType == null
-                || !classTypeSymbol.BaseType.InheritsFrom(GodotClasses.Object))
+                || !classTypeSymbol.BaseType.InheritsFrom(FoxClasses.Object))
             {
                 symbol = null;
                 return false;
@@ -57,14 +57,14 @@ namespace Godot.SourceGenerators
             return true;
         }
 
-        public static IEnumerable<(ClassDeclarationSyntax cds, INamedTypeSymbol symbol)> SelectGodotScriptClasses(
+        public static IEnumerable<(ClassDeclarationSyntax cds, INamedTypeSymbol symbol)> SelectFoxScriptClasses(
             this IEnumerable<ClassDeclarationSyntax> source,
             Compilation compilation
         )
         {
             foreach (var cds in source)
             {
-                if (cds.IsGodotScriptClass(compilation, out var symbol))
+                if (cds.IsFoxScriptClass(compilation, out var symbol))
                     yield return (cds, symbol!);
             }
         }
@@ -74,7 +74,7 @@ namespace Godot.SourceGenerators
 
         public static bool HasDisableGeneratorsAttribute(this INamedTypeSymbol symbol)
             => symbol.GetAttributes().Any(attr =>
-                attr.AttributeClass?.ToString() == GodotClasses.DisableGodotGeneratorsAttr);
+                attr.AttributeClass?.ToString() == FoxClasses.DisableFoxGeneratorsAttr);
 
         private static SymbolDisplayFormat FullyQualifiedFormatOmitGlobal { get; } =
             SymbolDisplayFormat.FullyQualifiedFormat

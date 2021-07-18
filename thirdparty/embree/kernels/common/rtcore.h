@@ -25,7 +25,7 @@ namespace embree
 #endif
 
 /*! Macros used in the rtcore API implementation */
-// -- GODOT start --
+// -- Fox start --
 // #define RTC_CATCH_BEGIN try {
 #define RTC_CATCH_BEGIN
   
@@ -76,7 +76,7 @@ namespace embree
 //     return false;                                                               \
 //   }
 #define RTC_CATCH_END2_FALSE(scene) return false;
-// -- GODOT end --
+// -- Fox end --
 
 #define RTC_VERIFY_HANDLE(handle)                               \
   if (handle == nullptr) {                                         \
@@ -103,7 +103,7 @@ namespace embree
 #define RTC_TRACE(x) 
 #endif
 
-// -- GODOT begin --
+// -- Fox begin --
 //   /*! used to throw embree API errors */
 //   struct rtcore_error : public std::exception
 //   {
@@ -119,22 +119,22 @@ namespace embree
 //     RTCError error;
 //     std::string str;
 //   };
-// -- GODOT end --
+// -- Fox end --
 
 #if defined(DEBUG) // only report file and line in debug mode
-  // -- GODOT begin --
+  // -- Fox begin --
   // #define throw_RTCError(error,str) \
   //   throw rtcore_error(error,std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str));
   #define throw_RTCError(error,str) \
     printf(std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str)), abort();
-  // -- GODOT end --
+  // -- Fox end --
 #else
-  // -- GODOT begin --
+  // -- Fox begin --
   // #define throw_RTCError(error,str) \
   //   throw rtcore_error(error,str);
   #define throw_RTCError(error,str) \
     abort();
-  // -- GODOT end --
+  // -- Fox end --
 #endif
 
 #define RTC_BUILD_ARGUMENTS_HAS(settings,member) \

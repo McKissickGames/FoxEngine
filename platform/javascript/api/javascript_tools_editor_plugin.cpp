@@ -2,11 +2,11 @@
 /*  javascript_tools_editor_plugin.cpp                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -39,9 +39,9 @@
 
 #include <emscripten/emscripten.h>
 
-// JavaScript functions defined in library_godot_editor_tools.js
+// JavaScript functions defined in library_Fox_editor_tools.js
 extern "C" {
-extern void godot_js_os_download_buffer(const uint8_t *p_buf, int p_buf_size, const char *p_name, const char *p_mime);
+extern void Fox_js_os_download_buffer(const uint8_t *p_buf, int p_buf_size, const char *p_name, const char *p_mime);
 }
 
 static void _javascript_editor_init_callback() {
@@ -74,7 +74,7 @@ void JavaScriptToolsEditorPlugin::_download_zip(Variant p_v) {
 	Vector<uint8_t> buf;
 	buf.resize(f->get_length());
 	f->get_buffer(buf.ptrw(), buf.size());
-	godot_js_os_download_buffer(buf.ptr(), buf.size(), "project.zip", "application/zip");
+	Fox_js_os_download_buffer(buf.ptr(), buf.size(), "project.zip", "application/zip");
 }
 
 void JavaScriptToolsEditorPlugin::_zip_file(String p_path, String p_base_path, zipFile p_zip) {

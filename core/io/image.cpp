@@ -2,11 +2,11 @@
 /*  image.cpp                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -3516,7 +3516,7 @@ Error Image::load_tga_from_buffer(const Vector<uint8_t> &p_array) {
 	ERR_FAIL_NULL_V_MSG(
 			_tga_mem_loader_func,
 			ERR_UNAVAILABLE,
-			"The TGA module isn't enabled. Recompile the Godot editor or export template binary with the `module_tga_enabled=yes` SCons option.");
+			"The TGA module isn't enabled. Recompile the Fox editor or export template binary with the `module_tga_enabled=yes` SCons option.");
 	return _load_from_buffer(p_array, _tga_mem_loader_func);
 }
 
@@ -3524,7 +3524,7 @@ Error Image::load_bmp_from_buffer(const Vector<uint8_t> &p_array) {
 	ERR_FAIL_NULL_V_MSG(
 			_bmp_mem_loader_func,
 			ERR_UNAVAILABLE,
-			"The BMP module isn't enabled. Recompile the Godot editor or export template binary with the `module_bmp_enabled=yes` SCons option.");
+			"The BMP module isn't enabled. Recompile the Fox editor or export template binary with the `module_bmp_enabled=yes` SCons option.");
 	return _load_from_buffer(p_array, _bmp_mem_loader_func);
 }
 

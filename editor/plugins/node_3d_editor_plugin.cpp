@@ -2,11 +2,11 @@
 /*  node_3d_editor_plugin.cpp                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -1859,7 +1859,7 @@ void Node3DEditorViewport::_sinput(const Ref<InputEvent> &p_event) {
 
 		} else if (m->get_button_mask() & MOUSE_BUTTON_MASK_MIDDLE) {
 			const int mod = _get_key_modifier(m);
-			if (nav_scheme == NAVIGATION_GODOT) {
+			if (nav_scheme == NAVIGATION_Fox) {
 				if (mod == _get_key_modifier_setting("editors/3d/navigation/pan_modifier")) {
 					nav_mode = NAVIGATION_PAN;
 				} else if (mod == _get_key_modifier_setting("editors/3d/navigation/zoom_modifier")) {
@@ -1929,7 +1929,7 @@ void Node3DEditorViewport::_sinput(const Ref<InputEvent> &p_event) {
 		NavigationScheme nav_scheme = (NavigationScheme)EditorSettings::get_singleton()->get("editors/3d/navigation/navigation_scheme").operator int();
 		NavigationMode nav_mode = NAVIGATION_NONE;
 
-		if (nav_scheme == NAVIGATION_GODOT) {
+		if (nav_scheme == NAVIGATION_Fox) {
 			const int mod = _get_key_modifier(pan_gesture);
 
 			if (mod == _get_key_modifier_setting("editors/3d/navigation/pan_modifier")) {

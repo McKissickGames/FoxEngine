@@ -2,11 +2,11 @@
 /*  gjk_epa.cpp                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -75,10 +75,10 @@ GJK-EPA collision solver by Nathanael Presson, 2008
 #define EPA_MAX_VERTICES	128
 #define EPA_MAX_FACES		(EPA_MAX_VERTICES*2)
 #define EPA_MAX_ITERATIONS	255
-// -- GODOT start --
+// -- Fox start --
 //#define EPA_ACCURACY		((real_t)0.0001)
 #define EPA_ACCURACY		((real_t)0.00001)
-// -- GODOT end --
+// -- Fox end --
 #define EPA_FALLBACK		(10*EPA_ACCURACY)
 #define EPA_PLANE_EPS		((real_t)0.00001)
 #define EPA_INSIDE_EPS		((real_t)0.01)
@@ -802,10 +802,10 @@ struct	GJK
 					append(m_stock,face);
 					return(nullptr);
 				}
-				// -- GODOT start --
+				// -- Fox start --
 				//m_status=m_stock.root?eStatus::OutOfVertices:eStatus::OutOfFaces;
 				m_status=eStatus::OutOfFaces;
-				// -- GODOT end --
+				// -- Fox end --
 				return(nullptr);
 			}
 			sFace*				findbest()

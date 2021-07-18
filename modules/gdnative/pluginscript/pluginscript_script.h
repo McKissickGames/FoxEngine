@@ -2,11 +2,11 @@
 /*  pluginscript_script.h                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -31,13 +31,13 @@
 #ifndef PLUGINSCRIPT_SCRIPT_H
 #define PLUGINSCRIPT_SCRIPT_H
 
-// Godot imports
+// Fox imports
 
 #include "core/doc_data.h"
 #include "core/object/script_language.h"
 // PluginScript imports
 #include "pluginscript_language.h"
-#include <pluginscript/godot_pluginscript.h>
+#include <pluginscript/Fox_pluginscript.h>
 
 class PluginScript : public Script {
 	GDCLASS(PluginScript, Script);
@@ -46,8 +46,8 @@ class PluginScript : public Script {
 	friend class PluginScriptLanguage;
 
 private:
-	godot_pluginscript_script_data *_data = nullptr;
-	const godot_pluginscript_script_desc *_desc = nullptr;
+	Fox_pluginscript_script_data *_data = nullptr;
+	const Fox_pluginscript_script_desc *_desc = nullptr;
 	PluginScriptLanguage *_language = nullptr;
 	bool _tool = false;
 	bool _valid = false;

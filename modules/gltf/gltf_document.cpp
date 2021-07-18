@@ -2,11 +2,11 @@
 /*  gltf_document.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -251,7 +251,7 @@ Error GLTFDocument::_serialize_bone_attachment(Ref<GLTFState> state) {
 			BoneAttachment3D *bone_attachment = state->skeletons[skeleton_i]->bone_attachments[attachment_i];
 			String bone_name = bone_attachment->get_bone_name();
 			bone_name = _sanitize_bone_name(bone_name);
-			int32_t bone = state->skeletons[skeleton_i]->godot_skeleton->find_bone(bone_name);
+			int32_t bone = state->skeletons[skeleton_i]->Fox_skeleton->find_bone(bone_name);
 			ERR_CONTINUE(bone == -1);
 			for (int skin_i = 0; skin_i < state->skins.size(); skin_i++) {
 				if (state->skins[skin_i]->skeleton != skeleton_i) {
@@ -2908,7 +2908,7 @@ Error GLTFDocument::_parse_images(Ref<GLTFState> state, const String &p_base_pat
 		//  - a URI with embedded base64-encoded data, or
 		//  - a reference to a bufferView; in that case mimeType must be defined."
 		// Since mimeType is optional for external files and base64 data, we'll have to
-		// fall back on letting Godot parse the data to figure out if it's PNG or JPEG.
+		// fall back on letting Fox parse the data to figure out if it's PNG or JPEG.
 
 		// We'll assume that we use either URI or bufferView, so let's warn the user
 		// if their image somehow uses both. And fail if it has neither.
@@ -2956,7 +2956,7 @@ Error GLTFDocument::_parse_images(Ref<GLTFState> state, const String &p_base_pat
 				// ResourceLoader will rely on the file extension to use the relevant loader.
 				// The spec says that if mimeType is defined, it should take precedence (e.g.
 				// there could be a `.png` image which is actually JPEG), but there's no easy
-				// API for that in Godot, so we'd have to load as a buffer (i.e. embedded in
+				// API for that in Fox, so we'd have to load as a buffer (i.e. embedded in
 				// the material), so we do this only as fallback.
 				Ref<Texture2D> texture = ResourceLoader::load(uri);
 				if (texture.is_valid()) {
@@ -3713,7 +3713,7 @@ void GLTFDocument::_capture_nodes_for_multirooted_skin(Ref<GLTFState> state, Ref
 	}
 
 	// Go up the tree till all of the multiple roots of the skin are at the same hierarchy level.
-	// This sucks, but 99% of all game engines (not just Godot) would have this same issue.
+	// This sucks, but 99% of all game engines (not just Fox) would have this same issue.
 	for (int i = 0; i < roots.size(); ++i) {
 		GLTFNodeIndex current_node = roots[i];
 		while (state->nodes[current_node]->height > maxHeight) {
@@ -4165,7 +4165,7 @@ Error GLTFDocument::_create_skeletons(Ref<GLTFState> state) {
 		Ref<GLTFSkeleton> gltf_skeleton = state->skeletons.write[skel_i];
 
 		Skeleton3D *skeleton = memnew(Skeleton3D);
-		gltf_skeleton->godot_skeleton = skeleton;
+		gltf_skeleton->Fox_skeleton = skeleton;
 
 		// Make a unique name, no gltf node represents this skeleton
 		skeleton->set_name(_gen_unique_name(state, "Skeleton3D"));
@@ -4239,7 +4239,7 @@ Error GLTFDocument::_map_skin_joints_indices_to_skeleton_bone_indices(Ref<GLTFSt
 			const GLTFNodeIndex node_i = skin->joints_original[joint_index];
 			const Ref<GLTFNode> node = state->nodes[node_i];
 
-			const int bone_index = skeleton->godot_skeleton->find_bone(node->get_name());
+			const int bone_index = skeleton->Fox_skeleton->find_bone(node->get_name());
 			ERR_FAIL_COND_V(bone_index < 0, FAILED);
 
 			skin->joint_i_to_bone_i.insert(joint_index, bone_index);
@@ -4281,7 +4281,7 @@ Error GLTFDocument::_create_skins(Ref<GLTFState> state) {
 			}
 		}
 
-		gltf_skin->godot_skin = skin;
+		gltf_skin->Fox_skin = skin;
 	}
 
 	// Purge the duplicates!
@@ -4289,7 +4289,7 @@ Error GLTFDocument::_create_skins(Ref<GLTFState> state) {
 
 	// Create unique names now, after removing duplicates
 	for (GLTFSkinIndex skin_i = 0; skin_i < state->skins.size(); ++skin_i) {
-		Ref<Skin> skin = state->skins.write[skin_i]->godot_skin;
+		Ref<Skin> skin = state->skins.write[skin_i]->Fox_skin;
 		if (skin->get_name().is_empty()) {
 			// Make a unique name, no gltf node represents this skin
 			skin->set_name(_gen_unique_name(state, "Skin"));
@@ -4326,12 +4326,12 @@ bool GLTFDocument::_skins_are_same(const Ref<Skin> skin_a, const Ref<Skin> skin_
 void GLTFDocument::_remove_duplicate_skins(Ref<GLTFState> state) {
 	for (int i = 0; i < state->skins.size(); ++i) {
 		for (int j = i + 1; j < state->skins.size(); ++j) {
-			const Ref<Skin> skin_i = state->skins[i]->godot_skin;
-			const Ref<Skin> skin_j = state->skins[j]->godot_skin;
+			const Ref<Skin> skin_i = state->skins[i]->Fox_skin;
+			const Ref<Skin> skin_j = state->skins[j]->Fox_skin;
 
 			if (_skins_are_same(skin_i, skin_j)) {
 				// replace it and delete the old
-				state->skins.write[j]->godot_skin = skin_i;
+				state->skins.write[j]->Fox_skin = skin_i;
 			}
 		}
 	}
@@ -4401,7 +4401,7 @@ Error GLTFDocument::_serialize_cameras(Ref<GLTFState> state) {
 			d["type"] = "orthographic";
 		} else if (camera->get_perspective()) {
 			Dictionary ppt;
-			// GLTF spec is in radians, Godot's camera is in degrees.
+			// GLTF spec is in radians, Fox's camera is in degrees.
 			ppt["yfov"] = Math::deg2rad(camera->get_fov_size());
 			ppt["zfar"] = camera->get_zfar();
 			ppt["znear"] = camera->get_znear();
@@ -4493,7 +4493,7 @@ Error GLTFDocument::_parse_cameras(Ref<GLTFState> state) {
 			camera->set_perspective(false);
 			if (d.has("orthographic")) {
 				const Dictionary &og = d["orthographic"];
-				// GLTF spec is in radians, Godot's camera is in degrees.
+				// GLTF spec is in radians, Fox's camera is in degrees.
 				camera->set_fov_size(Math::rad2deg(real_t(og["ymag"])));
 				camera->set_zfar(og["zfar"]);
 				camera->set_znear(og["znear"]);
@@ -4504,7 +4504,7 @@ Error GLTFDocument::_parse_cameras(Ref<GLTFState> state) {
 			camera->set_perspective(true);
 			if (d.has("perspective")) {
 				const Dictionary &ppt = d["perspective"];
-				// GLTF spec is in radians, Godot's camera is in degrees.
+				// GLTF spec is in radians, Fox's camera is in degrees.
 				camera->set_fov_size(Math::rad2deg(real_t(ppt["yfov"])));
 				camera->set_zfar(ppt["zfar"]);
 				camera->set_znear(ppt["znear"]);
@@ -4858,29 +4858,29 @@ GLTFMeshIndex GLTFDocument::_convert_mesh_instance(Ref<GLTFState> state, MeshIns
 	}
 	Ref<EditorSceneImporterMesh> import_mesh;
 	import_mesh.instantiate();
-	Ref<Mesh> godot_mesh = p_mesh_instance->get_mesh();
-	if (godot_mesh.is_null()) {
+	Ref<Mesh> Fox_mesh = p_mesh_instance->get_mesh();
+	if (Fox_mesh.is_null()) {
 		return -1;
 	}
 	Vector<float> blend_weights;
 	Vector<String> blend_names;
-	int32_t blend_count = godot_mesh->get_blend_shape_count();
+	int32_t blend_count = Fox_mesh->get_blend_shape_count();
 	blend_names.resize(blend_count);
 	blend_weights.resize(blend_count);
-	for (int32_t blend_i = 0; blend_i < godot_mesh->get_blend_shape_count(); blend_i++) {
-		String blend_name = godot_mesh->get_blend_shape_name(blend_i);
+	for (int32_t blend_i = 0; blend_i < Fox_mesh->get_blend_shape_count(); blend_i++) {
+		String blend_name = Fox_mesh->get_blend_shape_name(blend_i);
 		blend_names.write[blend_i] = blend_name;
 		import_mesh->add_blend_shape(blend_name);
 	}
-	for (int32_t surface_i = 0; surface_i < godot_mesh->get_surface_count(); surface_i++) {
-		Mesh::PrimitiveType primitive_type = godot_mesh->surface_get_primitive_type(surface_i);
-		Array arrays = godot_mesh->surface_get_arrays(surface_i);
-		Array blend_shape_arrays = godot_mesh->surface_get_blend_shape_arrays(surface_i);
-		Ref<Material> mat = godot_mesh->surface_get_material(surface_i);
-		Ref<ArrayMesh> godot_array_mesh = godot_mesh;
+	for (int32_t surface_i = 0; surface_i < Fox_mesh->get_surface_count(); surface_i++) {
+		Mesh::PrimitiveType primitive_type = Fox_mesh->surface_get_primitive_type(surface_i);
+		Array arrays = Fox_mesh->surface_get_arrays(surface_i);
+		Array blend_shape_arrays = Fox_mesh->surface_get_blend_shape_arrays(surface_i);
+		Ref<Material> mat = Fox_mesh->surface_get_material(surface_i);
+		Ref<ArrayMesh> Fox_array_mesh = Fox_mesh;
 		String surface_name;
-		if (godot_array_mesh.is_valid()) {
-			surface_name = godot_array_mesh->surface_get_name(surface_i);
+		if (Fox_array_mesh.is_valid()) {
+			surface_name = Fox_array_mesh->surface_get_name(surface_i);
 		}
 		if (p_mesh_instance->get_surface_override_material(surface_i).is_valid()) {
 			mat = p_mesh_instance->get_surface_override_material(surface_i);
@@ -5026,7 +5026,7 @@ GLTFLightIndex GLTFDocument::_convert_light(Ref<GLTFState> state, Light3D *p_lig
 		l->type = "directional";
 		DirectionalLight3D *light = cast_to<DirectionalLight3D>(p_light);
 		l->intensity = light->get_param(DirectionalLight3D::PARAM_ENERGY);
-		l->range = FLT_MAX; // Range for directional lights is infinite in Godot.
+		l->range = FLT_MAX; // Range for directional lights is infinite in Fox.
 	} else if (cast_to<OmniLight3D>(p_light)) {
 		l->type = "point";
 		OmniLight3D *light = cast_to<OmniLight3D>(p_light);
@@ -5057,7 +5057,7 @@ GLTFSkeletonIndex GLTFDocument::_convert_skeleton(Ref<GLTFState> state, Skeleton
 	Ref<GLTFSkeleton> gltf_skeleton;
 	gltf_skeleton.instantiate();
 	gltf_skeleton->set_name(_gen_unique_name(state, p_skeleton->get_name()));
-	gltf_skeleton->godot_skeleton = p_skeleton;
+	gltf_skeleton->Fox_skeleton = p_skeleton;
 	GLTFSkeletonIndex skeleton_i = state->skeletons.size();
 	state->skeletons.push_back(gltf_skeleton);
 	return skeleton_i;
@@ -5100,7 +5100,7 @@ void GLTFDocument::_convert_scene_node(Ref<GLTFState> state, Node *p_current, No
 		return;
 	} else if (cast_to<Skeleton3D>(p_current)) {
 		_convert_skeleton_to_gltf(p_current, state, p_gltf_parent, p_gltf_root, gltf_node, p_root);
-		// We ignore the Godot Engine node that is the skeleton.
+		// We ignore the Fox Engine node that is the skeleton.
 		return;
 	} else if (cast_to<MultiMeshInstance3D>(p_current)) {
 		_convert_mult_mesh_instance_to_gltf(p_current, p_gltf_parent, p_gltf_root, gltf_node, state, p_root);
@@ -5317,7 +5317,7 @@ void GLTFDocument::_convert_bone_attachment_to_gltf(Node *p_scene_parent, Ref<GL
 			Skeleton3D *bone_attachment_skeleton = Object::cast_to<Skeleton3D>(node);
 			if (bone_attachment_skeleton) {
 				for (GLTFSkeletonIndex skeleton_i = 0; skeleton_i < state->skeletons.size(); skeleton_i++) {
-					if (state->skeletons[skeleton_i]->godot_skeleton != bone_attachment_skeleton) {
+					if (state->skeletons[skeleton_i]->Fox_skeleton != bone_attachment_skeleton) {
 						continue;
 					}
 					state->skeletons.write[skeleton_i]->bone_attachments.push_back(bone_attachment);
@@ -5404,7 +5404,7 @@ void GLTFDocument::_generate_skeleton_bone_node(Ref<GLTFState> state, Node *scen
 
 	Node3D *current_node = nullptr;
 
-	Skeleton3D *skeleton = state->skeletons[gltf_node->skeleton]->godot_skeleton;
+	Skeleton3D *skeleton = state->skeletons[gltf_node->skeleton]->Fox_skeleton;
 	// In this case, this node is already a bone in skeleton.
 	const bool is_skinned_mesh = (gltf_node->skin >= 0 && gltf_node->mesh >= 0);
 	const bool requires_extra_node = (gltf_node->mesh >= 0 || gltf_node->camera >= 0 || gltf_node->light >= 0);
@@ -5633,7 +5633,7 @@ void GLTFDocument::_import_animation(Ref<GLTFState> state, AnimationPlayer *ap, 
 		node_path = root->get_path_to(node_element->get());
 
 		if (gltf_node->skeleton >= 0) {
-			const Skeleton3D *sk = state->skeletons[gltf_node->skeleton]->godot_skeleton;
+			const Skeleton3D *sk = state->skeletons[gltf_node->skeleton]->Fox_skeleton;
 			ERR_FAIL_COND(sk == nullptr);
 
 			const String path = ap->get_parent()->get_path_to(sk);
@@ -5710,7 +5710,7 @@ void GLTFDocument::_import_animation(Ref<GLTFState> state, AnimationPlayer *ap, 
 					xform.basis.set_quaternion_scale(rot, scale);
 					xform.origin = pos;
 
-					const Skeleton3D *skeleton = state->skeletons[gltf_node->skeleton]->godot_skeleton;
+					const Skeleton3D *skeleton = state->skeletons[gltf_node->skeleton]->Fox_skeleton;
 					const int bone_idx = skeleton->find_bone(gltf_node->get_name());
 					xform = skeleton->get_bone_rest(bone_idx).affine_inverse() * xform;
 
@@ -5747,7 +5747,7 @@ void GLTFDocument::_import_animation(Ref<GLTFState> state, AnimationPlayer *ap, 
 			animation->add_track(Animation::TYPE_VALUE);
 			animation->track_set_path(track_idx, blend_path);
 
-			// Only LINEAR and STEP (NEAREST) can be supported out of the box by Godot's Animation,
+			// Only LINEAR and STEP (NEAREST) can be supported out of the box by Fox's Animation,
 			// the other modes have to be baked.
 			GLTFAnimation::Interpolation gltf_interp = track.weight_tracks[i].interpolation;
 			if (gltf_interp == GLTFAnimation::INTERP_LINEAR || gltf_interp == GLTFAnimation::INTERP_STEP) {
@@ -5832,7 +5832,7 @@ void GLTFDocument::_convert_mesh_instances(Ref<GLTFState> state) {
 			if (prev_skeleton == -1 || prev_skeleton >= state->skeletons.size()) {
 				continue;
 			}
-			if (prev_gltf_skin->get_godot_skin() == skin && state->skeletons[prev_skeleton]->godot_skeleton == skeleton) {
+			if (prev_gltf_skin->get_Fox_skin() == skin && state->skeletons[prev_skeleton]->Fox_skeleton == skeleton) {
 				node->skin = skin_i;
 				node->skeleton = prev_skeleton;
 				is_unique = false;
@@ -5848,19 +5848,19 @@ void GLTFDocument::_convert_mesh_instances(Ref<GLTFState> state) {
 		gltf_skin->skeleton = skeleton_gltf_i;
 		Ref<GLTFSkeleton> gltf_skeleton = state->skeletons.write[skeleton_gltf_i];
 		for (int32_t bind_i = 0; bind_i < skin->get_bind_count(); bind_i++) {
-			String godot_bone_name = skin->get_bind_name(bind_i);
-			if (godot_bone_name.is_empty()) {
+			String Fox_bone_name = skin->get_bind_name(bind_i);
+			if (Fox_bone_name.is_empty()) {
 				int32_t bone = skin->get_bind_bone(bind_i);
-				godot_bone_name = skeleton->get_bone_name(bone);
+				Fox_bone_name = skeleton->get_bone_name(bone);
 			}
-			if (skeleton->find_bone(godot_bone_name) == -1) {
-				godot_bone_name = skeleton->get_bone_name(0);
+			if (skeleton->find_bone(Fox_bone_name) == -1) {
+				Fox_bone_name = skeleton->get_bone_name(0);
 			}
-			BoneId bone_index = skeleton->find_bone(godot_bone_name);
+			BoneId bone_index = skeleton->find_bone(Fox_bone_name);
 			ERR_CONTINUE(bone_index == -1);
 			Ref<GLTFNode> joint_node;
 			joint_node.instantiate();
-			String gltf_bone_name = _gen_unique_bone_name(state, skeleton_gltf_i, godot_bone_name);
+			String gltf_bone_name = _gen_unique_bone_name(state, skeleton_gltf_i, Fox_bone_name);
 			joint_node->set_name(gltf_bone_name);
 
 			Transform3D bone_rest_xform = skeleton->get_bone_rest(bone_index);
@@ -5871,7 +5871,7 @@ void GLTFDocument::_convert_mesh_instances(Ref<GLTFState> state) {
 
 			int32_t joint_node_i = state->nodes.size();
 			state->nodes.push_back(joint_node);
-			gltf_skeleton->godot_bone_node.insert(bone_index, joint_node_i);
+			gltf_skeleton->Fox_bone_node.insert(bone_index, joint_node_i);
 			int32_t joint_index = gltf_skin->joints.size();
 			gltf_skin->joint_i_to_bone_i.insert(joint_index, bone_index);
 			gltf_skin->joints.push_back(joint_node_i);
@@ -5884,23 +5884,23 @@ void GLTFDocument::_convert_mesh_instances(Ref<GLTFState> state) {
 					json_skin["skeleton"] = skin_scene_node_i->key();
 				}
 			}
-			gltf_skin->godot_skin = skin;
+			gltf_skin->Fox_skin = skin;
 			gltf_skin->set_name(_gen_unique_name(state, skin->get_name()));
 		}
 		for (int32_t bind_i = 0; bind_i < skin->get_bind_count(); bind_i++) {
 			String bone_name = skeleton->get_bone_name(bind_i);
-			String godot_bone_name = skin->get_bind_name(bind_i);
+			String Fox_bone_name = skin->get_bind_name(bind_i);
 			int32_t bone = -1;
 			if (skin->get_bind_bone(bind_i) != -1) {
 				bone = skin->get_bind_bone(bind_i);
-				godot_bone_name = skeleton->get_bone_name(bone);
+				Fox_bone_name = skeleton->get_bone_name(bone);
 			}
-			bone = skeleton->find_bone(godot_bone_name);
+			bone = skeleton->find_bone(Fox_bone_name);
 			if (bone == -1) {
 				continue;
 			}
 			BoneId bone_parent = skeleton->get_bone_parent(bone);
-			GLTFNodeIndex joint_node_i = gltf_skeleton->godot_bone_node[bone];
+			GLTFNodeIndex joint_node_i = gltf_skeleton->Fox_bone_node[bone];
 			ERR_CONTINUE(joint_node_i >= state->nodes.size());
 			if (bone_parent != -1) {
 				GLTFNodeIndex parent_joint_gltf_node = gltf_skin->joints[bone_parent];
@@ -5977,14 +5977,14 @@ void GLTFDocument::_process_mesh_instances(Ref<GLTFState> state, Node *scene_roo
 
 			const GLTFSkeletonIndex skel_i = state->skins.write[node->skin]->skeleton;
 			Ref<GLTFSkeleton> gltf_skeleton = state->skeletons.write[skel_i];
-			Skeleton3D *skeleton = gltf_skeleton->godot_skeleton;
+			Skeleton3D *skeleton = gltf_skeleton->Fox_skeleton;
 			ERR_CONTINUE_MSG(skeleton == nullptr, vformat("Unable to find Skeleton for node %d skin %d", node_i, skin_i));
 
 			mi->get_parent()->remove_child(mi);
 			skeleton->add_child(mi);
 			mi->set_owner(skeleton->get_owner());
 
-			mi->set_skin(state->skins.write[skin_i]->godot_skin);
+			mi->set_skin(state->skins.write[skin_i]->Fox_skin);
 			mi->set_skeleton_path(mi->get_path_to(skeleton));
 			mi->set_transform(Transform3D());
 		}
@@ -6317,22 +6317,22 @@ void GLTFDocument::_convert_animation(Ref<GLTFState> state, AnimationPlayer *ap,
 			const String node = node_suffix[0];
 			const NodePath node_path = node;
 			const String suffix = node_suffix[1];
-			Node *godot_node = ap->get_parent()->get_node_or_null(node_path);
+			Node *Fox_node = ap->get_parent()->get_node_or_null(node_path);
 			Skeleton3D *skeleton = nullptr;
 			GLTFSkeletonIndex skeleton_gltf_i = -1;
 			for (GLTFSkeletonIndex skeleton_i = 0; skeleton_i < state->skeletons.size(); skeleton_i++) {
-				if (state->skeletons[skeleton_i]->godot_skeleton == cast_to<Skeleton3D>(godot_node)) {
-					skeleton = state->skeletons[skeleton_i]->godot_skeleton;
+				if (state->skeletons[skeleton_i]->Fox_skeleton == cast_to<Skeleton3D>(Fox_node)) {
+					skeleton = state->skeletons[skeleton_i]->Fox_skeleton;
 					skeleton_gltf_i = skeleton_i;
 					ERR_CONTINUE(!skeleton);
 					Ref<GLTFSkeleton> skeleton_gltf = state->skeletons[skeleton_gltf_i];
 					int32_t bone = skeleton->find_bone(suffix);
 					ERR_CONTINUE(bone == -1);
 					Transform3D xform = skeleton->get_bone_rest(bone);
-					if (!skeleton_gltf->godot_bone_node.has(bone)) {
+					if (!skeleton_gltf->Fox_bone_node.has(bone)) {
 						continue;
 					}
-					GLTFNodeIndex node_i = skeleton_gltf->godot_bone_node[bone];
+					GLTFNodeIndex node_i = skeleton_gltf->Fox_bone_node[bone];
 					Map<int, GLTFAnimation::Track>::Element *property_track_i = gltf_animation->get_tracks().find(node_i);
 					GLTFAnimation::Track track;
 					if (property_track_i) {
@@ -6522,7 +6522,7 @@ Dictionary GLTFDocument::_serialize_texture_transform_uv2(Ref<BaseMaterial3D> p_
 		scale[0] = mat->get_uv2_scale().x;
 		scale[1] = mat->get_uv2_scale().y;
 		texture_transform["scale"] = scale;
-		// Godot doesn't support texture rotation
+		// Fox doesn't support texture rotation
 		extension["KHR_texture_transform"] = texture_transform;
 	}
 	return extension;
@@ -6542,7 +6542,7 @@ Dictionary GLTFDocument::_serialize_texture_transform_uv1(Ref<BaseMaterial3D> p_
 		scale[0] = p_material->get_uv1_scale().x;
 		scale[1] = p_material->get_uv1_scale().y;
 		texture_transform["scale"] = scale;
-		// Godot doesn't support texture rotation
+		// Fox doesn't support texture rotation
 		extension["KHR_texture_transform"] = texture_transform;
 	}
 	return extension;

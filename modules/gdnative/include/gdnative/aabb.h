@@ -2,11 +2,11 @@
 /*  aabb.h                                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_AABB_H
-#define GODOT_AABB_H
+#ifndef Fox_AABB_H
+#define Fox_AABB_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,22 +37,22 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_AABB_SIZE (sizeof(godot_real_t) * 6)
+#define Fox_AABB_SIZE (sizeof(Fox_real_t) * 6)
 
-#ifndef GODOT_CORE_API_GODOT_AABB_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_AABB_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_AABB_TYPE_DEFINED
+#define Fox_CORE_API_Fox_AABB_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_AABB_SIZE];
-} godot_aabb;
+	uint8_t _dont_touch_that[Fox_AABB_SIZE];
+} Fox_aabb;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_aabb_new(godot_aabb *p_self);
-void GDAPI godot_aabb_new_copy(godot_aabb *r_dest, const godot_aabb *p_src);
+void GDAPI Fox_aabb_new(Fox_aabb *p_self);
+void GDAPI Fox_aabb_new_copy(Fox_aabb *r_dest, const Fox_aabb *p_src);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_AABB_H
+#endif // Fox_AABB_H

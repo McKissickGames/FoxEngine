@@ -2,11 +2,11 @@
 /*  test_file_access.h                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -54,7 +54,7 @@ TEST_CASE("[FileAccess] CSV read") {
 	CHECK(row2[1] == "Good Evening");
 	CHECK(row2[2] == ""); // Use case: not yet translated!
 
-	// https://github.com/godotengine/godot/issues/44269
+	// https://github.com/Foxengine/Fox/issues/44269
 	CHECK_MESSAGE(row2[2] != "\"", "Should not parse empty string as a single double quote.");
 
 	f->close();

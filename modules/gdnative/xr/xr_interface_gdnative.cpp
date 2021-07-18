@@ -2,11 +2,11 @@
 /*  xr_interface_gdnative.cpp                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -66,7 +66,7 @@ void XRInterfaceGDNative::cleanup() {
 	}
 }
 
-void XRInterfaceGDNative::set_interface(const godot_xr_interface_gdnative *p_interface) {
+void XRInterfaceGDNative::set_interface(const Fox_xr_interface_gdnative *p_interface) {
 	// this should only be called once, just being paranoid..
 	if (interface) {
 		cleanup();
@@ -81,17 +81,17 @@ void XRInterfaceGDNative::set_interface(const godot_xr_interface_gdnative *p_int
 	interface = p_interface;
 
 	// Now we do our constructing...
-	data = interface->constructor((godot_object *)this);
+	data = interface->constructor((Fox_object *)this);
 }
 
 StringName XRInterfaceGDNative::get_name() const {
 	ERR_FAIL_COND_V(interface == nullptr, StringName());
 
-	godot_string result = interface->get_name(data);
+	Fox_string result = interface->get_name(data);
 
 	StringName name = *(String *)&result;
 
-	godot_string_destroy(&result);
+	Fox_string_destroy(&result);
 
 	return name;
 }
@@ -172,7 +172,7 @@ void XRInterfaceGDNative::uninitialize() {
 Size2 XRInterfaceGDNative::get_render_targetsize() {
 	ERR_FAIL_COND_V(interface == nullptr, Size2());
 
-	godot_vector2 result = interface->get_render_targetsize(data);
+	Fox_vector2 result = interface->get_render_targetsize(data);
 	Vector2 *vec = (Vector2 *)&result;
 
 	return *vec;
@@ -183,7 +183,7 @@ Transform3D XRInterfaceGDNative::get_camera_transform() {
 
 	ERR_FAIL_COND_V(interface == nullptr, Transform3D());
 
-	godot_transform3d t = interface->get_camera_transform(data);
+	Fox_transform3d t = interface->get_camera_transform(data);
 
 	ret = (Transform3D *)&t;
 
@@ -195,7 +195,7 @@ Transform3D XRInterfaceGDNative::get_transform_for_view(uint32_t p_view, const T
 
 	ERR_FAIL_COND_V(interface == nullptr, Transform3D());
 
-	godot_transform3d t = interface->get_transform_for_view(data, (int)p_view, (godot_transform3d *)&p_cam_transform);
+	Fox_transform3d t = interface->get_transform_for_view(data, (int)p_view, (Fox_transform3d *)&p_cam_transform);
 
 	ret = (Transform3D *)&t;
 
@@ -207,7 +207,7 @@ CameraMatrix XRInterfaceGDNative::get_projection_for_view(uint32_t p_view, real_
 
 	ERR_FAIL_COND_V(interface == nullptr, CameraMatrix());
 
-	interface->fill_projection_for_view(data, (godot_real_t *)cm.matrix, (godot_int)p_view, p_aspect, p_z_near, p_z_far);
+	interface->fill_projection_for_view(data, (Fox_real_t *)cm.matrix, (Fox_int)p_view, p_aspect, p_z_near, p_z_far);
 
 	return cm;
 }
@@ -219,7 +219,7 @@ Vector<BlitToScreen> XRInterfaceGDNative::commit_views(RID p_render_target, cons
 	ERR_FAIL_COND_V(interface == nullptr, blit_to_screen);
 
 	// must implement
-	interface->commit_views(data, (godot_rid *)&p_render_target, (godot_rect2 *)&p_screen_rect);
+	interface->commit_views(data, (Fox_rid *)&p_render_target, (Fox_rect2 *)&p_screen_rect);
 
 	return blit_to_screen;
 }
@@ -227,13 +227,13 @@ Vector<BlitToScreen> XRInterfaceGDNative::commit_views(RID p_render_target, cons
 unsigned int XRInterfaceGDNative::get_external_texture_for_eye(XRInterface::Eyes p_eye) {
 	ERR_FAIL_COND_V(interface == nullptr, 0);
 
-	return (unsigned int)interface->get_external_texture_for_eye(data, (godot_int)p_eye);
+	return (unsigned int)interface->get_external_texture_for_eye(data, (Fox_int)p_eye);
 }
 
 void XRInterfaceGDNative::commit_for_eye(XRInterface::Eyes p_eye, RID p_render_target, const Rect2 &p_screen_rect) {
 	ERR_FAIL_COND(interface == nullptr);
 
-	interface->commit_for_eye(data, (godot_int)p_eye, (godot_rid *)&p_render_target, (godot_rect2 *)&p_screen_rect);
+	interface->commit_for_eye(data, (Fox_int)p_eye, (Fox_rid *)&p_render_target, (Fox_rect2 *)&p_screen_rect);
 }
 
 void XRInterfaceGDNative::process() {
@@ -253,25 +253,25 @@ void XRInterfaceGDNative::notification(int p_what) {
 
 extern "C" {
 
-void GDAPI godot_xr_register_interface(const godot_xr_interface_gdnative *p_interface) {
+void GDAPI Fox_xr_register_interface(const Fox_xr_interface_gdnative *p_interface) {
 	// Must be on a version 4 plugin
-	ERR_FAIL_COND_MSG(p_interface->version.major < 4, "GDNative XR interfaces build for Godot 3.x are not supported.");
+	ERR_FAIL_COND_MSG(p_interface->version.major < 4, "GDNative XR interfaces build for Fox 3.x are not supported.");
 
 	Ref<XRInterfaceGDNative> new_interface;
 	new_interface.instantiate();
-	new_interface->set_interface((const godot_xr_interface_gdnative *)p_interface);
+	new_interface->set_interface((const Fox_xr_interface_gdnative *)p_interface);
 	XRServer::get_singleton()->add_interface(new_interface);
 }
 
-godot_real_t GDAPI godot_xr_get_worldscale() {
+Fox_real_t GDAPI Fox_xr_get_worldscale() {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL_V(xr_server, 1.0);
 
 	return xr_server->get_world_scale();
 }
 
-godot_transform3d GDAPI godot_xr_get_reference_frame() {
-	godot_transform3d reference_frame;
+Fox_transform3d GDAPI Fox_xr_get_reference_frame() {
+	Fox_transform3d reference_frame;
 	Transform3D *reference_frame_ptr = (Transform3D *)&reference_frame;
 
 	XRServer *xr_server = XRServer::get_singleton();
@@ -284,7 +284,7 @@ godot_transform3d GDAPI godot_xr_get_reference_frame() {
 	return reference_frame;
 }
 
-void GDAPI godot_xr_blit(godot_int p_eye, godot_rid *p_render_target, godot_rect2 *p_rect) {
+void GDAPI Fox_xr_blit(Fox_int p_eye, Fox_rid *p_render_target, Fox_rect2 *p_rect) {
 	// blits out our texture as is, handy for preview display of one of the eyes that is already rendered with lens distortion on an external HMD
 	XRInterface::Eyes eye = (XRInterface::Eyes)p_eye;
 #if 0
@@ -306,7 +306,7 @@ void GDAPI godot_xr_blit(godot_int p_eye, godot_rid *p_render_target, godot_rect
 #endif
 }
 
-godot_int GDAPI godot_xr_get_texid(godot_rid *p_render_target) {
+Fox_int GDAPI Fox_xr_get_texid(Fox_rid *p_render_target) {
 	// In order to send off our textures to display on our hardware we need the opengl texture ID instead of the render target RID
 	// This is a handy function to expose that.
 #if 0
@@ -323,7 +323,7 @@ godot_int GDAPI godot_xr_get_texid(godot_rid *p_render_target) {
 	return texid;
 }
 
-godot_int GDAPI godot_xr_add_controller(char *p_device_name, godot_int p_hand, godot_bool p_tracks_orientation, godot_bool p_tracks_position) {
+Fox_int GDAPI Fox_xr_add_controller(char *p_device_name, Fox_int p_hand, Fox_bool p_tracks_orientation, Fox_bool p_tracks_position) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL_V(xr_server, 0);
 
@@ -363,7 +363,7 @@ godot_int GDAPI godot_xr_add_controller(char *p_device_name, godot_int p_hand, g
 	return new_tracker->get_tracker_id();
 }
 
-void GDAPI godot_xr_remove_controller(godot_int p_controller_id) {
+void GDAPI Fox_xr_remove_controller(Fox_int p_controller_id) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL(xr_server);
 
@@ -385,7 +385,7 @@ void GDAPI godot_xr_remove_controller(godot_int p_controller_id) {
 	}
 }
 
-void GDAPI godot_xr_set_controller_transform(godot_int p_controller_id, godot_transform3d *p_transform, godot_bool p_tracks_orientation, godot_bool p_tracks_position) {
+void GDAPI Fox_xr_set_controller_transform(Fox_int p_controller_id, Fox_transform3d *p_transform, Fox_bool p_tracks_orientation, Fox_bool p_tracks_position) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL(xr_server);
 
@@ -401,7 +401,7 @@ void GDAPI godot_xr_set_controller_transform(godot_int p_controller_id, godot_tr
 	}
 }
 
-void GDAPI godot_xr_set_controller_button(godot_int p_controller_id, godot_int p_button, godot_bool p_is_pressed) {
+void GDAPI Fox_xr_set_controller_button(Fox_int p_controller_id, Fox_int p_button, Fox_bool p_is_pressed) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL(xr_server);
 
@@ -417,7 +417,7 @@ void GDAPI godot_xr_set_controller_button(godot_int p_controller_id, godot_int p
 	}
 }
 
-void GDAPI godot_xr_set_controller_axis(godot_int p_controller_id, godot_int p_axis, godot_real_t p_value, godot_bool p_can_be_negative) {
+void GDAPI Fox_xr_set_controller_axis(Fox_int p_controller_id, Fox_int p_axis, Fox_real_t p_value, Fox_bool p_can_be_negative) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL(xr_server);
 
@@ -436,7 +436,7 @@ void GDAPI godot_xr_set_controller_axis(godot_int p_controller_id, godot_int p_a
 	}
 }
 
-godot_real_t GDAPI godot_xr_get_controller_rumble(godot_int p_controller_id) {
+Fox_real_t GDAPI Fox_xr_get_controller_rumble(Fox_int p_controller_id) {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL_V(xr_server, 0.0);
 

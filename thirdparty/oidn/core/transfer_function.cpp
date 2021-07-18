@@ -38,7 +38,7 @@ namespace oidn {
     // Compute the average log luminance of the downsampled image
     using Sum = std::pair<float, int>;
 
-    // -- GODOT start --
+    // -- Fox start --
     // Sum sum =
     //   tbb::parallel_reduce(
     //     tbb::blocked_range2d<int>(0, HK, 0, WK),
@@ -95,7 +95,7 @@ namespace oidn {
     //   [](Sum a, Sum b) -> Sum { return Sum(a.first+b.first, a.second+b.second); },
     //   tbb::static_partitioner()
     // );
-    // -- GODOT end --
+    // -- Fox end --
 
     return (sum.second > 0) ? (key / exp2(sum.first / float(sum.second))) : 1.f;
   }

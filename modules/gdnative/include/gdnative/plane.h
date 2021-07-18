@@ -2,11 +2,11 @@
 /*  plane.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_PLANE_H
-#define GODOT_PLANE_H
+#ifndef Fox_PLANE_H
+#define Fox_PLANE_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,22 +37,22 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_PLANE_SIZE (sizeof(godot_real_t) * 4)
+#define Fox_PLANE_SIZE (sizeof(Fox_real_t) * 4)
 
-#ifndef GODOT_CORE_API_GODOT_PLANE_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_PLANE_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_PLANE_TYPE_DEFINED
+#define Fox_CORE_API_Fox_PLANE_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_PLANE_SIZE];
-} godot_plane;
+	uint8_t _dont_touch_that[Fox_PLANE_SIZE];
+} Fox_plane;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_plane_new(godot_plane *p_self);
-void GDAPI godot_plane_new_copy(godot_plane *r_dest, const godot_plane *p_src);
+void GDAPI Fox_plane_new(Fox_plane *p_self);
+void GDAPI Fox_plane_new_copy(Fox_plane *r_dest, const Fox_plane *p_src);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_PLANE_H
+#endif // Fox_PLANE_H

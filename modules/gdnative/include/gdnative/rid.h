@@ -2,11 +2,11 @@
 /*  rid.h                                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_RID_H
-#define GODOT_RID_H
+#ifndef Fox_RID_H
+#define Fox_RID_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,22 +37,22 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_RID_SIZE sizeof(uint64_t)
+#define Fox_RID_SIZE sizeof(uint64_t)
 
-#ifndef GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_RID_TYPE_DEFINED
+#define Fox_CORE_API_Fox_RID_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_RID_SIZE];
-} godot_rid;
+	uint8_t _dont_touch_that[Fox_RID_SIZE];
+} Fox_rid;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_rid_new(godot_rid *p_self);
-void GDAPI godot_rid_new_copy(godot_rid *r_dest, const godot_rid *p_src);
+void GDAPI Fox_rid_new(Fox_rid *p_self);
+void GDAPI Fox_rid_new_copy(Fox_rid *r_dest, const Fox_rid *p_src);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_RID_H
+#endif // Fox_RID_H

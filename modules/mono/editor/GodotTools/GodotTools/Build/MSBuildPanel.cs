@@ -1,11 +1,11 @@
 using System;
-using Godot;
-using GodotTools.Internals;
+using Fox;
+using FoxTools.Internals;
 using JetBrains.Annotations;
-using static GodotTools.Internals.Globals;
-using File = GodotTools.Utils.File;
+using static FoxTools.Internals.Globals;
+using File = FoxTools.Utils.File;
 
-namespace GodotTools.Build
+namespace FoxTools.Build
 {
     public class MSBuildPanel : VBoxContainer
     {
@@ -30,17 +30,17 @@ namespace GodotTools.Build
         [UsedImplicitly]
         public void BuildSolution()
         {
-            if (!File.Exists(GodotSharpDirs.ProjectSlnPath))
+            if (!File.Exists(FoxSharpDirs.ProjectSlnPath))
                 return; // No solution to build
 
             try
             {
                 // Make sure our packages are added to the fallback folder
-                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.GodotFallbackFolderPath);
+                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.FoxFallbackFolderPath);
             }
             catch (Exception e)
             {
-                GD.PushError("Failed to setup Godot NuGet Offline Packages: " + e.Message);
+                GD.PushError("Failed to setup Fox NuGet Offline Packages: " + e.Message);
             }
 
             if (!BuildManager.BuildProjectBlocking("Debug"))
@@ -50,7 +50,7 @@ namespace GodotTools.Build
             Internal.EditorDebuggerNodeReloadScripts();
 
             // Hot-reload in the editor
-            GodotSharpEditor.Instance.GetNode<HotReloadAssemblyWatcher>("HotReloadAssemblyWatcher").RestartTimer();
+            FoxSharpEditor.Instance.GetNode<HotReloadAssemblyWatcher>("HotReloadAssemblyWatcher").RestartTimer();
 
             if (Internal.IsAssembliesReloadingNeeded())
                 Internal.ReloadAssemblies(softReload: false);
@@ -59,17 +59,17 @@ namespace GodotTools.Build
         [UsedImplicitly]
         private void RebuildSolution()
         {
-            if (!File.Exists(GodotSharpDirs.ProjectSlnPath))
+            if (!File.Exists(FoxSharpDirs.ProjectSlnPath))
                 return; // No solution to build
 
             try
             {
                 // Make sure our packages are added to the fallback folder
-                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.GodotFallbackFolderPath);
+                NuGetUtils.AddBundledPackagesToFallbackFolder(NuGetUtils.FoxFallbackFolderPath);
             }
             catch (Exception e)
             {
-                GD.PushError("Failed to setup Godot NuGet Offline Packages: " + e.Message);
+                GD.PushError("Failed to setup Fox NuGet Offline Packages: " + e.Message);
             }
 
             if (!BuildManager.BuildProjectBlocking("Debug", targets: new[] {"Rebuild"}))
@@ -79,7 +79,7 @@ namespace GodotTools.Build
             Internal.EditorDebuggerNodeReloadScripts();
 
             // Hot-reload in the editor
-            GodotSharpEditor.Instance.GetNode<HotReloadAssemblyWatcher>("HotReloadAssemblyWatcher").RestartTimer();
+            FoxSharpEditor.Instance.GetNode<HotReloadAssemblyWatcher>("HotReloadAssemblyWatcher").RestartTimer();
 
             if (Internal.IsAssembliesReloadingNeeded())
                 Internal.ReloadAssemblies(softReload: false);
@@ -88,7 +88,7 @@ namespace GodotTools.Build
         [UsedImplicitly]
         private void CleanSolution()
         {
-            if (!File.Exists(GodotSharpDirs.ProjectSlnPath))
+            if (!File.Exists(FoxSharpDirs.ProjectSlnPath))
                 return; // No solution to build
 
             BuildManager.BuildProjectBlocking("Debug", targets: new[] {"Clean"});

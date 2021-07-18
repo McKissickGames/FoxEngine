@@ -1,22 +1,22 @@
 <Project>
-  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" Condition=" '$(GodotSdkImportsMicrosoftNetSdk)' == 'true' " />
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" Condition=" '$(FoxSdkImportsMicrosoftNetSdk)' == 'true' " />
 
   <PropertyGroup>
-    <EnableGodotProjectTypeGuid Condition=" '$(EnableGodotProjectTypeGuid)' == '' ">true</EnableGodotProjectTypeGuid>
-    <ProjectTypeGuids Condition=" '$(EnableGodotProjectTypeGuid)' == 'true' ">$(GodotProjectTypeGuid);$(DefaultProjectTypeGuid)</ProjectTypeGuids>
+    <EnableFoxProjectTypeGuid Condition=" '$(EnableFoxProjectTypeGuid)' == '' ">true</EnableFoxProjectTypeGuid>
+    <ProjectTypeGuids Condition=" '$(EnableFoxProjectTypeGuid)' == 'true' ">$(FoxProjectTypeGuid);$(DefaultProjectTypeGuid)</ProjectTypeGuids>
   </PropertyGroup>
 
   <PropertyGroup>
     <!--
-    Define constant to determine whether the real_t type in Godot is double precision or not.
-    By default this is false, like the official Godot builds. If someone is using a custom
-    Godot build where real_t is double, they can override the GodotRealTIsDouble property.
+    Define constant to determine whether the real_t type in Fox is double precision or not.
+    By default this is false, like the official Fox builds. If someone is using a custom
+    Fox build where real_t is double, they can override the FoxRealTIsDouble property.
     -->
-    <DefineConstants Condition=" '$(GodotRealTIsDouble)' == 'true' ">GODOT_REAL_T_IS_DOUBLE;$(DefineConstants)</DefineConstants>
+    <DefineConstants Condition=" '$(FoxRealTIsDouble)' == 'true' ">Fox_REAL_T_IS_DOUBLE;$(DefineConstants)</DefineConstants>
   </PropertyGroup>
 
   <!-- C# source generators -->
-  <ItemGroup Condition=" '$(DisableImplicitGodotGeneratorReferences)' != 'true' ">
-    <PackageReference Include="Godot.SourceGenerators" Version="$(PackageVersion_Godot_SourceGenerators)" />
+  <ItemGroup Condition=" '$(DisableImplicitFoxGeneratorReferences)' != 'true' ">
+    <PackageReference Include="Fox.SourceGenerators" Version="$(PackageVersion_Fox_SourceGenerators)" />
   </ItemGroup>
 </Project>

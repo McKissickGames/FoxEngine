@@ -1,7 +1,7 @@
-# Catalan translation of the Godot Engine editor
+# Catalan translation of the Fox Engine editor
 # Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.
-# Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).
-# This file is distributed under the same license as the Godot source code.
+# Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).
+# This file is distributed under the same license as the Fox source code.
 # BennyBeat <bennybeat@gmail.com>, 2017.
 # Javier Ocampos <xavier.ocampos@gmail.com>, 2018.
 # Roger Blanco Ribera <roger.blancoribera@gmail.com>, 2016-2018, 2020.
@@ -18,12 +18,12 @@
 # DFC <damiafluixacanals28@gmail.com>, 2021.
 msgid ""
 msgstr ""
-"Project-Id-Version: Godot Engine editor\n"
+"Project-Id-Version: Fox Engine editor\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2021-06-29 12:48+0000\n"
 "Last-Translator: DFC <damiafluixacanals28@gmail.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/godot-engine/"
-"godot/ca/>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/Fox-engine/"
+"Fox/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1120,16 +1120,16 @@ msgid "Change Dictionary Value"
 msgstr "Modifica Valor del Diccionari"
 
 #: editor/editor_about.cpp
-msgid "Thanks from the Godot community!"
-msgstr "Gràcies de la part de la Comunitat del Godot!"
+msgid "Thanks from the Fox community!"
+msgstr "Gràcies de la part de la Comunitat del Fox!"
 
 #: editor/editor_about.cpp editor/editor_node.cpp editor/project_manager.cpp
 msgid "Click to copy."
 msgstr "Fes click per a copiar."
 
 #: editor/editor_about.cpp
-msgid "Godot Engine contributors"
-msgstr "Col·laboradors de Godot Engine"
+msgid "Fox Engine contributors"
+msgstr "Col·laboradors de Fox Engine"
 
 #: editor/editor_about.cpp
 msgid "Project Founders"
@@ -1202,12 +1202,12 @@ msgstr "Llicències de Tercers"
 
 #: editor/editor_about.cpp
 msgid ""
-"Godot Engine relies on a number of third-party free and open source "
+"Fox Engine relies on a number of third-party free and open source "
 "libraries, all compatible with the terms of its MIT license. The following "
 "is an exhaustive list of all such third-party components with their "
 "respective copyright statements and license terms."
 msgstr ""
-"Godot Engine compta amb diverses biblioteques gratuïtes i de codi obert de "
+"Fox Engine compta amb diverses biblioteques gratuïtes i de codi obert de "
 "tercers, totes compatibles amb els termes de la seva llicència MIT. A "
 "continuació, es mostra una llista exhaustiva de tots aquests components de "
 "tercers amb les seves respectives declaracions de copyright i termes de "
@@ -1798,8 +1798,8 @@ msgid "Erase Profile"
 msgstr "Esborrar Perfil"
 
 #: editor/editor_feature_profile.cpp
-msgid "Godot Feature Profile"
-msgstr "Perfil de les funcionalitats del Godot"
+msgid "Fox Feature Profile"
+msgstr "Perfil de les funcionalitats del Fox"
 
 #: editor/editor_feature_profile.cpp
 msgid "Import Profile(s)"
@@ -3022,8 +3022,8 @@ msgid "About"
 msgstr "Quant a"
 
 #: editor/editor_node.cpp
-msgid "Support Godot Development"
-msgstr "Contribueix a el Desenvolupament de Godot"
+msgid "Support Fox Development"
+msgstr "Contribueix a el Desenvolupament de Fox"
 
 #: editor/editor_node.cpp
 msgid "Play the project."
@@ -3700,7 +3700,7 @@ msgstr "Seleccioneu un Fitxer de Plantilla"
 
 #: editor/export_template_manager.cpp
 #, fuzzy
-msgid "Godot Export Templates"
+msgid "Fox Export Templates"
 msgstr "Carregant Plantilles d'Exportació"
 
 #: editor/export_template_manager.cpp
@@ -5302,7 +5302,7 @@ msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
 msgid ""
-"Godot editor was built without ray tracing support, lightmaps can't be baked."
+"Fox editor was built without ray tracing support, lightmaps can't be baked."
 msgstr ""
 
 #: editor/plugins/baked_lightmap_editor_plugin.cpp
@@ -7158,8 +7158,8 @@ msgid "Debug with External Editor"
 msgstr "Depurar amb un Editor Extern"
 
 #: editor/plugins/script_editor_plugin.cpp
-msgid "Open Godot online documentation."
-msgstr "Obrir la documentació en línia de Godot."
+msgid "Open Fox online documentation."
+msgstr "Obrir la documentació en línia de Fox."
 
 #: editor/plugins/script_editor_plugin.cpp
 msgid "Search the reference documentation."
@@ -9781,11 +9781,11 @@ msgstr "Modifica un Uniforme Vectorial"
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, with custom amount of input and "
+"Custom Fox Shader Language expression, with custom amount of input and "
 "output ports. This is a direct injection of code into the vertex/fragment/"
 "light function, do not use it to write the function declarations inside."
 msgstr ""
-"Expressió personalitzada del llenguatge de Shader de Godot, amb una "
+"Expressió personalitzada del llenguatge de Shader de Fox, amb una "
 "quantitat de ports d'entrada i sortida personalitzats. Això es una injecció "
 "de codi directa en la funció vertex/fragment/light, no lo utilitzau per a "
 "escriure les declaracions de la funció dins seu."
@@ -9798,7 +9798,7 @@ msgstr ""
 
 #: editor/plugins/visual_shader_editor_plugin.cpp
 msgid ""
-"Custom Godot Shader Language expression, which is placed on top of the "
+"Custom Fox Shader Language expression, which is placed on top of the "
 "resulted shader. You can place various function definitions inside and call "
 "it later in the Expressions. You can also declare varyings, uniforms and "
 "constants."
@@ -10026,7 +10026,7 @@ msgid "ZIP File"
 msgstr "Fitxer ZIP"
 
 #: editor/project_export.cpp
-msgid "Godot Game Pack"
+msgid "Fox Game Pack"
 msgstr ""
 
 #: editor/project_export.cpp
@@ -10055,8 +10055,8 @@ msgstr ""
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"Invalid \".zip\" project file; it doesn't contain a \"project.godot\" file."
-msgstr "Fitxer de projecte '.zip' invalid, no conte un fitxer 'project.godot'."
+"Invalid \".zip\" project file; it doesn't contain a \"project.Fox\" file."
+msgstr "Fitxer de projecte '.zip' invalid, no conte un fitxer 'project.Fox'."
 
 #: editor/project_manager.cpp
 msgid "Please choose an empty folder."
@@ -10064,13 +10064,13 @@ msgstr "Selecciona un directori buit."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "Please choose a \"project.godot\" or \".zip\" file."
-msgstr "Si us plau seleccioneu un fitxer 'project.godot' o '.zip'."
+msgid "Please choose a \"project.Fox\" or \".zip\" file."
+msgstr "Si us plau seleccioneu un fitxer 'project.Fox' o '.zip'."
 
 #: editor/project_manager.cpp
 #, fuzzy
-msgid "This directory already contains a Godot project."
-msgstr "El directori ja conté un projecte de Godot."
+msgid "This directory already contains a Fox project."
+msgstr "El directori ja conté un projecte de Fox."
 
 #: editor/project_manager.cpp
 msgid "New Game Project"
@@ -10102,19 +10102,19 @@ msgstr "El Camí del Projecte no és vàlid (S'ha produit algun canvi?)."
 
 #: editor/project_manager.cpp
 msgid ""
-"Couldn't load project.godot in project path (error %d). It may be missing or "
+"Couldn't load project.Fox in project path (error %d). It may be missing or "
 "corrupted."
 msgstr ""
-"No es pot carregar el fitxer 'project.godot' en el camí del projecte (error "
+"No es pot carregar el fitxer 'project.Fox' en el camí del projecte (error "
 "%d). Pot ser que falti o que estigui malmès."
 
 #: editor/project_manager.cpp
-msgid "Couldn't edit project.godot in project path."
-msgstr "No es pot editar el fitxer 'project.godot' en el camí del projecte."
+msgid "Couldn't edit project.Fox in project path."
+msgstr "No es pot editar el fitxer 'project.Fox' en el camí del projecte."
 
 #: editor/project_manager.cpp
-msgid "Couldn't create project.godot in project path."
-msgstr "No es pot crear el fitxer 'project.godot' en el camí del projecte."
+msgid "Couldn't create project.Fox in project path."
+msgstr "No es pot crear el fitxer 'project.Fox' en el camí del projecte."
 
 #: editor/project_manager.cpp
 msgid "Rename Project"
@@ -10227,23 +10227,23 @@ msgstr "Esteu segur que voleu obrir més d'un projecte de cop?"
 #: editor/project_manager.cpp
 #, fuzzy
 msgid ""
-"The following project settings file does not specify the version of Godot "
+"The following project settings file does not specify the version of Fox "
 "through which it was created.\n"
 "\n"
 "%s\n"
 "\n"
-"If you proceed with opening it, it will be converted to Godot's current "
+"If you proceed with opening it, it will be converted to Fox's current "
 "configuration file format.\n"
 "Warning: You won't be able to open the project with previous versions of the "
 "engine anymore."
 msgstr ""
 "El següent fitxer de configuració del projecte següent no especifica la "
-"versió de Godot amb la que s'ha creat.\n"
+"versió de Fox amb la que s'ha creat.\n"
 "\n"
 "% s\n"
 "\n"
 "Si continueu amb l'obertura, es convertirà al format de fitxer de "
-"configuració actual de Godot.\n"
+"configuració actual de Fox.\n"
 "Advertiment: Ja no podreu obrir el projecte amb versions anteriors del motor."
 
 #: editor/project_manager.cpp
@@ -10333,14 +10333,14 @@ msgstr ""
 
 #: editor/project_manager.cpp
 msgid ""
-"Are you sure to scan %s folders for existing Godot projects?\n"
+"Are you sure to scan %s folders for existing Fox projects?\n"
 "This could take a while."
 msgstr ""
-"Esteu segur que voleu escanejar %s carpetes per als projectes de Godot "
+"Esteu segur que voleu escanejar %s carpetes per als projectes de Fox "
 "existents?\n"
 "Això pot trigar una estona."
 
-#. TRANSLATORS: This refers to the application where users manage their Godot projects.
+#. TRANSLATORS: This refers to the application where users manage their Fox projects.
 #: editor/project_manager.cpp
 msgid "Project Manager"
 msgstr "Gestor del Projecte"
@@ -10634,8 +10634,8 @@ msgid "Changed Locale Filter Mode"
 msgstr "Modifica el Mode del Filtre de Localització"
 
 #: editor/project_settings_editor.cpp
-msgid "Project Settings (project.godot)"
-msgstr "Configuració del Projecte (project.godot)"
+msgid "Project Settings (project.Fox)"
+msgstr "Configuració del Projecte (project.Fox)"
 
 #: editor/project_settings_editor.cpp editor/settings_config_dialog.cpp
 msgid "General"
@@ -12643,8 +12643,8 @@ msgstr "El nom del paquet no és vàlid:"
 
 #: platform/android/export/export.cpp
 msgid ""
-"Invalid \"GodotPaymentV3\" module included in the \"android/modules\" "
-"project setting (changed in Godot 3.2.2).\n"
+"Invalid \"FoxPaymentV3\" module included in the \"android/modules\" "
+"project setting (changed in Fox 3.2.2).\n"
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -12697,12 +12697,12 @@ msgstr ""
 msgid ""
 "Android build version mismatch:\n"
 "   Template installed: %s\n"
-"   Godot Version: %s\n"
+"   Fox Version: %s\n"
 "Please reinstall Android build template from 'Project' menu."
 msgstr ""
 "La versió de compilació d'Android no coincideix:\n"
 "   Plantilla instal·lada:% s\n"
-"   Versió de Godot:% s\n"
+"   Versió de Fox:% s\n"
 "Torneu a instal·lar la plantilla de compilació d'Android des del menú "
 "'Projecte'."
 
@@ -12715,11 +12715,11 @@ msgstr "Construint Projecte Android (gradle)"
 #, fuzzy
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.godotengine.org for Android build documentation."
+"Alternatively visit docs.Foxengine.org for Android build documentation."
 msgstr ""
 "La construcció del projecte Android ha fallat, comproveu la sortida per "
 "l'error.\n"
-"Alternativament visiteu docs.godotengine.org per a la documentació de "
+"Alternativament visiteu docs.Foxengine.org per a la documentació de "
 "compilació d'Android."
 
 #: platform/android/export/export.cpp
@@ -13694,8 +13694,8 @@ msgstr "Les constants no es poden modificar."
 #~ msgstr "Sol·licitar Documentació"
 
 #, fuzzy
-#~ msgid "Help improve the Godot documentation by giving feedback."
-#~ msgstr "Ajudeu a millorar la documentació de Godot donant comentaris"
+#~ msgid "Help improve the Fox documentation by giving feedback."
+#~ msgstr "Ajudeu a millorar la documentació de Fox donant comentaris"
 
 #~ msgid "Replaced %d occurrence(s)."
 #~ msgstr "%d ocurrència/es reemplaçades."
@@ -14570,12 +14570,12 @@ msgstr "Les constants no es poden modificar."
 #~ msgid "Can't write file."
 #~ msgstr "No es pot escriure el fitxer."
 
-#~ msgid "Couldn't get project.godot in project path."
-#~ msgstr "No s'ha trobat el fitxer 'project.godot' en el camí del Projecte."
+#~ msgid "Couldn't get project.Fox in project path."
+#~ msgstr "No s'ha trobat el fitxer 'project.Fox' en el camí del Projecte."
 
-#~ msgid "Couldn't get project.godot in the project path."
+#~ msgid "Couldn't get project.Fox in the project path."
 #~ msgstr ""
-#~ "No es pot trobat el el fitxer 'project.godot' en el camí del projecte."
+#~ "No es pot trobat el el fitxer 'project.Fox' en el camí del projecte."
 
 #~ msgid "Not found!"
 #~ msgstr "No s'ha trobat!"
@@ -14801,10 +14801,10 @@ msgstr "Les constants no es poden modificar."
 #~ msgstr "Importa lletra"
 
 #~ msgid ""
-#~ "This file is already a Godot font file, please supply a BMFont type file "
+#~ "This file is already a Fox font file, please supply a BMFont type file "
 #~ "instead."
 #~ msgstr ""
-#~ "Aquest fitxer ja és un fitxer de lletra de Godot. Proveïu un fitxer de "
+#~ "Aquest fitxer ja és un fitxer de lletra de Fox. Proveïu un fitxer de "
 #~ "tipus BMFont."
 
 #~ msgid "Failed opening as BMFont file."
@@ -14939,11 +14939,11 @@ msgstr "Les constants no es poden modificar."
 #~ msgstr "Es necessita com a mínim un fitxer per a l'Atles."
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must not exist."
+#~ msgid "Invalid project path, project.Fox must not exist."
 #~ msgstr "El camí de Destinació ha d'existir."
 
 #, fuzzy
-#~ msgid "Invalid project path, project.godot must exist."
+#~ msgid "Invalid project path, project.Fox must exist."
 #~ msgstr "El camí de Destinació ha d'existir."
 
 #, fuzzy

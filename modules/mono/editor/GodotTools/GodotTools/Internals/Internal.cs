@@ -1,8 +1,8 @@
 using System.Runtime.CompilerServices;
-using Godot;
-using GodotTools.IdeMessaging.Requests;
+using Fox;
+using FoxTools.IdeMessaging.Requests;
 
-namespace GodotTools.Internals
+namespace FoxTools.Internals
 {
     public static class Internal
     {
@@ -15,15 +15,15 @@ namespace GodotTools.Internals
         public static string FullTemplatesDir =>
             internal_FullTemplatesDir();
 
-        public static string SimplifyGodotPath(this string path) => internal_SimplifyGodotPath(path);
+        public static string SimplifyFoxPath(this string path) => internal_SimplifyFoxPath(path);
 
         public static bool IsOsxAppBundleInstalled(string bundleId) => internal_IsOsxAppBundleInstalled(bundleId);
 
-        public static bool GodotIs32Bits() => internal_GodotIs32Bits();
+        public static bool FoxIs32Bits() => internal_FoxIs32Bits();
 
-        public static bool GodotIsRealTDouble() => internal_GodotIsRealTDouble();
+        public static bool FoxIsRealTDouble() => internal_FoxIsRealTDouble();
 
-        public static void GodotMainIteration() => internal_GodotMainIteration();
+        public static void FoxMainIteration() => internal_FoxMainIteration();
 
         public static ulong GetCoreApiHash() => internal_GetCoreApiHash();
 
@@ -60,19 +60,19 @@ namespace GodotTools.Internals
         private static extern string internal_FullTemplatesDir();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern string internal_SimplifyGodotPath(this string path);
+        private static extern string internal_SimplifyFoxPath(this string path);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern bool internal_IsOsxAppBundleInstalled(string bundleId);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern bool internal_GodotIs32Bits();
+        private static extern bool internal_FoxIs32Bits();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern bool internal_GodotIsRealTDouble();
+        private static extern bool internal_FoxIsRealTDouble();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void internal_GodotMainIteration();
+        private static extern void internal_FoxMainIteration();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern ulong internal_GetCoreApiHash();

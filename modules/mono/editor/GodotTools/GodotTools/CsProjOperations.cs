@@ -1,8 +1,8 @@
-using Godot;
+using Fox;
 using System;
-using GodotTools.ProjectEditor;
+using FoxTools.ProjectEditor;
 
-namespace GodotTools
+namespace FoxTools
 {
     public static class CsProjOperations
     {

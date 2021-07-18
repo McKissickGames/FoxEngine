@@ -2,11 +2,11 @@
 /*  net_socket_posix.cpp                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -85,7 +85,7 @@
 #define SOCK_IOCTL ioctlsocket
 #define SOCK_CLOSE closesocket
 // connect is broken on windows under certain conditions, reasons unknown:
-// See https://github.com/godotengine/webrtc-native/issues/6
+// See https://github.com/Foxengine/webrtc-native/issues/6
 #define SOCK_CONNECT(p_sock, p_addr, p_addr_len) ::WSAConnect(p_sock, p_addr, p_addr_len, nullptr, nullptr, nullptr, nullptr)
 
 // Workaround missing flag in MinGW

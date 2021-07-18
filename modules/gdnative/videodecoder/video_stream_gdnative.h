@@ -2,11 +2,11 @@
 /*  video_stream_gdnative.h                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -37,13 +37,13 @@
 #include "scene/resources/video_stream.h"
 
 struct VideoDecoderGDNative {
-	const godot_videodecoder_interface_gdnative *interface = nullptr;
+	const Fox_videodecoder_interface_gdnative *interface = nullptr;
 	String plugin_name = "none";
 	Vector<String> supported_extensions;
 
 	VideoDecoderGDNative() {}
 
-	VideoDecoderGDNative(const godot_videodecoder_interface_gdnative *p_interface) :
+	VideoDecoderGDNative(const Fox_videodecoder_interface_gdnative *p_interface) :
 			interface(p_interface),
 			plugin_name(p_interface->get_plugin_name()) {
 		_get_supported_extensions();
@@ -76,7 +76,7 @@ public:
 		return extensions;
 	}
 
-	void register_decoder_interface(const godot_videodecoder_interface_gdnative *p_interface) {
+	void register_decoder_interface(const Fox_videodecoder_interface_gdnative *p_interface) {
 		VideoDecoderGDNative *decoder = memnew(VideoDecoderGDNative(p_interface));
 		int index = decoders.size();
 		for (int i = 0; i < decoder->supported_extensions.size(); i++) {
@@ -135,14 +135,14 @@ protected:
 
 	FileAccess *file = nullptr;
 
-	const godot_videodecoder_interface_gdnative *interface = nullptr;
+	const Fox_videodecoder_interface_gdnative *interface = nullptr;
 	void *data_struct = nullptr;
 
 public:
 	VideoStreamPlaybackGDNative();
 	~VideoStreamPlaybackGDNative();
 
-	void set_interface(const godot_videodecoder_interface_gdnative *p_interface);
+	void set_interface(const Fox_videodecoder_interface_gdnative *p_interface);
 
 	bool open_file(const String &p_file);
 

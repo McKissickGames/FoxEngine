@@ -2,11 +2,11 @@
 /*  joypad_iphone.mm                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,7 +33,7 @@
 #include "drivers/coreaudio/audio_driver_coreaudio.h"
 #include "main/main.h"
 
-#import "godot_view.h"
+#import "Fox_view.h"
 
 #include "os_iphone.h"
 
@@ -70,13 +70,13 @@ void JoypadIPhone::start_processing() {
 	self = [super init];
 
 	if (self) {
-		[self godot_commonInit];
+		[self Fox_commonInit];
 	}
 
 	return self;
 }
 
-- (void)godot_commonInit {
+- (void)Fox_commonInit {
 	self.isObserving = NO;
 	self.isProcessing = NO;
 }
@@ -158,7 +158,7 @@ void JoypadIPhone::start_processing() {
 		controller.playerIndex = [self getFreePlayerIndex];
 	};
 
-	// tell Godot about our new controller
+	// tell Fox about our new controller
 	Input::get_singleton()->joy_connection_changed(joy_id, true, [controller.vendorName UTF8String]);
 
 	// add it to our dictionary, this will retain our controllers
@@ -196,7 +196,7 @@ void JoypadIPhone::start_processing() {
 
 	NSArray *keys = [self.connectedJoypads allKeysForObject:controller];
 	for (NSNumber *key in keys) {
-		// tell Godot this joystick is no longer there
+		// tell Fox this joystick is no longer there
 		int joy_id = [key intValue];
 		Input::get_singleton()->joy_connection_changed(joy_id, false, "");
 

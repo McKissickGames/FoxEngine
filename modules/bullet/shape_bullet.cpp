@@ -2,11 +2,11 @@
 /*  shape_bullet.cpp                                                     */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -418,7 +418,7 @@ void ConcavePolygonShapeBullet::setup(Vector<Vector3> p_faces) {
 			G_TO_B(facesr[i * 3 + 1], supVec_1);
 			G_TO_B(facesr[i * 3 + 2], supVec_2);
 
-			// Inverted from standard godot otherwise btGenerateInternalEdgeInfo generates wrong edge info
+			// Inverted from standard Fox otherwise btGenerateInternalEdgeInfo generates wrong edge info
 			shapeInterface->addTriangle(supVec_2, supVec_1, supVec_0);
 		}
 
@@ -495,7 +495,7 @@ void HeightMapShapeBullet::set_data(const Variant &p_data) {
 		Ref<Image> l_image = l_heights_v;
 		ERR_FAIL_COND(l_image.is_null());
 
-		// Float is the only common format between Godot and Bullet that can be used for decent collision.
+		// Float is the only common format between Fox and Bullet that can be used for decent collision.
 		// (Int16 would be nice too but we still don't have it)
 		// We could convert here automatically but it's better to not be intrusive and let the caller do it if necessary.
 		ERR_FAIL_COND(l_image->get_format() != Image::FORMAT_RF);

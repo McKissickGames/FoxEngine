@@ -2,11 +2,11 @@
 /*  display_server_iphone.mm                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -33,7 +33,7 @@
 #include "core/config/project_settings.h"
 #include "core/io/file_access_pack.h"
 #import "device_metrics.h"
-#import "godot_view.h"
+#import "Fox_view.h"
 #include "ios.h"
 #import "keyboard_input_view.h"
 #include "os_iphone.h"
@@ -101,7 +101,7 @@ DisplayServerIPhone::DisplayServerIPhone(const String &p_rendering_driver, Windo
 			ERR_FAIL_MSG("Failed to initialize Vulkan context");
 		}
 
-		CALayer *layer = [AppDelegate.viewController.godotView initializeRenderingForDriver:@"vulkan"];
+		CALayer *layer = [AppDelegate.viewController.FoxView initializeRenderingForDriver:@"vulkan"];
 
 		if (!layer) {
 			ERR_FAIL_MSG("Failed to create iOS rendering layer.");
@@ -335,7 +335,7 @@ Point2i DisplayServerIPhone::screen_get_position(int p_screen) const {
 }
 
 Size2i DisplayServerIPhone::screen_get_size(int p_screen) const {
-	CALayer *layer = AppDelegate.viewController.godotView.renderingLayer;
+	CALayer *layer = AppDelegate.viewController.FoxView.renderingLayer;
 
 	if (!layer) {
 		return Size2i();
@@ -347,7 +347,7 @@ Size2i DisplayServerIPhone::screen_get_size(int p_screen) const {
 Rect2i DisplayServerIPhone::screen_get_usable_rect(int p_screen) const {
 	if (@available(iOS 11, *)) {
 		UIEdgeInsets insets = UIEdgeInsetsZero;
-		UIView *view = AppDelegate.viewController.godotView;
+		UIView *view = AppDelegate.viewController.FoxView;
 
 		if ([view respondsToSelector:@selector(safeAreaInsets)]) {
 			insets = [view safeAreaInsets];
@@ -369,7 +369,7 @@ int DisplayServerIPhone::screen_get_dpi(int p_screen) const {
 
 	NSString *string = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
 
-	NSDictionary *iOSModelToDPI = [GodotDeviceMetrics dpiList];
+	NSDictionary *iOSModelToDPI = [FoxDeviceMetrics dpiList];
 
 	for (NSArray *keyArray in iOSModelToDPI) {
 		if ([keyArray containsObject:string]) {

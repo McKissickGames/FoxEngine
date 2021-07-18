@@ -7,7 +7,7 @@ using real_t = System.Double;
 using real_t = System.Single;
 #endif
 
-namespace Godot
+namespace Fox
 {
     /// <summary>
     /// 3-element structure that can be used to represent 3D grid coordinates or sets of integers.

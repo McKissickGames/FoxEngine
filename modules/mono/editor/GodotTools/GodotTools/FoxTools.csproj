@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{27B00618-A6F2-4828-B922-05CAEB08C286}</ProjectGuid>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>7.2</LangVersion>
+    <FoxApiConfiguration>Debug</FoxApiConfiguration> <!-- The Fox editor uses the Debug Fox API assemblies -->
+    <FoxSourceRootPath>$(SolutionDir)/../../../../</FoxSourceRootPath>
+    <FoxOutputDataDir>$(FoxSourceRootPath)/bin/FoxSharp</FoxOutputDataDir>
+    <FoxApiAssembliesDir>$(FoxOutputDataDir)/Api/$(FoxApiConfiguration)</FoxApiAssembliesDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" Exists('$(FoxApiAssembliesDir)/FoxSharp.dll') ">
+    <!-- The project is part of the Fox source tree -->
+    <!-- Use the Fox source tree output folder instead of '$(ProjectDir)/bin' -->
+    <OutputPath>$(FoxOutputDataDir)/Tools</OutputPath>
+    <!-- Must not append '$(TargetFramework)' to the output path in this case -->
+    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3.0" ExcludeAssets="runtime" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Reference Include="FoxSharp">
+      <HintPath>$(FoxApiAssembliesDir)/FoxSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FoxSharpEditor">
+      <HintPath>$(FoxApiAssembliesDir)/FoxSharpEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoxTools.BuildLogger\FoxTools.BuildLogger.csproj" />
+    <ProjectReference Include="..\FoxTools.IdeMessaging\FoxTools.IdeMessaging.csproj" />
+    <ProjectReference Include="..\FoxTools.ProjectEditor\FoxTools.ProjectEditor.csproj" />
+    <ProjectReference Include="..\FoxTools.Core\FoxTools.Core.csproj" />
+    <!-- Include it if this is an SCons build targeting Windows, or if it's not an SCons build but we're on Windows -->
+    <ProjectReference Include="..\FoxTools.OpenVisualStudio\FoxTools.OpenVisualStudio.csproj" Condition=" '$(FoxPlatform)' == 'windows' Or ( '$(FoxPlatform)' == '' And '$(OS)' == 'Windows_NT' ) " />
+  </ItemGroup>
+</Project>

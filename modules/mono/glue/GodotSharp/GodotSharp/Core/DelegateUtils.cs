@@ -5,14 +5,14 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Godot
+namespace Fox
 {
     internal static class DelegateUtils
     {
         private enum TargetKind : uint
         {
             Static,
-            GodotObject,
+            FoxObject,
             CompilerGenerated
         }
 
@@ -72,13 +72,13 @@ namespace Godot
                         return true;
                     }
                 }
-                case Godot.Object godotObject:
+                case Fox.Object FoxObject:
                 {
                     using (var stream = new MemoryStream())
                     using (var writer = new BinaryWriter(stream))
                     {
-                        writer.Write((ulong) TargetKind.GodotObject);
-                        writer.Write((ulong) godotObject.GetInstanceId());
+                        writer.Write((ulong) TargetKind.FoxObject);
+                        writer.Write((ulong) FoxObject.GetInstanceId());
 
                         SerializeType(writer, @delegate.GetType());
 
@@ -273,11 +273,11 @@ namespace Godot
                         @delegate = Delegate.CreateDelegate(delegateType, null, methodInfo);
                         return true;
                     }
-                    case TargetKind.GodotObject:
+                    case TargetKind.FoxObject:
                     {
                         ulong objectId = reader.ReadUInt64();
-                        Godot.Object godotObject = GD.InstanceFromId(objectId);
-                        if (godotObject == null)
+                        Fox.Object FoxObject = GD.InstanceFromId(objectId);
+                        if (FoxObject == null)
                             return false;
 
                         Type delegateType = DeserializeType(reader);
@@ -287,7 +287,7 @@ namespace Godot
                         if (!TryDeserializeMethodInfo(reader, out MethodInfo methodInfo))
                             return false;
 
-                        @delegate = Delegate.CreateDelegate(delegateType, godotObject, methodInfo);
+                        @delegate = Delegate.CreateDelegate(delegateType, FoxObject, methodInfo);
                         return true;
                     }
                     case TargetKind.CompilerGenerated:

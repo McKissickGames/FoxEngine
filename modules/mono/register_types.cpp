@@ -2,11 +2,11 @@
 /*  register_types.cpp                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -38,15 +38,15 @@ CSharpLanguage *script_language_cs = nullptr;
 Ref<ResourceFormatLoaderCSharpScript> resource_loader_cs;
 Ref<ResourceFormatSaverCSharpScript> resource_saver_cs;
 
-_GodotSharp *_godotsharp = nullptr;
+_FoxSharp *_Foxsharp = nullptr;
 
 void register_mono_types() {
 	GDREGISTER_CLASS(CSharpScript);
 
-	_godotsharp = memnew(_GodotSharp);
+	_Foxsharp = memnew(_FoxSharp);
 
-	GDREGISTER_CLASS(_GodotSharp);
-	Engine::get_singleton()->add_singleton(Engine::Singleton("GodotSharp", _GodotSharp::get_singleton()));
+	GDREGISTER_CLASS(_FoxSharp);
+	Engine::get_singleton()->add_singleton(Engine::Singleton("FoxSharp", _FoxSharp::get_singleton()));
 
 	script_language_cs = memnew(CSharpLanguage);
 	script_language_cs->set_language_index(ScriptServer::get_language_count());
@@ -72,7 +72,7 @@ void unregister_mono_types() {
 	ResourceSaver::remove_resource_format_saver(resource_saver_cs);
 	resource_saver_cs.unref();
 
-	if (_godotsharp) {
-		memdelete(_godotsharp);
+	if (_Foxsharp) {
+		memdelete(_Foxsharp);
 	}
 }

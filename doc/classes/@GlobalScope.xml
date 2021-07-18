@@ -717,7 +717,7 @@
 				printraw("B")
 				# Prints AB
 				[/codeblock]
-				[b]Note:[/b] Due to limitations with Godot's built-in console, this only prints to the terminal. If you need to print in the editor, use another method, such as [method print].
+				[b]Note:[/b] Due to limitations with Fox's built-in console, this only prints to the terminal. If you need to print in the editor, use another method, such as [method print].
 			</description>
 		</method>
 		<method name="prints" qualifiers="vararg">
@@ -738,7 +738,7 @@
 		</method>
 		<method name="push_error" qualifiers="vararg">
 			<description>
-				Pushes an error message to Godot's built-in debugger and to the OS terminal.
+				Pushes an error message to Fox's built-in debugger and to the OS terminal.
 				[codeblock]
 				push_error("test error") # Prints "test error" to debugger and terminal as error call
 				[/codeblock]
@@ -747,7 +747,7 @@
 		</method>
 		<method name="push_warning" qualifiers="vararg">
 			<description>
-				Pushes a warning message to Godot's built-in debugger and to the OS terminal.
+				Pushes a warning message to Fox's built-in debugger and to the OS terminal.
 				[codeblock]
 				push_warning("test warning") # Prints "test warning" to debugger and terminal as warning call
 				[/codeblock]
@@ -879,7 +879,7 @@
 			<description>
 				Sets seed for the random number generator.
 				[codeblock]
-				my_seed = "Godot Rocks"
+				my_seed = "Fox Rocks"
 				seed(my_seed.hash())
 				[/codeblock]
 			</description>
@@ -1201,8 +1201,8 @@
 		<member name="Geometry3D" type="Geometry3D" setter="" getter="">
 			The [Geometry3D] singleton.
 		</member>
-		<member name="GodotSharp" type="GodotSharp" setter="" getter="">
-			The [GodotSharp] singleton.
+		<member name="FoxSharp" type="FoxSharp" setter="" getter="">
+			The [FoxSharp] singleton.
 		</member>
 		<member name="IP" type="IP" setter="" getter="">
 			The [IP] singleton.

@@ -2,11 +2,11 @@
 /*  multiplayer_peer_gdnative.cpp                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -37,7 +37,7 @@ MultiplayerPeerGDNative::MultiplayerPeerGDNative() {
 MultiplayerPeerGDNative::~MultiplayerPeerGDNative() {
 }
 
-void MultiplayerPeerGDNative::set_native_multiplayer_peer(const godot_net_multiplayer_peer *p_interface) {
+void MultiplayerPeerGDNative::set_native_multiplayer_peer(const Fox_net_multiplayer_peer *p_interface) {
 	interface = p_interface;
 }
 
@@ -64,7 +64,7 @@ int MultiplayerPeerGDNative::get_available_packet_count() const {
 /* MultiplayerPeer */
 void MultiplayerPeerGDNative::set_transfer_mode(TransferMode p_mode) {
 	ERR_FAIL_COND(interface == nullptr);
-	interface->set_transfer_mode(interface->data, (godot_int)p_mode);
+	interface->set_transfer_mode(interface->data, (Fox_int)p_mode);
 }
 
 MultiplayerPeer::TransferMode MultiplayerPeerGDNative::get_transfer_mode() const {
@@ -119,7 +119,7 @@ void MultiplayerPeerGDNative::_bind_methods() {
 
 extern "C" {
 
-void GDAPI godot_net_bind_multiplayer_peer(godot_object *p_obj, const godot_net_multiplayer_peer *p_impl) {
+void GDAPI Fox_net_bind_multiplayer_peer(Fox_object *p_obj, const Fox_net_multiplayer_peer *p_impl) {
 	((MultiplayerPeerGDNative *)p_obj)->set_native_multiplayer_peer(p_impl);
 }
 }

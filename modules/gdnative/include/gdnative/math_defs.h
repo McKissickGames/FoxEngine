@@ -2,11 +2,11 @@
 /*  math_defs.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_GDNATIVE_MATH_DEFS_H
-#define GODOT_GDNATIVE_MATH_DEFS_H
+#ifndef Fox_GDNATIVE_MATH_DEFS_H
+#define Fox_GDNATIVE_MATH_DEFS_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -40,27 +40,27 @@ extern "C" {
 
 ////// bool
 
-typedef bool godot_bool;
+typedef bool Fox_bool;
 
-#define GODOT_TRUE 1
-#define GODOT_FALSE 0
+#define Fox_TRUE 1
+#define Fox_FALSE 0
 
 /////// int
 
-typedef int64_t godot_int;
+typedef int64_t Fox_int;
 
 /////// float
 
-typedef double godot_float;
+typedef double Fox_float;
 
 #ifdef REAL_T_IS_DOUBLE
-typedef double godot_real_t;
+typedef double Fox_real_t;
 #else
-typedef float godot_real_t;
+typedef float Fox_real_t;
 #endif
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_C_H
+#endif // Fox_C_H

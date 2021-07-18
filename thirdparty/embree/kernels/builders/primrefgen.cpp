@@ -184,9 +184,9 @@ namespace embree
 
     // special variants for grid meshes
 
-// -- GODOT start --
+// -- Fox start --
 #if defined(EMBREE_GEOMETRY_GRID)
-// -- GODOT end --
+// -- Fox end --
     PrimInfo createPrimRefArrayGrids(Scene* scene, mvector<PrimRef>& prims, mvector<SubGridBuildData>& sgrids)
     {
       PrimInfo pinfo(empty);
@@ -296,9 +296,9 @@ namespace embree
 
       return pinfo;
     }
-// -- GODOT start --
+// -- Fox start --
 #endif
-// -- GODOT end --
+// -- Fox end --
     
     // ====================================================================================================
     // ====================================================================================================

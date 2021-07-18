@@ -2,11 +2,11 @@
 /*  stream_peer_gdnative.cpp                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -37,7 +37,7 @@ StreamPeerGDNative::StreamPeerGDNative() {
 StreamPeerGDNative::~StreamPeerGDNative() {
 }
 
-void StreamPeerGDNative::set_native_stream_peer(const godot_net_stream_peer *p_interface) {
+void StreamPeerGDNative::set_native_stream_peer(const Fox_net_stream_peer *p_interface) {
 	interface = p_interface;
 }
 
@@ -71,7 +71,7 @@ int StreamPeerGDNative::get_available_bytes() const {
 
 extern "C" {
 
-void GDAPI godot_net_bind_stream_peer(godot_object *p_obj, const godot_net_stream_peer *p_interface) {
+void GDAPI Fox_net_bind_stream_peer(Fox_object *p_obj, const Fox_net_stream_peer *p_interface) {
 	((StreamPeerGDNative *)p_obj)->set_native_stream_peer(p_interface);
 }
 }

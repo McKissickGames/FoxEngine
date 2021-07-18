@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 # Global Settings
 env:
-  GODOT_BASE_BRANCH: master
+  Fox_BASE_BRANCH: master
   SCONSFLAGS: platform=linuxbsd verbose=yes warnings=extra werror=yes debug_symbols=no --jobs=2 module_text_server_fb_enabled=yes
   SCONS_CACHE_LIMIT: 4096
 
@@ -34,11 +34,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{github.workspace}}/.scons_cache/
-          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
           restore-keys: |
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
       # Use python 3.x release (works cross platform; best to keep self contained in it's own step)
       - name: Set up Python 3.x
@@ -68,7 +68,7 @@ jobs:
       # Execute unit tests for the editor
       - name: Unit Tests
         run: |
-          ./bin/godot.linuxbsd.opt.tools.64 --test
+          ./bin/Fox.linuxbsd.opt.tools.64 --test
 
       # Download, unzip and setup SwiftShader library [d4550ab8d3f]
       - name: Download SwiftShader
@@ -84,7 +84,7 @@ jobs:
         run: |
           echo "Running --doctool to see if this changes the public API without updating the documentation."
           echo -e "If a diff is shown, it means that your code/doc changes are incomplete and you should update the class reference with --doctool.\n\n"
-          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/godot.linuxbsd.opt.tools.64 --doctool . 2>&1 > /dev/null || true
+          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/Fox.linuxbsd.opt.tools.64 --doctool . 2>&1 > /dev/null || true
           git diff --color --exit-code && ! git ls-files --others --exclude-standard | sed -e 's/^/New doc file missing in PR: /' | grep 'xml$'
 
       - uses: actions/upload-artifact@v2
@@ -120,11 +120,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{github.workspace}}/.scons_cache/
-          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
           restore-keys: |
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
       # Use python 3.x release (works cross platform; best to keep self contained in it's own step)
       - name: Set up Python 3.x
@@ -144,7 +144,7 @@ jobs:
           scons --version
 
       # We should always be explicit with our flags usage here since it's gonna be sure to always set those flags
-      # [Workaround] SwiftShader doesn't support tessellation, so we skip Godot check about it
+      # [Workaround] SwiftShader doesn't support tessellation, so we skip Fox check about it
       - name: Compilation
         env:
           SCONS_CACHE: ${{github.workspace}}/.scons_cache/
@@ -156,7 +156,7 @@ jobs:
       # Execute unit tests for the editor
       - name: Unit Tests
         run: |
-          ./bin/godot.linuxbsd.tools.64s --test
+          ./bin/Fox.linuxbsd.tools.64s --test
 
       # Download, unzip and setup SwiftShader library [d4550ab8d3f]
       - name: Download SwiftShader
@@ -177,13 +177,13 @@ jobs:
       # Editor is quite complicated piece of software, so it is easy to introduce bug here
       - name: Open and close editor
         run: |
-          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/godot.linuxbsd.tools.64s --audio-driver Dummy -e -q --path test_project 2>&1 | tee sanitizers_log.txt || true
+          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/Fox.linuxbsd.tools.64s --audio-driver Dummy -e -q --path test_project 2>&1 | tee sanitizers_log.txt || true
           misc/scripts/check_ci_log.py sanitizers_log.txt
 
       # Run test project
       - name: Run project
         run: |
-          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/godot.linuxbsd.tools.64s 40 --audio-driver Dummy --path test_project 2>&1 | tee sanitizers_log.txt || true
+          VK_ICD_FILENAMES=$(pwd)/vk_swiftshader_icd.json DRI_PRIME=0 xvfb-run bin/Fox.linuxbsd.tools.64s 40 --audio-driver Dummy --path test_project 2>&1 | tee sanitizers_log.txt || true
           misc/scripts/check_ci_log.py sanitizers_log.txt
 
   linux-template-mono:
@@ -212,11 +212,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{github.workspace}}/.scons_cache/
-          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          key: ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
           restore-keys: |
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
-            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.Fox_BASE_BRANCH}}
 
       # Use python 3.x release (works cross platform)
       - name: Set up Python 3.x

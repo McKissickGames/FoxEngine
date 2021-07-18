@@ -2,11 +2,11 @@
 /*  os_android.h                                                         */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -36,8 +36,8 @@
 #include "drivers/unix/os_unix.h"
 #include "servers/audio_server.h"
 
-class GodotJavaWrapper;
-class GodotIOJavaWrapper;
+class FoxJavaWrapper;
+class FoxIOJavaWrapper;
 
 struct ANativeWindow;
 
@@ -62,8 +62,8 @@ private:
 
 	MainLoop *main_loop;
 
-	GodotJavaWrapper *godot_java;
-	GodotIOJavaWrapper *godot_io_java;
+	FoxJavaWrapper *Fox_java;
+	FoxIOJavaWrapper *Fox_io_java;
 
 public:
 	virtual void initialize_core() override;
@@ -79,8 +79,8 @@ public:
 	typedef int64_t ProcessID;
 
 	static OS_Android *get_singleton();
-	GodotJavaWrapper *get_godot_java();
-	GodotIOJavaWrapper *get_godot_io_java();
+	FoxJavaWrapper *get_Fox_java();
+	FoxIOJavaWrapper *get_Fox_io_java();
 
 	virtual bool request_permission(const String &p_name) override;
 	virtual bool request_permissions() override;
@@ -121,7 +121,7 @@ public:
 	void vibrate_handheld(int p_duration_ms) override;
 
 	virtual bool _check_internal_feature_support(const String &p_feature) override;
-	OS_Android(GodotJavaWrapper *p_godot_java, GodotIOJavaWrapper *p_godot_io_java, bool p_use_apk_expansion);
+	OS_Android(FoxJavaWrapper *p_Fox_java, FoxIOJavaWrapper *p_Fox_io_java, bool p_use_apk_expansion);
 	~OS_Android();
 };
 

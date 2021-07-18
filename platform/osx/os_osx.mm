@@ -2,11 +2,11 @@
 /*  os_osx.mm                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -242,7 +242,7 @@ String OS_OSX::get_bundle_resource_dir() const {
 }
 
 // Get properly capitalized engine name for system paths
-String OS_OSX::get_godot_dir_name() const {
+String OS_OSX::get_Fox_dir_name() const {
 	return String(VERSION_SHORT_NAME).capitalize();
 }
 

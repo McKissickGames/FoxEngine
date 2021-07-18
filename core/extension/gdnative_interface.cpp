@@ -2,11 +2,11 @@
 /*  gdnative_interface.cpp                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -579,7 +579,7 @@ void gdnative_setup_interface(GDNativeInterface *p_interface) {
 #endif
 	gdni.version_string = VERSION_FULL_NAME;
 
-	/* GODOT CORE */
+	/* Fox CORE */
 
 	gdni.mem_alloc = gdnative_alloc;
 	gdni.mem_realloc = gdnative_realloc;
@@ -589,7 +589,7 @@ void gdnative_setup_interface(GDNativeInterface *p_interface) {
 	gdni.print_warning = gdnative_print_warning;
 	gdni.print_script_error = gdnative_print_script_error;
 
-	/* GODOT VARIANT */
+	/* Fox VARIANT */
 
 	// variant general
 	gdni.variant_new_copy = gdnative_variant_new_copy;

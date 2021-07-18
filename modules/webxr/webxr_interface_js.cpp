@@ -2,11 +2,11 @@
 /*  webxr_interface_js.cpp                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -34,7 +34,7 @@
 #include "core/input/input.h"
 #include "core/os/os.h"
 #include "emscripten.h"
-#include "godot_webxr.h"
+#include "Fox_webxr.h"
 #include <stdlib.h>
 
 void _emwebxr_on_session_supported(char *p_session_mode, int p_supported) {
@@ -117,7 +117,7 @@ extern "C" EMSCRIPTEN_KEEPALIVE void _emwebxr_on_simple_event(char *p_signal_nam
 }
 
 void WebXRInterfaceJS::is_session_supported(const String &p_session_mode) {
-	godot_webxr_is_session_supported(p_session_mode.utf8().get_data(), &_emwebxr_on_session_supported);
+	Fox_webxr_is_session_supported(p_session_mode.utf8().get_data(), &_emwebxr_on_session_supported);
 }
 
 void WebXRInterfaceJS::set_session_mode(String p_session_mode) {
@@ -168,7 +168,7 @@ Ref<XRPositionalTracker> WebXRInterfaceJS::get_controller(int p_controller_id) c
 }
 
 String WebXRInterfaceJS::get_visibility_state() const {
-	char *c_str = godot_webxr_get_visibility_state();
+	char *c_str = Fox_webxr_get_visibility_state();
 	if (c_str) {
 		String visibility_state = String(c_str);
 		free(c_str);
@@ -181,7 +181,7 @@ String WebXRInterfaceJS::get_visibility_state() const {
 PackedVector3Array WebXRInterfaceJS::get_bounds_geometry() const {
 	PackedVector3Array ret;
 
-	int *js_bounds = godot_webxr_get_bounds_geometry();
+	int *js_bounds = Fox_webxr_get_bounds_geometry();
 	if (js_bounds) {
 		ret.resize(js_bounds[0]);
 		for (int i = 0; i < js_bounds[0]; i++) {
@@ -203,7 +203,7 @@ int WebXRInterfaceJS::get_capabilities() const {
 };
 
 uint32_t WebXRInterfaceJS::get_view_count() {
-	return godot_webxr_get_view_count();
+	return Fox_webxr_get_view_count();
 };
 
 bool WebXRInterfaceJS::is_initialized() const {
@@ -215,7 +215,7 @@ bool WebXRInterfaceJS::initialize() {
 	ERR_FAIL_NULL_V(xr_server, false);
 
 	if (!initialized) {
-		if (!godot_webxr_is_supported()) {
+		if (!Fox_webxr_is_supported()) {
 			return false;
 		}
 
@@ -234,7 +234,7 @@ bool WebXRInterfaceJS::initialize() {
 
 		initialized = true;
 
-		godot_webxr_initialize(
+		Fox_webxr_initialize(
 				session_mode.utf8().get_data(),
 				required_features.utf8().get_data(),
 				optional_features.utf8().get_data(),
@@ -258,7 +258,7 @@ void WebXRInterfaceJS::uninitialize() {
 			xr_server->clear_primary_interface_if(this);
 		}
 
-		godot_webxr_uninitialize();
+		Fox_webxr_uninitialize();
 
 		reference_space_type = "";
 		initialized = false;
@@ -289,7 +289,7 @@ Size2 WebXRInterfaceJS::get_render_targetsize() {
 		return render_targetsize;
 	}
 
-	int *js_size = godot_webxr_get_render_targetsize();
+	int *js_size = Fox_webxr_get_render_targetsize();
 	if (!initialized || js_size == nullptr) {
 		// As a temporary default (until WebXR is fully initialized), use half the window size.
 		Size2 temp = DisplayServer::get_singleton()->window_get_size();
@@ -311,7 +311,7 @@ Transform3D WebXRInterfaceJS::get_camera_transform() {
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL_V(xr_server, transform_for_eye);
 
-	float *js_matrix = godot_webxr_get_transform_for_eye(0);
+	float *js_matrix = Fox_webxr_get_transform_for_eye(0);
 	if (!initialized || js_matrix == nullptr) {
 		return transform_for_eye;
 	}
@@ -328,7 +328,7 @@ Transform3D WebXRInterfaceJS::get_transform_for_view(uint32_t p_view, const Tran
 	XRServer *xr_server = XRServer::get_singleton();
 	ERR_FAIL_NULL_V(xr_server, transform_for_eye);
 
-	float *js_matrix = godot_webxr_get_transform_for_eye(p_view + 1);
+	float *js_matrix = Fox_webxr_get_transform_for_eye(p_view + 1);
 	if (!initialized || js_matrix == nullptr) {
 		transform_for_eye = p_cam_transform;
 		return transform_for_eye;
@@ -343,7 +343,7 @@ Transform3D WebXRInterfaceJS::get_transform_for_view(uint32_t p_view, const Tran
 CameraMatrix WebXRInterfaceJS::get_projection_for_view(uint32_t p_view, real_t p_aspect, real_t p_z_near, real_t p_z_far) {
 	CameraMatrix eye;
 
-	float *js_matrix = godot_webxr_get_projection_for_eye(p_view + 1);
+	float *js_matrix = Fox_webxr_get_projection_for_eye(p_view + 1);
 	if (!initialized || js_matrix == nullptr) {
 		return eye;
 	}
@@ -357,7 +357,7 @@ CameraMatrix WebXRInterfaceJS::get_projection_for_view(uint32_t p_view, real_t p
 
 	free(js_matrix);
 
-	// Copied from godot_oculus_mobile's ovr_mobile_session.cpp
+	// Copied from Fox_oculus_mobile's ovr_mobile_session.cpp
 	eye.matrix[2][2] = -(p_z_far + p_z_near) / (p_z_far - p_z_near);
 	eye.matrix[3][2] = -(2.0f * p_z_far * p_z_near) / (p_z_far - p_z_near);
 
@@ -368,21 +368,21 @@ unsigned int WebXRInterfaceJS::get_external_texture_for_eye(XRInterface::Eyes p_
 	if (!initialized) {
 		return 0;
 	}
-	return godot_webxr_get_external_texture_for_eye(p_eye);
+	return Fox_webxr_get_external_texture_for_eye(p_eye);
 }
 
 void WebXRInterfaceJS::commit_for_eye(XRInterface::Eyes p_eye, RID p_render_target, const Rect2 &p_screen_rect) {
 	if (!initialized) {
 		return;
 	}
-	godot_webxr_commit_for_eye(p_eye);
+	Fox_webxr_commit_for_eye(p_eye);
 };
 
 void WebXRInterfaceJS::process() {
 	if (initialized) {
-		godot_webxr_sample_controller_data();
+		Fox_webxr_sample_controller_data();
 
-		int controller_count = godot_webxr_get_controller_count();
+		int controller_count = Fox_webxr_get_controller_count();
 		if (controller_count == 0) {
 			return;
 		}
@@ -398,7 +398,7 @@ void WebXRInterfaceJS::_update_tracker(int p_controller_id) {
 	ERR_FAIL_NULL(xr_server);
 
 	Ref<XRPositionalTracker> tracker = xr_server->find_by_type_and_id(XRServer::TRACKER_CONTROLLER, p_controller_id + 1);
-	if (godot_webxr_is_controller_connected(p_controller_id)) {
+	if (Fox_webxr_is_controller_connected(p_controller_id)) {
 		if (tracker.is_null()) {
 			tracker.instantiate();
 			tracker->set_tracker_type(XRServer::TRACKER_CONTROLLER);
@@ -414,7 +414,7 @@ void WebXRInterfaceJS::_update_tracker(int p_controller_id) {
 
 		Input *input = Input::get_singleton();
 
-		float *tracker_matrix = godot_webxr_get_controller_transform(p_controller_id);
+		float *tracker_matrix = Fox_webxr_get_controller_transform(p_controller_id);
 		if (tracker_matrix) {
 			Transform3D transform = _js_matrix_to_transform(tracker_matrix);
 			tracker->set_position(transform.origin);
@@ -422,7 +422,7 @@ void WebXRInterfaceJS::_update_tracker(int p_controller_id) {
 			free(tracker_matrix);
 		}
 
-		int *buttons = godot_webxr_get_controller_buttons(p_controller_id);
+		int *buttons = Fox_webxr_get_controller_buttons(p_controller_id);
 		if (buttons) {
 			for (int i = 0; i < buttons[0]; i++) {
 				input->joy_button(p_controller_id + 100, (JoyButton)i, *((float *)buttons + (i + 1)));
@@ -430,7 +430,7 @@ void WebXRInterfaceJS::_update_tracker(int p_controller_id) {
 			free(buttons);
 		}
 
-		int *axes = godot_webxr_get_controller_axes(p_controller_id);
+		int *axes = Fox_webxr_get_controller_axes(p_controller_id);
 		if (axes) {
 			for (int i = 0; i < axes[0]; i++) {
 				Input::JoyAxisValue joy_axis;
@@ -446,10 +446,10 @@ void WebXRInterfaceJS::_update_tracker(int p_controller_id) {
 }
 
 void WebXRInterfaceJS::_on_controller_changed() {
-	// Register "virtual" gamepads with Godot for the ones we get from WebXR.
-	godot_webxr_sample_controller_data();
+	// Register "virtual" gamepads with Fox for the ones we get from WebXR.
+	Fox_webxr_sample_controller_data();
 	for (int i = 0; i < 2; i++) {
-		bool controller_connected = godot_webxr_is_controller_connected(i);
+		bool controller_connected = Fox_webxr_is_controller_connected(i);
 		if (controllers_state[i] != controller_connected) {
 			Input::get_singleton()->joy_connection_changed(i + 100, controller_connected, i == 0 ? "Left" : "Right", "");
 			controllers_state[i] = controller_connected;

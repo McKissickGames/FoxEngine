@@ -2,11 +2,11 @@
 /*  type_info.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -63,7 +63,7 @@ struct TypeInherits {
 							  !TypesAreSame<B volatile const, void volatile const>::value;
 };
 
-namespace GodotTypeInfo {
+namespace FoxTypeInfo {
 enum Metadata {
 	METADATA_NONE,
 	METADATA_INT_IS_INT8,
@@ -91,7 +91,7 @@ struct GetTypeInfo;
 	template <>                                                                       \
 	struct GetTypeInfo<m_type> {                                                      \
 		static const Variant::Type VARIANT_TYPE = m_var_type;                         \
-		static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE; \
+		static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE; \
 		static inline PropertyInfo get_class_info() {                                 \
 			return PropertyInfo(VARIANT_TYPE, String());                              \
 		}                                                                             \
@@ -99,7 +99,7 @@ struct GetTypeInfo;
 	template <>                                                                       \
 	struct GetTypeInfo<const m_type &> {                                              \
 		static const Variant::Type VARIANT_TYPE = m_var_type;                         \
-		static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE; \
+		static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE; \
 		static inline PropertyInfo get_class_info() {                                 \
 			return PropertyInfo(VARIANT_TYPE, String());                              \
 		}                                                                             \
@@ -109,7 +109,7 @@ struct GetTypeInfo;
 	template <>                                                     \
 	struct GetTypeInfo<m_type> {                                    \
 		static const Variant::Type VARIANT_TYPE = m_var_type;       \
-		static const GodotTypeInfo::Metadata METADATA = m_metadata; \
+		static const FoxTypeInfo::Metadata METADATA = m_metadata; \
 		static inline PropertyInfo get_class_info() {               \
 			return PropertyInfo(VARIANT_TYPE, String());            \
 		}                                                           \
@@ -117,25 +117,25 @@ struct GetTypeInfo;
 	template <>                                                     \
 	struct GetTypeInfo<const m_type &> {                            \
 		static const Variant::Type VARIANT_TYPE = m_var_type;       \
-		static const GodotTypeInfo::Metadata METADATA = m_metadata; \
+		static const FoxTypeInfo::Metadata METADATA = m_metadata; \
 		static inline PropertyInfo get_class_info() {               \
 			return PropertyInfo(VARIANT_TYPE, String());            \
 		}                                                           \
 	};
 
 MAKE_TYPE_INFO(bool, Variant::BOOL)
-MAKE_TYPE_INFO_WITH_META(uint8_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_UINT8)
-MAKE_TYPE_INFO_WITH_META(int8_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_INT8)
-MAKE_TYPE_INFO_WITH_META(uint16_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_UINT16)
-MAKE_TYPE_INFO_WITH_META(int16_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_INT16)
-MAKE_TYPE_INFO_WITH_META(uint32_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_UINT32)
-MAKE_TYPE_INFO_WITH_META(int32_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_INT32)
-MAKE_TYPE_INFO_WITH_META(uint64_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_UINT64)
-MAKE_TYPE_INFO_WITH_META(int64_t, Variant::INT, GodotTypeInfo::METADATA_INT_IS_INT64)
+MAKE_TYPE_INFO_WITH_META(uint8_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_UINT8)
+MAKE_TYPE_INFO_WITH_META(int8_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_INT8)
+MAKE_TYPE_INFO_WITH_META(uint16_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_UINT16)
+MAKE_TYPE_INFO_WITH_META(int16_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_INT16)
+MAKE_TYPE_INFO_WITH_META(uint32_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_UINT32)
+MAKE_TYPE_INFO_WITH_META(int32_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_INT32)
+MAKE_TYPE_INFO_WITH_META(uint64_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_UINT64)
+MAKE_TYPE_INFO_WITH_META(int64_t, Variant::INT, FoxTypeInfo::METADATA_INT_IS_INT64)
 MAKE_TYPE_INFO(char16_t, Variant::INT)
 MAKE_TYPE_INFO(char32_t, Variant::INT)
-MAKE_TYPE_INFO_WITH_META(float, Variant::FLOAT, GodotTypeInfo::METADATA_REAL_IS_FLOAT)
-MAKE_TYPE_INFO_WITH_META(double, Variant::FLOAT, GodotTypeInfo::METADATA_REAL_IS_DOUBLE)
+MAKE_TYPE_INFO_WITH_META(float, Variant::FLOAT, FoxTypeInfo::METADATA_REAL_IS_FLOAT)
+MAKE_TYPE_INFO_WITH_META(double, Variant::FLOAT, FoxTypeInfo::METADATA_REAL_IS_DOUBLE)
 
 MAKE_TYPE_INFO(String, Variant::STRING)
 MAKE_TYPE_INFO(Vector2, Variant::VECTOR2)
@@ -174,7 +174,7 @@ MAKE_TYPE_INFO(IPAddress, Variant::STRING)
 template <>
 struct GetTypeInfo<ObjectID> {
 	static const Variant::Type VARIANT_TYPE = Variant::INT;
-	static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_INT_IS_UINT64;
+	static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_INT_IS_UINT64;
 	static inline PropertyInfo get_class_info() {
 		return PropertyInfo(Variant::INT, String(), PROPERTY_HINT_INT_IS_OBJECTID);
 	}
@@ -184,7 +184,7 @@ struct GetTypeInfo<ObjectID> {
 template <>
 struct GetTypeInfo<Variant> {
 	static const Variant::Type VARIANT_TYPE = Variant::NIL;
-	static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE;
+	static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE;
 	static inline PropertyInfo get_class_info() {
 		return PropertyInfo(Variant::NIL, String(), PROPERTY_HINT_NONE, String(), PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_NIL_IS_VARIANT);
 	}
@@ -193,7 +193,7 @@ struct GetTypeInfo<Variant> {
 template <>
 struct GetTypeInfo<const Variant &> {
 	static const Variant::Type VARIANT_TYPE = Variant::NIL;
-	static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE;
+	static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE;
 	static inline PropertyInfo get_class_info() {
 		return PropertyInfo(Variant::NIL, String(), PROPERTY_HINT_NONE, String(), PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_NIL_IS_VARIANT);
 	}
@@ -203,7 +203,7 @@ struct GetTypeInfo<const Variant &> {
 	template <>                                                                       \
 	struct GetTypeInfo<m_template<m_type>> {                                          \
 		static const Variant::Type VARIANT_TYPE = m_var_type;                         \
-		static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE; \
+		static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE; \
 		static inline PropertyInfo get_class_info() {                                 \
 			return PropertyInfo(VARIANT_TYPE, String());                              \
 		}                                                                             \
@@ -211,7 +211,7 @@ struct GetTypeInfo<const Variant &> {
 	template <>                                                                       \
 	struct GetTypeInfo<const m_template<m_type> &> {                                  \
 		static const Variant::Type VARIANT_TYPE = m_var_type;                         \
-		static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE; \
+		static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE; \
 		static inline PropertyInfo get_class_info() {                                 \
 			return PropertyInfo(VARIANT_TYPE, String());                              \
 		}                                                                             \
@@ -226,7 +226,7 @@ MAKE_TEMPLATE_TYPE_INFO(Vector, StringName, Variant::PACKED_STRING_ARRAY)
 template <typename T>
 struct GetTypeInfo<T *, typename EnableIf<TypeInherits<Object, T>::value>::type> {
 	static const Variant::Type VARIANT_TYPE = Variant::OBJECT;
-	static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE;
+	static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE;
 	static inline PropertyInfo get_class_info() {
 		return PropertyInfo(StringName(T::get_class_static()));
 	}
@@ -235,7 +235,7 @@ struct GetTypeInfo<T *, typename EnableIf<TypeInherits<Object, T>::value>::type>
 template <typename T>
 struct GetTypeInfo<const T *, typename EnableIf<TypeInherits<Object, T>::value>::type> {
 	static const Variant::Type VARIANT_TYPE = Variant::OBJECT;
-	static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE;
+	static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE;
 	static inline PropertyInfo get_class_info() {
 		return PropertyInfo(StringName(T::get_class_static()));
 	}
@@ -245,7 +245,7 @@ struct GetTypeInfo<const T *, typename EnableIf<TypeInherits<Object, T>::value>:
 	template <>                                                                                                                                                                   \
 	struct GetTypeInfo<m_impl> {                                                                                                                                                  \
 		static const Variant::Type VARIANT_TYPE = Variant::INT;                                                                                                                   \
-		static const GodotTypeInfo::Metadata METADATA = GodotTypeInfo::METADATA_NONE;                                                                                             \
+		static const FoxTypeInfo::Metadata METADATA = FoxTypeInfo::METADATA_NONE;                                                                                             \
 		static inline PropertyInfo get_class_info() {                                                                                                                             \
 			return PropertyInfo(Variant::INT, String(), PROPERTY_HINT_NONE, String(), PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_CLASS_IS_ENUM, String(#m_enum).replace("::", ".")); \
 		}                                                                                                                                                                         \

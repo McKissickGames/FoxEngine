@@ -2,11 +2,11 @@
 /*  register_types.cpp                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -39,11 +39,11 @@
 
 #include "pluginscript_language.h"
 #include "pluginscript_script.h"
-#include <pluginscript/godot_pluginscript.h>
+#include <pluginscript/Fox_pluginscript.h>
 
 static List<PluginScriptLanguage *> pluginscript_languages;
 
-static Error _check_language_desc(const godot_pluginscript_language_desc *desc) {
+static Error _check_language_desc(const Fox_pluginscript_language_desc *desc) {
 	ERR_FAIL_COND_V(!desc->name || desc->name == String(), ERR_BUG);
 	ERR_FAIL_COND_V(!desc->type || desc->type == String(), ERR_BUG);
 	ERR_FAIL_COND_V(!desc->extension || desc->extension == String(), ERR_BUG);
@@ -94,7 +94,7 @@ static Error _check_language_desc(const godot_pluginscript_language_desc *desc) 
 	return OK;
 }
 
-void GDAPI godot_pluginscript_register_language(const godot_pluginscript_language_desc *language_desc) {
+void GDAPI Fox_pluginscript_register_language(const Fox_pluginscript_language_desc *language_desc) {
 	Error ret = _check_language_desc(language_desc);
 	if (ret) {
 		ERR_FAIL();

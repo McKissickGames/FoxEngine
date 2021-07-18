@@ -2,11 +2,11 @@
 /*  skeleton_modification_2d_physicalbones.cpp                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -36,7 +36,7 @@ bool SkeletonModification2DPhysicalBones::_set(const StringName &p_path, const V
 	String path = p_path;
 
 #ifdef TOOLS_ENABLED
-	// Exposes a way to fetch the PhysicalBone2D nodes from the Godot editor.
+	// Exposes a way to fetch the PhysicalBone2D nodes from the Fox editor.
 	if (is_setup) {
 		if (Engine::get_singleton()->is_editor_hint()) {
 			if (path.begins_with("fetch_bones")) {

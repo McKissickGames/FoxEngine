@@ -2,11 +2,11 @@
 /*  transform2d.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_TRANSFORM2D_H
-#define GODOT_TRANSFORM2D_H
+#ifndef Fox_TRANSFORM2D_H
+#define Fox_TRANSFORM2D_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,24 +37,24 @@ extern "C" {
 
 #include <gdnative/math_defs.h>
 
-#define GODOT_TRANSFORM2D_SIZE (sizeof(godot_real_t) * 6)
+#define Fox_TRANSFORM2D_SIZE (sizeof(Fox_real_t) * 6)
 
-#ifndef GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_TRANSFORM2D_TYPE_DEFINED
+#define Fox_CORE_API_Fox_TRANSFORM2D_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_TRANSFORM2D_SIZE];
-} godot_transform2d;
+	uint8_t _dont_touch_that[Fox_TRANSFORM2D_SIZE];
+} Fox_transform2d;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_transform2d_new(godot_transform2d *p_self);
-void GDAPI godot_transform2d_new_copy(godot_transform2d *r_dest, const godot_transform2d *p_src);
-godot_vector2 GDAPI *godot_transform2d_operator_index(godot_transform2d *p_self, godot_int p_index);
-const godot_vector2 GDAPI *godot_transform2d_operator_index_const(const godot_transform2d *p_self, godot_int p_index);
+void GDAPI Fox_transform2d_new(Fox_transform2d *p_self);
+void GDAPI Fox_transform2d_new_copy(Fox_transform2d *r_dest, const Fox_transform2d *p_src);
+Fox_vector2 GDAPI *Fox_transform2d_operator_index(Fox_transform2d *p_self, Fox_int p_index);
+const Fox_vector2 GDAPI *Fox_transform2d_operator_index_const(const Fox_transform2d *p_self, Fox_int p_index);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_TRANSFORM2D_H
+#endif // Fox_TRANSFORM2D_H

@@ -34,7 +34,7 @@
 		        pass # Do something with the connected peers.
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System;
 		using System.Collections.Generic;
 
@@ -90,7 +90,7 @@
 		        connected = true
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System;
 
 		public class Client : Node

@@ -2,11 +2,11 @@
 /*  fbx_bone.h                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -49,8 +49,8 @@ struct FBXBone : public RefCounted {
 		return !valid_parent;
 	}
 
-	// Godot specific data
-	int godot_bone_id = -2; // godot internal bone id assigned after import
+	// Fox specific data
+	int Fox_bone_id = -2; // Fox internal bone id assigned after import
 
 	// if a bone / armature is the root then FBX skeleton will contain the bone not any other skeleton.
 	// this is to support joints by themselves in scenes

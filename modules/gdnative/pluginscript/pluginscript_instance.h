@@ -2,11 +2,11 @@
 /*  pluginscript_instance.h                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -31,11 +31,11 @@
 #ifndef PLUGINSCRIPT_INSTANCE_H
 #define PLUGINSCRIPT_INSTANCE_H
 
-// Godot imports
+// Fox imports
 #include "core/object/script_language.h"
 
 // PluginScript imports
-#include <pluginscript/godot_pluginscript.h>
+#include <pluginscript/Fox_pluginscript.h>
 
 class PluginScript;
 
@@ -46,8 +46,8 @@ private:
 	Ref<PluginScript> _script;
 	Object *_owner = nullptr;
 	Variant _owner_variant;
-	godot_pluginscript_instance_data *_data = nullptr;
-	const godot_pluginscript_instance_desc *_desc = nullptr;
+	Fox_pluginscript_instance_data *_data = nullptr;
+	const Fox_pluginscript_instance_desc *_desc = nullptr;
 
 public:
 	_FORCE_INLINE_ Object *get_owner() { return _owner; }

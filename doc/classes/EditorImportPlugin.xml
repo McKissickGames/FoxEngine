@@ -5,7 +5,7 @@
 	</brief_description>
 	<description>
 		EditorImportPlugins provide a way to extend the editor's resource import functionality. Use them to import resources from custom files or to provide alternatives to the editor's existing importers. Register your [EditorPlugin] with [method EditorPlugin.add_import_plugin].
-		EditorImportPlugins work by associating with specific file extensions and a resource type. See [method _get_recognized_extensions] and [method _get_resource_type]. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the [code].godot/imported[/code] directory.
+		EditorImportPlugins work by associating with specific file extensions and a resource type. See [method _get_recognized_extensions] and [method _get_resource_type]. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the [code].Fox/imported[/code] directory.
 		Below is an example EditorImportPlugin that imports a [Mesh] from a file with the extension ".special" or ".spec":
 		[codeblocks]
 		[gdscript]
@@ -47,7 +47,7 @@
 		    return ResourceSaver.save(filename, mesh)
 		[/gdscript]
 		[csharp]
-		using Godot;
+		using Fox;
 		using System;
 
 		public class MySpecialPlugin : EditorImportPlugin
@@ -62,9 +62,9 @@
 		        return "Special Mesh";
 		    }
 
-		    public override Godot.Collections.Array GetRecognizedExtensions()
+		    public override Fox.Collections.Array GetRecognizedExtensions()
 		    {
-		        return new Godot.Collections.Array{"special", "spec"};
+		        return new Fox.Collections.Array{"special", "spec"};
 		    }
 
 		    public override String GetSaveExtension()
@@ -87,12 +87,12 @@
 		        return "Default";
 		    }
 
-		    public override Godot.Collections.Array GetImportOptions(int i)
+		    public override Fox.Collections.Array GetImportOptions(int i)
 		    {
-		        return new Godot.Collections.Array{new Godot.Collections.Dictionary{{"name", "myOption"}, {"defaultValue", false}}};
+		        return new Fox.Collections.Array{new Fox.Collections.Dictionary{{"name", "myOption"}, {"defaultValue", false}}};
 		    }
 
-		    public override int Import(String sourceFile, String savePath, Godot.Collections.Dictionary options, Godot.Collections.Array platformVariants, Godot.Collections.Array genFiles)
+		    public override int Import(String sourceFile, String savePath, Fox.Collections.Dictionary options, Fox.Collections.Array platformVariants, Fox.Collections.Array genFiles)
 		    {
 		        var file = new File();
 		        if (file.Open(sourceFile, File.ModeFlags.Read) != Error.Ok)
@@ -110,7 +110,7 @@
 		[/codeblocks]
 	</description>
 	<tutorials>
-		<link title="Import plugins">https://docs.godotengine.org/en/latest/tutorials/plugins/editor/import_plugins.html</link>
+		<link title="Import plugins">https://docs.Foxengine.org/en/latest/tutorials/plugins/editor/import_plugins.html</link>
 	</tutorials>
 	<methods>
 		<method name="_get_import_options" qualifiers="virtual">
@@ -155,7 +155,7 @@
 				    return true
 				[/gdscript]
 				[csharp]
-				public void GetOptionVisibility(string option, Godot.Collections.Dictionary options)
+				public void GetOptionVisibility(string option, Fox.Collections.Dictionary options)
 				{
 				    // Only show the lossy quality setting if the compression mode is set to "Lossy".
 				    if (option == "compress/lossyQuality" &amp;&amp; options.Contains("compress/mode"))
@@ -204,14 +204,14 @@
 			<return type="String">
 			</return>
 			<description>
-				Gets the Godot resource type associated with this loader. e.g. [code]"Mesh"[/code] or [code]"Animation"[/code].
+				Gets the Fox resource type associated with this loader. e.g. [code]"Mesh"[/code] or [code]"Animation"[/code].
 			</description>
 		</method>
 		<method name="_get_save_extension" qualifiers="virtual">
 			<return type="String">
 			</return>
 			<description>
-				Gets the extension used to save this resource in the [code].godot/imported[/code] directory.
+				Gets the extension used to save this resource in the [code].Fox/imported[/code] directory.
 			</description>
 		</method>
 		<method name="_get_visible_name" qualifiers="virtual">

@@ -2,11 +2,11 @@
 /*  gd_mono_marshal.h                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -69,22 +69,22 @@ bool try_get_array_element_type(const ManagedType &p_array_type, ManagedType &r_
 
 // String
 
-_FORCE_INLINE_ String mono_string_to_godot_not_null(MonoString *p_mono_string) {
+_FORCE_INLINE_ String mono_string_to_Fox_not_null(MonoString *p_mono_string) {
 	char32_t *utf32 = (char32_t *)mono_string_to_utf32(p_mono_string);
 	String ret = String(utf32);
 	mono_free(utf32);
 	return ret;
 }
 
-_FORCE_INLINE_ String mono_string_to_godot(MonoString *p_mono_string) {
+_FORCE_INLINE_ String mono_string_to_Fox(MonoString *p_mono_string) {
 	if (p_mono_string == nullptr) {
 		return String();
 	}
 
-	return mono_string_to_godot_not_null(p_mono_string);
+	return mono_string_to_Fox_not_null(p_mono_string);
 }
 
-_FORCE_INLINE_ MonoString *mono_string_from_godot(const String &p_string) {
+_FORCE_INLINE_ MonoString *mono_string_from_Fox(const String &p_string) {
 	return mono_string_from_utf32((mono_unichar4 *)(p_string.get_data()));
 }
 

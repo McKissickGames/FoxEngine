@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Godot;
+using Fox;
 using JetBrains.Annotations;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -10,13 +10,13 @@ using Directory = System.IO.Directory;
 using Environment = System.Environment;
 using File = System.IO.File;
 using Path = System.IO.Path;
-using OS = GodotTools.Utils.OS;
+using OS = FoxTools.Utils.OS;
 // ReSharper disable UnassignedField.Local
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberHidesStaticFromOuterClass
 
-namespace GodotTools.Ides.Rider
+namespace FoxTools.Ides.Rider
 {
     /// <summary>
     /// This code is a modified version of the JetBrains resharper-unity plugin listed under Apache License 2.0 license:

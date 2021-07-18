@@ -2,11 +2,11 @@
 /*  callable.h                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                           Fox ENGINE                                */
+/*                      https://Foxengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -28,8 +28,8 @@
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
 
-#ifndef GODOT_CALLABLE_H
-#define GODOT_CALLABLE_H
+#ifndef Fox_CALLABLE_H
+#define Fox_CALLABLE_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,20 +38,20 @@ extern "C" {
 #include <stdint.h>
 
 // Alignment hardcoded in `core/variant/callable.h`.
-#define GODOT_CALLABLE_SIZE (16)
+#define Fox_CALLABLE_SIZE (16)
 
-#ifndef GODOT_CORE_API_GODOT_CALLABLE_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_CALLABLE_TYPE_DEFINED
+#ifndef Fox_CORE_API_Fox_CALLABLE_TYPE_DEFINED
+#define Fox_CORE_API_Fox_CALLABLE_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_CALLABLE_SIZE];
-} godot_callable;
+	uint8_t _dont_touch_that[Fox_CALLABLE_SIZE];
+} Fox_callable;
 #endif
 
 #include <gdnative/gdnative.h>
 
-void GDAPI godot_callable_new(godot_callable *p_self);
-void GDAPI godot_callable_new_copy(godot_callable *r_dest, const godot_callable *p_src);
-void GDAPI godot_callable_destroy(godot_callable *p_self);
+void GDAPI Fox_callable_new(Fox_callable *p_self);
+void GDAPI Fox_callable_new_copy(Fox_callable *r_dest, const Fox_callable *p_src);
+void GDAPI Fox_callable_destroy(Fox_callable *p_self);
 
 #ifdef __cplusplus
 }

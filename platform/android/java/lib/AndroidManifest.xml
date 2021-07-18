@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.godotengine.godot"
+    package="org.Foxengine.Fox"
     android:versionCode="1"
     android:versionName="1.0">
 
     <application>
 
-        <!-- Records the version of the Godot library -->
+        <!-- Records the version of the Fox library -->
         <meta-data
-            android:name="org.godotengine.library.version"
-            android:value="${godotLibraryVersion}" />
+            android:name="org.Foxengine.library.version"
+            android:value="${FoxLibraryVersion}" />
 
-        <service android:name=".GodotDownloaderService" />
+        <service android:name=".FoxDownloaderService" />
 
     </application>
 
     <instrumentation
         android:icon="@mipmap/icon"
-        android:label="@string/godot_project_name_string"
-        android:name="org.godotengine.godot.GodotInstrumentation"
-        android:targetPackage="org.godotengine.godot" />
+        android:label="@string/Fox_project_name_string"
+        android:name="org.Foxengine.Fox.FoxInstrumentation"
+        android:targetPackage="org.Foxengine.Fox" />
 
 </manifest>
