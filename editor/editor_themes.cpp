@@ -2,11 +2,11 @@
 /*  editor_themes.cpp                                                    */
 /*************************************************************************/
 /*                       This file is part of:                           */
-/*                           GODOT ENGINE                                */
+/*                           Fox ENGINE                                */
 /*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2021 Godot Engine contributors (cf. AUTHORS.md).   */
+/* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -212,7 +212,7 @@ void editor_register_and_generate_icons(Ref<Theme> p_theme, bool p_dark_theme = 
 		exceptions.insert("EditorPivot");
 		exceptions.insert("EditorHandle");
 		exceptions.insert("Editor3DHandle");
-		exceptions.insert("Godot");
+		exceptions.insert("Fox");
 		exceptions.insert("Sky");
 		exceptions.insert("EditorControlAnchor");
 		exceptions.insert("DefaultProjectIcon");
@@ -248,7 +248,7 @@ void editor_register_and_generate_icons(Ref<Theme> p_theme, bool p_dark_theme = 
 		for (int i = 0; i < editor_icons_count; i++) {
 			float saturation = p_icon_saturation;
 
-			if (strcmp(editor_icons_names[i], "DefaultProjectIcon") == 0 || strcmp(editor_icons_names[i], "Godot") == 0 || strcmp(editor_icons_names[i], "Logo") == 0) {
+			if (strcmp(editor_icons_names[i], "DefaultProjectIcon") == 0 || strcmp(editor_icons_names[i], "Fox") == 0 || strcmp(editor_icons_names[i], "Logo") == 0) {
 				saturation = 1.0;
 			}
 
@@ -320,7 +320,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 		preset_accent_color = Color(0.26, 0.76, 1.00);
 		preset_base_color = Color(0.24, 0.26, 0.28);
 		preset_contrast = default_contrast;
-	} else if (preset == "Godot 2") {
+	} else if (preset == "Fox 2") {
 		preset_accent_color = Color(0.53, 0.67, 0.89);
 		preset_base_color = Color(0.24, 0.23, 0.27);
 		preset_contrast = default_contrast;
@@ -1453,7 +1453,7 @@ Ref<Theme> create_editor_theme(const Ref<Theme> p_theme) {
 		setting->set_initial_value("text_editor/highlighting/code_folding_color", code_folding_color, true);
 		setting->set_initial_value("text_editor/highlighting/search_result_color", search_result_color, true);
 		setting->set_initial_value("text_editor/highlighting/search_result_border_color", search_result_border_color, true);
-	} else if (text_editor_color_theme == "Godot 2") {
+	} else if (text_editor_color_theme == "Fox 2") {
 		setting->load_text_editor_theme();
 	}
 

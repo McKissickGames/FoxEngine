@@ -12390,10 +12390,10 @@ msgstr "Bouwen van Android Project (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Bouwen van Androidproject mislukt, bekijk de foutmelding in de uitvoer.\n"
-"Zie anders Android bouwdocumentatie op docs.Foxengine.org."
+"Zie anders Android bouwdocumentatie op docs.godotengine.org."
 
 #: platform/android/export/export.cpp
 msgid "Moving output"

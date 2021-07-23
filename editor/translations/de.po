@@ -35,7 +35,7 @@
 # Julian Retzlaff <julian.retzlaff@googlemail.com>, 2018.
 # asyncial <mahlburg@posteo.de>, 2018.
 # ssantos <ssantos@web.de>, 2018.
-# Rémi Verschelde <akien@Foxengine.org>, 2019.
+# Rémi Verschelde <akien@godotengine.org>, 2019.
 # Martin <martinreininger@gmx.net>, 2019, 2021.
 # Andreas During <anduring@web.de>, 2019.
 # Arthur S. Muszynski <artism90@gmail.com>, 2019.
@@ -12470,12 +12470,12 @@ msgstr "Baue Android-Projekt (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Bauen des Android-Projekts fehlgeschlagen, Fehlerdetails befinden ich in der "
 "Textausgabe.\n"
 "Alternativ befindet sich die Android-Build-Dokumentation auf docs."
-"Foxengine.org."
+"godotengine.org."
 
 #: platform/android/export/export.cpp
 msgid "Moving output"
@@ -15192,8 +15192,8 @@ msgstr "Konstanten können nicht verändert werden."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Signalisiert, wenn sich eine externe Ressource verändert hat."
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "Öffnet https://Foxengine.org im Abschnitt ‚Tutorials‘."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "Öffnet https://godotengine.org im Abschnitt ‚Tutorials‘."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "Keine Szene für Instanz ausgewählt!"

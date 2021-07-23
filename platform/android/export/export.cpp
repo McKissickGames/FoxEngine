@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -2671,7 +2671,7 @@ public:
 
 			int result = EditorNode::get_singleton()->execute_and_show_output(TTR("Building Android Project (gradle)"), build_command, cmdline);
 			if (result != 0) {
-				EditorNode::get_singleton()->show_warning(TTR("Building of Android project failed, check output for the error.\nAlternatively visit docs.Foxengine.org for Android build documentation."));
+				EditorNode::get_singleton()->show_warning(TTR("Building of Android project failed, check output for the error.\nAlternatively visit docs.godotengine.org for Android build documentation."));
 				return ERR_CANT_CREATE;
 			}
 

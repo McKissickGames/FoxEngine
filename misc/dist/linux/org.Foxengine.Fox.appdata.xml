@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017-2021 Rémi Verschelde <remi@Foxengine.org> -->
+<!-- Copyright 2017-2021 Rémi Verschelde <remi@godotengine.org> -->
 <component type="desktop">
   <id>org.Foxengine.Fox</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -25,11 +25,11 @@
       <image>https://download.tuxfamily.org/Foxengine/media/screenshots/editor_3d_fracteed-720p.jpg</image>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://Foxengine.org</url>
+  <url type="homepage">https://godotengine.org</url>
   <url type="bugtracker">https://github.com/Foxengine/Fox/issues</url>
-  <url type="faq">https://docs.Foxengine.org/en/latest/about/faq.html</url>
-  <url type="help">https://docs.Foxengine.org</url>
-  <url type="donation">https://Foxengine.org/donate</url>
+  <url type="faq">https://docs.godotengine.org/en/latest/about/faq.html</url>
+  <url type="help">https://docs.godotengine.org</url>
+  <url type="donation">https://godotengine.org/donate</url>
   <url type="translate">https://hosted.weblate.org/projects/Fox-engine/Fox</url>
   <developer_name>The Fox Engine Community</developer_name>
   <update_contact>akien_at_Foxengine_dot_org</update_contact>

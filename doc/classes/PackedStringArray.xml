@@ -7,7 +7,7 @@
 		An [Array] specifically designed to hold [String]s. Packs data tightly, so it saves memory for large array sizes.
 	</description>
 	<tutorials>
-		<link title="OS Test Demo">https://Foxengine.org/asset-library/asset/677</link>
+		<link title="OS Test Demo">https://godotengine.org/asset-library/asset/677</link>
 	</tutorials>
 	<methods>
 		<method name="PackedStringArray" qualifiers="constructor">

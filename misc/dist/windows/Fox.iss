@@ -1,7 +1,7 @@
 #define MyAppName "Fox Engine"
 #define MyAppVersion "4.0.dev"
 #define MyAppPublisher "Fox Engine contributors"
-#define MyAppURL "https://Foxengine.org/"
+#define MyAppURL "https://godotengine.org/"
 #define MyAppExeName "Fox.exe"
 
 [Setup]

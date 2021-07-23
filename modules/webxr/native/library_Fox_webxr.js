@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2020 Fox Engine contributors (cf. AUTHORS.md).   */

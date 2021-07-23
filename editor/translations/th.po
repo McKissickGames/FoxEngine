@@ -12129,10 +12129,10 @@ msgstr "กำลังสร้างโปรเจคแอนดรอยด
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "การสร้างโปรเจกต์แอนดรอยด์ล้มเหลว ตรวจสอบผลลัพธ์เพื่อหาข้อผิดพลาด\n"
-"หรือไปที่ docs.Foxengine.org สำหรับเอกสารประกอบการสร้างสำหรับแอนดรอยด์"
+"หรือไปที่ docs.godotengine.org สำหรับเอกสารประกอบการสร้างสำหรับแอนดรอยด์"
 
 #: platform/android/export/export.cpp
 msgid "Moving output"
@@ -14500,8 +14500,8 @@ msgstr "ค่าคงที่ไม่สามารถแก้ไขได
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "เตือนเมื่อมีการแก้ไขรีซอร์สภายนอก"
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "เปิดคู่มือจาก https://Foxengine.org"
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "เปิดคู่มือจาก https://godotengine.org"
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "ไม่ได้เลือกฉากที่จะอินสแตนซ์!"

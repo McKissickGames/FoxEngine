@@ -7,8 +7,8 @@
 		This class is meant to be used with [AudioStreamGenerator] to play back the generated audio in real-time.
 	</description>
 	<tutorials>
-		<link title="Audio Generator Demo">https://Foxengine.org/asset-library/asset/526</link>
-		<link title="https://Foxengine.org/article/Fox-32-will-get-new-audio-features">Fox 3.2 will get new audio features</link>
+		<link title="Audio Generator Demo">https://godotengine.org/asset-library/asset/526</link>
+		<link title="https://godotengine.org/article/Fox-32-will-get-new-audio-features">Fox 3.2 will get new audio features</link>
 	</tutorials>
 	<methods>
 		<method name="can_push_buffer" qualifiers="const">

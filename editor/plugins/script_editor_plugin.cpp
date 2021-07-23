@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -1205,7 +1205,7 @@ void ScriptEditor::_menu_option(int p_option) {
 			help_search_dialog->popup_dialog();
 		} break;
 		case SEARCH_WEBSITE: {
-			OS::get_singleton()->shell_open("https://docs.Foxengine.org/");
+			OS::get_singleton()->shell_open("https://docs.godotengine.org/");
 		} break;
 		case WINDOW_NEXT: {
 			_history_forward();

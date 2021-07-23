@@ -5,7 +5,7 @@ contributors, as well as occasional paid contributors thanks to the financial
 support of generous donors.
 
 The ways to donate to the project, as well as details on how the funds are
-used, are described on [Fox's website](https://Foxengine.org/donate).
+used, are described on [Fox's website](https://godotengine.org/donate).
 
 The following is a list of the current monthly donors, who will have their
 generous deed immortalized in the next stable release of Fox Engine.
@@ -18,7 +18,7 @@ generous deed immortalized in the next stable release of Fox Engine.
 
 ## Gold sponsors
 
-    None currently, become one! <https://Foxengine.org/donate>
+    None currently, become one! <https://godotengine.org/donate>
 
 ## Silver sponsors
 

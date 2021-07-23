@@ -9,7 +9,7 @@ from collections import OrderedDict
 # Uncomment to do type checks. I have it commented out so it works below Python 3.5
 # from typing import List, Dict, TextIO, Tuple, Iterable, Optional, DefaultDict, Any, Union
 
-# http(s)://docs.Foxengine.org/<langcode>/<tag>/path/to/page.html(#fragment-tag)
+# http(s)://docs.godotengine.org/<langcode>/<tag>/path/to/page.html(#fragment-tag)
 Fox_DOCS_PATTERN = re.compile(
     r"^http(?:s)?://docs\.Foxengine\.org/(?:[a-zA-Z0-9.\-_]*)/(?:[a-zA-Z0-9.\-_]*)/(.*)\.html(#.*)?$"
 )

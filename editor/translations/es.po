@@ -12468,10 +12468,10 @@ msgstr "Construir Proyecto Android (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "La construcción del proyecto Android falló, comprueba la salida del error.\n"
-"También puedes visitar docs.Foxengine.org para consultar la documentación "
+"También puedes visitar docs.godotengine.org para consultar la documentación "
 "de compilación de Android."
 
 #: platform/android/export/export.cpp
@@ -15214,8 +15214,8 @@ msgstr "Las constantes no pueden modificarse."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Alerta cuando un recurso externo haya cambiado."
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "Abre https://Foxengine.org en la sección de tutoriales."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "Abre https://godotengine.org en la sección de tutoriales."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "¡No se ha elegido ninguna escena a instanciar!"

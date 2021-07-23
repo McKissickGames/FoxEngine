@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -38,7 +38,7 @@
 #include "editor_scale.h"
 #include "editor_settings.h"
 
-#define CONTRIBUTE_URL "https://docs.Foxengine.org/en/latest/community/contributing/updating_the_class_reference.html"
+#define CONTRIBUTE_URL "https://docs.godotengine.org/en/latest/community/contributing/updating_the_class_reference.html"
 
 DocTools *EditorHelp::doc = nullptr;
 

@@ -13072,7 +13072,7 @@ msgstr ""
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 
 #: platform/android/export/export.cpp
@@ -15473,8 +15473,8 @@ msgstr ""
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "বহি:স্থ রিসোর্সের পরিবর্তনে সতর্ক করে।"
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "টিউটোরিয়ালের স্থানে https://Foxengine.org খুলুন।"
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "টিউটোরিয়ালের স্থানে https://godotengine.org খুলুন।"
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "ইন্সট্যান্স করার জন্য কোনো দৃশ্য নির্বাচন করা হয়নি!"

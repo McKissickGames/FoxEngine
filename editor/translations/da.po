@@ -11,7 +11,7 @@
 # frederikzt <frederikzt@gmail.com>, 2018.
 # Jonathan B. Jørgensen <pizzaernam@gmail.com>, 2018.
 # Peter G. Laursen <GhostReven@gmail.com>, 2018.
-# Rémi Verschelde <akien@Foxengine.org>, 2019.
+# Rémi Verschelde <akien@godotengine.org>, 2019.
 # Mads K. Bredager <mbredager@gmail.com>, 2019.
 # Kristoffer Andersen <kjaa@google.com>, 2019.
 # Joe Osborne <reachjoe.o@gmail.com>, 2020.
@@ -12600,7 +12600,7 @@ msgstr ""
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 
 #: platform/android/export/export.cpp

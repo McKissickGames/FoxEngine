@@ -12384,11 +12384,11 @@ msgstr "Збирання проєкту Android (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Не вдалося виконати збирання проєкту Android. Ознайомтеся із виведеними "
 "даними, щоб визначити причину помилки.\n"
-"Крім того, можете відвідати docs.Foxengine.org і ознайомитися із "
+"Крім того, можете відвідати docs.godotengine.org і ознайомитися із "
 "документацією щодо збирання для Android."
 
 #: platform/android/export/export.cpp

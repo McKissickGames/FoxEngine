@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -376,7 +376,7 @@ void ShaderEditor::_menu_option(int p_option) {
 			shader_editor->remove_all_bookmarks();
 		} break;
 		case HELP_DOCS: {
-			OS::get_singleton()->shell_open("https://docs.Foxengine.org/en/latest/tutorials/shaders/shader_reference/index.html");
+			OS::get_singleton()->shell_open("https://docs.godotengine.org/en/latest/tutorials/shaders/shader_reference/index.html");
 		} break;
 	}
 	if (p_option != SEARCH_FIND && p_option != SEARCH_REPLACE && p_option != SEARCH_GOTO_LINE) {

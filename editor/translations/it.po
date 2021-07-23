@@ -12501,11 +12501,11 @@ msgstr "Compilazione di un progetto Android (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Costruzione del progetto Android fallita, controlla l'output per vedere gli "
 "errori.\n"
-"In alternativa, visita docs.Foxengine.org per la documentazione della "
+"In alternativa, visita docs.godotengine.org per la documentazione della "
 "build Android."
 
 #: platform/android/export/export.cpp
@@ -15024,8 +15024,8 @@ msgstr "Le constanti non possono essere modificate."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Avverti quando una risorsa esterna è stata modificata."
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "Apri https://Foxengine.org alla sezione tutorial."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "Apri https://godotengine.org alla sezione tutorial."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "Nessuna scena da istanziare selezionata!"

@@ -94,7 +94,7 @@ and follow the instructions in the README file. High-quality feature proposals
 are more likely to be well-received by the maintainers and community, so do
 your best :)
 
-See [this article](https://Foxengine.org/article/introducing-Fox-proposals-repository)
+See [this article](https://godotengine.org/article/introducing-Fox-proposals-repository)
 for detailed rationale on this change.
 
 ## Contributing pull requests
@@ -112,16 +112,16 @@ Similar rules can be applied when contributing bug fixes - it's always best to
 discuss the implementation in the bug report first if you are not 100% about
 what would be the best fix.
 
-[This blog post](https://Foxengine.org/article/will-your-contribution-be-merged-heres-how-tell)
+[This blog post](https://godotengine.org/article/will-your-contribution-be-merged-heres-how-tell)
 outlines the process used by core developers when assessing PRs. We strongly
 recommend that you have a look at it to know what's important to take into
 account for a PR to be considered for merging.
 
 In addition to the following tips, also take a look at the
-[Engine development guide](https://docs.Foxengine.org/en/latest/development/cpp/)
+[Engine development guide](https://docs.godotengine.org/en/latest/development/cpp/)
 for an introduction to developing on Fox.
 
-The [Contributing docs](https://docs.Foxengine.org/en/latest/community/contributing/index.html)
+The [Contributing docs](https://docs.godotengine.org/en/latest/community/contributing/index.html)
 also have important information on the PR workflow and the code style we use.
 
 ### Document your changes
@@ -131,10 +131,10 @@ scripting APIs, you **must** update the class reference to document those.
 This is to ensure the documentation coverage doesn't decrease as contributions
 are merged.
 
-[Update the documentation template](https://docs.Foxengine.org/en/latest/community/contributing/updating_the_class_reference.html#updating-the-documentation-template)
+[Update the documentation template](https://docs.godotengine.org/en/latest/community/contributing/updating_the_class_reference.html#updating-the-documentation-template)
 using your compiled binary, then fill in the descriptions.
 Follow the style guide described in the
-[Docs writing guidelines](https://docs.Foxengine.org/en/latest/community/contributing/docs_writing_guidelines.html).
+[Docs writing guidelines](https://docs.godotengine.org/en/latest/community/contributing/docs_writing_guidelines.html).
 
 If your pull request modifies parts of the code in a non-obvious way, make sure
 to add comments in the code as well. This helps other people understand the
@@ -160,7 +160,7 @@ applicable.
 Feel free to contribute standalone pull requests to add new tests or improve
 existing tests as well.
 
-See [Unit testing](https://docs.Foxengine.org/en/latest/development/cpp/unit_testing.html)
+See [Unit testing](https://docs.godotengine.org/en/latest/development/cpp/unit_testing.html)
 for information on writing tests in Fox's C++ codebase.
 
 ### Be nice to the Git history
@@ -182,7 +182,7 @@ Internet).
 This [Git style guide](https://github.com/agis-/git-style-guide) has some
 good practices to have in mind.
 
-See our [PR workflow](https://docs.Foxengine.org/en/latest/community/contributing/pr_workflow.html)
+See our [PR workflow](https://docs.godotengine.org/en/latest/community/contributing/pr_workflow.html)
 documentation for tips on using Git, amending commits and rebasing branches.
 
 ### Format your commit messages with readability in mind
@@ -235,13 +235,13 @@ on Weblate.
 ## Communicating with developers
 
 The Fox Engine community has [many communication
-channels](https://Foxengine.org/community), some used more for user-level
+channels](https://godotengine.org/community), some used more for user-level
 discussions and support, others more for development discussions.
 
 To communicate with developers (e.g. to discuss a feature you want to implement
 or a bug you want to fix), the following channels can be used:
 
-- [Fox Contributors Chat](https://chat.Foxengine.org): You will
+- [Fox Contributors Chat](https://chat.godotengine.org): You will
   find most core developers there, so it's the go-to platform for direct chat
   about Fox Engine development. Feel free to start discussing something there
   to get some early feedback before writing up a detailed proposal in a GitHub

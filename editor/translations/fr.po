@@ -49,7 +49,7 @@
 # Brice Lobet <tempo.data@gmail.com>, 2018.
 # Florent Wijanto <f_wijanto@hotmail.com>, 2018.
 # Olivier gareau <olivier.gareau@protonmail.com>, 2018.
-# Rémi Verschelde <akien@Foxengine.org>, 2018, 2019, 2020.
+# Rémi Verschelde <akien@godotengine.org>, 2018, 2019, 2020.
 # Rémi Bintein <reminus5@hotmail.fr>, 2018, 2019.
 # Sylvain Corsini <sylvain.corsini@gmail.com>, 2018.
 # Caye Pierre <pierrecaye@laposte.net>, 2019.
@@ -12513,11 +12513,11 @@ msgstr "Construire le Project Android (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "La construction du projet Android a échoué, vérifiez la sortie pour "
 "l'erreur.\n"
-"Sinon, visitez docs.Foxengine.org pour la documentation de construction "
+"Sinon, visitez docs.godotengine.org pour la documentation de construction "
 "Android."
 
 #: platform/android/export/export.cpp

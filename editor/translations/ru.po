@@ -12422,10 +12422,10 @@ msgstr "Сборка проекта Android (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Сборка проекта Android не удалась, проверьте вывод на ошибки.\n"
-"Также посетите docs.Foxengine.org для получения документации по сборке "
+"Также посетите docs.godotengine.org для получения документации по сборке "
 "Android."
 
 #: platform/android/export/export.cpp
@@ -14921,8 +14921,8 @@ msgstr "Константы не могут быть изменены."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Оповещения, когда внешний ресурс был изменён."
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "Открыть https://Foxengine.org с разделом уроков."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "Открыть https://godotengine.org с разделом уроков."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "Не выбрана сцена!"

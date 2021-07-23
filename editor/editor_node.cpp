@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -2796,10 +2796,10 @@ void EditorNode::_menu_option_confirm(int p_option, bool p_confirmed) {
 			emit_signal("request_help_search", "");
 		} break;
 		case HELP_DOCS: {
-			OS::get_singleton()->shell_open("https://docs.Foxengine.org/");
+			OS::get_singleton()->shell_open("https://docs.godotengine.org/");
 		} break;
 		case HELP_QA: {
-			OS::get_singleton()->shell_open("https://Foxengine.org/qa/");
+			OS::get_singleton()->shell_open("https://godotengine.org/qa/");
 		} break;
 		case HELP_REPORT_A_BUG: {
 			OS::get_singleton()->shell_open("https://github.com/Foxengine/Fox/issues");
@@ -2811,13 +2811,13 @@ void EditorNode::_menu_option_confirm(int p_option, bool p_confirmed) {
 			OS::get_singleton()->shell_open("https://github.com/Foxengine/Fox-docs/issues");
 		} break;
 		case HELP_COMMUNITY: {
-			OS::get_singleton()->shell_open("https://Foxengine.org/community");
+			OS::get_singleton()->shell_open("https://godotengine.org/community");
 		} break;
 		case HELP_ABOUT: {
 			about->popup_centered(Size2(780, 500) * EDSCALE);
 		} break;
 		case HELP_SUPPORT_Fox_DEVELOPMENT: {
-			OS::get_singleton()->shell_open("https://Foxengine.org/donate");
+			OS::get_singleton()->shell_open("https://godotengine.org/donate");
 		} break;
 
 		case SET_VIDEO_DRIVER_SAVE_AND_RESTART: {

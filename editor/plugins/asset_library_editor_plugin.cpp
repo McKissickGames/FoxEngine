@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -603,7 +603,7 @@ void EditorAssetLibrary::_notification(int p_what) {
 
 void EditorAssetLibrary::_update_repository_options() {
 	Dictionary default_urls;
-	default_urls["Foxengine.org"] = "https://Foxengine.org/asset-library/api";
+	default_urls["godotengine.org"] = "https://godotengine.org/asset-library/api";
 	default_urls["localhost"] = "http://127.0.0.1/asset-library/api";
 	Dictionary available_urls = _EDITOR_DEF("asset_library/available_urls", default_urls, true);
 	repository->clear();

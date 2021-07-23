@@ -11,9 +11,9 @@
 		[b]Kinematic motion:[/b] Static bodies can have [member kinematic_motion] enabled to make them kinematic bodies that can be moved by code and push other bodies on their path.
 	</description>
 	<tutorials>
-		<link title="3D Physics Tests Demo">https://Foxengine.org/asset-library/asset/675</link>
-		<link title="Third Person Shooter Demo">https://Foxengine.org/asset-library/asset/678</link>
-		<link title="3D Voxel Demo">https://Foxengine.org/asset-library/asset/676</link>
+		<link title="3D Physics Tests Demo">https://godotengine.org/asset-library/asset/675</link>
+		<link title="Third Person Shooter Demo">https://godotengine.org/asset-library/asset/678</link>
+		<link title="3D Voxel Demo">https://godotengine.org/asset-library/asset/676</link>
 	</tutorials>
 	<methods>
 	</methods>

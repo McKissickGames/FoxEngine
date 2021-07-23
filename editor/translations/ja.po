@@ -12334,10 +12334,10 @@ msgstr "Androidプロジェクトの構築(gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Androidプロジェクトのビルドに失敗しました。エラーの出力を確認してください。\n"
-"また、Androidビルドについてのドキュメントは docs.Foxengine.org をご覧くださ"
+"また、Androidビルドについてのドキュメントは docs.godotengine.org をご覧くださ"
 "い。"
 
 #: platform/android/export/export.cpp

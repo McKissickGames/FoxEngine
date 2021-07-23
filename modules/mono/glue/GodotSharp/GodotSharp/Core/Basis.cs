@@ -20,7 +20,7 @@ namespace Fox
     /// orthogonal to each other, but are not necessarily normalized (due to scaling).
     ///
     /// For more information, read this documentation article:
-    /// https://docs.Foxengine.org/en/latest/tutorials/math/matrices_and_transforms.html
+    /// https://docs.godotengine.org/en/latest/tutorials/math/matrices_and_transforms.html
     /// </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]

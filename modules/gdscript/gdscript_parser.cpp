@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -2984,7 +2984,7 @@ void GDScriptParser::get_class_doc_comment(int p_line, String &p_brief, String &
 			}
 
 			if (striped_line[begin_scan] == ':') { // No title.
-				// Syntax: ## @tutorial: https://Foxengine.org/ // The title argument is optional.
+				// Syntax: ## @tutorial: https://godotengine.org/ // The title argument is optional.
 				title = "";
 				link = striped_line.trim_prefix("@tutorial:").strip_edges();
 

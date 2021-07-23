@@ -8,7 +8,7 @@ body:
       - Read our [CONTRIBUTING.md guide](CONTRIBUTING.md#reporting-bugs) on reporting bugs.
       - Write a descriptive issue title above.
       - Search [open](https://github.com/Foxengine/Fox/issues) and [closed](https://github.com/Foxengine/Fox/issues?q=is%3Aissue+is%3Aclosed) issues to ensure it has not already been reported.
-      - Verify that you are using a [supported Fox version](https://docs.Foxengine.org/en/stable/about/release_policy.html).
+      - Verify that you are using a [supported Fox version](https://docs.godotengine.org/en/stable/about/release_policy.html).
 
 - type: input
   attributes:

@@ -1,9 +1,9 @@
-# Exhaustive licensing information for files in the Godot Engine repository
+# Exhaustive licensing information for files in the Fox Engine repository
 # =========================================================================
 #
 # This file aims at documenting the copyright and license for every source
-# file in the Godot Engine repository, and especially outline the files
-# whose license differs from the MIT/Expat license used by Godot Engine.
+# file in the Fox Engine repository, and especially outline the files
+# whose license differs from the MIT/Expat license used by Fox Engine.
 #
 # It is written as a machine-readable format following the debian/copyright
 # specification. Globbing patterns (e.g. "Files: *") mean that they affect
@@ -27,31 +27,31 @@
 #   License: Zlib
 # The exact copyright for each file in that library *may* differ, and some
 # files or code snippets might be distributed under other compatible licenses
-# (e.g. a public domain dedication), but as far as Godot Engine is concerned
+# (e.g. a public domain dedication), but as far as Fox Engine is concerned
 # the library is considered as a whole under the Zlib license.
 #
 # Note: When linking dynamically against thirdparty libraries instead of
-# building them into the Godot binary, you may remove the corresponding
+# building them into the Fox binary, you may remove the corresponding
 # license details from this file.
 
 -----------------------------------------------------------------------
 
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Godot Engine
+Upstream-Name: Fox Engine
 Upstream-Contact: Rémi Verschelde <contact@godotengine.org>
-Source: https://github.com/godotengine/godot
+Source: https://github.com/Foxengine/Fox
 
 Files: *
-Comment: Godot Engine
+Comment: Fox Engine
 Copyright: 2007-2021, Juan Linietsky, Ariel Manzur.
- 2014-2021, Godot Engine contributors.
+ 2014-2021, Fox Engine contributors.
 License: Expat
 
 Files: ./icon.png
  ./icon.svg
  ./logo.png
  ./logo.svg
-Comment: Godot Engine logo
+Comment: Fox Engine logo
 Copyright: 2017, Andrea Calabró
 License: CC-BY-4.0
 
@@ -60,21 +60,21 @@ Files: ./core/math/convex_hull.cpp
 Comment: Bullet Continuous Collision Detection and Physics Library
 Copyright: 2011, Ole Kniemeyer, MAXON, www.maxon.net
  2007-2021, Juan Linietsky, Ariel Manzur.
- 2014-2021, Godot Engine contributors.
+ 2014-2021, Fox Engine contributors.
 License: Expat and Zlib
 
 Files: ./modules/fbx/fbx_parser/
 Comment: Open Asset Import Library (FBX parser)
 Copyright: 2006-2020, assimp team
  2007-2021, Juan Linietsky, Ariel Manzur.
- 2014-2021, Godot Engine contributors.
+ 2014-2021, Fox Engine contributors.
 License: BSD-3-clause
 
 Files: ./platform/android/java/lib/aidl/com/android/*
  ./platform/android/java/lib/res/layout/status_bar_ongoing_event_progress_bar.xml
  ./platform/android/java/lib/src/com/google/android/*
- ./platform/android/java/lib/src/org/godotengine/godot/input/InputManagerCompat.java
- ./platform/android/java/lib/src/org/godotengine/godot/input/InputManagerV16.java
+ ./platform/android/java/lib/src/org/Foxengine/Fox/input/InputManagerCompat.java
+ ./platform/android/java/lib/src/org/Foxengine/Fox/input/InputManagerV16.java
 Comment: The Android Open Source Project
 Copyright: 2008-2016, The Android Open Source Project
  2002, Google, Inc.
@@ -102,7 +102,7 @@ Files: ./servers/physics_3d/gjk_epa.cpp
 Comment: Bullet Continuous Collision Detection and Physics Library
 Copyright: 2003-2008, Erwin Coumans
  2007-2021, Juan Linietsky, Ariel Manzur.
- 2014-2021, Godot Engine contributors.
+ 2014-2021, Fox Engine contributors.
 License: Expat and Zlib
 
 Files: ./servers/physics_3d/joints/cone_twist_joint_3d_sw.cpp
@@ -110,7 +110,7 @@ Files: ./servers/physics_3d/joints/cone_twist_joint_3d_sw.cpp
 Comment: Bullet Continuous Collision Detection and Physics Library
 Copyright: 2007, Starbreeze Studios
  2007-2021, Juan Linietsky, Ariel Manzur.
- 2014-2021, Godot Engine contributors.
+ 2014-2021, Fox Engine contributors.
 License: Expat and Zlib
 
 Files: ./thirdparty/basis_universal/

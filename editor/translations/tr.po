@@ -12370,11 +12370,11 @@ msgstr "Android Projesi Oluşturma (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Android projesinin oluşturulması başarısız oldu, hatayı çıktı için kontrol "
 "edin.\n"
-"Alternatif olarak, Android derleme dokümantasyonu için docs.Foxengine.org "
+"Alternatif olarak, Android derleme dokümantasyonu için docs.godotengine.org "
 "adresini ziyaret edin.."
 
 #: platform/android/export/export.cpp
@@ -14843,8 +14843,8 @@ msgstr "Sabit değerler değiştirilemez."
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "Dış kaynaklar değişince uyarır."
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "https://Foxengine.org bağlantısını öğreticiler bölümünde aç."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "https://godotengine.org bağlantısını öğreticiler bölümünde aç."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "Örnek vermek için hiçbir sahne seçilmedi!"

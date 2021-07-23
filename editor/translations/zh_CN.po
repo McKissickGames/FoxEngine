@@ -12160,10 +12160,10 @@ msgstr "构建 Android 项目 (Gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Android 项目构建失败，请检查输出中显示的错误。\n"
-"也可以访问 docs.Foxengine.org 查看 Android 构建文档。"
+"也可以访问 docs.godotengine.org 查看 Android 构建文档。"
 
 #: platform/android/export/export.cpp
 msgid "Moving output"
@@ -14594,8 +14594,8 @@ msgstr "不允许修改常量。"
 #~ msgid "Alerts when an external resource has changed."
 #~ msgstr "外部资源改变后弹出提示。"
 
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "打开 https://Foxengine.org 中的教程."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "打开 https://godotengine.org 中的教程."
 
 #~ msgid "No scene selected to instance!"
 #~ msgstr "没有选用要实例化的场景！"

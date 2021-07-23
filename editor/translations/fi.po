@@ -12338,10 +12338,10 @@ msgstr "Käännetään Android-projektia (gradle)"
 #: platform/android/export/export.cpp
 msgid ""
 "Building of Android project failed, check output for the error.\n"
-"Alternatively visit docs.Foxengine.org for Android build documentation."
+"Alternatively visit docs.godotengine.org for Android build documentation."
 msgstr ""
 "Android-projektin käännös epäonnistui, tarkista virhe tulosteesta.\n"
-"Vaihtoehtoisesti, lue docs.Foxengine.org sivustolta Androidin "
+"Vaihtoehtoisesti, lue docs.godotengine.org sivustolta Androidin "
 "käännösdokumentaatio."
 
 #: platform/android/export/export.cpp
@@ -14667,8 +14667,8 @@ msgstr "Vakioita ei voi muokata."
 #~ msgstr "Vie projekti usealle alustalle."
 
 #, fuzzy
-#~ msgid "Open https://Foxengine.org at tutorials section."
-#~ msgstr "Avaa https://Foxengine.org \"tutorials\"-alueelle."
+#~ msgid "Open https://godotengine.org at tutorials section."
+#~ msgstr "Avaa https://godotengine.org \"tutorials\"-alueelle."
 
 #~ msgid "Use Default Light"
 #~ msgstr "Käytä oletusvaloa"

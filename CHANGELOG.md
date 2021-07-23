@@ -8,17 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Support for [pseudo-3D depth in 2D](https://Foxengine.org/article/Fox-32-will-get-pseudo-3d-support-2d-engine).
+- Support for [pseudo-3D depth in 2D](https://godotengine.org/article/Fox-32-will-get-pseudo-3d-support-2d-engine).
 - Support for importing 3D scenes using Assimp.
   - Many formats are supported, including FBX.
-- [Support for generating audio procedurally and analyzing audio spectrums.](https://Foxengine.org/article/Fox-32-will-get-new-audio-features)
+- [Support for generating audio procedurally and analyzing audio spectrums.](https://godotengine.org/article/Fox-32-will-get-new-audio-features)
 - WebRTC support.
   - Includes support for the high-level multiplayer API.
   - Supports NAT traversal using STUN or TURN.
 - Support for automatically building Android templates before exporting.
   - This makes 3rd-party SDK integration easier.
-- Support for [texture atlases in 2D](https://Foxengine.org/article/atlas-support-returns-Fox-3-2).
-- Major improvements to the visual shader system. ([News post 1](https://Foxengine.org/article/major-update-for-visual-shader-in-Fox-3-2), [News post 2](https://Foxengine.org/article/major-update-visual-shaders-Fox-3-2-part-2))
+- Support for [texture atlases in 2D](https://godotengine.org/article/atlas-support-returns-Fox-3-2).
+- Major improvements to the visual shader system. ([News post 1](https://godotengine.org/article/major-update-for-visual-shader-in-Fox-3-2), [News post 2](https://godotengine.org/article/major-update-visual-shaders-Fox-3-2-part-2))
   - Redesigned visual shader editor with drag-and-drop capability.
     - Textures can be dragged from the FileSystem dock to be added as nodes.
   - Most functions available in GLSL are now exposed.
@@ -97,7 +97,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - PointMesh primitive.
   - Drawn as a rectangle with a constant size on screen, which is cheaper compared to using triangle-based billboards.
 - 2D polygon boolean operations and Delaunay triangulation are now available in the Geometry singleton.
-- [New convex decomposition](https://Foxengine.org/article/Fox-3-2-adds-support-convex-decomposition) using the [V-HACD](https://github.com/kmammou/v-hacd) library.
+- [New convex decomposition](https://godotengine.org/article/Fox-3-2-adds-support-convex-decomposition) using the [V-HACD](https://github.com/kmammou/v-hacd) library.
   - Can decompose meshes into multiple convex shapes for increased accuracy.
 - Support for grouping nodes in the 3D editor.
 - "Slow" modifier in freelook (accessed by holding <kbd>Alt</kbd>).
@@ -331,7 +331,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Reimplemented support for embedding project data in the PCK file.
 - Ability to take editor screenshots by pressing <kbd>Ctrl + F12</kbd>.
 - Editor plugins can now set the current active editor as well as toggle the distraction-free mode.
-- **Android:** [Support for adaptive icons.](https://docs.Foxengine.org/en/latest/getting_started/workflow/export/exporting_for_android.html#providing-launcher-icons)
+- **Android:** [Support for adaptive icons.](https://docs.godotengine.org/en/latest/getting_started/workflow/export/exporting_for_android.html#providing-launcher-icons)
   - All icon densities are now generated automatically by the exporter.
   - Only 3 images now need to be supplied to support all icon formats and densities (legacy icon, adaptive foreground, adaptive background).
 - **Android:** Support for the Oculus Mobile SDK.
@@ -735,47 +735,47 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - OpenGL ES 2.0 renderer.
-- [Visual shader editor.](https://Foxengine.org/article/visual-shader-editor-back)
+- [Visual shader editor.](https://godotengine.org/article/visual-shader-editor-back)
   - New PBR output nodes.
   - Conversion between Vector3 and scalar types is now automatic.
   - Ability to create custom nodes via scripting.
   - Ports can now be previewed.
-- [3D soft body physics.](https://Foxengine.org/article/soft-body)
-- [3D ragdoll system.](https://Foxengine.org/article/Fox-ragdoll-system)
-- [Constructive solid geometry in 3D.](https://Foxengine.org/article/Fox-gets-csg-support)
-- [2D meshes and skeletal deformation.](https://Foxengine.org/article/Fox-gets-2d-skeletal-deform)
-- [Various improvements to KinematicBody2D.](https://Foxengine.org/article/Fox-31-will-get-many-improvements-kinematicbody)
+- [3D soft body physics.](https://godotengine.org/article/soft-body)
+- [3D ragdoll system.](https://godotengine.org/article/Fox-ragdoll-system)
+- [Constructive solid geometry in 3D.](https://godotengine.org/article/Fox-gets-csg-support)
+- [2D meshes and skeletal deformation.](https://godotengine.org/article/Fox-gets-2d-skeletal-deform)
+- [Various improvements to KinematicBody2D.](https://godotengine.org/article/Fox-31-will-get-many-improvements-kinematicbody)
   - Support for snapping the body to the floor.
   - Support for RayCast shapes in kinematic bodies.
   - Support for synchronizing kinematic movement to physics, avoiding an one-frame delay.
 - WebSockets support using [libwebsockets](https://libwebsockets.org/).
 - UPnP support using [MiniUPnP](http://miniupnp.free.fr).
-- [Revamped inspector.](https://Foxengine.org/article/Fox-gets-new-inspector)
+- [Revamped inspector.](https://godotengine.org/article/Fox-gets-new-inspector)
   - Improved visualization and editing of numeric properties.
   - Vector and matrix types can now be edited directly (no pop-ups).
   - Subresources can now be edited directly within the same inspector.
   - Layer names can now be displayed in the inspector.
   - Proper editing of arrays and dictionaries.
   - Ability to reset any property to its default value.
-- [Improved animation editor.](https://Foxengine.org/article/Fox-gets-brand-new-animation-editor-cinematic-support)
+- [Improved animation editor.](https://godotengine.org/article/Fox-gets-brand-new-animation-editor-cinematic-support)
   - Simpler, less cluttered layout.
   - New Bezier, Audio and Animation tracks.
   - Several key types can be previewed directly in the track editor.
   - Tracks can now be grouped and filtered on a per-node basis.
   - Copying and pasting tracks between animations is now possible.
   - New Capture mode to blend from a node's current value to the first key in a track.
-- [Improved animation tree and new state machine.](https://Foxengine.org/article/Fox-gets-new-animation-tree-state-machine)
+- [Improved animation tree and new state machine.](https://godotengine.org/article/Fox-gets-new-animation-tree-state-machine)
   - More visual feedback in the blend tree editor.
   - 1D and 2D blend spaces are now supported.
   - Ability to write custom blending logic.
   - Support for root motion.
-- [New FileSystem dock.](https://Foxengine.org/article/Fox-gets-new-filesystem-dock-3-1)
+- [New FileSystem dock.](https://godotengine.org/article/Fox-gets-new-filesystem-dock-3-1)
   - Unified view of folders and files in the same panel.
   - Files can now be marked as favorites, not only folders.
   - Files now have icons representing their type, or thumbnail previews when relevant.
   - New search field to filter entries in the tree.
-- [OpenSimplexNoise and NoiseTexture resources.](https://Foxengine.org/article/simplex-noise-lands-Fox-31)
-- [Optional static typing in GDScript.](https://Foxengine.org/article/optional-typing-gdscript)
+- [OpenSimplexNoise and NoiseTexture resources.](https://godotengine.org/article/simplex-noise-lands-Fox-31)
+- [Optional static typing in GDScript.](https://godotengine.org/article/optional-typing-gdscript)
   - Does not currently improve performance, but helps write more robust code.
 - Warning system in GDScript.
   - Reports potential code issues such as:
@@ -785,7 +785,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     - unreachable code after a `return` statement,
     - …
   - Warnings can be disabled in the Project Settings or by writing special comments.
-- [GDScript keyword `class_name` to register scripts as classes.](https://docs.Foxengine.org/en/latest/getting_started/step_by_step/scripting_continued.html#register-scripts-as-classes)
+- [GDScript keyword `class_name` to register scripts as classes.](https://docs.godotengine.org/en/latest/getting_started/step_by_step/scripting_continued.html#register-scripts-as-classes)
 - Simple expression language independent from GDScript, used by inspector boxes that accept numeric values.
   - Can also be used in projects.
 - C# projects can now be exported for Windows, Linux, and macOS targets.
@@ -891,7 +891,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- [Built-in vector types now use copy-on-write mode as originally intended](https://Foxengine.org/article/why-we-broke-your-pr), resulting in increased engine performance.
+- [Built-in vector types now use copy-on-write mode as originally intended](https://godotengine.org/article/why-we-broke-your-pr), resulting in increased engine performance.
 - The [mbedtls](https://tls.mbed.org/) library is now used instead of OpenSSL.
 - [Renamed several core files](https://github.com/Foxengine/Fox/pull/25821).
   - Third-party modules may have to be updated to reflect this.
@@ -1001,7 +1001,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - Screen-space reflections.
   - Real-time global illumination using voxel cone tracing (GIProbe).
   - Proximity fade and distance fade (useful for creating soft particles and various effects).
-  - [Lightmapper](https://Foxengine.org/article/introducing-new-last-minute-lightmapper) for lower-end desktop and mobile platforms, as an alternative to GIProbe.
+  - [Lightmapper](https://godotengine.org/article/introducing-new-last-minute-lightmapper) for lower-end desktop and mobile platforms, as an alternative to GIProbe.
 - New SpatialMaterial resource, replacing FixedMaterial.
   - Multiple passes can now be specified (with an optional "grow" property), allowing for effects such as cel shading.
 - Brand new 3D post-processing system.
@@ -1032,7 +1032,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - Setters and getters for node properties.
   - Underscores in number literals are now allowed for improved readability (for example,`1_000_000`).
   - Improved performance (+20% to +40%, based on various benchmarks).
-- [Feature tags](https://docs.Foxengine.org/en/latest/getting_started/workflow/export/feature_tags.html) in the Project Settings, for custom per-platform settings.
+- [Feature tags](https://docs.godotengine.org/en/latest/getting_started/workflow/export/feature_tags.html) in the Project Settings, for custom per-platform settings.
 - Full support for the [glTF 2.0](https://www.khronos.org/gltf/) 3D interchange format.
 - Freelook and fly navigation to the 3D editor.
 - Built-in editor logging (logging standard output to a file), disabled by default.

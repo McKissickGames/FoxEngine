@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           Fox ENGINE                                */
-/*                      https://Foxengine.org                          */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2021 Fox Engine contributors (cf. AUTHORS.md).   */
@@ -456,7 +456,7 @@ void ProjectExportDialog::_enc_filters_changed(const String &p_filters) {
 }
 
 void ProjectExportDialog::_open_key_help_link() {
-	OS::get_singleton()->shell_open("https://docs.Foxengine.org/en/latest/development/compiling/compiling_with_script_encryption_key.html");
+	OS::get_singleton()->shell_open("https://docs.godotengine.org/en/latest/development/compiling/compiling_with_script_encryption_key.html");
 }
 
 void ProjectExportDialog::_enc_pck_changed(bool p_pressed) {
